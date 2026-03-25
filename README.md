@@ -1,1 +1,4 @@
-# Anthropocene_Shifts_Trait_Space
+# Anthropocene Shifts in Trait Space
+
+Sophie Wolf et al. 2026
+
