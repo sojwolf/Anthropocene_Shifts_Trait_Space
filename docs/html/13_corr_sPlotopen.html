@@ -1,0 +1,1502 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Global Spectrum of Plant Form and Function &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/13_corr_sPlotopen.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F13_corr_sPlotopen.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/13_corr_sPlotopen.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-outline">
+   Exercise Outline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#corrlate-with-splotopen">
+   Corrlate with sPlotOpen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-pca">
+   Calculate PCA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variance-explained">
+     Variance explained
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#biplot-with-loadings">
+     Biplot with loadings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-maps">
+     Global maps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-regional-shifts">
+   Optional: Regional shifts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-jupyter-book-documentation">
+   Make Jupyter Book Documentation
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Global Spectrum of Plant Form and Function</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-outline">
+   Exercise Outline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#corrlate-with-splotopen">
+   Corrlate with sPlotOpen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-pca">
+   Calculate PCA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variance-explained">
+     Variance explained
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#biplot-with-loadings">
+     Biplot with loadings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-maps">
+     Global maps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-regional-shifts">
+   Optional: Regional shifts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-jupyter-book-documentation">
+   Make Jupyter Book Documentation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># ignore this</span>
+<span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="global-spectrum-of-plant-form-and-function">
+<h1>Global Spectrum of Plant Form and Function<a class="headerlink" href="#global-spectrum-of-plant-form-and-function" title="Permalink to this headline">#</a></h1>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Diaz et al., 2016, Global Spectrum of Plant Form and Function</p></li>
+<li><p>Weigelt et al. 2021, An integrated framework of plant form and function: the belowground perspective</p></li>
+<li><p>Wolf et al. 2022, Citizen science plant observations encode global trait patterns</p></li>
+</ul>
+</section>
+<section id="exercise-outline">
+<h2>Exercise Outline<a class="headerlink" href="#exercise-outline" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Correlate sPlotOpen data with trait grid cell averages</p></li>
+<li><p>Calculate PCA with top traits from correlation analysis (come up with a good cut-off)</p>
+<ul class="simple">
+<li><p>Plot variance explained</p></li>
+<li><p>Plot biplots with loadings</p></li>
+<li><p>Create global maps for the PCs that explain most variance</p></li>
+<li><p>Try to interpret PCs in ecological terms</p></li>
+<li><p>Describe what regions are not well covered and discuss how this may influence the PCA</p></li>
+</ul>
+</li>
+<li><p>Choose a biome and quantify and visualitze trait shifts from native -&gt; all in a specific biome</p></li>
+</ol>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Grid-cell averages: <code class="docutils literal notranslate"><span class="pre">/net/scratch/swolf/GBIF/gbif_CS_glonaf_wcvp_res3_try6_mean_imp.csv</span></code></p>
+<ul>
+<li><p><strong>h3_res3</strong>: h3 hexagonal equal-area grid cells at reolution 3</p></li>
+<li><p><strong>group</strong>: only indigenous observations (native) and indigenous+non-indigenous observations</p></li>
+<li><p><strong>count</strong>: number of occurences per grid cell (sampling density)</p></li>
+<li><ul>
+<li><p><strong>37 above- and below-ground plant functional traits</strong> (citizen-science species occurrence merged with TRY trait data), gap-filled</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>sPlotOpen: <code class="docutils literal notranslate"><span class="pre">~/iNaturalist/Data/sPlotOpen/cwm_loc.csv</span></code></p>
+<ul>
+<li><p><strong>PlotID</strong></p></li>
+<li><p><strong>Latitude</strong></p></li>
+<li><p><strong>Longitude</strong></p></li>
+<li><p><strong>Community weighted means (CWM’s)</strong> for 18 above-ground traits <strong>ln-transformed</strong>!</p></li>
+</ul>
+</li>
+<li><p>Trait names: <code class="docutils literal notranslate"><span class="pre">~/Func_Neo_Phytes/Data/trait_info.csv</span></code></p></li>
+<li><p>WWF biomes shapefile: <code class="docutils literal notranslate"><span class="pre">~/iNaturalist/Data/WWF/wwf_terr_ecos.shp</span></code></p></li>
+</ul>
+</section>
+<section id="corrlate-with-splotopen">
+<h2>Corrlate with sPlotOpen<a class="headerlink" href="#corrlate-with-splotopen" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Calculate grid-cell sPlotOpen averages</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read ~/iNaturalist/Data/sPlotOpen/cwm_loc.csv</span>
+<span class="n">splotopen</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;~/iNaturalist/Data/sPlotOpen/cwm_loc.csv&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">splotopen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 86</caption>
+<thead>
+	<tr><th></th><th scope=col>PlotObservationID</th><th scope=col>TraitCoverage_cover</th><th scope=col>Species_richness</th><th scope=col>TraitCoverage_pa</th><th scope=col>Leaf.Area</th><th scope=col>SSD</th><th scope=col>SLA</th><th scope=col>Leaf.C</th><th scope=col>Leaf.N.per.mass</th><th scope=col>Leaf.P</th><th scope=col>⋯</th><th scope=col>Height_shrubs_lowest</th><th scope=col>Height_herbs_average</th><th scope=col>Height_herbs_lowest</th><th scope=col>Height_herbs_highest</th><th scope=col>SoilClim_PC1</th><th scope=col>SoilClim_PC2</th><th scope=col>Resample_1</th><th scope=col>Resample_2</th><th scope=col>Resample_3</th><th scope=col>Resample_1_consensus</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>16</td><td>0.27777778</td><td> 3</td><td>0.3333333</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>True </td><td>False</td><td>False</td><td>True </td></tr>
+	<tr><th scope=row>2</th><td>17</td><td>0.03846154</td><td> 2</td><td>0.5000000</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>True </td><td>False</td><td>False</td><td>True </td></tr>
+	<tr><th scope=row>3</th><td>18</td><td>0.04761905</td><td> 4</td><td>0.2500000</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>False</td><td>False</td><td>True </td><td>False</td></tr>
+	<tr><th scope=row>4</th><td>20</td><td>0.66666667</td><td> 3</td><td>0.3333333</td><td>3.686063</td><td>-0.9071351</td><td>2.903715</td><td>6.136791</td><td>2.929729</td><td>0.7391809</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>False</td><td>True </td><td>False</td><td>False</td></tr>
+	<tr><th scope=row>5</th><td>22</td><td>0.53846154</td><td> 7</td><td>0.5714286</td><td>3.899842</td><td>-0.9005136</td><td>2.917708</td><td>6.131968</td><td>2.955072</td><td>0.7336978</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>True </td><td>False</td><td>False</td><td>True </td></tr>
+	<tr><th scope=row>6</th><td>23</td><td>0.95238095</td><td>13</td><td>0.8461538</td><td>4.225747</td><td>-0.8226879</td><td>2.638385</td><td>6.158266</td><td>2.843045</td><td>0.2463386</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>False</td><td>False</td><td>True </td><td>False</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">splotopen</span><span class="p">)</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">splotopen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 86</caption>
+<thead>
+	<tr><th></th><th scope=col>PlotObservationID</th><th scope=col>TraitCoverage_cover</th><th scope=col>Species_richness</th><th scope=col>TraitCoverage_pa</th><th scope=col>Leaf.Area</th><th scope=col>SSD</th><th scope=col>SLA</th><th scope=col>Leaf.C</th><th scope=col>Leaf.N.per.mass</th><th scope=col>Leaf.P</th><th scope=col>⋯</th><th scope=col>Height_shrubs_lowest</th><th scope=col>Height_herbs_average</th><th scope=col>Height_herbs_lowest</th><th scope=col>Height_herbs_highest</th><th scope=col>SoilClim_PC1</th><th scope=col>SoilClim_PC2</th><th scope=col>Resample_1</th><th scope=col>Resample_2</th><th scope=col>Resample_3</th><th scope=col>Resample_1_consensus</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>16</td><td>0.27777778</td><td> 3</td><td>0.3333333</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>True </td><td>False</td><td>False</td><td>True </td></tr>
+	<tr><th scope=row>2</th><td>17</td><td>0.03846154</td><td> 2</td><td>0.5000000</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>True </td><td>False</td><td>False</td><td>True </td></tr>
+	<tr><th scope=row>3</th><td>18</td><td>0.04761905</td><td> 4</td><td>0.2500000</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>False</td><td>False</td><td>True </td><td>False</td></tr>
+	<tr><th scope=row>4</th><td>20</td><td>0.66666667</td><td> 3</td><td>0.3333333</td><td>3.686063</td><td>-0.9071351</td><td>2.903715</td><td>6.136791</td><td>2.929729</td><td>0.7391809</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>False</td><td>True </td><td>False</td><td>False</td></tr>
+	<tr><th scope=row>5</th><td>22</td><td>0.53846154</td><td> 7</td><td>0.5714286</td><td>3.899842</td><td>-0.9005136</td><td>2.917708</td><td>6.131968</td><td>2.955072</td><td>0.7336978</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>True </td><td>False</td><td>False</td><td>True </td></tr>
+	<tr><th scope=row>6</th><td>23</td><td>0.95238095</td><td>13</td><td>0.8461538</td><td>4.225747</td><td>-0.8226879</td><td>2.638385</td><td>6.158266</td><td>2.843045</td><td>0.2463386</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>False</td><td>False</td><td>True </td><td>False</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>95104</li><li>86</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># add h3 hexagonal grid cell code at resolution 3</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">h3</span><span class="p">)</span> 
+
+<span class="n">splotopen</span><span class="o">$</span><span class="n">h3_res3</span> <span class="o">&lt;-</span> <span class="nf">geo_to_h3</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">splotopen</span><span class="o">$</span><span class="n">Latitude</span><span class="p">,</span> <span class="n">splotopen</span><span class="o">$</span><span class="n">Longitude</span><span class="p">),</span> <span class="n">res</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">splotopen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 87</caption>
+<thead>
+	<tr><th></th><th scope=col>PlotObservationID</th><th scope=col>TraitCoverage_cover</th><th scope=col>Species_richness</th><th scope=col>TraitCoverage_pa</th><th scope=col>Leaf.Area</th><th scope=col>SSD</th><th scope=col>SLA</th><th scope=col>Leaf.C</th><th scope=col>Leaf.N.per.mass</th><th scope=col>Leaf.P</th><th scope=col>⋯</th><th scope=col>Height_herbs_average</th><th scope=col>Height_herbs_lowest</th><th scope=col>Height_herbs_highest</th><th scope=col>SoilClim_PC1</th><th scope=col>SoilClim_PC2</th><th scope=col>Resample_1</th><th scope=col>Resample_2</th><th scope=col>Resample_3</th><th scope=col>Resample_1_consensus</th><th scope=col>h3_res3</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>16</td><td>0.27777778</td><td> 3</td><td>0.3333333</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>True </td><td>False</td><td>False</td><td>True </td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>2</th><td>17</td><td>0.03846154</td><td> 2</td><td>0.5000000</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>True </td><td>False</td><td>False</td><td>True </td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>3</th><td>18</td><td>0.04761905</td><td> 4</td><td>0.2500000</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>False</td><td>False</td><td>True </td><td>False</td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>4</th><td>20</td><td>0.66666667</td><td> 3</td><td>0.3333333</td><td>3.686063</td><td>-0.9071351</td><td>2.903715</td><td>6.136791</td><td>2.929729</td><td>0.7391809</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>False</td><td>True </td><td>False</td><td>False</td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>5</th><td>22</td><td>0.53846154</td><td> 7</td><td>0.5714286</td><td>3.899842</td><td>-0.9005136</td><td>2.917708</td><td>6.131968</td><td>2.955072</td><td>0.7336978</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>True </td><td>False</td><td>False</td><td>True </td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>6</th><td>23</td><td>0.95238095</td><td>13</td><td>0.8461538</td><td>4.225747</td><td>-0.8226879</td><td>2.638385</td><td>6.158266</td><td>2.843045</td><td>0.2463386</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>-3.66</td><td>0.546</td><td>False</td><td>False</td><td>True </td><td>False</td><td>830c0dfffffffff</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#  columns splotopen</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">splotopen</span><span class="p">)</span>
+<span class="c1"># filter for: &#39;Latitude&#39;,&#39;Longitude&#39;, &#39;Leaf.Area&#39;,&#39;SSD&#39;,&#39;SLA&#39;,&#39;Leaf.C&#39;,&#39;Leaf.N.per.mass&#39;,&#39;Leaf.P&#39;,&#39;Plant.Height&#39;,&#39;Seed.mass&#39;,&#39;Seed.length&#39;,&#39;LDMC&#39;,&#39;Leaf.N.per.area&#39;,&#39;Leaf.N.P.ratio&#39;,&#39;Leaf.delta15N&#39;,&#39;Seeds.per.rep..unit&#39;,&#39;Leaf.fresh.mass&#39;,&#39;Stem.conduit.density&#39;,&#39;Dispersal.unit.length&#39;,&#39;Conduit.element.length&#39;</span>
+<span class="n">splotopen_sub</span> <span class="o">&lt;-</span> <span class="n">splotopen</span><span class="p">[,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;Latitude&#39;</span><span class="p">,</span><span class="s">&#39;Longitude&#39;</span><span class="p">,</span> <span class="s">&#39;Leaf.Area&#39;</span><span class="p">,</span><span class="s">&#39;SSD&#39;</span><span class="p">,</span><span class="s">&#39;SLA&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.C&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.N.per.mass&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.P&#39;</span><span class="p">,</span><span class="s">&#39;Plant.Height&#39;</span><span class="p">,</span><span class="s">&#39;Seed.mass&#39;</span><span class="p">,</span><span class="s">&#39;Seed.length&#39;</span><span class="p">,</span><span class="s">&#39;LDMC&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.N.per.area&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.N.P.ratio&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.delta15N&#39;</span><span class="p">,</span><span class="s">&#39;Seeds.per.rep..unit&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.fresh.mass&#39;</span><span class="p">,</span><span class="s">&#39;Stem.conduit.density&#39;</span><span class="p">,</span><span class="s">&#39;Dispersal.unit.length&#39;</span><span class="p">,</span><span class="s">&#39;Conduit.element.length&#39;</span><span class="p">,</span> <span class="s">&#39;h3_res3&#39;</span><span class="p">)]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">splotopen_sub</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'PlotObservationID'</li><li>'TraitCoverage_cover'</li><li>'Species_richness'</li><li>'TraitCoverage_pa'</li><li>'Leaf.Area'</li><li>'SSD'</li><li>'SLA'</li><li>'Leaf.C'</li><li>'Leaf.N.per.mass'</li><li>'Leaf.P'</li><li>'Plant.Height'</li><li>'Seed.mass'</li><li>'Seed.length'</li><li>'LDMC'</li><li>'Leaf.N.per.area'</li><li>'Leaf.N.P.ratio'</li><li>'Leaf.delta15N'</li><li>'Seeds.per.rep..unit'</li><li>'Leaf.fresh.mass'</li><li>'Stem.conduit.density'</li><li>'Dispersal.unit.length'</li><li>'Conduit.element.length'</li><li>'LeafArea_CWV'</li><li>'StemDens_CWV'</li><li>'SLA_CWV'</li><li>'LeafC_perdrymass_CWV'</li><li>'LeafN_CWV'</li><li>'LeafP_CWV'</li><li>'PlantHeight_CWV'</li><li>'SeedMass_CWV'</li><li>'Seed_length_CWV'</li><li>'LDMC_CWV'</li><li>'LeafNperArea_CWV'</li><li>'LeafNPratio_CWV'</li><li>'Leaf_delta_15N_CWV'</li><li>'Seed_num_rep_unit_CWV'</li><li>'Leaffreshmass_CWV'</li><li>'Stem_cond_dens_CWV'</li><li>'Disp_unit_leng_CWV'</li><li>'Wood_vessel_length_CWV'</li><li>'GIVD_ID'</li><li>'Dataset'</li><li>'Continent'</li><li>'Country'</li><li>'Biome'</li><li>'Date_of_recording'</li><li>'Latitude'</li><li>'Longitude'</li><li>'Location_uncertainty'</li><li>'Releve_area'</li><li>'Plant_recorded'</li><li>'Elevation'</li><li>'Aspect'</li><li>'Slope'</li><li>'is_forest'</li><li>'ESY'</li><li>'Naturalness'</li><li>'Forest'</li><li>'Shrubland'</li><li>'Grassland'</li><li>'Wetland'</li><li>'Sparse_vegetation'</li><li>'Cover_total'</li><li>'Cover_tree_layer'</li><li>'Cover_shrub_layer'</li><li>'Cover_herb_layer'</li><li>'Cover_moss_layer'</li><li>'Cover_lichen_layer'</li><li>'Cover_algae_layer'</li><li>'Cover_litter_layer'</li><li>'Cover_bare_rocks'</li><li>'Cover_cryptogams'</li><li>'Cover_bare_soil'</li><li>'Height_trees_highest'</li><li>'Height_trees_lowest'</li><li>'Height_shrubs_highest'</li><li>'Height_shrubs_lowest'</li><li>'Height_herbs_average'</li><li>'Height_herbs_lowest'</li><li>'Height_herbs_highest'</li><li>'SoilClim_PC1'</li><li>'SoilClim_PC2'</li><li>'Resample_1'</li><li>'Resample_2'</li><li>'Resample_3'</li><li>'Resample_1_consensus'</li><li>'h3_res3'</li></ol>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 21</caption>
+<thead>
+	<tr><th></th><th scope=col>Latitude</th><th scope=col>Longitude</th><th scope=col>Leaf.Area</th><th scope=col>SSD</th><th scope=col>SLA</th><th scope=col>Leaf.C</th><th scope=col>Leaf.N.per.mass</th><th scope=col>Leaf.P</th><th scope=col>Plant.Height</th><th scope=col>Seed.mass</th><th scope=col>⋯</th><th scope=col>LDMC</th><th scope=col>Leaf.N.per.area</th><th scope=col>Leaf.N.P.ratio</th><th scope=col>Leaf.delta15N</th><th scope=col>Seeds.per.rep..unit</th><th scope=col>Leaf.fresh.mass</th><th scope=col>Stem.conduit.density</th><th scope=col>Dispersal.unit.length</th><th scope=col>Conduit.element.length</th><th scope=col>h3_res3</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>62.42</td><td>-154.18</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>-1.514747</td><td>-0.8974327</td><td>⋯</td><td>-1.150683</td><td>0.02488157</td><td>1.874128</td><td>-0.26474963</td><td>5.633945</td><td>-4.387745</td><td>3.483073</td><td>1.4707414</td><td>5.859517</td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>2</th><td>62.42</td><td>-154.18</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>-1.514747</td><td>-0.8974327</td><td>⋯</td><td>-1.150683</td><td>0.02488157</td><td>1.874128</td><td>-0.26474963</td><td>5.633945</td><td>-4.387745</td><td>3.483073</td><td>1.4707414</td><td>5.859517</td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>3</th><td>62.42</td><td>-154.18</td><td>3.678311</td><td>-1.0472931</td><td>2.890748</td><td>6.128157</td><td>2.873263</td><td>1.1140362</td><td>-1.514747</td><td>-0.8974327</td><td>⋯</td><td>-1.150683</td><td>0.02488157</td><td>1.874128</td><td>-0.26474963</td><td>5.633945</td><td>-4.387745</td><td>3.483073</td><td>1.4707414</td><td>5.859517</td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>4</th><td>62.42</td><td>-154.18</td><td>3.686063</td><td>-0.9071351</td><td>2.903715</td><td>6.136791</td><td>2.929729</td><td>0.7391809</td><td>-2.711473</td><td>-1.4176030</td><td>⋯</td><td>-1.325711</td><td>0.10771463</td><td>1.999404</td><td>-0.07620884</td><td>3.036499</td><td>-4.124691</td><td>5.337666</td><td>0.2529022</td><td>6.570591</td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>5</th><td>62.42</td><td>-154.18</td><td>3.899842</td><td>-0.9005136</td><td>2.917708</td><td>6.131968</td><td>2.955072</td><td>0.7336978</td><td>-2.543448</td><td>-1.5289868</td><td>⋯</td><td>-1.376588</td><td>0.12292733</td><td>2.036662</td><td> 0.07353869</td><td>3.451333</td><td>-3.968128</td><td>5.380727</td><td>0.2425250</td><td>6.558434</td><td>830c0dfffffffff</td></tr>
+	<tr><th scope=row>6</th><td>62.42</td><td>-154.18</td><td>4.225747</td><td>-0.8226879</td><td>2.638385</td><td>6.158266</td><td>2.843045</td><td>0.2463386</td><td>-2.317137</td><td>-2.1087247</td><td>⋯</td><td>-1.258091</td><td>0.36134536</td><td>2.416301</td><td> 1.54905075</td><td>5.902387</td><td>-3.320130</td><td>6.523344</td><td>0.1827669</td><td>6.420502</td><td>830c0dfffffffff</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># mean trait values per h3 hexagon</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="n">splotopen_summary</span> <span class="o">&lt;-</span> <span class="n">splotopen_sub</span> <span class="o">%&gt;%</span>
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">h3_res3</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">summarise</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Leaf.Area&#39;</span><span class="p">,</span><span class="s">&#39;SSD&#39;</span><span class="p">,</span><span class="s">&#39;SLA&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.C&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.N.per.mass&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.P&#39;</span><span class="p">,</span><span class="s">&#39;Plant.Height&#39;</span><span class="p">,</span><span class="s">&#39;Seed.mass&#39;</span><span class="p">,</span><span class="s">&#39;Seed.length&#39;</span><span class="p">,</span><span class="s">&#39;LDMC&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.N.per.area&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.N.P.ratio&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.delta15N&#39;</span><span class="p">,</span><span class="s">&#39;Seeds.per.rep..unit&#39;</span><span class="p">,</span><span class="s">&#39;Leaf.fresh.mass&#39;</span><span class="p">,</span><span class="s">&#39;Stem.conduit.density&#39;</span><span class="p">,</span><span class="s">&#39;Dispersal.unit.length&#39;</span><span class="p">,</span><span class="s">&#39;Conduit.element.length&#39;</span><span class="p">),</span> <span class="n">mean</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">splotopen_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 19</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>Leaf.Area</th><th scope=col>SSD</th><th scope=col>SLA</th><th scope=col>Leaf.C</th><th scope=col>Leaf.N.per.mass</th><th scope=col>Leaf.P</th><th scope=col>Plant.Height</th><th scope=col>Seed.mass</th><th scope=col>Seed.length</th><th scope=col>LDMC</th><th scope=col>Leaf.N.per.area</th><th scope=col>Leaf.N.P.ratio</th><th scope=col>Leaf.delta15N</th><th scope=col>Seeds.per.rep..unit</th><th scope=col>Leaf.fresh.mass</th><th scope=col>Stem.conduit.density</th><th scope=col>Dispersal.unit.length</th><th scope=col>Conduit.element.length</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>830029fffffffff</td><td>4.983938</td><td>-0.9251577</td><td>2.819308</td><td>6.120789</td><td>2.772351</td><td>0.7519362</td><td>-1.3260369</td><td>-1.4501626</td><td>0.2122733</td><td>-1.2841427</td><td>0.04431570</td><td>2.073657</td><td>0.5747993</td><td>5.070152</td><td>-3.210677</td><td>4.778762</td><td>0.2273849</td><td>6.897906</td></tr>
+	<tr><td>83002cfffffffff</td><td>5.500166</td><td>-0.9672893</td><td>2.897689</td><td>6.075411</td><td>2.885079</td><td>0.5934793</td><td>-1.7034084</td><td>-0.8107227</td><td>0.6922639</td><td>-1.2627500</td><td>0.06254204</td><td>2.192884</td><td>0.3916957</td><td>4.845040</td><td>-2.795763</td><td>5.203334</td><td>0.7633169</td><td>6.186453</td></tr>
+	<tr><td>830120fffffffff</td><td>5.944930</td><td>-0.9083811</td><td>2.674230</td><td>6.165949</td><td>2.912700</td><td>0.3957971</td><td>-0.8568235</td><td>-0.3758094</td><td>0.8491797</td><td>-1.0455759</td><td>0.29428585</td><td>2.370993</td><td>0.3740397</td><td>4.808872</td><td>-2.465077</td><td>5.418334</td><td>0.9021428</td><td>5.988136</td></tr>
+	<tr><td>830122fffffffff</td><td>4.863443</td><td>-0.5982236</td><td>2.684737</td><td>6.245826</td><td>2.809547</td><td>0.3715139</td><td>-0.3050638</td><td>-0.5378673</td><td>1.1803582</td><td>-1.1330655</td><td>0.17441919</td><td>2.340810</td><td>0.3816341</td><td>5.723034</td><td>-3.629366</td><td>5.509091</td><td>0.9571266</td><td>6.024107</td></tr>
+	<tr><td>830124fffffffff</td><td>5.296135</td><td>-0.9112658</td><td>2.413249</td><td>6.183430</td><td>2.790786</td><td>0.2564264</td><td>-0.7978294</td><td>-0.3393554</td><td>0.9659792</td><td>-0.9657587</td><td>0.43157874</td><td>2.444409</td><td>0.3723660</td><td>4.253638</td><td>-2.956475</td><td>5.828351</td><td>1.0894628</td><td>6.132467</td></tr>
+	<tr><td>830126fffffffff</td><td>5.144689</td><td>-0.7854563</td><td>2.474994</td><td>6.193215</td><td>2.785938</td><td>0.2921896</td><td>-0.5196718</td><td>-0.5391000</td><td>1.0238321</td><td>-1.0301391</td><td>0.35167043</td><td>2.418011</td><td>0.4509752</td><td>4.929886</td><td>-3.214894</td><td>5.502269</td><td>1.0434030</td><td>6.033372</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read /net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10.csv</span>
+<span class="n">gbif_summary</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10.csv&quot;</span><span class="p">)</span>
+<span class="n">gbif_summary_pa</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_glonaf_wcvp_h3_res3_try6_summary_stats_all_CS_log10_unique.csv&quot;</span><span class="p">)</span>
+<span class="n">gbif_summary_notrim</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_glonaf_wcvp_h3_res3_try6_summary_stats_all_CS_log10_notrim.csv&quot;</span><span class="p">)</span>
+<span class="n">gibif_summary_notrim_lcweighted</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_glonaf_wcvp_h3_res3_try6_summary_stats_all_CS_log10_notrim_LCweighted.csv&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gibif_summary_notrim_lcweighted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 232</caption>
+<thead>
+	<tr><th></th><th scope=col>h3_cell</th><th scope=col>V1</th><th scope=col>V2</th><th scope=col>V3</th><th scope=col>V4</th><th scope=col>V5</th><th scope=col>V6</th><th scope=col>V7</th><th scope=col>V8</th><th scope=col>X.X3117..mean_all</th><th scope=col>⋯</th><th scope=col>X.X78..median_native</th><th scope=col>X.X78..percent_change_mean</th><th scope=col>X.X78..percent_change_median</th><th scope=col>X.X4..mean_all</th><th scope=col>X.X4..mean_native</th><th scope=col>X.X4..median_all</th><th scope=col>X.X4..median_native</th><th scope=col>X.X4..percent_change_mean</th><th scope=col>X.X4..percent_change_median</th><th scope=col>resolution</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>83001afffffffff</td><td>10</td><td>10</td><td> 4</td><td> 4</td><td>0</td><td>13</td><td>0.00</td><td>86.67</td><td>21.33558</td><td>⋯</td><td>-0.585</td><td>0</td><td>0</td><td>0.3325776</td><td>0.3325776</td><td>0.334</td><td>0.334</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+	<tr><th scope=row>2</th><td>83001cfffffffff</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>0</td><td> 1</td><td>0.00</td><td>50.00</td><td>15.25894</td><td>⋯</td><td>-0.563</td><td>0</td><td>0</td><td>       NA</td><td>       NA</td><td>   NA</td><td>   NA</td><td>NA</td><td>NA</td><td>h3_res3</td></tr>
+	<tr><th scope=row>3</th><td>83001efffffffff</td><td> 4</td><td> 4</td><td> 3</td><td> 3</td><td>0</td><td> 3</td><td>0.00</td><td>75.00</td><td>13.83113</td><td>⋯</td><td>-2.360</td><td>0</td><td>0</td><td>0.5279872</td><td>0.5279872</td><td>0.414</td><td>0.414</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+	<tr><th scope=row>4</th><td>830025fffffffff</td><td>16</td><td>16</td><td> 8</td><td> 8</td><td>0</td><td>12</td><td>0.00</td><td>75.00</td><td>20.99629</td><td>⋯</td><td>-0.174</td><td>0</td><td>0</td><td>0.3368347</td><td>0.3368347</td><td>0.334</td><td>0.334</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+	<tr><th scope=row>5</th><td>830028fffffffff</td><td>58</td><td>58</td><td>13</td><td>13</td><td>3</td><td>41</td><td>5.17</td><td>70.69</td><td>14.27857</td><td>⋯</td><td>-0.827</td><td>0</td><td>0</td><td>0.4406293</td><td>0.4406293</td><td>0.495</td><td>0.495</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+	<tr><th scope=row>6</th><td>830029fffffffff</td><td>38</td><td>38</td><td>13</td><td>13</td><td>2</td><td>26</td><td>5.26</td><td>68.42</td><td>18.02754</td><td>⋯</td><td>-0.412</td><td>0</td><td>0</td><td>0.3817664</td><td>0.3817664</td><td>0.334</td><td>0.334</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># rename gbif_summary_pa h3_cell to h3_res3</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">gbif_summary_pa</span><span class="p">)[</span><span class="nf">colnames</span><span class="p">(</span><span class="n">gbif_summary_pa</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;h3_cell&quot;</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="s">&quot;h3_res3&quot;</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_summary_pa</span><span class="p">)</span>
+
+<span class="c1"># rename gbif_summary_notrim h3_cell to h3_res3</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">gbif_summary_notrim</span><span class="p">)[</span><span class="nf">colnames</span><span class="p">(</span><span class="n">gbif_summary_notrim</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;h3_cell&quot;</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="s">&quot;h3_res3&quot;</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_summary_notrim</span><span class="p">)</span>
+
+<span class="c1"># rename gibif_summary_notrim_lcweighted h3_cell to h3_res3</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">gibif_summary_notrim_lcweighted</span><span class="p">)[</span><span class="nf">colnames</span><span class="p">(</span><span class="n">gibif_summary_notrim_lcweighted</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;h3_cell&quot;</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="s">&quot;h3_res3&quot;</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gibif_summary_notrim_lcweighted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 232</caption>
+<thead>
+	<tr><th></th><th scope=col>h3_res3</th><th scope=col>V1</th><th scope=col>V2</th><th scope=col>V3</th><th scope=col>V4</th><th scope=col>V5</th><th scope=col>V6</th><th scope=col>V7</th><th scope=col>V8</th><th scope=col>X.X3117..mean_all</th><th scope=col>⋯</th><th scope=col>X.X78..median_native</th><th scope=col>X.X78..percent_change_mean</th><th scope=col>X.X78..percent_change_median</th><th scope=col>X.X4..mean_all</th><th scope=col>X.X4..mean_native</th><th scope=col>X.X4..median_all</th><th scope=col>X.X4..median_native</th><th scope=col>X.X4..percent_change_mean</th><th scope=col>X.X4..percent_change_median</th><th scope=col>resolution</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>832830fffffffff</td><td>2065</td><td>1241</td><td>2065</td><td>1241</td><td>678</td><td>1323</td><td>31.71</td><td>61.88</td><td>19.428</td><td>⋯</td><td> 0.135</td><td>4783.33</td><td>130.37</td><td>0.427</td><td>0.434</td><td>0.417</td><td>0.422</td><td>-1.61</td><td>-1.18</td><td>h3_res3</td></tr>
+	<tr><th scope=row>2</th><td>832834fffffffff</td><td>1791</td><td>1055</td><td>1791</td><td>1055</td><td>575</td><td>1139</td><td>31.39</td><td>62.17</td><td>19.315</td><td>⋯</td><td> 0.177</td><td> 900.00</td><td> 85.88</td><td>0.428</td><td>0.435</td><td>0.418</td><td>0.423</td><td>-1.61</td><td>-1.18</td><td>h3_res3</td></tr>
+	<tr><th scope=row>3</th><td>832831fffffffff</td><td>1264</td><td> 773</td><td>1264</td><td> 773</td><td>368</td><td> 839</td><td>28.79</td><td>65.65</td><td>19.537</td><td>⋯</td><td> 0.023</td><td> 202.96</td><td>882.61</td><td>0.427</td><td>0.438</td><td>0.419</td><td>0.430</td><td>-2.51</td><td>-2.56</td><td>h3_res3</td></tr>
+	<tr><th scope=row>4</th><td>832655fffffffff</td><td> 970</td><td> 732</td><td> 970</td><td> 732</td><td>257</td><td> 652</td><td>26.22</td><td>66.53</td><td>21.685</td><td>⋯</td><td>-0.109</td><td> 425.00</td><td>152.29</td><td>0.417</td><td>0.419</td><td>0.412</td><td>0.412</td><td>-0.48</td><td> 0.00</td><td>h3_res3</td></tr>
+	<tr><th scope=row>5</th><td>832a16fffffffff</td><td>1411</td><td> 851</td><td>1411</td><td> 851</td><td>432</td><td> 921</td><td>30.04</td><td>64.05</td><td>23.030</td><td>⋯</td><td>-0.276</td><td>  92.44</td><td>100.36</td><td>0.415</td><td>0.418</td><td>0.401</td><td>0.400</td><td>-0.72</td><td> 0.25</td><td>h3_res3</td></tr>
+	<tr><th scope=row>6</th><td>8329a5fffffffff</td><td>1164</td><td> 600</td><td>1164</td><td> 600</td><td>443</td><td> 684</td><td>37.10</td><td>57.29</td><td>18.369</td><td>⋯</td><td> 0.427</td><td>  23.71</td><td> 53.16</td><td>0.437</td><td>0.443</td><td>0.428</td><td>0.438</td><td>-1.35</td><td>-2.28</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 232</caption>
+<thead>
+	<tr><th></th><th scope=col>h3_res3</th><th scope=col>V1</th><th scope=col>V2</th><th scope=col>V3</th><th scope=col>V4</th><th scope=col>V5</th><th scope=col>V6</th><th scope=col>V7</th><th scope=col>V8</th><th scope=col>X.X3117..mean_all</th><th scope=col>⋯</th><th scope=col>X.X78..median_native</th><th scope=col>X.X78..percent_change_mean</th><th scope=col>X.X78..percent_change_median</th><th scope=col>X.X4..mean_all</th><th scope=col>X.X4..mean_native</th><th scope=col>X.X4..median_all</th><th scope=col>X.X4..median_native</th><th scope=col>X.X4..percent_change_mean</th><th scope=col>X.X4..percent_change_median</th><th scope=col>resolution</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>832830fffffffff</td><td>534527</td><td>378645</td><td>2065</td><td>1241</td><td>173836</td><td>343606</td><td>32.45</td><td>64.14</td><td>18.683</td><td>⋯</td><td>-0.864</td><td> 55.81</td><td> 44.21</td><td>0.441</td><td>0.468</td><td>0.430</td><td>0.461</td><td>-5.77</td><td>-6.72</td><td>h3_res3</td></tr>
+	<tr><th scope=row>2</th><td>832834fffffffff</td><td>449715</td><td>334995</td><td>1791</td><td>1055</td><td>163478</td><td>274171</td><td>36.21</td><td>60.72</td><td>18.137</td><td>⋯</td><td>-0.970</td><td> 46.03</td><td> 23.30</td><td>0.452</td><td>0.477</td><td>0.449</td><td>0.471</td><td>-5.24</td><td>-4.67</td><td>h3_res3</td></tr>
+	<tr><th scope=row>3</th><td>832831fffffffff</td><td> 64487</td><td> 51697</td><td>1264</td><td> 773</td><td> 20596</td><td> 41557</td><td>31.90</td><td>64.37</td><td>18.786</td><td>⋯</td><td>-1.237</td><td> 39.08</td><td> 32.01</td><td>0.441</td><td>0.460</td><td>0.437</td><td>0.458</td><td>-4.13</td><td>-4.59</td><td>h3_res3</td></tr>
+	<tr><th scope=row>4</th><td>832655fffffffff</td><td> 18573</td><td> 14586</td><td> 970</td><td> 732</td><td>  5902</td><td> 12240</td><td>31.58</td><td>65.50</td><td>22.963</td><td>⋯</td><td>-0.276</td><td>115.56</td><td>  9.42</td><td>0.441</td><td>0.446</td><td>0.435</td><td>0.438</td><td>-1.12</td><td>-0.68</td><td>h3_res3</td></tr>
+	<tr><th scope=row>5</th><td>832a16fffffffff</td><td> 62447</td><td> 38917</td><td>1411</td><td> 851</td><td> 25333</td><td> 34918</td><td>40.37</td><td>55.65</td><td>25.057</td><td>⋯</td><td>-0.860</td><td> 54.81</td><td> 61.86</td><td>0.422</td><td>0.440</td><td>0.406</td><td>0.426</td><td>-4.09</td><td>-4.69</td><td>h3_res3</td></tr>
+	<tr><th scope=row>6</th><td>8329a5fffffffff</td><td> 75384</td><td> 48845</td><td>1164</td><td> 600</td><td> 37219</td><td> 36368</td><td>49.16</td><td>48.03</td><td>16.758</td><td>⋯</td><td>-0.039</td><td>321.79</td><td>979.49</td><td>0.459</td><td>0.484</td><td>0.465</td><td>0.478</td><td>-5.17</td><td>-2.72</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 232</caption>
+<thead>
+	<tr><th></th><th scope=col>h3_res3</th><th scope=col>V1</th><th scope=col>V2</th><th scope=col>V3</th><th scope=col>V4</th><th scope=col>V5</th><th scope=col>V6</th><th scope=col>V7</th><th scope=col>V8</th><th scope=col>X.X3117..mean_all</th><th scope=col>⋯</th><th scope=col>X.X78..median_native</th><th scope=col>X.X78..percent_change_mean</th><th scope=col>X.X78..percent_change_median</th><th scope=col>X.X4..mean_all</th><th scope=col>X.X4..mean_native</th><th scope=col>X.X4..median_all</th><th scope=col>X.X4..median_native</th><th scope=col>X.X4..percent_change_mean</th><th scope=col>X.X4..percent_change_median</th><th scope=col>resolution</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>83001afffffffff</td><td>10</td><td>10</td><td> 4</td><td> 4</td><td>0</td><td>13</td><td>0.00</td><td>86.67</td><td>21.33558</td><td>⋯</td><td>-0.585</td><td>0</td><td>0</td><td>0.3325776</td><td>0.3325776</td><td>0.334</td><td>0.334</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+	<tr><th scope=row>2</th><td>83001cfffffffff</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>0</td><td> 1</td><td>0.00</td><td>50.00</td><td>15.25894</td><td>⋯</td><td>-0.563</td><td>0</td><td>0</td><td>       NA</td><td>       NA</td><td>   NA</td><td>   NA</td><td>NA</td><td>NA</td><td>h3_res3</td></tr>
+	<tr><th scope=row>3</th><td>83001efffffffff</td><td> 4</td><td> 4</td><td> 3</td><td> 3</td><td>0</td><td> 3</td><td>0.00</td><td>75.00</td><td>13.83113</td><td>⋯</td><td>-2.360</td><td>0</td><td>0</td><td>0.5279872</td><td>0.5279872</td><td>0.414</td><td>0.414</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+	<tr><th scope=row>4</th><td>830025fffffffff</td><td>16</td><td>16</td><td> 8</td><td> 8</td><td>0</td><td>12</td><td>0.00</td><td>75.00</td><td>20.99629</td><td>⋯</td><td>-0.174</td><td>0</td><td>0</td><td>0.3368347</td><td>0.3368347</td><td>0.334</td><td>0.334</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+	<tr><th scope=row>5</th><td>830028fffffffff</td><td>58</td><td>58</td><td>13</td><td>13</td><td>3</td><td>41</td><td>5.17</td><td>70.69</td><td>14.27857</td><td>⋯</td><td>-0.827</td><td>0</td><td>0</td><td>0.4406293</td><td>0.4406293</td><td>0.495</td><td>0.495</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+	<tr><th scope=row>6</th><td>830029fffffffff</td><td>38</td><td>38</td><td>13</td><td>13</td><td>2</td><td>26</td><td>5.26</td><td>68.42</td><td>18.02754</td><td>⋯</td><td>-0.412</td><td>0</td><td>0</td><td>0.3817664</td><td>0.3817664</td><td>0.334</td><td>0.334</td><td> 0</td><td> 0</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<ol class="simple">
+<li><p>Correlation sPlotOpen and community science-based grid cell averages for all traits</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read ~/Func_Neo_Phytes/Data/trait_info.csv</span>
+<span class="n">trait_info</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;~/Func_Neo_Phytes/Data/trait_info.csv&quot;</span><span class="p">)</span>
+<span class="n">trait_info</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 44 × 6</caption>
+<thead>
+	<tr><th scope=col>TraitID</th><th scope=col>TraitID_TRY6</th><th scope=col>TraitName</th><th scope=col>ShortName</th><th scope=col>sPlotOpenName</th><th scope=col>UnitName</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>   4</td><td>X.X4.   </td><td>Stem specific density (SSD, stem dry mass per stem fresh volume) or wood density                  </td><td>SSD                             </td><td>SSD                   </td><td>g/cm3     </td></tr>
+	<tr><td>   6</td><td>X.X6.   </td><td>Root rooting depth                                                                                </td><td>Rooting depth                   </td><td>                      </td><td>m         </td></tr>
+	<tr><td>  13</td><td>X.X13.  </td><td>Leaf carbon (C) content per leaf dry mass                                                         </td><td>Leaf C                          </td><td>Leaf.C                </td><td>mg/g      </td></tr>
+	<tr><td>  14</td><td>X.X14.  </td><td>Leaf nitrogen (N) content per leaf dry mass                                                       </td><td>Leaf N                          </td><td>Leaf.N.per.mass       </td><td>mg/g      </td></tr>
+	<tr><td>  15</td><td>X.X15.  </td><td>Leaf phosphorus (P) content per leaf dry mass                                                     </td><td>Leaf P                          </td><td>Leaf.P                </td><td>mg/g      </td></tr>
+	<tr><td>  21</td><td>X.X21.  </td><td>Stem diameter                                                                                     </td><td>Stem diameter                   </td><td>                      </td><td>m         </td></tr>
+	<tr><td>  26</td><td>X.X26.  </td><td>Seed dry mass                                                                                     </td><td>Seed dry mass                   </td><td>Seed.mass             </td><td>mg        </td></tr>
+	<tr><td>  27</td><td>X.X27.  </td><td>Seed length                                                                                       </td><td>Seed length                     </td><td>Seed.length           </td><td>mm        </td></tr>
+	<tr><td>  46</td><td>X.X46.  </td><td>Leaf thickness                                                                                    </td><td>Leaf thickness                  </td><td>                      </td><td>mm        </td></tr>
+	<tr><td>  47</td><td>X.X47.  </td><td>Leaf dry mass per leaf fresh mass (leaf dry matter content, LDMC)                                 </td><td>LDMC                            </td><td>LDMC                  </td><td>g/g       </td></tr>
+	<tr><td>  50</td><td>X.X50.  </td><td>Leaf nitrogen (N) content per leaf area                                                           </td><td>Leaf N per area                 </td><td>Leaf.N.per.area       </td><td>g m-2     </td></tr>
+	<tr><td>  55</td><td>X.X55.  </td><td>Leaf dry mass (single leaf)                                                                       </td><td>Leaf dry mass                   </td><td>                      </td><td>mg        </td></tr>
+	<tr><td>  78</td><td>X.X78.  </td><td>Leaf nitrogen (N) isotope signature (delta 15N)                                                   </td><td>Leaf delta 15N                  </td><td>Leaf.delta15N         </td><td>per mill  </td></tr>
+	<tr><td>  95</td><td>X.X95.  </td><td>Seed germination rate (germination efficiency)                                                    </td><td>Germination efficiency          </td><td>                      </td><td>%         </td></tr>
+	<tr><td> 138</td><td>X.X138. </td><td>Seed number per reproduction unit                                                                 </td><td>Seed number/rep. unit           </td><td>Seeds.per.rep..unit   </td><td>number    </td></tr>
+	<tr><td> 144</td><td>X.X144. </td><td>Leaf length                                                                                       </td><td>Leaf length                     </td><td>                      </td><td>mm        </td></tr>
+	<tr><td> 145</td><td>X.X145. </td><td>Leaf width                                                                                        </td><td>Leaf width                      </td><td>                      </td><td>cm        </td></tr>
+	<tr><td> 146</td><td>X.X146. </td><td>Leaf carbon/nitrogen (C/N) ratio                                                                  </td><td>Leaf C/N ratio                  </td><td>                      </td><td>g g-1     </td></tr>
+	<tr><td> 163</td><td>X.X163. </td><td>Leaf fresh mass                                                                                   </td><td>Leaf fresh mass                 </td><td>Leaf.fresh.mass       </td><td>g         </td></tr>
+	<tr><td> 169</td><td>X.X169. </td><td>Stem conduit density (vessels and tracheids)                                                      </td><td>Stem conduit density            </td><td>Stem.conduit.density  </td><td>mm-2      </td></tr>
+	<tr><td> 223</td><td>X.X223. </td><td>Species genotype: chromosome number                                                               </td><td>Chromosome number               </td><td>                      </td><td>n         </td></tr>
+	<tr><td> 224</td><td>X.X224. </td><td>Species genotype: chromosome cDNA content                                                         </td><td>Chromosome cDNA content         </td><td>                      </td><td>pg        </td></tr>
+	<tr><td> 237</td><td>X.X237. </td><td>Dispersal unit length                                                                             </td><td>Dispersal unit length           </td><td>Dispersal.unit.length </td><td>mm        </td></tr>
+	<tr><td> 281</td><td>X.X281. </td><td>Stem conduit diameter (vessels, tracheids)                                                        </td><td>Stem conduit diameter           </td><td>                      </td><td>micro m   </td></tr>
+	<tr><td> 282</td><td>X.X282. </td><td>Wood vessel element length; stem conduit (vessel and tracheids) element length                    </td><td>Wood vessel element length      </td><td>Conduit.element.length</td><td>micro m   </td></tr>
+	<tr><td> 289</td><td>X.X289. </td><td>Wood fiber lengths                                                                                </td><td>Wood fiber lengths              </td><td>                      </td><td>micro m   </td></tr>
+	<tr><td> 297</td><td>X.X297. </td><td>Wood rays per millimetre (wood ray density)                                                       </td><td>Wood ray density                </td><td>                      </td><td>1/mm      </td></tr>
+	<tr><td> 351</td><td>X.X351. </td><td>Seed number per dispersal unit                                                                    </td><td>Seed number/disp. unit          </td><td>                      </td><td>number    </td></tr>
+	<tr><td> 614</td><td>X.X614. </td><td>Fine root length per fine root dry mass (specific fine root length, SRL)                          </td><td>Specific fine root length       </td><td>                      </td><td>cm/g      </td></tr>
+	<tr><td>1080</td><td>X.X1080.</td><td>Root length per root dry mass (specific root length, SRL)                                         </td><td>Specific root length            </td><td>                      </td><td>cm/g      </td></tr>
+	<tr><td>3086</td><td>X.X3086.</td><td>Leaf area per leaf dry mass (SLA or 1/LMA) petiole, rhachis and midrib excluded                   </td><td>SLA midrib excl.                </td><td>                      </td><td>mm2/mg    </td></tr>
+	<tr><td>3106</td><td>X.X3106.</td><td>Plant height vegetative                                                                           </td><td>Plant height veg.               </td><td>Plant.Height          </td><td>m         </td></tr>
+	<tr><td>3107</td><td>X.X3107.</td><td>Plant height generative                                                                           </td><td>Plant height gen.               </td><td>                      </td><td>m         </td></tr>
+	<tr><td>3108</td><td>X.X3108.</td><td>Leaf area (in case of compound leaves: leaf, petiole excluded)                                    </td><td>Leaf area 3108                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3109</td><td>X.X3109.</td><td>Leaf area (in case of compound leaves: leaflet, petiole excluded)                                 </td><td>Leaf area 3109                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3110</td><td>X.X3110.</td><td>Leaf area (in case of compound leaves: leaf, petiole included)                                    </td><td>Leaf area 3110                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3111</td><td>X.X3111.</td><td>Leaf area (in case of compound leaves: leaflet, petiole included)                                 </td><td>Leaf area 3111                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3112</td><td>X.X3112.</td><td>Leaf area (in case of compound leaves: leaf, undefined if petiole in- or excluded)                </td><td>Leaf area 3112                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3113</td><td>X.X3113.</td><td>Leaf area (in case of compound leaves: leaflet, undefined if petiole is in- or excluded)          </td><td>Leaf area 3113                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3114</td><td>X.X3114.</td><td>Leaf area (in case of compound leaves undefined if leaf or leaflet, if petiole is in- or excluded)</td><td>Leaf area 3114                  </td><td>Leaf.Area             </td><td>mm2       </td></tr>
+	<tr><td>3115</td><td>X.X3115.</td><td>Leaf area per leaf dry mass (SLA or 1/LMA): petiole excluded                                      </td><td>SLA petiole excl.               </td><td>                      </td><td>mm2/mg    </td></tr>
+	<tr><td>3116</td><td>X.X3116.</td><td>Leaf area per leaf dry mass (SLA or 1/LMA): petiole included                                      </td><td>SLA petiole incl.               </td><td>                      </td><td>mm2/mg    </td></tr>
+	<tr><td>3117</td><td>X.X3117.</td><td>Leaf area per leaf dry mass (SLA or 1/LMA): undefined if petiole is in- or excluded               </td><td>SLA petiole in- or excluded     </td><td>SLA                   </td><td>mm2/mg    </td></tr>
+	<tr><td>3120</td><td>X.X3120.</td><td>Leaf water content per leaf dry mass (not saturated)                                              </td><td>Leaf water content not saturated</td><td>                      </td><td>g(W)/g(DM)</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># make dictionary from trait_info: key = trait_infosPlotOpenName, value = TraitID_TRY6</span>
+<span class="n">trait_dict</span> <span class="o">&lt;-</span> <span class="nf">setNames</span><span class="p">(</span><span class="n">trait_info</span><span class="o">$</span><span class="n">TraitID_TRY6</span><span class="p">,</span> <span class="n">trait_info</span><span class="o">$</span><span class="n">sPlotOpenName</span><span class="p">)</span>
+<span class="n">trait_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>SSD</dt><dd>'X.X4.'</dd><dt>2</dt><dd>'X.X6.'</dd><dt>Leaf.C</dt><dd>'X.X13.'</dd><dt>Leaf.N.per.mass</dt><dd>'X.X14.'</dd><dt>Leaf.P</dt><dd>'X.X15.'</dd><dt>6</dt><dd>'X.X21.'</dd><dt>Seed.mass</dt><dd>'X.X26.'</dd><dt>Seed.length</dt><dd>'X.X27.'</dd><dt>9</dt><dd>'X.X46.'</dd><dt>LDMC</dt><dd>'X.X47.'</dd><dt>Leaf.N.per.area</dt><dd>'X.X50.'</dd><dt>12</dt><dd>'X.X55.'</dd><dt>Leaf.delta15N</dt><dd>'X.X78.'</dd><dt>14</dt><dd>'X.X95.'</dd><dt>Seeds.per.rep..unit</dt><dd>'X.X138.'</dd><dt>16</dt><dd>'X.X144.'</dd><dt>17</dt><dd>'X.X145.'</dd><dt>18</dt><dd>'X.X146.'</dd><dt>Leaf.fresh.mass</dt><dd>'X.X163.'</dd><dt>Stem.conduit.density</dt><dd>'X.X169.'</dd><dt>21</dt><dd>'X.X223.'</dd><dt>22</dt><dd>'X.X224.'</dd><dt>Dispersal.unit.length</dt><dd>'X.X237.'</dd><dt>24</dt><dd>'X.X281.'</dd><dt>Conduit.element.length</dt><dd>'X.X282.'</dd><dt>26</dt><dd>'X.X289.'</dd><dt>27</dt><dd>'X.X297.'</dd><dt>28</dt><dd>'X.X351.'</dd><dt>29</dt><dd>'X.X614.'</dd><dt>30</dt><dd>'X.X1080.'</dd><dt>31</dt><dd>'X.X3086.'</dd><dt>Plant.Height</dt><dd>'X.X3106.'</dd><dt>33</dt><dd>'X.X3107.'</dd><dt>34</dt><dd>'X.X3108.'</dd><dt>35</dt><dd>'X.X3109.'</dd><dt>36</dt><dd>'X.X3110.'</dd><dt>37</dt><dd>'X.X3111.'</dd><dt>38</dt><dd>'X.X3112.'</dd><dt>39</dt><dd>'X.X3113.'</dd><dt>Leaf.Area</dt><dd>'X.X3114.'</dd><dt>41</dt><dd>'X.X3115.'</dd><dt>42</dt><dd>'X.X3116.'</dd><dt>SLA</dt><dd>'X.X3117.'</dd><dt>44</dt><dd>'X.X3120.'</dd></dl>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace column names in splotopen_summary with TraitID_TRY6 from trait_dict</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">splotopen_summary</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">splotopen_summary</span><span class="p">),</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">x</span> <span class="o">%in%</span> <span class="nf">names</span><span class="p">(</span><span class="n">trait_dict</span><span class="p">),</span> <span class="n">trait_dict</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">x</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">splotopen_summary</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 19</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>X.X3114.</th><th scope=col>X.X4.</th><th scope=col>X.X3117.</th><th scope=col>X.X13.</th><th scope=col>X.X14.</th><th scope=col>X.X15.</th><th scope=col>X.X3106.</th><th scope=col>X.X26.</th><th scope=col>X.X27.</th><th scope=col>X.X47.</th><th scope=col>X.X50.</th><th scope=col>Leaf.N.P.ratio</th><th scope=col>X.X78.</th><th scope=col>X.X138.</th><th scope=col>X.X163.</th><th scope=col>X.X169.</th><th scope=col>X.X237.</th><th scope=col>X.X282.</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>830029fffffffff</td><td>4.983938</td><td>-0.9251577</td><td>2.819308</td><td>6.120789</td><td>2.772351</td><td>0.7519362</td><td>-1.3260369</td><td>-1.4501626</td><td>0.2122733</td><td>-1.2841427</td><td>0.04431570</td><td>2.073657</td><td>0.5747993</td><td>5.070152</td><td>-3.210677</td><td>4.778762</td><td>0.2273849</td><td>6.897906</td></tr>
+	<tr><td>83002cfffffffff</td><td>5.500166</td><td>-0.9672893</td><td>2.897689</td><td>6.075411</td><td>2.885079</td><td>0.5934793</td><td>-1.7034084</td><td>-0.8107227</td><td>0.6922639</td><td>-1.2627500</td><td>0.06254204</td><td>2.192884</td><td>0.3916957</td><td>4.845040</td><td>-2.795763</td><td>5.203334</td><td>0.7633169</td><td>6.186453</td></tr>
+	<tr><td>830120fffffffff</td><td>5.944930</td><td>-0.9083811</td><td>2.674230</td><td>6.165949</td><td>2.912700</td><td>0.3957971</td><td>-0.8568235</td><td>-0.3758094</td><td>0.8491797</td><td>-1.0455759</td><td>0.29428585</td><td>2.370993</td><td>0.3740397</td><td>4.808872</td><td>-2.465077</td><td>5.418334</td><td>0.9021428</td><td>5.988136</td></tr>
+	<tr><td>830122fffffffff</td><td>4.863443</td><td>-0.5982236</td><td>2.684737</td><td>6.245826</td><td>2.809547</td><td>0.3715139</td><td>-0.3050638</td><td>-0.5378673</td><td>1.1803582</td><td>-1.1330655</td><td>0.17441919</td><td>2.340810</td><td>0.3816341</td><td>5.723034</td><td>-3.629366</td><td>5.509091</td><td>0.9571266</td><td>6.024107</td></tr>
+	<tr><td>830124fffffffff</td><td>5.296135</td><td>-0.9112658</td><td>2.413249</td><td>6.183430</td><td>2.790786</td><td>0.2564264</td><td>-0.7978294</td><td>-0.3393554</td><td>0.9659792</td><td>-0.9657587</td><td>0.43157874</td><td>2.444409</td><td>0.3723660</td><td>4.253638</td><td>-2.956475</td><td>5.828351</td><td>1.0894628</td><td>6.132467</td></tr>
+	<tr><td>830126fffffffff</td><td>5.144689</td><td>-0.7854563</td><td>2.474994</td><td>6.193215</td><td>2.785938</td><td>0.2921896</td><td>-0.5196718</td><td>-0.5391000</td><td>1.0238321</td><td>-1.0301391</td><td>0.35167043</td><td>2.418011</td><td>0.4509752</td><td>4.929886</td><td>-3.214894</td><td>5.502269</td><td>1.0434030</td><td>6.033372</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># add &quot;.mean_all&quot; to column names in splotopen_summary except for &quot;h3_res3&quot;</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">splotopen_summary</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">splotopen_summary</span><span class="p">),</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">,</span> <span class="nf">paste0</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;.mean_native&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">splotopen_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 19</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>X.X3114..mean_native</th><th scope=col>X.X4..mean_native</th><th scope=col>X.X3117..mean_native</th><th scope=col>X.X13..mean_native</th><th scope=col>X.X14..mean_native</th><th scope=col>X.X15..mean_native</th><th scope=col>X.X3106..mean_native</th><th scope=col>X.X26..mean_native</th><th scope=col>X.X27..mean_native</th><th scope=col>X.X47..mean_native</th><th scope=col>X.X50..mean_native</th><th scope=col>Leaf.N.P.ratio.mean_native</th><th scope=col>X.X78..mean_native</th><th scope=col>X.X138..mean_native</th><th scope=col>X.X163..mean_native</th><th scope=col>X.X169..mean_native</th><th scope=col>X.X237..mean_native</th><th scope=col>X.X282..mean_native</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>830029fffffffff</td><td>4.983938</td><td>-0.9251577</td><td>2.819308</td><td>6.120789</td><td>2.772351</td><td>0.7519362</td><td>-1.3260369</td><td>-1.4501626</td><td>0.2122733</td><td>-1.2841427</td><td>0.04431570</td><td>2.073657</td><td>0.5747993</td><td>5.070152</td><td>-3.210677</td><td>4.778762</td><td>0.2273849</td><td>6.897906</td></tr>
+	<tr><td>83002cfffffffff</td><td>5.500166</td><td>-0.9672893</td><td>2.897689</td><td>6.075411</td><td>2.885079</td><td>0.5934793</td><td>-1.7034084</td><td>-0.8107227</td><td>0.6922639</td><td>-1.2627500</td><td>0.06254204</td><td>2.192884</td><td>0.3916957</td><td>4.845040</td><td>-2.795763</td><td>5.203334</td><td>0.7633169</td><td>6.186453</td></tr>
+	<tr><td>830120fffffffff</td><td>5.944930</td><td>-0.9083811</td><td>2.674230</td><td>6.165949</td><td>2.912700</td><td>0.3957971</td><td>-0.8568235</td><td>-0.3758094</td><td>0.8491797</td><td>-1.0455759</td><td>0.29428585</td><td>2.370993</td><td>0.3740397</td><td>4.808872</td><td>-2.465077</td><td>5.418334</td><td>0.9021428</td><td>5.988136</td></tr>
+	<tr><td>830122fffffffff</td><td>4.863443</td><td>-0.5982236</td><td>2.684737</td><td>6.245826</td><td>2.809547</td><td>0.3715139</td><td>-0.3050638</td><td>-0.5378673</td><td>1.1803582</td><td>-1.1330655</td><td>0.17441919</td><td>2.340810</td><td>0.3816341</td><td>5.723034</td><td>-3.629366</td><td>5.509091</td><td>0.9571266</td><td>6.024107</td></tr>
+	<tr><td>830124fffffffff</td><td>5.296135</td><td>-0.9112658</td><td>2.413249</td><td>6.183430</td><td>2.790786</td><td>0.2564264</td><td>-0.7978294</td><td>-0.3393554</td><td>0.9659792</td><td>-0.9657587</td><td>0.43157874</td><td>2.444409</td><td>0.3723660</td><td>4.253638</td><td>-2.956475</td><td>5.828351</td><td>1.0894628</td><td>6.132467</td></tr>
+	<tr><td>830126fffffffff</td><td>5.144689</td><td>-0.7854563</td><td>2.474994</td><td>6.193215</td><td>2.785938</td><td>0.2921896</td><td>-0.5196718</td><td>-0.5391000</td><td>1.0238321</td><td>-1.0301391</td><td>0.35167043</td><td>2.418011</td><td>0.4509752</td><td>4.929886</td><td>-3.214894</td><td>5.502269</td><td>1.0434030</td><td>6.033372</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># correlate matching column names in splotopen_summary and gbif_summary</span>
+<span class="n">matching_cols</span> <span class="o">&lt;-</span> <span class="nf">intersect</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">splotopen_summary</span><span class="p">),</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">))</span>
+<span class="n">matching_cols</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'h3_res3'</li><li>'X.X3114..mean_native'</li><li>'X.X4..mean_native'</li><li>'X.X3117..mean_native'</li><li>'X.X13..mean_native'</li><li>'X.X14..mean_native'</li><li>'X.X15..mean_native'</li><li>'X.X3106..mean_native'</li><li>'X.X26..mean_native'</li><li>'X.X27..mean_native'</li><li>'X.X47..mean_native'</li><li>'X.X50..mean_native'</li><li>'X.X78..mean_native'</li><li>'X.X138..mean_native'</li><li>'X.X163..mean_native'</li><li>'X.X169..mean_native'</li><li>'X.X237..mean_native'</li><li>'X.X282..mean_native'</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper to compute trait-wise correlations against any GBIF summary</span>
+<span class="n">compute_correlations</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">gbif_df</span><span class="p">,</span> <span class="n">splot_df</span> <span class="o">=</span> <span class="n">splotopen_summary</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">if </span><span class="p">(</span><span class="s">&quot;h3_cell&quot;</span> <span class="o">%in%</span> <span class="nf">names</span><span class="p">(</span><span class="n">gbif_df</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nf">names</span><span class="p">(</span><span class="n">gbif_df</span><span class="p">)[</span><span class="nf">names</span><span class="p">(</span><span class="n">gbif_df</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;h3_cell&quot;</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="s">&quot;h3_res3&quot;</span>
+  <span class="p">}</span>
+  
+  <span class="n">trait_cols</span> <span class="o">&lt;-</span> <span class="nf">setdiff</span><span class="p">(</span><span class="nf">intersect</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">splot_df</span><span class="p">),</span> <span class="nf">names</span><span class="p">(</span><span class="n">gbif_df</span><span class="p">)),</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">)</span>
+  
+  <span class="n">corr_df</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span>
+    <span class="n">splot_df</span><span class="p">[,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;h3_res3&quot;</span><span class="p">,</span> <span class="n">trait_cols</span><span class="p">)],</span>
+    <span class="n">gbif_df</span><span class="p">[,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;h3_res3&quot;</span><span class="p">,</span> <span class="n">trait_cols</span><span class="p">)],</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">,</span>
+    <span class="n">suffixes</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;.splot&quot;</span><span class="p">,</span> <span class="s">&quot;.gbif&quot;</span><span class="p">)</span>
+  <span class="p">)</span>
+  
+  <span class="n">to_num</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">z</span><span class="p">))</span> <span class="nf">return</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="nf">suppressWarnings</span><span class="p">(</span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">z</span><span class="p">)))</span>
+  <span class="p">}</span>
+  
+  <span class="nf">sapply</span><span class="p">(</span><span class="n">trait_cols</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">to_num</span><span class="p">(</span><span class="n">corr_df</span><span class="p">[[</span><span class="nf">paste0</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="s">&quot;.splot&quot;</span><span class="p">)]])</span>
+    <span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">to_num</span><span class="p">(</span><span class="n">corr_df</span><span class="p">[[</span><span class="nf">paste0</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="s">&quot;.gbif&quot;</span><span class="p">)]])</span>
+    <span class="n">ok</span> <span class="o">&lt;-</span> <span class="nf">is.finite</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nf">is.finite</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="nf">if </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">ok</span><span class="p">)</span> <span class="o">&lt;</span> <span class="m">3</span><span class="p">)</span> <span class="nf">return</span><span class="p">(</span><span class="kc">NA_real_</span><span class="p">)</span>
+    <span class="nf">cor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ok</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">ok</span><span class="p">])</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+
+<span class="n">cor_results</span>      <span class="o">&lt;-</span> <span class="nf">compute_correlations</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)</span>
+<span class="n">cor_results_pa</span>   <span class="o">&lt;-</span> <span class="nf">compute_correlations</span><span class="p">(</span><span class="n">gbif_summary_pa</span><span class="p">)</span>
+<span class="n">cor_results_notrim</span> <span class="o">&lt;-</span> <span class="nf">compute_correlations</span><span class="p">(</span><span class="n">gbif_summary_notrim</span><span class="p">)</span>
+<span class="n">cor_results_notrim_lcweighted</span> <span class="o">&lt;-</span> <span class="nf">compute_correlations</span><span class="p">(</span><span class="n">gibif_summary_notrim_lcweighted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot correlation results for presence-absence based summary (cor_results_pa)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="n">cor_df_long</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span>
+    <span class="n">Trait</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">cor_results_pa</span><span class="p">),</span>
+    <span class="n">Correlation</span> <span class="o">=</span> <span class="n">cor_results_pa</span>
+<span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">cor_df_long</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Trait</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Correlation</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Correlation of mean trait values between sPlotOpen and GBIF summaries (PA)&quot;</span><span class="p">)</span>
+
+
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="n">cor_df_long</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span>
+    <span class="n">Trait</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">cor_results_pa</span><span class="p">),</span>
+    <span class="n">Correlation</span> <span class="o">=</span> <span class="n">cor_results_pa</span>
+<span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">cor_df_long</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Trait</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Correlation</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Correlation of mean trait values between sPlotOpen and GBIF summaries&quot;</span><span class="p">)</span>
+
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_corr_sPlotopen_22_0.png" src="_images/13_corr_sPlotopen_22_0.png" />
+<img alt="_images/13_corr_sPlotopen_22_1.png" src="_images/13_corr_sPlotopen_22_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare cor_results_pa and cor_results</span>
+<span class="n">cor_comparison</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span>
+    <span class="n">Trait</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">cor_results_pa</span><span class="p">),</span>
+    <span class="n">Correlation_PA</span> <span class="o">=</span> <span class="n">cor_results_pa</span><span class="p">,</span>
+    <span class="n">Correlation_Abundance</span> <span class="o">=</span> <span class="n">cor_results</span><span class="p">,</span>
+    <span class="n">Correlation_Notrim</span> <span class="o">=</span> <span class="n">cor_results_notrim</span><span class="p">,</span>
+    <span class="n">Correlation_Notrim_LCweighted</span> <span class="o">=</span> <span class="n">cor_results_notrim_lcweighted</span>
+<span class="p">)</span>
+<span class="n">cor_comparison</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 17 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Trait</th><th scope=col>Correlation_PA</th><th scope=col>Correlation_Abundance</th><th scope=col>Correlation_Notrim</th><th scope=col>Correlation_Notrim_LCweighted</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>X.X3114..mean_all</th><td>X.X3114..mean_all</td><td>0.5996580</td><td>0.6131830</td><td>0.6073129</td><td>0.6055280</td></tr>
+	<tr><th scope=row>X.X4..mean_all</th><td>X.X4..mean_all   </td><td>0.6005388</td><td>0.5861001</td><td>0.5791251</td><td>0.5750998</td></tr>
+	<tr><th scope=row>X.X3117..mean_all</th><td>X.X3117..mean_all</td><td>0.5767928</td><td>0.6047750</td><td>0.5846386</td><td>0.5529832</td></tr>
+	<tr><th scope=row>X.X13..mean_all</th><td>X.X13..mean_all  </td><td>0.2956568</td><td>0.3201122</td><td>0.3161880</td><td>0.3013480</td></tr>
+	<tr><th scope=row>X.X14..mean_all</th><td>X.X14..mean_all  </td><td>0.4338683</td><td>0.4728991</td><td>0.4577845</td><td>0.4270459</td></tr>
+	<tr><th scope=row>X.X15..mean_all</th><td>X.X15..mean_all  </td><td>0.5923461</td><td>0.6001907</td><td>0.5869732</td><td>0.5726631</td></tr>
+	<tr><th scope=row>X.X3106..mean_all</th><td>X.X3106..mean_all</td><td>0.5713987</td><td>0.5821344</td><td>0.5817319</td><td>0.5866769</td></tr>
+	<tr><th scope=row>X.X26..mean_all</th><td>X.X26..mean_all  </td><td>0.5199775</td><td>0.5409606</td><td>0.5235787</td><td>0.5309473</td></tr>
+	<tr><th scope=row>X.X27..mean_all</th><td>X.X27..mean_all  </td><td>0.4394019</td><td>0.4551811</td><td>0.4510630</td><td>0.4570122</td></tr>
+	<tr><th scope=row>X.X47..mean_all</th><td>X.X47..mean_all  </td><td>0.4462933</td><td>0.4352611</td><td>0.4261538</td><td>0.4316997</td></tr>
+	<tr><th scope=row>X.X50..mean_all</th><td>X.X50..mean_all  </td><td>0.5778955</td><td>0.6173504</td><td>0.6052294</td><td>0.5936864</td></tr>
+	<tr><th scope=row>X.X78..mean_all</th><td>X.X78..mean_all  </td><td>0.3921581</td><td>0.4062116</td><td>0.3998337</td><td>0.4013031</td></tr>
+	<tr><th scope=row>X.X138..mean_all</th><td>X.X138..mean_all </td><td>0.1885964</td><td>0.2295705</td><td>0.2151446</td><td>0.1945886</td></tr>
+	<tr><th scope=row>X.X163..mean_all</th><td>X.X163..mean_all </td><td>0.5836870</td><td>0.5836826</td><td>0.5800577</td><td>0.5839170</td></tr>
+	<tr><th scope=row>X.X169..mean_all</th><td>X.X169..mean_all </td><td>0.6405554</td><td>0.6588011</td><td>0.6476325</td><td>0.6435028</td></tr>
+	<tr><th scope=row>X.X237..mean_all</th><td>X.X237..mean_all </td><td>0.3976170</td><td>0.4239059</td><td>0.4232365</td><td>0.4295477</td></tr>
+	<tr><th scope=row>X.X282..mean_all</th><td>X.X282..mean_all </td><td>0.1838734</td><td>0.2228419</td><td>0.2067295</td><td>0.1927861</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="c1"># plot cor_comparison including Correlation_Notrim</span>
+<span class="n">cor_comparison_long</span> <span class="o">&lt;-</span> <span class="n">cor_comparison</span> <span class="o">%&gt;%</span>
+  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Correlation_PA&quot;</span><span class="p">,</span> <span class="s">&quot;Correlation_Abundance&quot;</span><span class="p">,</span> <span class="s">&quot;Correlation_Notrim&quot;</span><span class="p">,</span> <span class="s">&quot;Correlation_Notrim_LCweighted&quot;</span><span class="p">),</span>
+               <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;Type&quot;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;Correlation&quot;</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">cor_comparison_long</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Trait</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Correlation</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">Type</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="s">&quot;dodge&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Comparison of correlation of mean trait values between sPlotOpen and GBIF summaries (PA vs Abundance vs Notrim vs Notrim_LCweighted)&quot;</span><span class="p">)</span>
+
+<span class="c1"># save figure</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;../Results/Figures/cor_comparison_abund_pa_notrim_lcweighted.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">14</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_corr_sPlotopen_24_0.png" src="_images/13_corr_sPlotopen_24_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="c1"># plot cor_comparison including Correlation_Notrim</span>
+<span class="n">cor_comparison_long</span> <span class="o">&lt;-</span> <span class="n">cor_comparison</span> <span class="o">%&gt;%</span>
+  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Correlation_PA&quot;</span><span class="p">,</span> <span class="s">&quot;Correlation_Abundance&quot;</span><span class="p">,</span> <span class="s">&quot;Correlation_Notrim&quot;</span><span class="p">,</span> <span class="s">&quot;Correlation_Notrim_LCweighted&quot;</span><span class="p">),</span>
+               <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;Type&quot;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;Correlation&quot;</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">cor_comparison_long</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Trait</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Correlation</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">Type</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="s">&quot;dodge&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Comparison of correlation of mean trait values between sPlotOpen and GBIF summaries (PA vs Abundance vs Notrim)&quot;</span><span class="p">)</span>
+
+<span class="c1"># save figure</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;../Results/Figures/cor_comparison_abund_pa_notrim_LCweighted.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">14</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_corr_sPlotopen_25_0.png" src="_images/13_corr_sPlotopen_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot correlation results</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="n">cor_df_long</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span>
+    <span class="n">Trait</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">cor_results</span><span class="p">),</span>
+    <span class="n">Correlation</span> <span class="o">=</span> <span class="n">cor_results</span>
+<span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">cor_df_long</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Trait</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Correlation</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Correlation of mean trait values between sPlotOpen and GBIF summaries&quot;</span><span class="p">)</span>
+
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_corr_sPlotopen_26_0.png" src="_images/13_corr_sPlotopen_26_0.png" />
+</div>
+</div>
+<ol class="simple">
+<li><p>Pick (a subset of) traits where the community science-based maps best reflect vegetation plot CWM’S (no right or wrong way, but justify your choice)</p></li>
+</ol>
+</section>
+<section id="calculate-pca">
+<h2>Calculate PCA<a class="headerlink" href="#calculate-pca" title="Permalink to this headline">#</a></h2>
+<p>Calculate a Principal Component Analysis for traits selected above</p>
+<section id="variance-explained">
+<h3>Variance explained<a class="headerlink" href="#variance-explained" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="biplot-with-loadings">
+<h3>Biplot with loadings<a class="headerlink" href="#biplot-with-loadings" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="global-maps">
+<h3>Global maps<a class="headerlink" href="#global-maps" title="Permalink to this headline">#</a></h3>
+<p>Try to interpret PCs in ecological terms using biplots and global maps</p>
+</section>
+</section>
+<section id="optional-regional-shifts">
+<h2>Optional: Regional shifts<a class="headerlink" href="#optional-regional-shifts" title="Permalink to this headline">#</a></h2>
+<p>Quantify and visualize shifts in trait space in a biome of interest</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Biome Number</p></th>
+<th class="head"><p>Biome Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Tropical &amp; Subtropical Moist Broadleaf Forests</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Tropical &amp; Subtropical Dry Broadleaf Forests</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Tropical &amp; Subtropical Coniferous Forests</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Temperate Broadleaf &amp; Mixed Forests</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Temperate Conifer Forests</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Boreal Forests / Taiga</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Tropical &amp; Subtropical Grasslands, Savannas &amp; Shrublands</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Temperate Grasslands, Savannas &amp; Shrublands</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Flooded Grasslands &amp; Savannas</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Montane Grasslands &amp; Shrublands</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Tundra</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>Mediterranean Forests, Woodlands &amp; Scrub</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Deserts &amp; Xeric Shrublands</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>Mangroves</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">h3</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span> 
+
+<span class="n">wwf</span> <span class="o">&lt;-</span> <span class="nf">st_read</span><span class="p">(</span><span class="s">&quot;~/iNaturalist/Data/WWF/wwf_terr_ecos.shp&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">wwf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading layer `wwf_terr_ecos&#39; from data source 
+  `/net/home/swolf/iNaturalist/Data/WWF/wwf_terr_ecos.shp&#39; using driver `ESRI Shapefile&#39;
+Simple feature collection with 14458 features and 21 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: -180 ymin: -89.89197 xmax: 180 ymax: 83.62313
+Geodetic CRS:  WGS 84
+Simple feature collection with 14458 features and 21 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: -180 ymin: -89.89197 xmax: 180 ymax: 83.62313
+Geodetic CRS:  WGS 84
+First 10 features:
+   OBJECTID         AREA PERIMETER                                ECO_NAME
+1         1    29.802942     0.219 Northern Mesoamerican Pacific mangroves
+2         2    11.977824     0.193 Northern Mesoamerican Pacific mangroves
+3         3 77301.372760   111.954                    Sinaloan dry forests
+4         4   215.489182     1.274 Northern Mesoamerican Pacific mangroves
+5         5    19.639089     0.363 Northern Mesoamerican Pacific mangroves
+6         6 19867.174705    14.323                              Everglades
+7         7    51.100905     0.457 Northern Mesoamerican Pacific mangroves
+8         8     9.617789     0.268 Northern Mesoamerican Pacific mangroves
+9         9     8.703015     0.277                    Bahamian pine mosaic
+10       10   112.752419     1.041 Northern Mesoamerican Pacific mangroves
+   REALM BIOME ECO_NUM ECO_ID ECO_SYM GBL_STAT                    G200_REGIO
+1     NT    14       4  61404     119        1                          &lt;NA&gt;
+2     NT    14       4  61404     119        1                          &lt;NA&gt;
+3     NT     2      28  60228      98        1  Southern Mexican Dry Forests
+4     NT    14       4  61404     119        1                          &lt;NA&gt;
+5     NT    14       4  61404     119        1                          &lt;NA&gt;
+6     NT     9       4  60904      59        2 Everglades Flooded Grasslands
+7     NT    14       4  61404     119        1                          &lt;NA&gt;
+8     NT    14       4  61404     119        1                          &lt;NA&gt;
+9     NT     3       1  60301      85        1                          &lt;NA&gt;
+10    NT    14       4  61404     119        1                          &lt;NA&gt;
+   G200_NUM G200_BIOME G200_STAT  Shape_Leng   Shape_Area area_km2 eco_code
+1         0          0         0   0.2194754 0.0027685646     8174   NT1404
+2         0          0         0   0.1932891 0.0011112449     8174   NT1404
+3        56          2         1 111.9514139 6.8791878265    77362   NT0228
+4         0          0         0   1.2736542 0.0197014674     8174   NT1404
+5         0          0         0   0.3630683 0.0017909480     8174   NT1404
+6       100          9         0  14.3227723 1.7932835970    20028   NT0904
+7         0          0         0   0.4568275 0.0046527522     8174   NT1404
+8         0          0         0   0.2681013 0.0008750174     8174   NT1404
+9         0          0         0   0.2772471 0.0007913030     6870   NT0301
+10        0          0         0   1.0411227 0.0102427625     8174   NT1404
+   PER_area PER_area_1 PER_area_2                       geometry
+1         0          0          0 POLYGON ((-112.2697 29.3264...
+2         0          0          0 POLYGON ((-112.1991 29.1752...
+3         0          0          0 POLYGON ((-109.117 27.74142...
+4         0          0          0 POLYGON ((-110.5418 27.3838...
+5         0          0          0 POLYGON ((-110.5285 27.2864...
+6         0          0          0 POLYGON ((-81.20824 26.2471...
+7         0          0          0 POLYGON ((-110.1462 27.1162...
+8         0          0          0 POLYGON ((-109.943 27.01672...
+9         0          0          0 POLYGON ((-78.22103 26.9464...
+10        0          0          0 POLYGON ((-109.7826 26.7215...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define biomes of interest</span>
+<span class="n">biomes</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">14</span>
+
+<span class="c1"># Store results for each biome</span>
+<span class="n">biome_results</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+
+<span class="c1"># Loop through each biome</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">biome_of_interest</span> <span class="n">in</span> <span class="n">biomes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">polygon</span> <span class="o">&lt;-</span> <span class="n">wwf</span><span class="p">[</span><span class="n">wwf</span><span class="o">$</span><span class="n">BIOME</span> <span class="o">==</span> <span class="n">biome_of_interest</span><span class="p">,</span> <span class="p">]</span>
+    
+    <span class="nf">if </span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">message</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;No data for biome&quot;</span><span class="p">,</span> <span class="n">biome_of_interest</span><span class="p">))</span>
+        <span class="n">next</span>
+    <span class="p">}</span>
+    
+    <span class="n">region_cells</span> <span class="o">&lt;-</span> <span class="n">h3</span><span class="o">::</span><span class="nf">polyfill</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+    
+    <span class="n">filtered_grid_means</span> <span class="o">&lt;-</span> <span class="n">gbif_summary_pa</span> <span class="o">%&gt;%</span>
+        <span class="nf">filter</span><span class="p">(</span><span class="n">h3_res3</span> <span class="o">%in%</span> <span class="n">region_cells</span><span class="p">)</span>
+    
+    <span class="c1"># Store results</span>
+    <span class="n">biome_results</span><span class="p">[[</span><span class="n">biome_of_interest</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">filtered_grid_means</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>Error: object &#39;biome_of_interest&#39; not found
+Traceback:
+
+1. `[.sf`(wwf, wwf$BIOME == biome_of_interest, )
+2. .handleSimpleError(function (cnd) 
+ . {
+ .     watcher$capture_plot_and_output()
+ .     cnd &lt;- sanitize_call(cnd)
+ .     watcher$push(cnd)
+ .     switch(on_error, continue = invokeRestart(&quot;eval_continue&quot;), 
+ .         stop = invokeRestart(&quot;eval_stop&quot;), error = NULL)
+ . }, &quot;object &#39;biome_of_interest&#39; not found&quot;, base::quote(eval(expr, 
+ .     envir)))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-jupyter-book-documentation">
+<h2>Make Jupyter Book Documentation<a class="headerlink" href="#make-jupyter-book-documentation" title="Permalink to this headline">#</a></h2>
+<p>Follow the tutorial here: <a class="reference external" href="https://github.com/sojwolf/Jupyter_Workshop_Winterschool_2022?tab=readme-ov-file">https://github.com/sojwolf/Jupyter_Workshop_Winterschool_2022?tab=readme-ov-file</a></p>
+<p>or as book: <a class="reference external" href="https://sojwolf.github.io/Jupyter_Workshop_Winterschool_2022/intro.html">https://sojwolf.github.io/Jupyter_Workshop_Winterschool_2022/intro.html</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "rstudio_r"
+        },
+        kernelOptions: {
+            kernelName: "rstudio_r",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'rstudio_r'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

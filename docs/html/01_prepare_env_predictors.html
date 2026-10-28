@@ -1,0 +1,1298 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>01 · Environmental predictors per H3 cell (local rasters) &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation" href="02_trait_env_xgboost_shap.html" />
+    <link rel="prev" title="Individual trait shifts in each biome" href="05.4_Biome_trait_shifts.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/01_prepare_env_predictors.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F01_prepare_env_predictors.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/01_prepare_env_predictors.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-to-download">
+   Data to download
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#settings">
+   Settings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-the-input-files">
+   1 · Find the input files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-grid-and-pixel-h3-assignment">
+   2 · Common grid and pixel → H3 assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#climate-worldclim-2-1-103-layers">
+   3 · Climate: WorldClim 2.1 (103 layers)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#soil-soilgrids-2-0-5-km-aggregates-78-layers">
+   4 · Soil: SoilGrids 2.0, 5 km aggregates (78 layers)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#population-density">
+   5 · Population density
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#b-optional-extra-climate-layers-aridity-index-and-pet">
+   5b · Optional extra climate layers: aridity index and PET
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#land-cover">
+   6 · Land cover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assemble-check-save">
+   7 · Assemble, check, save
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>01 · Environmental predictors per H3 cell (local rasters)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-to-download">
+   Data to download
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#settings">
+   Settings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-the-input-files">
+   1 · Find the input files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-grid-and-pixel-h3-assignment">
+   2 · Common grid and pixel → H3 assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#climate-worldclim-2-1-103-layers">
+   3 · Climate: WorldClim 2.1 (103 layers)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#soil-soilgrids-2-0-5-km-aggregates-78-layers">
+   4 · Soil: SoilGrids 2.0, 5 km aggregates (78 layers)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#population-density">
+   5 · Population density
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#b-optional-extra-climate-layers-aridity-index-and-pet">
+   5b · Optional extra climate layers: aridity index and PET
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#land-cover">
+   6 · Land cover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assemble-check-save">
+   7 · Assemble, check, save
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="environmental-predictors-per-h3-cell-local-rasters">
+<h1>01 · Environmental predictors per H3 cell (local rasters)<a class="headerlink" href="#environmental-predictors-per-h3-cell-local-rasters" title="Permalink to this headline">#</a></h1>
+<p>This notebook averages global environmental rasters over every H3 resolution-3 cell in your trait file. It writes <code class="docutils literal notranslate"><span class="pre">env_data/env_predictors_h3r3.csv</span></code>, which notebook 02 reads.</p>
+<p><strong>How it works:</strong> every layer is first brought onto one common 2.5-arc-minute grid (~4.6 km at the equator). Each grid pixel is assigned to the H3 cell that contains its centre. Each cell then gets the area-weighted mean of its pixels; population is the exception (total persons ÷ land area). A res-3 cell contains about 600 such pixels, so the averages are stable.</p>
+<p><strong>Effort:</strong> downloads total a few GB. Processing takes roughly 10–20 minutes on one core and needs about 4 GB of RAM. The heaviest step is the 300 m land-cover map, which is read in strips.</p>
+<section id="data-to-download">
+<h2>Data to download<a class="headerlink" href="#data-to-download" title="Permalink to this headline">#</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Block</p></th>
+<th class="head"><p>Product</p></th>
+<th class="head"><p>Where</p></th>
+<th class="head"><p>Put it in</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Climate</p></td>
+<td><p>WorldClim 2.1, 2.5 min: <code class="docutils literal notranslate"><span class="pre">bio</span></code>, <code class="docutils literal notranslate"><span class="pre">tavg</span></code>, <code class="docutils literal notranslate"><span class="pre">tmin</span></code>, <code class="docutils literal notranslate"><span class="pre">tmax</span></code>, <code class="docutils literal notranslate"><span class="pre">prec</span></code>, <code class="docutils literal notranslate"><span class="pre">srad</span></code>, <code class="docutils literal notranslate"><span class="pre">wind</span></code>, <code class="docutils literal notranslate"><span class="pre">vapr</span></code> (19 + 7×12 = <strong>103 variables</strong>, as in Mahecha et al.)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_&lt;var&gt;.zip</span></code> (page: <a class="reference external" href="https://www.worldclim.org/data/worldclim21.html">https://www.worldclim.org/data/worldclim21.html</a>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env_raw/worldclim/</span></code> (unzipped <code class="docutils literal notranslate"><span class="pre">.tif</span></code>s)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Soil</p></td>
+<td><p>SoilGrids 2.0, aggregated to 5 km: <code class="docutils literal notranslate"><span class="pre">bdod</span> <span class="pre">cec</span> <span class="pre">cfvo</span> <span class="pre">clay</span> <span class="pre">nitrogen</span> <span class="pre">ocd</span> <span class="pre">phh2o</span> <span class="pre">sand</span> <span class="pre">silt</span> <span class="pre">soc</span></code> + water retention <code class="docutils literal notranslate"><span class="pre">wv0010</span> <span class="pre">wv0033</span> <span class="pre">wv1500</span></code>, 6 depths, <code class="docutils literal notranslate"><span class="pre">mean</span></code> only (<strong>78 layers</strong>)</p></td>
+<td><p><a class="reference external" href="https://files.isric.org/soilgrids/latest/data_aggregated/5000m/">https://files.isric.org/soilgrids/latest/data_aggregated/5000m/</a> (one sub-folder per property)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env_raw/soilgrids/&lt;property&gt;/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Population</p></td>
+<td><p>GHS-POP R2023A, epoch 2020, 30 arc-sec, WGS84</p></td>
+<td><p><a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/GHS_POP_E2020_GLOBE_R2023A_4326_30ss/V1-0/">https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/GHS_POP_E2020_GLOBE_R2023A_4326_30ss/V1-0/</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env_raw/ghs_pop/</span></code> (unzipped <code class="docutils literal notranslate"><span class="pre">.tif</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Land cover</p></td>
+<td><p>ESA CCI Land Cover 2020, v2.1.1, 300 m (netCDF). Needs a free Copernicus CDS account.</p></td>
+<td><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-land-cover">https://cds.climate.copernicus.eu/datasets/satellite-land-cover</a> (Download tab: variable <em>all</em>, year <em>2020</em>, version <em>v2.1.1</em>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env_raw/landcover/</span></code> (the <code class="docutils literal notranslate"><span class="pre">.nc</span></code> file)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Two download scripts sit next to the notebooks. Run them on the cluster from a node with internet access. Both are safe to re-run, and they check what they downloaded: layer counts for WorldClim, SHA-256 checksums for SoilGrids.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash download_worldclim.sh      <span class="c1"># → env_raw/worldclim/   103 GeoTIFFs, ~1 GB</span>
+bash download_soilgrids.sh      <span class="c1"># → env_raw/soilgrids/   78 GeoTIFFs, ~450 MB</span>
+</pre></div>
+</div>
+<p>Population and land cover only need downloading if you are not using your per-cell tables (see below).</p>
+<p>Section 1 below checks what it finds and tells you what is missing.</p>
+<p><strong>Land cover, two options:</strong></p>
+<ul class="simple">
+<li><p><strong>Per-cell table already aggregated to H3:</strong> set <code class="docutils literal notranslate"><span class="pre">LANDCOVER_CSV</span></code> to the file (e.g. your colleague’s <code class="docutils literal notranslate"><span class="pre">landcover_summary.csv</span></code> with <code class="docutils literal notranslate"><span class="pre">urban,</span> <span class="pre">crop,</span> <span class="pre">nat,</span> <span class="pre">barren,</span> <span class="pre">water</span></code>). Then no land-cover raster is needed and the ESA CCI step is skipped.</p></li>
+<li><p><strong>ESA CCI raster:</strong> leave <code class="docutils literal notranslate"><span class="pre">LANDCOVER_CSV</span> <span class="pre">=</span> <span class="pre">None</span></code> and put the <code class="docutils literal notranslate"><span class="pre">.nc</span></code> file in <code class="docutils literal notranslate"><span class="pre">env_raw/landcover/</span></code>.</p></li>
+</ul>
+<p>Without either, set <code class="docutils literal notranslate"><span class="pre">USE_LANDCOVER</span> <span class="pre">=</span> <span class="pre">False</span></code> in notebook 02.</p>
+<p><strong>Population density</strong> has three options:</p>
+<ul class="simple">
+<li><p><strong>A density raster:</strong> <code class="docutils literal notranslate"><span class="pre">POP_DENSITY_TIF</span></code>, e.g. GPW v4 2020 in persons/km². Any resolution works; this is the default and uses your 1° GPW file.</p></li>
+<li><p><strong>A per-cell table:</strong> <code class="docutils literal notranslate"><span class="pre">POP_CSV</span></code>.</p></li>
+<li><p><strong>The GHS-POP count raster</strong> in <code class="docutils literal notranslate"><span class="pre">env_raw/ghs_pop/</span></code>, used if both of the above are <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install numpy pandas rasterio h3 matplotlib   # once, if missing</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">h3</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">from</span> <span class="nn">rasterio.enums</span> <span class="kn">import</span> <span class="n">Resampling</span>
+<span class="kn">from</span> <span class="nn">rasterio.transform</span> <span class="kn">import</span> <span class="n">from_origin</span>
+<span class="kn">from</span> <span class="nn">rasterio.warp</span> <span class="kn">import</span> <span class="n">reproject</span>
+<span class="kn">from</span> <span class="nn">rasterio.windows</span> <span class="kn">import</span> <span class="n">Window</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
+
+<span class="n">SEQ</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span>
+    <span class="s2">&quot;seq_blue&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;#f3f7fd&quot;</span><span class="p">,</span> <span class="s2">&quot;#cde2fb&quot;</span><span class="p">,</span> <span class="s2">&quot;#9ec5f4&quot;</span><span class="p">,</span> <span class="s2">&quot;#6da7ec&quot;</span><span class="p">,</span> <span class="s2">&quot;#3987e5&quot;</span><span class="p">,</span> <span class="s2">&quot;#256abf&quot;</span><span class="p">,</span> <span class="s2">&quot;#184f95&quot;</span><span class="p">,</span> <span class="s2">&quot;#0d366b&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TRAIT_CSV</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_group_region_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+<span class="n">RAW_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/Func_Neo_Phytes/Data/env_raw/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+<span class="n">OUT_CSV</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/Func_Neo_Phytes/Data/env_data/env_predictors_h3r3.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+
+<span class="n">H3_RES</span>    <span class="o">=</span> <span class="mi">3</span>
+<span class="n">N_THREADS</span> <span class="o">=</span> <span class="mi">4</span>                                     <span class="c1"># threads for raster reprojection</span>
+
+<span class="c1"># Land cover: a per-cell table already aggregated to H3 (columns: h3 id + class fractions).</span>
+<span class="c1"># Set to None to compute fractions from the ESA CCI raster in env_raw/landcover/ instead.</span>
+<span class="n">LANDCOVER_CSV</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/net/scratch/swolf/GBIF/landcover_summary.csv&quot;</span><span class="p">)</span>
+<span class="n">LC_LAND_ONLY</span>  <span class="o">=</span> <span class="kc">True</span>   <span class="c1"># rescale the land classes to shares of the land area (water stays a share of the whole cell)</span>
+
+<span class="c1"># Population density, first match wins:</span>
+<span class="c1">#   POP_DENSITY_TIF: a raster of persons/km² (e.g. GPW v4), area-weighted onto each H3 cell</span>
+<span class="c1">#   POP_CSV:         a per-cell table (columns: h3 id + density)</span>
+<span class="c1">#   otherwise:       GHS-POP count raster in env_raw/ghs_pop/</span>
+<span class="n">POP_DENSITY_TIF</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/Func_Neo_Phytes/Data/gpw_v4_population_density_rev11_2020_1_deg.tif&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+<span class="n">POP_CSV</span>         <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># e.g. Path(&quot;~/Func_Neo_Phytes/Data/h3_population_density.csv&quot;).expanduser()</span>
+
+<span class="c1"># Optional extra climate rasters, e.g. the Global Aridity Index &amp; PET database v3 (Zomer et al. 2022,</span>
+<span class="c1"># figshare 7504448). Set the paths to the annual GeoTIFFs; None = skip. The scale converts the stored</span>
+<span class="c1"># integers to real units (the aridity index is stored × 10,000).</span>
+<span class="n">ARIDITY_TIF</span>   <span class="o">=</span> <span class="n">RAW_DIR</span> <span class="o">/</span> <span class="s2">&quot;aridity&quot;</span> <span class="o">/</span> <span class="s2">&quot;ai_v3_yr.tif&quot;</span>
+<span class="n">ARIDITY_SCALE</span> <span class="o">=</span> <span class="mf">0.0001</span>
+<span class="n">PET_TIF</span>       <span class="o">=</span> <span class="kc">None</span>    <span class="c1"># e.g. RAW_DIR / &quot;aridity&quot; / &quot;et0_v3_yr.tif&quot;   (mm per year)</span>
+<span class="n">PET_SCALE</span>     <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># ESA CCI LCCS classes → 8 groups, following the IPCC land categories in the CCI-LC user guide</span>
+<span class="n">LC_GROUPS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cropland&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+    <span class="s2">&quot;forest&quot;</span><span class="p">:</span>   <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">],</span>
+    <span class="s2">&quot;grass&quot;</span><span class="p">:</span>    <span class="p">[</span><span class="mi">110</span><span class="p">,</span> <span class="mi">130</span><span class="p">],</span>
+    <span class="s2">&quot;shrub&quot;</span><span class="p">:</span>    <span class="p">[</span><span class="mi">120</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">122</span><span class="p">],</span>
+    <span class="s2">&quot;wetland&quot;</span><span class="p">:</span>  <span class="p">[</span><span class="mi">180</span><span class="p">],</span>
+    <span class="s2">&quot;urban&quot;</span><span class="p">:</span>    <span class="p">[</span><span class="mi">190</span><span class="p">],</span>
+    <span class="s2">&quot;sparse&quot;</span><span class="p">:</span>   <span class="p">[</span><span class="mi">140</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">153</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">202</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>   <span class="c1"># lichen/moss, sparse veg., bare, snow/ice</span>
+    <span class="s2">&quot;water&quot;</span><span class="p">:</span>    <span class="p">[</span><span class="mi">210</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="find-the-input-files">
+<h2>1 · Find the input files<a class="headerlink" href="#find-the-input-files" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># expand &quot;~&quot; in every path (pathlib does not do this on its own)</span>
+<span class="n">TRAIT_CSV</span><span class="p">,</span> <span class="n">RAW_DIR</span><span class="p">,</span> <span class="n">OUT_CSV</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">(</span><span class="n">TRAIT_CSV</span><span class="p">,</span> <span class="n">RAW_DIR</span><span class="p">,</span> <span class="n">OUT_CSV</span><span class="p">))</span>
+<span class="n">LANDCOVER_CSV</span><span class="p">,</span> <span class="n">POP_DENSITY_TIF</span><span class="p">,</span> <span class="n">POP_CSV</span><span class="p">,</span> <span class="n">ARIDITY_TIF</span><span class="p">,</span> <span class="n">PET_TIF</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="kc">None</span> <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Path</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">(</span><span class="n">LANDCOVER_CSV</span><span class="p">,</span> <span class="n">POP_DENSITY_TIF</span><span class="p">,</span> <span class="n">POP_CSV</span><span class="p">,</span> <span class="n">ARIDITY_TIF</span><span class="p">,</span> <span class="n">PET_TIF</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Looking for rasters in </span><span class="si">{</span><span class="n">RAW_DIR</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="s1">&#39;exists&#39;</span> <span class="k">if</span> <span class="n">RAW_DIR</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;DOES NOT EXIST&#39;</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="n">wc_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">((</span><span class="n">RAW_DIR</span> <span class="o">/</span> <span class="s2">&quot;worldclim&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;wc2.1_2.5m_*.tif&quot;</span><span class="p">))</span>
+<span class="n">sg_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">((</span><span class="n">RAW_DIR</span> <span class="o">/</span> <span class="s2">&quot;soilgrids&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*_mean_*.tif&quot;</span><span class="p">))</span>
+<span class="n">pop_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">((</span><span class="n">RAW_DIR</span> <span class="o">/</span> <span class="s2">&quot;ghs_pop&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;GHS_POP_*.tif&quot;</span><span class="p">))</span>
+<span class="n">lc_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">((</span><span class="n">RAW_DIR</span> <span class="o">/</span> <span class="s2">&quot;landcover&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.nc&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">((</span><span class="n">RAW_DIR</span> <span class="o">/</span> <span class="s2">&quot;landcover&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">wc_name</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;wc2.1_2.5m_bio_1.tif -&gt; wc_bio01 ; wc2.1_2.5m_tavg_01.tif -&gt; wc_tavg_01&quot;&quot;&quot;</span>
+    <span class="n">var</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;wc2\.1_2\.5m_([a-z]+)_(\d+)\.tif&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;wc_bio</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">var</span> <span class="o">==</span> <span class="s2">&quot;bio&quot;</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;wc_</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">def</span> <span class="nf">sg_name</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;clay_0-5cm_mean_5000.tif -&gt; sg_clay_0-5cm_mean&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;sg_&quot;</span> <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;_\d+$&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WorldClim : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">wc_files</span><span class="p">)</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> layers (expected 103)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SoilGrids : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sg_files</span><span class="p">)</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> layers (expected 78 with water retention, 60 without)&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">POP_DENSITY_TIF</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Population: density raster </span><span class="si">{</span><span class="n">POP_DENSITY_TIF</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="s1">&#39;found&#39;</span> <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="n">POP_DENSITY_TIF</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;NOT FOUND&#39;</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">pop_files</span> <span class="o">=</span> <span class="p">[]</span>                                  <span class="c1"># GHS-POP not needed</span>
+<span class="k">elif</span> <span class="n">POP_CSV</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Population: per-cell table </span><span class="si">{</span><span class="n">POP_CSV</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="s1">&#39;found&#39;</span> <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="n">POP_CSV</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;NOT FOUND&#39;</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">pop_files</span> <span class="o">=</span> <span class="p">[]</span>                                  <span class="c1"># raster not needed</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GHS-POP   : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">pop_files</span><span class="p">)</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> file(s) (expected 1)&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">LANDCOVER_CSV</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Land cover: per-cell table </span><span class="si">{</span><span class="n">LANDCOVER_CSV</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="s1">&#39;found&#39;</span> <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="n">LANDCOVER_CSV</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;NOT FOUND&#39;</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">lc_files</span> <span class="o">=</span> <span class="p">[]</span>                                   <span class="c1"># raster not needed</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Land cover: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lc_files</span><span class="p">)</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> raster file(s) (expected 1, optional)&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">wc_files</span><span class="p">,</span> <span class="s2">&quot;No WorldClim files found. Check RAW_DIR / the folder layout.&quot;</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_files</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">lc_files</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;More than one population or land-cover file. Keep only one.&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking for rasters in /net/home/swolf/Func_Neo_Phytes/Data/env_raw (exists)
+WorldClim : 103 layers (expected 103)
+SoilGrids :  78 layers (expected 78 with water retention, 60 without)
+Population: density raster /net/home/swolf/Func_Neo_Phytes/Data/gpw_v4_population_density_rev11_2020_1_deg.tif (found)
+Land cover: per-cell table /net/scratch/swolf/GBIF/landcover_summary.csv (found)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="common-grid-and-pixel-h3-assignment">
+<h2>2 · Common grid and pixel → H3 assignment<a class="headerlink" href="#common-grid-and-pixel-h3-assignment" title="Permalink to this headline">#</a></h2>
+<p>The common grid is the WorldClim 2.5′ grid itself (8640 × 4320, −180…180, −90…90). Pixels with valid WorldClim data count as land. Each land pixel is assigned to the H3 cell containing its centre, and only cells in your trait file are kept.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RES</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">24</span>                     <span class="c1"># 2.5 arc-minutes in degrees</span>
+<span class="n">W</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="mi">8640</span><span class="p">,</span> <span class="mi">4320</span>
+<span class="n">DST_TRANSFORM</span> <span class="o">=</span> <span class="n">from_origin</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">RES</span><span class="p">)</span>
+<span class="n">lat_c</span> <span class="o">=</span> <span class="mi">90</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">H</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">RES</span>
+<span class="n">lon_c</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span> <span class="o">+</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">RES</span>
+
+<span class="k">def</span> <span class="nf">to_grid</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">resampling</span><span class="o">=</span><span class="n">Resampling</span><span class="o">.</span><span class="n">average</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Read a raster onto the common grid as float32 with NaN for no-data.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">same</span> <span class="o">=</span> <span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">crs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span> <span class="o">==</span> <span class="mi">4326</span> <span class="ow">and</span> <span class="n">src</span><span class="o">.</span><span class="n">width</span> <span class="o">==</span> <span class="n">W</span> <span class="ow">and</span> <span class="n">src</span><span class="o">.</span><span class="n">height</span> <span class="o">==</span> <span class="n">H</span>
+                <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">transform</span><span class="p">)[:</span><span class="mi">6</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">DST_TRANSFORM</span><span class="p">)[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">same</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">dst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+        <span class="n">reproject</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">rasterio</span><span class="o">.</span><span class="n">band</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">destination</span><span class="o">=</span><span class="n">dst</span><span class="p">,</span>
+                  <span class="n">src_transform</span><span class="o">=</span><span class="n">src</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span> <span class="n">src_crs</span><span class="o">=</span><span class="n">src</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">src_nodata</span><span class="o">=</span><span class="n">src</span><span class="o">.</span><span class="n">nodata</span><span class="p">,</span>
+                  <span class="n">dst_transform</span><span class="o">=</span><span class="n">DST_TRANSFORM</span><span class="p">,</span> <span class="n">dst_crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span> <span class="n">dst_nodata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                  <span class="n">resampling</span><span class="o">=</span><span class="n">resampling</span><span class="p">,</span> <span class="n">num_threads</span><span class="o">=</span><span class="n">N_THREADS</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dst</span>
+
+<span class="n">land_ref</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">wc_files</span> <span class="k">if</span> <span class="n">wc_name</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;wc_bio01&quot;</span><span class="p">),</span> <span class="n">wc_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">land</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">to_grid</span><span class="p">(</span><span class="n">land_ref</span><span class="p">))</span>
+<span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">land</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">land</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> land pixels on the 2.5′ grid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12,532,612 land pixels on the 2.5′ grid
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plain Python strings: h3 v3 rejects numpy string types</span>
+<span class="n">cell_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">TRAIT_CSV</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;h3_res3&quot;</span><span class="p">])[</span><span class="s2">&quot;h3_res3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span>
+                    <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="n">n_cells</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cell_ids</span><span class="p">)</span>
+
+<span class="c1"># H3 ids as 64-bit integers (much lighter than strings); works with h3 v4 and v3</span>
+<span class="kn">from</span> <span class="nn">h3.api</span> <span class="kn">import</span> <span class="n">basic_int</span> <span class="k">as</span> <span class="n">h3i</span>
+<span class="n">to_cell_int</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">h3i</span><span class="p">,</span> <span class="s2">&quot;latlng_to_cell&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="n">h3i</span><span class="o">.</span><span class="n">geo_to_h3</span>
+<span class="n">str_to_int</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">h3</span><span class="p">,</span> <span class="s2">&quot;str_to_int&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="n">h3</span><span class="o">.</span><span class="n">string_to_h3</span>
+<span class="n">cell_ints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cell_ids</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cell_ints</span><span class="p">)</span>
+<span class="n">sorted_ints</span> <span class="o">=</span> <span class="n">cell_ints</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+
+<span class="n">code</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>          <span class="c1"># −1 = pixel not in one of your cells</span>
+<span class="n">CHUNK</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">),</span> <span class="n">CHUNK</span><span class="p">):</span>
+    <span class="n">la</span><span class="p">,</span> <span class="n">lo</span> <span class="o">=</span> <span class="n">lat_c</span><span class="p">[</span><span class="n">rows</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">s</span> <span class="o">+</span> <span class="n">CHUNK</span><span class="p">]],</span> <span class="n">lon_c</span><span class="p">[</span><span class="n">cols</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">s</span> <span class="o">+</span> <span class="n">CHUNK</span><span class="p">]]</span>
+    <span class="n">ints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">((</span><span class="n">to_cell_int</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">H3_RES</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">la</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">lo</span><span class="o">.</span><span class="n">tolist</span><span class="p">())),</span>
+                       <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">la</span><span class="p">))</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">sorted_ints</span><span class="p">,</span> <span class="n">ints</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_ints</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">code</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">s</span> <span class="o">+</span> <span class="n">CHUNK</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sorted_ints</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">==</span> <span class="n">ints</span><span class="p">,</span> <span class="n">order</span><span class="p">[</span><span class="n">pos</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">//</span> <span class="n">CHUNK</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">s</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">la</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> pixels assigned&quot;</span><span class="p">)</span>
+<span class="n">keep</span> <span class="o">=</span> <span class="n">code</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">code</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="n">cols</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="n">code</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
+
+<span class="c1"># exact pixel area (km²) on the sphere, depends on latitude only</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">6371.0088</span>
+<span class="n">lat_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">H</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">RES</span><span class="p">)</span>
+<span class="n">pix_area</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">RES</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">pix_area</span><span class="p">[</span><span class="n">rows</span><span class="p">]</span>
+
+<span class="n">n_pix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n_cells</span><span class="p">)</span>
+<span class="n">land_area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n_cells</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_cells</span><span class="si">}</span><span class="s2"> trait cells; land pixels per cell: median </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">n_pix</span><span class="p">))</span><span class="si">}</span><span class="s2">, &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;min </span><span class="si">{</span><span class="n">n_pix</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2">; </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">n_pix</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2"> cells have no land pixel at 2.5′ (tiny islands → NaN)&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">hex_mean</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Area-weighted mean of a common-grid layer per H3 cell (NaN pixels ignored).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">hex_mean_values</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">hex_mean_values</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Same, for values already given at the kept land pixels (aligned with rows/cols).&quot;&quot;&quot;</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">code</span><span class="p">[</span><span class="n">ok</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">v</span><span class="p">)[</span><span class="n">ok</span><span class="p">],</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n_cells</span><span class="p">)</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">code</span><span class="p">[</span><span class="n">ok</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">[</span><span class="n">ok</span><span class="p">],</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n_cells</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">den</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">num</span> <span class="o">/</span> <span class="n">den</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">hex_sum</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">]</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">code</span><span class="p">[</span><span class="n">ok</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">v</span><span class="p">[</span><span class="n">ok</span><span class="p">],</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n_cells</span><span class="p">)</span>
+
+<span class="n">ENV</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1,000,000/12,532,612 pixels assigned
+  6,000,000/12,532,612 pixels assigned
+  11,000,000/12,532,612 pixels assigned
+9752 trait cells; land pixels per cell: median 668, min 0; 11 cells have no land pixel at 2.5′ (tiny islands → NaN)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="climate-worldclim-2-1-103-layers">
+<h2>3 · Climate: WorldClim 2.1 (103 layers)<a class="headerlink" href="#climate-worldclim-2-1-103-layers" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">wc_files</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">ENV</span><span class="p">[</span><span class="n">wc_name</span><span class="p">(</span><span class="n">p</span><span class="p">)]</span> <span class="o">=</span> <span class="n">hex_mean</span><span class="p">(</span><span class="n">to_grid</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">wc_files</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">wc_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> climate layers&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  20/103 climate layers
+  40/103 climate layers
+  60/103 climate layers
+  80/103 climate layers
+  100/103 climate layers
+  103/103 climate layers
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="soil-soilgrids-2-0-5-km-aggregates-78-layers">
+<h2>4 · Soil: SoilGrids 2.0, 5 km aggregates (78 layers)<a class="headerlink" href="#soil-soilgrids-2-0-5-km-aggregates-78-layers" title="Permalink to this headline">#</a></h2>
+<p>The SoilGrids files use the Interrupted Goode Homolosine projection, the “orange peel” map cut into lobes. Some library versions misread the projection definition stored in the files. The data then lands in the wrong place, which shows up as large blocks of cells without soil, e.g. eastern North America and western Australia.</p>
+<p>So this step uses the definition ISRIC documents for SoilGrids (<code class="docutils literal notranslate"><span class="pre">+proj=igh</span></code>) and checks it against the file’s own definition. Whichever puts a soil value under more land pixels is used, and the result is printed.</p>
+<p>There is no warping either. The centre of every land pixel on the 2.5′ grid is converted exactly into the SoilGrids projection with <code class="docutils literal notranslate"><span class="pre">pyproj</span></code>, and the 5 km soil value at that point is read. That is about one soil pixel per grid pixel, roughly 500 per H3 cell. All soil files share one grid, so the lookup is computed once.</p>
+<p>The values keep SoilGrids’ integer scaling (e.g. pH × 10). That doesn’t matter here, because notebook 02 standardises every variable before the PCA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Transformer</span>
+
+<span class="n">SOILGRIDS_CRS</span> <span class="o">=</span> <span class="s2">&quot;+proj=igh +lat_0=0 +lon_0=0 +datum=WGS84 +units=m +no_defs&quot;</span>   <span class="c1"># as documented by ISRIC</span>
+
+<span class="n">_lookup</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">def</span> <span class="nf">sample_at_pixels</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Value of a raster at the centres of the kept land pixels; NaN outside / no-data.</span>
+<span class="sd">    crs: projection to assume for the raster (default: the one stored in the file).&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="n">crs</span> <span class="ow">or</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">crs</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">transform</span><span class="p">),</span> <span class="n">src</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_lookup</span><span class="p">:</span>
+            <span class="n">tr</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="p">,</span> <span class="n">always_xy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">lon_c</span><span class="p">[</span><span class="n">cols</span><span class="p">],</span> <span class="n">lat_c</span><span class="p">[</span><span class="n">rows</span><span class="p">])</span>
+            <span class="n">c</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="o">~</span><span class="n">src</span><span class="o">.</span><span class="n">transform</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">c</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">inside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&lt;</span> <span class="n">src</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="n">src</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+            <span class="n">_lookup</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">inside</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">inside</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">inside</span><span class="p">)</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">inside</span> <span class="o">=</span> <span class="n">_lookup</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span>
+    <span class="n">v</span><span class="p">[</span><span class="o">~</span><span class="n">inside</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">return</span> <span class="n">v</span>
+
+<span class="kn">import</span> <span class="nn">pyproj</span>
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">sg_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">file_crs</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SoilGrids file CRS read as:&quot;</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_proj4</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(rasterio </span><span class="si">{</span><span class="n">rasterio</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">, GDAL </span><span class="si">{</span><span class="n">rasterio</span><span class="o">.</span><span class="n">__gdal_version__</span><span class="si">}</span><span class="s2">, pyproj </span><span class="si">{</span><span class="n">pyproj</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">, PROJ </span><span class="si">{</span><span class="n">pyproj</span><span class="o">.</span><span class="n">proj_version_str</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">cov_file</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">sample_at_pixels</span><span class="p">(</span><span class="n">sg_files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">file_crs</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">cov_igh</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">sample_at_pixels</span><span class="p">(</span><span class="n">sg_files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">SOILGRIDS_CRS</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">SG_CRS</span> <span class="o">=</span> <span class="n">SOILGRIDS_CRS</span> <span class="k">if</span> <span class="n">cov_igh</span> <span class="o">&gt;=</span> <span class="n">cov_file</span> <span class="k">else</span> <span class="n">file_crs</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;land pixels with a soil value: </span><span class="si">{</span><span class="n">cov_file</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2"> with the file&#39;s own CRS, </span><span class="si">{</span><span class="n">cov_igh</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2"> with +proj=igh &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;→ using </span><span class="si">{</span><span class="s1">&#39;+proj=igh&#39;</span> <span class="k">if</span> <span class="n">SG_CRS</span> <span class="o">==</span> <span class="n">SOILGRIDS_CRS</span> <span class="k">else</span> <span class="s1">&#39;the file CRS&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sg_files</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">ENV</span><span class="p">[</span><span class="n">sg_name</span><span class="p">(</span><span class="n">p</span><span class="p">)]</span> <span class="o">=</span> <span class="n">hex_mean_values</span><span class="p">(</span><span class="n">sample_at_pixels</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">SG_CRS</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">sg_files</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sg_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> soil layers&quot;</span><span class="p">)</span>
+
+<span class="c1"># coverage check: soil should exist for (almost) every cell that has climate data</span>
+<span class="n">first_sg</span> <span class="o">=</span> <span class="n">sg_name</span><span class="p">(</span><span class="n">sg_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">n_miss</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ENV</span><span class="p">[</span><span class="n">first_sg</span><span class="p">])</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ENV</span><span class="p">[</span><span class="n">wc_name</span><span class="p">(</span><span class="n">land_ref</span><span class="p">)])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">first_sg</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">n_miss</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="n">n_cells</span><span class="si">}</span><span class="s2"> cells have climate but no soil value &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;(a handful is normal: ice, glaciers, tiny islands)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SoilGrids file CRS read as: +proj=goode +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs=True
+(rasterio 1.2.10, GDAL 3.0.2, pyproj 2.6.1.post1, PROJ 6.2.1)
+land pixels with a soil value: 62.4% with the file&#39;s own CRS, 92.5% with +proj=igh → using +proj=igh
+  10/78 soil layers
+  20/78 soil layers
+  30/78 soil layers
+  40/78 soil layers
+  50/78 soil layers
+  60/78 soil layers
+  70/78 soil layers
+  78/78 soil layers
+sg_bdod_0-5cm_mean: 135 of 9752 cells have climate but no soil value (a handful is normal: ice, glaciers, tiny islands)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="population-density">
+<h2>5 · Population density<a class="headerlink" href="#population-density" title="Permalink to this headline">#</a></h2>
+<p><strong>Option A, density raster (<code class="docutils literal notranslate"><span class="pre">POP_DENSITY_TIF</span></code>, e.g. GPW v4 in persons/km²):</strong> the raster is resampled onto the 2.5′ grid with averaging, then each H3 cell gets the land-area-weighted mean density. That equals total persons ÷ land area.</p>
+<p>This works even for a coarse 1° raster. A 1° pixel is about as large as a res-3 hexagon, so assigning pixel <em>centres</em> to hexagons leaves about 5% of your cells with no value and gives most others a single pixel. Here, every 2.5′ land pixel inherits the density of the 1° pixel it lies in, so each hexagon gets an area-weighted mix of all the 1° pixels it overlaps.</p>
+<p><strong>Option B, per-cell table (<code class="docutils literal notranslate"><span class="pre">POP_CSV</span></code>):</strong> the values are already per H3 cell, so they are only matched to your cells.</p>
+<p><strong>Option C, GHS-POP raster:</strong> population counts are summed onto the common grid, then summed per cell and divided by the cell’s land area. The result is persons per km² of land.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pop_from_table</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="o">~</span><span class="n">t</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Unnamed&quot;</span><span class="p">)]</span>          <span class="c1"># drop a saved pandas index column</span>
+    <span class="n">id_col</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">t</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s2">&quot;h3&quot;</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+    <span class="n">val_col</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">t</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">id_col</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_numeric_dtype</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">c</span><span class="p">]))</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">id_col</span><span class="p">)[</span><span class="n">val_col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">cell_ids</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: using column &#39;</span><span class="si">{</span><span class="n">val_col</span><span class="si">}</span><span class="s2">&#39;; </span><span class="si">{</span><span class="n">vals</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> of your </span><span class="si">{</span><span class="n">n_cells</span><span class="si">}</span><span class="s2"> cells not in the table; &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;median </span><span class="si">{</span><span class="n">vals</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, max </span><span class="si">{</span><span class="n">vals</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">vals</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">POP_DENSITY_TIF</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">dens_grid</span> <span class="o">=</span> <span class="n">to_grid</span><span class="p">(</span><span class="n">POP_DENSITY_TIF</span><span class="p">,</span> <span class="n">Resampling</span><span class="o">.</span><span class="n">average</span><span class="p">)</span>
+    <span class="n">dens_grid</span><span class="p">[</span><span class="n">dens_grid</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>                <span class="c1"># any negative no-data that slipped through</span>
+    <span class="n">ENV</span><span class="p">[</span><span class="s2">&quot;pop_density&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex_mean</span><span class="p">(</span><span class="n">dens_grid</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pop density: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ENV</span><span class="p">[</span><span class="s1">&#39;pop_density&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> of your </span><span class="si">{</span><span class="n">n_cells</span><span class="si">}</span><span class="s2"> cells without a value; &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;median </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">ENV</span><span class="p">[</span><span class="s1">&#39;pop_density&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> persons/km², max </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">ENV</span><span class="p">[</span><span class="s1">&#39;pop_density&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">dens_grid</span>
+<span class="k">elif</span> <span class="n">POP_CSV</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ENV</span><span class="p">[</span><span class="s2">&quot;pop_density&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pop_from_table</span><span class="p">(</span><span class="n">POP_CSV</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">pop_files</span><span class="p">:</span>
+    <span class="n">pop_grid</span> <span class="o">=</span> <span class="n">to_grid</span><span class="p">(</span><span class="n">pop_files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Resampling</span><span class="o">.</span><span class="n">sum</span><span class="p">)</span>
+    <span class="n">pop_grid</span><span class="p">[</span><span class="n">pop_grid</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
+        <span class="n">ENV</span><span class="p">[</span><span class="s2">&quot;pop_density&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">land_area</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hex_sum</span><span class="p">(</span><span class="n">pop_grid</span><span class="p">)</span> <span class="o">/</span> <span class="n">land_area</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pop density: median </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">ENV</span><span class="p">[</span><span class="s1">&#39;pop_density&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> persons/km², &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;max </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">ENV</span><span class="p">[</span><span class="s1">&#39;pop_density&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">pop_grid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR 1: Invalid dfSouthLatitudeDeg
+ERROR 1: Invalid dfSouthLatitudeDeg
+ERROR 1: Invalid dfSouthLatitudeDeg
+ERROR 1: Invalid dfSouthLatitudeDeg
+ERROR 1: Invalid dfSouthLatitudeDeg
+ERROR 1: Invalid dfSouthLatitudeDeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pop density: 21 of your 9752 cells without a value; median 15.6 persons/km², max 9493
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="b-optional-extra-climate-layers-aridity-index-and-pet">
+<h2>5b · Optional extra climate layers: aridity index and PET<a class="headerlink" href="#b-optional-extra-climate-layers-aridity-index-and-pet" title="Permalink to this headline">#</a></h2>
+<p>The Global Aridity Index (precipitation ÷ potential evapotranspiration) is not one of the WorldClim layers, although it is computed from them. Zomer et al. derived PET from WorldClim 2.1 with the FAO-56 Penman–Monteith equation. So it adds no new information, but it does add an ecologically direct summary of water balance that the other variables only capture indirectly. Here it is averaged per cell like the other rasters, and stored as <code class="docutils literal notranslate"><span class="pre">cx_…</span></code> columns, which notebook 02 adds to the climate block.</p>
+<p>Rough classes of the index: &lt; 0.05 hyper-arid, &lt; 0.2 arid, &lt; 0.5 semi-arid, &lt; 0.65 dry sub-humid, ≥ 0.65 humid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">scale</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">&quot;cx_aridity_index&quot;</span><span class="p">,</span> <span class="n">ARIDITY_TIF</span><span class="p">,</span> <span class="n">ARIDITY_SCALE</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;cx_pet_mm&quot;</span><span class="p">,</span> <span class="n">PET_TIF</span><span class="p">,</span> <span class="n">PET_SCALE</span><span class="p">)]:</span>
+    <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">assert</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">(),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> not found&quot;</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">to_grid</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">Resampling</span><span class="o">.</span><span class="n">average</span><span class="p">)</span>
+    <span class="n">grid</span><span class="p">[</span><span class="n">grid</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">ENV</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex_mean</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span>
+    <span class="k">del</span> <span class="n">grid</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">ENV</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> cells without a value; 5th–50th–95th percentile &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;cx_aridity_index&quot;</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  ⚠ these look like stored integers. Check ARIDITY_SCALE (the index is usually 0–3).&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR 1: Invalid dfNorthLatitudeDeg
+ERROR 1: Invalid dfNorthLatitudeDeg
+ERROR 1: Invalid dfNorthLatitudeDeg
+ERROR 1: Invalid dfNorthLatitudeDeg
+ERROR 1: Invalid dfNorthLatitudeDeg
+ERROR 1: Invalid dfNorthLatitudeDeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cx_aridity_index: 11 cells without a value; 5th–50th–95th percentile 0.0442 / 0.587 / 1.73
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="land-cover">
+<h2>6 · Land cover<a class="headerlink" href="#land-cover" title="Permalink to this headline">#</a></h2>
+<p><strong>Option A, per-cell table (<code class="docutils literal notranslate"><span class="pre">LANDCOVER_CSV</span></code>):</strong> the fractions are already per H3 cell, so they are only matched to your cells. With <code class="docutils literal notranslate"><span class="pre">LC_LAND_ONLY</span> <span class="pre">=</span> <span class="pre">True</span></code>, urban, crop, natural and barren are rescaled to shares of the cell’s <em>land</em>. That makes them comparable between coastal and inland cells, and consistent with the other predictors, which are averaged over land only. <code class="docutils literal notranslate"><span class="pre">water</span></code> stays as the share of the whole cell, where it acts as a coastal or island indicator. Cells that are at least 99% water get no land shares (NaN).</p>
+<p><strong>Option B, ESA CCI raster:</strong> the 300 m map is read in strips. Each 2.5′ pixel gets the share of its 300 m pixels in each group, and those shares are then averaged per H3 cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">landcover_fractions</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">chunk_rows</span><span class="o">=</span><span class="mi">120</span><span class="p">):</span>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;NETCDF:&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">&quot;:lccs_class&#39;</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.nc&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">lut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>                      <span class="c1"># LCCS code -&gt; group index</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">LC_GROUPS</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">codes</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">LC_GROUPS</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+        <span class="n">lut</span><span class="p">[</span><span class="n">codes</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">}</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">src_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">transform</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="n">t</span><span class="o">.</span><span class="n">a</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">a</span> <span class="o">*</span> <span class="n">f</span> <span class="o">-</span> <span class="n">RES</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-9</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">c</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">f</span> <span class="o">-</span> <span class="mi">90</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span>
+                <span class="ow">and</span> <span class="n">src</span><span class="o">.</span><span class="n">width</span> <span class="o">==</span> <span class="n">W</span> <span class="o">*</span> <span class="n">f</span> <span class="ow">and</span> <span class="n">src</span><span class="o">.</span><span class="n">height</span> <span class="o">==</span> <span class="n">H</span> <span class="o">*</span> <span class="n">f</span><span class="p">),</span> \
+            <span class="sa">f</span><span class="s2">&quot;Unexpected land-cover grid </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">×</span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">. Expected a global lon/lat grid.&quot;</span>
+        <span class="k">for</span> <span class="n">r0</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">chunk_rows</span><span class="p">):</span>
+            <span class="n">nr</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">chunk_rows</span><span class="p">,</span> <span class="n">H</span> <span class="o">-</span> <span class="n">r0</span><span class="p">)</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">Window</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">r0</span> <span class="o">*</span> <span class="n">f</span><span class="p">,</span> <span class="n">W</span> <span class="o">*</span> <span class="n">f</span><span class="p">,</span> <span class="n">nr</span> <span class="o">*</span> <span class="n">f</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">:</span>                             <span class="c1"># unsigned byte stored as signed</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+            <span class="n">gi</span> <span class="o">=</span> <span class="n">lut</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)]</span>                       <span class="c1"># 0 / no-data -&gt; -1</span>
+            <span class="n">valid</span> <span class="o">=</span> <span class="p">(</span><span class="n">gi</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">groups</span><span class="p">):</span>
+                <span class="n">cnt</span> <span class="o">=</span> <span class="p">(</span><span class="n">gi</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+                <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
+                    <span class="n">out</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="n">r0</span><span class="p">:</span><span class="n">r0</span> <span class="o">+</span> <span class="n">nr</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">valid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">/</span> <span class="n">valid</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">r0</span> <span class="o">//</span> <span class="n">chunk_rows</span><span class="p">)</span> <span class="o">%</span> <span class="mi">6</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  rows </span><span class="si">{</span><span class="n">r0</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">H</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">def</span> <span class="nf">landcover_from_table</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">lc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>          <span class="c1"># comma- or tab-separated</span>
+    <span class="n">id_col</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">lc</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s2">&quot;h3&quot;</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+    <span class="n">lc</span> <span class="o">=</span> <span class="n">lc</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">id_col</span><span class="p">)</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span><span class="si">}</span><span class="s2"> cells; classes </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">lc</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">; &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;row sums median </span><span class="si">{</span><span class="n">lc</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> (min </span><span class="si">{</span><span class="n">lc</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, max </span><span class="si">{</span><span class="n">lc</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">lc</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">LC_LAND_ONLY</span> <span class="ow">and</span> <span class="s2">&quot;water&quot;</span> <span class="ow">in</span> <span class="n">lc</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">land_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">lc</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s2">&quot;water&quot;</span><span class="p">]</span>
+        <span class="n">land_share</span> <span class="o">=</span> <span class="n">lc</span><span class="p">[</span><span class="n">land_cols</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">land_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">lc</span><span class="p">[</span><span class="n">land_cols</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">land_share</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">land_share</span> <span class="o">&gt;=</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  land classes rescaled to shares of land; </span><span class="si">{</span><span class="p">(</span><span class="n">land_share</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> cells are ≥99% water → NaN&quot;</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">cell_ids</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">out</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> of your </span><span class="si">{</span><span class="n">n_cells</span><span class="si">}</span><span class="s2"> cells are not in the table&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">if</span> <span class="n">LANDCOVER_CSV</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">landcover_from_table</span><span class="p">(</span><span class="n">LANDCOVER_CSV</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">ENV</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;lu_frac_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="k">elif</span> <span class="n">lc_files</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">grid</span> <span class="ow">in</span> <span class="n">landcover_fractions</span><span class="p">(</span><span class="n">lc_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">ENV</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;lu_frac_</span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex_mean</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;land-cover fractions done&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>landcover_summary.csv: 10194 cells; classes [&#39;urban&#39;, &#39;crop&#39;, &#39;nat&#39;, &#39;barren&#39;, &#39;water&#39;]; row sums median 1.000 (min 1.000, max 1.000)
+  land classes rescaled to shares of land; 392 cells are ≥99% water → NaN
+  0 of your 9752 cells are not in the table
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="assemble-check-save">
+<h2>7 · Assemble, check, save<a class="headerlink" href="#assemble-check-save" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">center</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">cell_to_latlng</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">h3</span><span class="p">,</span> <span class="s2">&quot;cell_to_latlng&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">h3</span><span class="o">.</span><span class="n">h3_to_geo</span>
+<span class="n">lat_lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">center</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cell_ids</span><span class="p">])</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;h3_index&quot;</span><span class="p">:</span> <span class="n">cell_ids</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="n">lat_lon</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;lon&quot;</span><span class="p">:</span> <span class="n">lat_lon</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;n_land_pixels&quot;</span><span class="p">:</span> <span class="n">n_pix</span><span class="p">})</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">env</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ENV</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">OUT_CSV</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">OUT_CSV</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">blocks</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;climate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">env</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;wc_&quot;</span><span class="p">,</span> <span class="s2">&quot;cx_&quot;</span><span class="p">))],</span> <span class="s2">&quot;soil&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">env</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;sg_&quot;</span><span class="p">)],</span>
+          <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">env</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;pop_density&quot;</span><span class="p">],</span> <span class="s2">&quot;land cover&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">env</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;lu_frac_&quot;</span><span class="p">)]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;saved </span><span class="si">{</span><span class="n">OUT_CSV</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> cells × </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> columns&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">cols_b</span> <span class="ow">in</span> <span class="n">blocks</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">cols_b</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">&lt;11</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cols_b</span><span class="p">)</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> vars, cells with any NaN: </span><span class="si">{</span><span class="n">env</span><span class="p">[</span><span class="n">cols_b</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">blocks</span><span class="p">[</span><span class="s2">&quot;land cover&quot;</span><span class="p">]:</span>
+    <span class="n">lu_land</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">[</span><span class="s2">&quot;land cover&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">LC_LAND_ONLY</span> <span class="ow">and</span> <span class="n">LANDCOVER_CSV</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;lu_frac_water&quot;</span><span class="p">)]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">env</span><span class="p">[</span><span class="n">lu_land</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  land-cover fractions sum to </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> (median), should be ≈ 1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>saved /net/home/swolf/Func_Neo_Phytes/Data/env_data/env_predictors_h3r3.csv: 9752 cells × 192 columns
+  climate     104 vars, cells with any NaN: 11
+  soil         78 vars, cells with any NaN: 171
+  population    1 vars, cells with any NaN: 21
+  land cover    5 vars, cells with any NaN: 256
+  land-cover fractions sum to 1.000 (median), should be ≈ 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sanity maps: one variable from each block. Patterns should look familiar, e.g. warm tropics, dense population in South and East Asia, cropland in the Corn Belt and Punjab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;cx_aridity_index&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">env</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">show</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;pop_density&quot;</span> <span class="k">else</span> <span class="n">env</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">],</span> <span class="n">env</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">SEQ</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">((</span><span class="s2">&quot;log10 &quot;</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;pop_density&quot;</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">85</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">)[</span><span class="nb">len</span><span class="p">(</span><span class="n">show</span><span class="p">):]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/01_prepare_env_predictors_22_0.png" src="_images/01_prepare_env_predictors_22_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;wc_bio01&quot;</span><span class="p">,</span> <span class="s2">&quot;wc_bio12&quot;</span><span class="p">,</span> <span class="s2">&quot;sg_clay_0-5cm_mean&quot;</span><span class="p">,</span> <span class="s2">&quot;sg_phh2o_0-5cm_mean&quot;</span><span class="p">,</span> <span class="s2">&quot;pop_density&quot;</span><span class="p">,</span> <span class="s2">&quot;lu_frac_cropland&quot;</span><span class="p">,</span> <span class="s2">&quot;lu_frac_crop&quot;</span><span class="p">,</span> <span class="s2">&quot;cx_aridity_index&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">env</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">show</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;pop_density&quot;</span> <span class="k">else</span> <span class="n">env</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">],</span> <span class="n">env</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">SEQ</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">((</span><span class="s2">&quot;log10 &quot;</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;pop_density&quot;</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">85</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">)[</span><span class="nb">len</span><span class="p">(</span><span class="n">show</span><span class="p">):]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/01_prepare_env_predictors_23_0.png" src="_images/01_prepare_env_predictors_23_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="05.4_Biome_trait_shifts.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Individual trait shifts in each biome</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02_trait_env_xgboost_shap.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

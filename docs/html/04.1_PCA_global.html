@@ -1,0 +1,2174 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Imputation of missing data &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plot global gradients of main principal components" href="04.1_Plot_global_maps_PCA.html" />
+    <link rel="prev" title="Aggregate into hexbins" href="03_Grid_cell_trait_means.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/04.1_PCA_global.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F04.1_PCA_global.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/04.1_PCA_global.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-data-frmae">
+   Prepare data frmae
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-pca">
+   Calculate PCA
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-clustering-of-traits-for-each-axis">
+     Hierarchical clustering of traits for each axis
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variance-explained-by-each-axis">
+     Variance explained by each axis
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#format-and-save-result">
+     Format and save result
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-global-pca">
+   Plot global PCA
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Imputation of missing data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-data-frmae">
+   Prepare data frmae
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-pca">
+   Calculate PCA
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-clustering-of-traits-for-each-axis">
+     Hierarchical clustering of traits for each axis
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variance-explained-by-each-axis">
+     Variance explained by each axis
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#format-and-save-result">
+     Format and save result
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-global-pca">
+   Plot global PCA
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## Add PC1 and PC2</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span> 
+<span class="n">dtn</span> <span class="o">=</span> <span class="m">10</span>
+<span class="nf">setDTthreads</span><span class="p">(</span><span class="n">threads</span> <span class="o">=</span> <span class="n">dtn</span><span class="p">)</span> <span class="c1">#defines how many threads data.table is allowed to use</span>
+
+<span class="n">gbif_summary</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_glonaf_wcvp_h3_res3_try6_summary_stats_all_CS_log10_notrim_na.csv&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 382</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>count_all</th><th scope=col>count_native</th><th scope=col>count_sp_all</th><th scope=col>count_sp_native</th><th scope=col>rec_woody</th><th scope=col>rec_nonwoody</th><th scope=col>perc_woody</th><th scope=col>perc_nonwoody</th><th scope=col>mean_perc_na_all</th><th scope=col>⋯</th><th scope=col>X.X47..mean_native</th><th scope=col>X.X47..median_all</th><th scope=col>X.X47..median_native</th><th scope=col>X.X47..percent_change_mean</th><th scope=col>X.X47..percent_change_median</th><th scope=col>X.X47..n_na_all</th><th scope=col>X.X47..perc_na_all</th><th scope=col>X.X47..n_na_native</th><th scope=col>X.X47..perc_na_native</th><th scope=col>resolution</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83831efffffffff</td><td>  150</td><td>   84</td><td>  73</td><td> 39</td><td>   99</td><td>  32</td><td>66.00</td><td>21.33</td><td>15.19</td><td>⋯</td><td>0.322</td><td>0.352</td><td>0.354</td><td> 0.00</td><td>-0.56</td><td>  37</td><td>24.67</td><td>  16</td><td>19.05</td><td>h3_res3</td></tr>
+	<tr><td>838218fffffffff</td><td>   38</td><td>   29</td><td>  28</td><td> 23</td><td>   23</td><td>  12</td><td>60.53</td><td>31.58</td><td>21.27</td><td>⋯</td><td>0.293</td><td>0.276</td><td>0.285</td><td>-6.83</td><td>-3.16</td><td>  10</td><td>26.32</td><td>  10</td><td>34.48</td><td>h3_res3</td></tr>
+	<tr><td>838233fffffffff</td><td>   30</td><td>   16</td><td>  21</td><td> 12</td><td>   25</td><td>   4</td><td>83.33</td><td>13.33</td><td>15.32</td><td>⋯</td><td>0.290</td><td>0.324</td><td>0.280</td><td> 3.79</td><td>15.71</td><td>   8</td><td>26.67</td><td>   7</td><td>43.75</td><td>h3_res3</td></tr>
+	<tr><td>838230fffffffff</td><td>   35</td><td>   20</td><td>  28</td><td> 15</td><td>   21</td><td>  11</td><td>60.00</td><td>31.43</td><td>18.53</td><td>⋯</td><td>0.308</td><td>0.305</td><td>0.315</td><td>-1.30</td><td>-3.17</td><td>  11</td><td>31.43</td><td>   8</td><td>40.00</td><td>h3_res3</td></tr>
+	<tr><td>83be4dfffffffff</td><td>30491</td><td>29890</td><td> 541</td><td>400</td><td>24063</td><td>4309</td><td>78.92</td><td>14.13</td><td>22.81</td><td>⋯</td><td>0.496</td><td>0.497</td><td>0.514</td><td>-1.21</td><td>-3.31</td><td>7924</td><td>25.99</td><td>7837</td><td>26.22</td><td>h3_res3</td></tr>
+	<tr><td>835f12fffffffff</td><td>10986</td><td> 9472</td><td>1087</td><td>945</td><td> 7082</td><td>3314</td><td>64.46</td><td>30.17</td><td>21.39</td><td>⋯</td><td>0.303</td><td>0.305</td><td>0.307</td><td>-0.33</td><td>-0.65</td><td>2374</td><td>21.61</td><td>2095</td><td>22.12</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>9902</li><li>382</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">gbif_summary</span><span class="o">$</span><span class="n">X.X47..mean_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+ 0.0700  0.2550  0.2810  0.2896  0.3140  0.6560     153 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># are there rows where gbif_summary$count_native == 0</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">[</span><span class="n">gbif_summary</span><span class="o">$</span><span class="n">count_native</span> <span class="o">==</span> <span class="m">0</span><span class="p">,</span> <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">150</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">nrow</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">[</span><span class="n">gbif_summary</span><span class="o">$</span><span class="n">count_native</span> <span class="o">&lt;</span> <span class="m">100</span><span class="p">,</span> <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">5319</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter out rows where count_native is less than 100</span>
+<span class="c1">#gbif_summary &lt;- gbif_summary[count_native &gt;= 100]</span>
+
+
+<span class="c1"># filter out rows where count_native is 0</span>
+<span class="n">gbif_summary</span> <span class="o">&lt;-</span> <span class="n">gbif_summary</span><span class="p">[</span><span class="n">count_native</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">]</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>9752</li><li>382</li></ol>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>9752</li><li>382</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 382</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>count_all</th><th scope=col>count_native</th><th scope=col>count_sp_all</th><th scope=col>count_sp_native</th><th scope=col>rec_woody</th><th scope=col>rec_nonwoody</th><th scope=col>perc_woody</th><th scope=col>perc_nonwoody</th><th scope=col>mean_perc_na_all</th><th scope=col>⋯</th><th scope=col>X.X47..mean_native</th><th scope=col>X.X47..median_all</th><th scope=col>X.X47..median_native</th><th scope=col>X.X47..percent_change_mean</th><th scope=col>X.X47..percent_change_median</th><th scope=col>X.X47..n_na_all</th><th scope=col>X.X47..perc_na_all</th><th scope=col>X.X47..n_na_native</th><th scope=col>X.X47..perc_na_native</th><th scope=col>resolution</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83831efffffffff</td><td>  150</td><td>   84</td><td>  73</td><td> 39</td><td>   99</td><td>  32</td><td>66.00</td><td>21.33</td><td>15.19</td><td>⋯</td><td>0.322</td><td>0.352</td><td>0.354</td><td> 0.00</td><td>-0.56</td><td>  37</td><td>24.67</td><td>  16</td><td>19.05</td><td>h3_res3</td></tr>
+	<tr><td>838218fffffffff</td><td>   38</td><td>   29</td><td>  28</td><td> 23</td><td>   23</td><td>  12</td><td>60.53</td><td>31.58</td><td>21.27</td><td>⋯</td><td>0.293</td><td>0.276</td><td>0.285</td><td>-6.83</td><td>-3.16</td><td>  10</td><td>26.32</td><td>  10</td><td>34.48</td><td>h3_res3</td></tr>
+	<tr><td>838233fffffffff</td><td>   30</td><td>   16</td><td>  21</td><td> 12</td><td>   25</td><td>   4</td><td>83.33</td><td>13.33</td><td>15.32</td><td>⋯</td><td>0.290</td><td>0.324</td><td>0.280</td><td> 3.79</td><td>15.71</td><td>   8</td><td>26.67</td><td>   7</td><td>43.75</td><td>h3_res3</td></tr>
+	<tr><td>838230fffffffff</td><td>   35</td><td>   20</td><td>  28</td><td> 15</td><td>   21</td><td>  11</td><td>60.00</td><td>31.43</td><td>18.53</td><td>⋯</td><td>0.308</td><td>0.305</td><td>0.315</td><td>-1.30</td><td>-3.17</td><td>  11</td><td>31.43</td><td>   8</td><td>40.00</td><td>h3_res3</td></tr>
+	<tr><td>83be4dfffffffff</td><td>30491</td><td>29890</td><td> 541</td><td>400</td><td>24063</td><td>4309</td><td>78.92</td><td>14.13</td><td>22.81</td><td>⋯</td><td>0.496</td><td>0.497</td><td>0.514</td><td>-1.21</td><td>-3.31</td><td>7924</td><td>25.99</td><td>7837</td><td>26.22</td><td>h3_res3</td></tr>
+	<tr><td>835f12fffffffff</td><td>10986</td><td> 9472</td><td>1087</td><td>945</td><td> 7082</td><td>3314</td><td>64.46</td><td>30.17</td><td>21.39</td><td>⋯</td><td>0.303</td><td>0.305</td><td>0.307</td><td>-0.33</td><td>-0.65</td><td>2374</td><td>21.61</td><td>2095</td><td>22.12</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select columns whose names end with &quot;_mean_all&quot; or &quot;_mean_native&quot;</span>
+<span class="n">trait_matrix</span> <span class="o">&lt;-</span> <span class="n">gbif_summary</span><span class="p">[,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;mean_(all|native)$&quot;</span><span class="p">,</span> <span class="nf">names</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)),</span> <span class="n">with</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">]</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 74</caption>
+<thead>
+	<tr><th scope=col>X.X3117..mean_all</th><th scope=col>X.X3117..mean_native</th><th scope=col>X.X14..mean_all</th><th scope=col>X.X14..mean_native</th><th scope=col>X.X50..mean_all</th><th scope=col>X.X50..mean_native</th><th scope=col>X.X146..mean_all</th><th scope=col>X.X146..mean_native</th><th scope=col>X.X3120..mean_all</th><th scope=col>X.X3120..mean_native</th><th scope=col>⋯</th><th scope=col>X.X138..mean_all</th><th scope=col>X.X138..mean_native</th><th scope=col>X.X1080..mean_all</th><th scope=col>X.X1080..mean_native</th><th scope=col>X.X78..mean_all</th><th scope=col>X.X78..mean_native</th><th scope=col>X.X4..mean_all</th><th scope=col>X.X4..mean_native</th><th scope=col>X.X47..mean_all</th><th scope=col>X.X47..mean_native</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>17.379</td><td>16.271</td><td>25.460</td><td>23.225</td><td>1.662</td><td>1.561</td><td>21.233</td><td>22.426</td><td>4.147</td><td>4.568</td><td>⋯</td><td>2.187</td><td>2.272</td><td>2.984</td><td>3.115</td><td> 1.390</td><td> 1.213</td><td>0.444</td><td>0.420</td><td>0.322</td><td>0.322</td></tr>
+	<tr><td>18.735</td><td>18.166</td><td>24.025</td><td>23.001</td><td>1.584</td><td>1.612</td><td>22.095</td><td>23.548</td><td>3.967</td><td>3.840</td><td>⋯</td><td>2.013</td><td>1.935</td><td>3.227</td><td>3.160</td><td> 1.426</td><td> 1.439</td><td>0.505</td><td>0.533</td><td>0.273</td><td>0.293</td></tr>
+	<tr><td>16.060</td><td>14.784</td><td>24.569</td><td>24.338</td><td>1.759</td><td>1.794</td><td>20.941</td><td>22.751</td><td>3.230</td><td>3.367</td><td>⋯</td><td>1.703</td><td>1.315</td><td>3.139</td><td>3.004</td><td> 2.137</td><td> 2.012</td><td>0.543</td><td>0.576</td><td>0.301</td><td>0.290</td></tr>
+	<tr><td>17.288</td><td>15.522</td><td>25.251</td><td>22.007</td><td>1.751</td><td>1.717</td><td>21.007</td><td>24.100</td><td>3.816</td><td>3.869</td><td>⋯</td><td>2.139</td><td>2.103</td><td>3.015</td><td>2.859</td><td> 1.600</td><td> 0.933</td><td>0.447</td><td>0.444</td><td>0.304</td><td>0.308</td></tr>
+	<tr><td> 7.119</td><td> 6.868</td><td>13.338</td><td>13.089</td><td>2.526</td><td>2.546</td><td>44.473</td><td>44.958</td><td>2.041</td><td>1.973</td><td>⋯</td><td>2.418</td><td>2.411</td><td>3.263</td><td>3.255</td><td>-0.430</td><td>-0.462</td><td>0.661</td><td>0.666</td><td>0.490</td><td>0.496</td></tr>
+	<tr><td>17.637</td><td>17.420</td><td>22.000</td><td>21.563</td><td>1.485</td><td>1.471</td><td>24.232</td><td>24.744</td><td>3.962</td><td>3.904</td><td>⋯</td><td>2.182</td><td>2.160</td><td>3.224</td><td>3.227</td><td> 1.438</td><td> 1.455</td><td>0.502</td><td>0.516</td><td>0.302</td><td>0.303</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">length</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">74</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>9752</li><li>74</li></ol>
+</div></div>
+</div>
+<section id="imputation-of-missing-data">
+<h1>Imputation of missing data<a class="headerlink" href="#imputation-of-missing-data" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">na_summary</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span>
+    <span class="n">column</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">),</span>
+    <span class="n">na_count</span> <span class="o">=</span> <span class="nf">colSums</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">)),</span>
+    <span class="n">na_percentage</span> <span class="o">=</span> <span class="nf">colMeans</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">))</span> <span class="o">*</span> <span class="m">100</span>
+<span class="p">)</span>
+
+<span class="n">na_summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 74 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>column</th><th scope=col>na_count</th><th scope=col>na_percentage</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>X.X3117..mean_all</th><td>X.X3117..mean_all   </td><td>128</td><td>1.3125513</td></tr>
+	<tr><th scope=row>X.X3117..mean_native</th><td>X.X3117..mean_native</td><td>152</td><td>1.5586546</td></tr>
+	<tr><th scope=row>X.X14..mean_all</th><td>X.X14..mean_all     </td><td>127</td><td>1.3022970</td></tr>
+	<tr><th scope=row>X.X14..mean_native</th><td>X.X14..mean_native  </td><td>155</td><td>1.5894176</td></tr>
+	<tr><th scope=row>X.X50..mean_all</th><td>X.X50..mean_all     </td><td>122</td><td>1.2510254</td></tr>
+	<tr><th scope=row>X.X50..mean_native</th><td>X.X50..mean_native  </td><td>158</td><td>1.6201805</td></tr>
+	<tr><th scope=row>X.X146..mean_all</th><td>X.X146..mean_all    </td><td>137</td><td>1.4048400</td></tr>
+	<tr><th scope=row>X.X146..mean_native</th><td>X.X146..mean_native </td><td>166</td><td>1.7022149</td></tr>
+	<tr><th scope=row>X.X3120..mean_all</th><td>X.X3120..mean_all   </td><td>159</td><td>1.6304348</td></tr>
+	<tr><th scope=row>X.X3120..mean_native</th><td>X.X3120..mean_native</td><td>189</td><td>1.9380640</td></tr>
+	<tr><th scope=row>X.X224..mean_all</th><td>X.X224..mean_all    </td><td>109</td><td>1.1177194</td></tr>
+	<tr><th scope=row>X.X224..mean_native</th><td>X.X224..mean_native </td><td>134</td><td>1.3740771</td></tr>
+	<tr><th scope=row>X.X297..mean_all</th><td>X.X297..mean_all    </td><td>124</td><td>1.2715340</td></tr>
+	<tr><th scope=row>X.X297..mean_native</th><td>X.X297..mean_native </td><td>159</td><td>1.6304348</td></tr>
+	<tr><th scope=row>X.X21..mean_all</th><td>X.X21..mean_all     </td><td>135</td><td>1.3843314</td></tr>
+	<tr><th scope=row>X.X21..mean_native</th><td>X.X21..mean_native  </td><td>178</td><td>1.8252666</td></tr>
+	<tr><th scope=row>X.X13..mean_all</th><td>X.X13..mean_all     </td><td>129</td><td>1.3228056</td></tr>
+	<tr><th scope=row>X.X13..mean_native</th><td>X.X13..mean_native  </td><td>164</td><td>1.6817063</td></tr>
+	<tr><th scope=row>X.X15..mean_all</th><td>X.X15..mean_all     </td><td>140</td><td>1.4356030</td></tr>
+	<tr><th scope=row>X.X15..mean_native</th><td>X.X15..mean_native  </td><td>167</td><td>1.7124692</td></tr>
+	<tr><th scope=row>X.X3114..mean_all</th><td>X.X3114..mean_all   </td><td> 96</td><td>0.9844135</td></tr>
+	<tr><th scope=row>X.X3114..mean_native</th><td>X.X3114..mean_native</td><td>123</td><td>1.2612797</td></tr>
+	<tr><th scope=row>X.X3113..mean_all</th><td>X.X3113..mean_all   </td><td>118</td><td>1.2100082</td></tr>
+	<tr><th scope=row>X.X3113..mean_native</th><td>X.X3113..mean_native</td><td>140</td><td>1.4356030</td></tr>
+	<tr><th scope=row>X.X3112..mean_all</th><td>X.X3112..mean_all   </td><td>120</td><td>1.2305168</td></tr>
+	<tr><th scope=row>X.X3112..mean_native</th><td>X.X3112..mean_native</td><td>149</td><td>1.5278917</td></tr>
+	<tr><th scope=row>X.X169..mean_all</th><td>X.X169..mean_all    </td><td>111</td><td>1.1382281</td></tr>
+	<tr><th scope=row>X.X169..mean_native</th><td>X.X169..mean_native </td><td>133</td><td>1.3638228</td></tr>
+	<tr><th scope=row>X.X3106..mean_all</th><td>X.X3106..mean_all   </td><td> 66</td><td>0.6767842</td></tr>
+	<tr><th scope=row>X.X3106..mean_native</th><td>X.X3106..mean_native</td><td> 91</td><td>0.9331419</td></tr>
+	<tr><th scope=row>⋮</th><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><th scope=row>X.X289..mean_all</th><td>X.X289..mean_all    </td><td>119</td><td>1.2202625</td></tr>
+	<tr><th scope=row>X.X289..mean_native</th><td>X.X289..mean_native </td><td>150</td><td>1.5381460</td></tr>
+	<tr><th scope=row>X.X163..mean_all</th><td>X.X163..mean_all    </td><td>124</td><td>1.2715340</td></tr>
+	<tr><th scope=row>X.X163..mean_native</th><td>X.X163..mean_native </td><td>155</td><td>1.5894176</td></tr>
+	<tr><th scope=row>X.X145..mean_all</th><td>X.X145..mean_all    </td><td>106</td><td>1.0869565</td></tr>
+	<tr><th scope=row>X.X145..mean_native</th><td>X.X145..mean_native </td><td>130</td><td>1.3330599</td></tr>
+	<tr><th scope=row>X.X3107..mean_all</th><td>X.X3107..mean_all   </td><td> 88</td><td>0.9023790</td></tr>
+	<tr><th scope=row>X.X3107..mean_native</th><td>X.X3107..mean_native</td><td>104</td><td>1.0664479</td></tr>
+	<tr><th scope=row>X.X223..mean_all</th><td>X.X223..mean_all    </td><td> 96</td><td>0.9844135</td></tr>
+	<tr><th scope=row>X.X223..mean_native</th><td>X.X223..mean_native </td><td>116</td><td>1.1894996</td></tr>
+	<tr><th scope=row>X.X237..mean_all</th><td>X.X237..mean_all    </td><td> 78</td><td>0.7998359</td></tr>
+	<tr><th scope=row>X.X237..mean_native</th><td>X.X237..mean_native </td><td> 97</td><td>0.9946678</td></tr>
+	<tr><th scope=row>X.X614..mean_all</th><td>X.X614..mean_all    </td><td>112</td><td>1.1484824</td></tr>
+	<tr><th scope=row>X.X614..mean_native</th><td>X.X614..mean_native </td><td>144</td><td>1.4766202</td></tr>
+	<tr><th scope=row>X.X351..mean_all</th><td>X.X351..mean_all    </td><td>134</td><td>1.3740771</td></tr>
+	<tr><th scope=row>X.X351..mean_native</th><td>X.X351..mean_native </td><td>169</td><td>1.7329779</td></tr>
+	<tr><th scope=row>X.X6..mean_all</th><td>X.X6..mean_all      </td><td>124</td><td>1.2715340</td></tr>
+	<tr><th scope=row>X.X6..mean_native</th><td>X.X6..mean_native   </td><td>153</td><td>1.5689089</td></tr>
+	<tr><th scope=row>X.X95..mean_all</th><td>X.X95..mean_all     </td><td> 97</td><td>0.9946678</td></tr>
+	<tr><th scope=row>X.X95..mean_native</th><td>X.X95..mean_native  </td><td>122</td><td>1.2510254</td></tr>
+	<tr><th scope=row>X.X138..mean_all</th><td>X.X138..mean_all    </td><td>117</td><td>1.1997539</td></tr>
+	<tr><th scope=row>X.X138..mean_native</th><td>X.X138..mean_native </td><td>151</td><td>1.5484003</td></tr>
+	<tr><th scope=row>X.X1080..mean_all</th><td>X.X1080..mean_all   </td><td> 99</td><td>1.0151764</td></tr>
+	<tr><th scope=row>X.X1080..mean_native</th><td>X.X1080..mean_native</td><td>128</td><td>1.3125513</td></tr>
+	<tr><th scope=row>X.X78..mean_all</th><td>X.X78..mean_all     </td><td>122</td><td>1.2510254</td></tr>
+	<tr><th scope=row>X.X78..mean_native</th><td>X.X78..mean_native  </td><td>152</td><td>1.5586546</td></tr>
+	<tr><th scope=row>X.X4..mean_all</th><td>X.X4..mean_all      </td><td>100</td><td>1.0254307</td></tr>
+	<tr><th scope=row>X.X4..mean_native</th><td>X.X4..mean_native   </td><td>130</td><td>1.3330599</td></tr>
+	<tr><th scope=row>X.X47..mean_all</th><td>X.X47..mean_all     </td><td>138</td><td>1.4150943</td></tr>
+	<tr><th scope=row>X.X47..mean_native</th><td>X.X47..mean_native  </td><td>163</td><td>1.6714520</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot historgramm na_percentage</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">na_summary</span><span class="o">$</span><span class="n">na_percentage</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Distribution of NA Percentages&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;NA Percentage&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Frequency&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/04.1_PCA_global_13_0.png" src="_images/04.1_PCA_global_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate total missingness</span>
+<span class="n">total_missingness</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">))</span> <span class="o">/</span> <span class="nf">prod</span><span class="p">(</span><span class="nf">dim</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">total_missingness</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 0.01290518
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get info on degreee of missingness: Missingness is quite low. Impute missing trait means using missForest package</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">missForest</span><span class="p">)</span>
+
+<span class="c1"># Select the 37 native-only trait columns</span>
+<span class="n">native_cols</span> <span class="o">&lt;-</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;\\.mean_native$&quot;</span><span class="p">,</span> <span class="nf">names</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">),</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Select the 37 native + introduced trait columns</span>
+<span class="n">all_cols</span> <span class="o">&lt;-</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;\\.mean_all$&quot;</span><span class="p">,</span> <span class="nf">names</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">),</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+
+
+<span class="c1"># -------------------------</span>
+<span class="c1"># Native-only</span>
+<span class="c1"># -------------------------</span>
+
+<span class="n">native_traits</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">[,</span> <span class="n">..native_cols</span><span class="p">])</span>
+
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+
+<span class="n">native_imp</span> <span class="o">&lt;-</span> <span class="nf">missForest</span><span class="p">(</span>
+  <span class="n">native_traits</span><span class="p">,</span>
+  <span class="n">maxiter</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+  <span class="n">ntree</span> <span class="o">=</span> <span class="m">100</span>
+<span class="p">)</span>
+
+<span class="n">trait_matrix</span><span class="p">[,</span> <span class="p">(</span><span class="n">native_cols</span><span class="p">)</span> <span class="o">:=</span> <span class="n">native_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">]</span>
+
+
+<span class="c1"># -------------------------</span>
+<span class="c1"># Native + introduced</span>
+<span class="c1"># -------------------------</span>
+
+<span class="n">all_traits</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">trait_matrix</span><span class="p">[,</span> <span class="n">..all_cols</span><span class="p">])</span>
+
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+
+<span class="n">all_imp</span> <span class="o">&lt;-</span> <span class="nf">missForest</span><span class="p">(</span>
+  <span class="n">all_traits</span><span class="p">,</span>
+  <span class="n">maxiter</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+  <span class="n">ntree</span> <span class="o">=</span> <span class="m">100</span>
+<span class="p">)</span>
+
+<span class="n">trait_matrix</span><span class="p">[,</span> <span class="p">(</span><span class="n">all_cols</span><span class="p">)</span> <span class="o">:=</span> <span class="n">all_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">all_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 37</caption>
+<thead>
+	<tr><th></th><th scope=col>X.X3117..mean_all</th><th scope=col>X.X14..mean_all</th><th scope=col>X.X50..mean_all</th><th scope=col>X.X146..mean_all</th><th scope=col>X.X3120..mean_all</th><th scope=col>X.X224..mean_all</th><th scope=col>X.X297..mean_all</th><th scope=col>X.X21..mean_all</th><th scope=col>X.X13..mean_all</th><th scope=col>X.X15..mean_all</th><th scope=col>⋯</th><th scope=col>X.X237..mean_all</th><th scope=col>X.X614..mean_all</th><th scope=col>X.X351..mean_all</th><th scope=col>X.X6..mean_all</th><th scope=col>X.X95..mean_all</th><th scope=col>X.X138..mean_all</th><th scope=col>X.X1080..mean_all</th><th scope=col>X.X78..mean_all</th><th scope=col>X.X4..mean_all</th><th scope=col>X.X47..mean_all</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>17.379</td><td>25.460</td><td>1.662</td><td>21.233</td><td>4.147</td><td>0.411</td><td>0.865</td><td>-1.082</td><td>448.865</td><td>1.835</td><td>⋯</td><td>0.792</td><td>3.229</td><td>0.096</td><td>-0.056</td><td>85.078</td><td>2.187</td><td>2.984</td><td> 1.390</td><td>0.444</td><td>0.322</td></tr>
+	<tr><th scope=row>2</th><td>18.735</td><td>24.025</td><td>1.584</td><td>22.095</td><td>3.967</td><td>0.384</td><td>0.998</td><td>-1.320</td><td>443.451</td><td>1.666</td><td>⋯</td><td>0.746</td><td>3.370</td><td>0.060</td><td> 0.166</td><td>87.139</td><td>2.013</td><td>3.227</td><td> 1.426</td><td>0.505</td><td>0.273</td></tr>
+	<tr><th scope=row>3</th><td>16.060</td><td>24.569</td><td>1.759</td><td>20.941</td><td>3.230</td><td>0.444</td><td>1.058</td><td>-1.143</td><td>449.407</td><td>1.804</td><td>⋯</td><td>0.854</td><td>3.342</td><td>0.078</td><td> 0.155</td><td>89.118</td><td>1.703</td><td>3.139</td><td> 2.137</td><td>0.543</td><td>0.301</td></tr>
+	<tr><th scope=row>4</th><td>17.288</td><td>25.251</td><td>1.751</td><td>21.007</td><td>3.816</td><td>0.470</td><td>0.876</td><td>-1.030</td><td>448.350</td><td>2.006</td><td>⋯</td><td>0.834</td><td>3.237</td><td>0.065</td><td> 0.069</td><td>88.969</td><td>2.139</td><td>3.015</td><td> 1.600</td><td>0.447</td><td>0.304</td></tr>
+	<tr><th scope=row>5</th><td> 7.119</td><td>13.338</td><td>2.526</td><td>44.473</td><td>2.041</td><td>0.342</td><td>1.078</td><td>-1.288</td><td>480.149</td><td>0.734</td><td>⋯</td><td>0.536</td><td>3.283</td><td>0.032</td><td> 0.137</td><td>87.296</td><td>2.418</td><td>3.263</td><td>-0.430</td><td>0.661</td><td>0.490</td></tr>
+	<tr><th scope=row>6</th><td>17.637</td><td>22.000</td><td>1.485</td><td>24.232</td><td>3.962</td><td>0.412</td><td>0.974</td><td>-1.303</td><td>455.843</td><td>1.391</td><td>⋯</td><td>0.703</td><td>3.384</td><td>0.029</td><td>-0.062</td><td>86.777</td><td>2.182</td><td>3.224</td><td> 1.438</td><td>0.502</td><td>0.302</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">native_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 37</caption>
+<thead>
+	<tr><th></th><th scope=col>X.X3117..mean_native</th><th scope=col>X.X14..mean_native</th><th scope=col>X.X50..mean_native</th><th scope=col>X.X146..mean_native</th><th scope=col>X.X3120..mean_native</th><th scope=col>X.X224..mean_native</th><th scope=col>X.X297..mean_native</th><th scope=col>X.X21..mean_native</th><th scope=col>X.X13..mean_native</th><th scope=col>X.X15..mean_native</th><th scope=col>⋯</th><th scope=col>X.X237..mean_native</th><th scope=col>X.X614..mean_native</th><th scope=col>X.X351..mean_native</th><th scope=col>X.X6..mean_native</th><th scope=col>X.X95..mean_native</th><th scope=col>X.X138..mean_native</th><th scope=col>X.X1080..mean_native</th><th scope=col>X.X78..mean_native</th><th scope=col>X.X4..mean_native</th><th scope=col>X.X47..mean_native</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>16.271</td><td>23.225</td><td>1.561</td><td>22.426</td><td>4.568</td><td>0.519</td><td>0.792</td><td>-1.084</td><td>443.273</td><td>1.972</td><td>⋯</td><td>0.717</td><td>3.231</td><td>0.107</td><td>-0.135</td><td>85.966</td><td>2.272</td><td>3.115</td><td> 1.213</td><td>0.420</td><td>0.322</td></tr>
+	<tr><th scope=row>2</th><td>18.166</td><td>23.001</td><td>1.612</td><td>23.548</td><td>3.840</td><td>0.348</td><td>0.976</td><td>-1.080</td><td>446.626</td><td>1.583</td><td>⋯</td><td>0.807</td><td>3.320</td><td>0.064</td><td> 0.225</td><td>85.014</td><td>1.935</td><td>3.160</td><td> 1.439</td><td>0.533</td><td>0.293</td></tr>
+	<tr><th scope=row>3</th><td>14.784</td><td>24.338</td><td>1.794</td><td>22.751</td><td>3.367</td><td>0.393</td><td>1.072</td><td>-0.874</td><td>458.957</td><td>1.254</td><td>⋯</td><td>1.054</td><td>3.322</td><td>0.051</td><td> 0.267</td><td>85.728</td><td>1.315</td><td>3.004</td><td> 2.012</td><td>0.576</td><td>0.290</td></tr>
+	<tr><th scope=row>4</th><td>15.522</td><td>22.007</td><td>1.717</td><td>24.100</td><td>3.869</td><td>0.455</td><td>0.801</td><td>-0.835</td><td>446.835</td><td>1.988</td><td>⋯</td><td>0.870</td><td>3.126</td><td>0.097</td><td> 0.162</td><td>87.713</td><td>2.103</td><td>2.859</td><td> 0.933</td><td>0.444</td><td>0.308</td></tr>
+	<tr><th scope=row>5</th><td> 6.868</td><td>13.089</td><td>2.546</td><td>44.958</td><td>1.973</td><td>0.337</td><td>1.081</td><td>-1.276</td><td>481.029</td><td>0.710</td><td>⋯</td><td>0.538</td><td>3.274</td><td>0.032</td><td> 0.152</td><td>87.231</td><td>2.411</td><td>3.255</td><td>-0.462</td><td>0.666</td><td>0.496</td></tr>
+	<tr><th scope=row>6</th><td>17.420</td><td>21.563</td><td>1.471</td><td>24.744</td><td>3.904</td><td>0.401</td><td>0.972</td><td>-1.298</td><td>456.788</td><td>1.336</td><td>⋯</td><td>0.706</td><td>3.378</td><td>0.030</td><td>-0.049</td><td>86.423</td><td>2.160</td><td>3.227</td><td> 1.455</td><td>0.516</td><td>0.303</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove &quot;..mean_all&quot; from column names</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">all_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot;\\..mean_all$&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nf">names</span><span class="p">(</span><span class="n">all_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">))</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">native_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot;\\..mean_native$&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nf">names</span><span class="p">(</span><span class="n">native_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 382</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>count_all</th><th scope=col>count_native</th><th scope=col>count_sp_all</th><th scope=col>count_sp_native</th><th scope=col>rec_woody</th><th scope=col>rec_nonwoody</th><th scope=col>perc_woody</th><th scope=col>perc_nonwoody</th><th scope=col>mean_perc_na_all</th><th scope=col>⋯</th><th scope=col>X.X47..mean_native</th><th scope=col>X.X47..median_all</th><th scope=col>X.X47..median_native</th><th scope=col>X.X47..percent_change_mean</th><th scope=col>X.X47..percent_change_median</th><th scope=col>X.X47..n_na_all</th><th scope=col>X.X47..perc_na_all</th><th scope=col>X.X47..n_na_native</th><th scope=col>X.X47..perc_na_native</th><th scope=col>resolution</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83831efffffffff</td><td>  150</td><td>   84</td><td>  73</td><td> 39</td><td>   99</td><td>  32</td><td>66.00</td><td>21.33</td><td>15.19</td><td>⋯</td><td>0.322</td><td>0.352</td><td>0.354</td><td> 0.00</td><td>-0.56</td><td>  37</td><td>24.67</td><td>  16</td><td>19.05</td><td>h3_res3</td></tr>
+	<tr><td>838218fffffffff</td><td>   38</td><td>   29</td><td>  28</td><td> 23</td><td>   23</td><td>  12</td><td>60.53</td><td>31.58</td><td>21.27</td><td>⋯</td><td>0.293</td><td>0.276</td><td>0.285</td><td>-6.83</td><td>-3.16</td><td>  10</td><td>26.32</td><td>  10</td><td>34.48</td><td>h3_res3</td></tr>
+	<tr><td>838233fffffffff</td><td>   30</td><td>   16</td><td>  21</td><td> 12</td><td>   25</td><td>   4</td><td>83.33</td><td>13.33</td><td>15.32</td><td>⋯</td><td>0.290</td><td>0.324</td><td>0.280</td><td> 3.79</td><td>15.71</td><td>   8</td><td>26.67</td><td>   7</td><td>43.75</td><td>h3_res3</td></tr>
+	<tr><td>838230fffffffff</td><td>   35</td><td>   20</td><td>  28</td><td> 15</td><td>   21</td><td>  11</td><td>60.00</td><td>31.43</td><td>18.53</td><td>⋯</td><td>0.308</td><td>0.305</td><td>0.315</td><td>-1.30</td><td>-3.17</td><td>  11</td><td>31.43</td><td>   8</td><td>40.00</td><td>h3_res3</td></tr>
+	<tr><td>83be4dfffffffff</td><td>30491</td><td>29890</td><td> 541</td><td>400</td><td>24063</td><td>4309</td><td>78.92</td><td>14.13</td><td>22.81</td><td>⋯</td><td>0.496</td><td>0.497</td><td>0.514</td><td>-1.21</td><td>-3.31</td><td>7924</td><td>25.99</td><td>7837</td><td>26.22</td><td>h3_res3</td></tr>
+	<tr><td>835f12fffffffff</td><td>10986</td><td> 9472</td><td>1087</td><td>945</td><td> 7082</td><td>3314</td><td>64.46</td><td>30.17</td><td>21.39</td><td>⋯</td><td>0.303</td><td>0.305</td><td>0.307</td><td>-0.33</td><td>-0.65</td><td>2374</td><td>21.61</td><td>2095</td><td>22.12</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">all_imp_df</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">[,</span> <span class="nf">.</span><span class="p">(</span><span class="n">h3_res3</span><span class="p">,</span> <span class="n">count_all</span><span class="p">,</span> <span class="n">count_native</span><span class="p">,</span> <span class="n">count_sp_all</span><span class="p">,</span> <span class="n">count_sp_native</span><span class="p">,</span> <span class="n">mean_perc_na_all</span><span class="p">)],</span> <span class="n">all_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">)</span>
+<span class="n">native_imp_df</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">[,</span> <span class="nf">.</span><span class="p">(</span><span class="n">h3_res3</span><span class="p">,</span> <span class="n">count_all</span><span class="p">,</span> <span class="n">count_native</span><span class="p">,</span> <span class="n">count_sp_all</span><span class="p">,</span> <span class="n">count_sp_native</span><span class="p">,</span><span class="n">mean_perc_na_native</span><span class="p">)],</span> <span class="n">native_imp</span><span class="o">$</span><span class="n">ximp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">all_imp_df</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">native_imp_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 43</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>count_all</th><th scope=col>count_native</th><th scope=col>count_sp_all</th><th scope=col>count_sp_native</th><th scope=col>mean_perc_na_all</th><th scope=col>X.X3117</th><th scope=col>X.X14</th><th scope=col>X.X50</th><th scope=col>X.X146</th><th scope=col>⋯</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>X.X47</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83831efffffffff</td><td>  150</td><td>   84</td><td>  73</td><td> 39</td><td>15.19</td><td>17.379</td><td>25.460</td><td>1.662</td><td>21.233</td><td>⋯</td><td>0.792</td><td>3.229</td><td>0.096</td><td>-0.056</td><td>85.078</td><td>2.187</td><td>2.984</td><td> 1.390</td><td>0.444</td><td>0.322</td></tr>
+	<tr><td>838218fffffffff</td><td>   38</td><td>   29</td><td>  28</td><td> 23</td><td>21.27</td><td>18.735</td><td>24.025</td><td>1.584</td><td>22.095</td><td>⋯</td><td>0.746</td><td>3.370</td><td>0.060</td><td> 0.166</td><td>87.139</td><td>2.013</td><td>3.227</td><td> 1.426</td><td>0.505</td><td>0.273</td></tr>
+	<tr><td>838233fffffffff</td><td>   30</td><td>   16</td><td>  21</td><td> 12</td><td>15.32</td><td>16.060</td><td>24.569</td><td>1.759</td><td>20.941</td><td>⋯</td><td>0.854</td><td>3.342</td><td>0.078</td><td> 0.155</td><td>89.118</td><td>1.703</td><td>3.139</td><td> 2.137</td><td>0.543</td><td>0.301</td></tr>
+	<tr><td>838230fffffffff</td><td>   35</td><td>   20</td><td>  28</td><td> 15</td><td>18.53</td><td>17.288</td><td>25.251</td><td>1.751</td><td>21.007</td><td>⋯</td><td>0.834</td><td>3.237</td><td>0.065</td><td> 0.069</td><td>88.969</td><td>2.139</td><td>3.015</td><td> 1.600</td><td>0.447</td><td>0.304</td></tr>
+	<tr><td>83be4dfffffffff</td><td>30491</td><td>29890</td><td> 541</td><td>400</td><td>22.81</td><td> 7.119</td><td>13.338</td><td>2.526</td><td>44.473</td><td>⋯</td><td>0.536</td><td>3.283</td><td>0.032</td><td> 0.137</td><td>87.296</td><td>2.418</td><td>3.263</td><td>-0.430</td><td>0.661</td><td>0.490</td></tr>
+	<tr><td>835f12fffffffff</td><td>10986</td><td> 9472</td><td>1087</td><td>945</td><td>21.39</td><td>17.637</td><td>22.000</td><td>1.485</td><td>24.232</td><td>⋯</td><td>0.703</td><td>3.384</td><td>0.029</td><td>-0.062</td><td>86.777</td><td>2.182</td><td>3.224</td><td> 1.438</td><td>0.502</td><td>0.302</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 43</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>count_all</th><th scope=col>count_native</th><th scope=col>count_sp_all</th><th scope=col>count_sp_native</th><th scope=col>mean_perc_na_native</th><th scope=col>X.X3117</th><th scope=col>X.X14</th><th scope=col>X.X50</th><th scope=col>X.X146</th><th scope=col>⋯</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>X.X47</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83831efffffffff</td><td>  150</td><td>   84</td><td>  73</td><td> 39</td><td>14.12</td><td>16.271</td><td>23.225</td><td>1.561</td><td>22.426</td><td>⋯</td><td>0.717</td><td>3.231</td><td>0.107</td><td>-0.135</td><td>85.966</td><td>2.272</td><td>3.115</td><td> 1.213</td><td>0.420</td><td>0.322</td></tr>
+	<tr><td>838218fffffffff</td><td>   38</td><td>   29</td><td>  28</td><td> 23</td><td>23.58</td><td>18.166</td><td>23.001</td><td>1.612</td><td>23.548</td><td>⋯</td><td>0.807</td><td>3.320</td><td>0.064</td><td> 0.225</td><td>85.014</td><td>1.935</td><td>3.160</td><td> 1.439</td><td>0.533</td><td>0.293</td></tr>
+	<tr><td>838233fffffffff</td><td>   30</td><td>   16</td><td>  21</td><td> 12</td><td>23.82</td><td>14.784</td><td>24.338</td><td>1.794</td><td>22.751</td><td>⋯</td><td>1.054</td><td>3.322</td><td>0.051</td><td> 0.267</td><td>85.728</td><td>1.315</td><td>3.004</td><td> 2.012</td><td>0.576</td><td>0.290</td></tr>
+	<tr><td>838230fffffffff</td><td>   35</td><td>   20</td><td>  28</td><td> 15</td><td>20.14</td><td>15.522</td><td>22.007</td><td>1.717</td><td>24.100</td><td>⋯</td><td>0.870</td><td>3.126</td><td>0.097</td><td> 0.162</td><td>87.713</td><td>2.103</td><td>2.859</td><td> 0.933</td><td>0.444</td><td>0.308</td></tr>
+	<tr><td>83be4dfffffffff</td><td>30491</td><td>29890</td><td> 541</td><td>400</td><td>23.01</td><td> 6.868</td><td>13.089</td><td>2.546</td><td>44.958</td><td>⋯</td><td>0.538</td><td>3.274</td><td>0.032</td><td> 0.152</td><td>87.231</td><td>2.411</td><td>3.255</td><td>-0.462</td><td>0.666</td><td>0.496</td></tr>
+	<tr><td>835f12fffffffff</td><td>10986</td><td> 9472</td><td>1087</td><td>945</td><td>22.04</td><td>17.420</td><td>21.563</td><td>1.471</td><td>24.744</td><td>⋯</td><td>0.706</td><td>3.378</td><td>0.030</td><td>-0.049</td><td>86.423</td><td>2.160</td><td>3.227</td><td> 1.455</td><td>0.516</td><td>0.303</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the imputed data frames to CSV files</span>
+<span class="nf">fwrite</span><span class="p">(</span><span class="n">all_imp_df</span><span class="p">,</span> <span class="s">&quot;/net/scratch/swolf/GBIF/gbif_glonaf_wcvp_h3_res3_try6_summary_stats_CS_log10_notrim_imputed_all.csv&quot;</span><span class="p">)</span>
+<span class="nf">fwrite</span><span class="p">(</span><span class="n">native_imp_df</span><span class="p">,</span> <span class="s">&quot;/net/scratch/swolf/GBIF/gbif_glonaf_wcvp_h3_res3_try6_summary_stats_CS_log10_notrim_imputed_native.csv&quot;</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prepare-data-frmae">
+<h1>Prepare data frmae<a class="headerlink" href="#prepare-data-frmae" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span> 
+<span class="n">dtn</span> <span class="o">=</span> <span class="m">10</span>
+<span class="nf">setDTthreads</span><span class="p">(</span><span class="n">threads</span> <span class="o">=</span> <span class="n">dtn</span><span class="p">)</span> <span class="c1">#defines how many threads data.table is allowed to use</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read </span>
+<span class="n">all_imp_df</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_glonaf_wcvp_h3_res3_try6_summary_stats_CS_log10_notrim_imputed_all.csv&quot;</span><span class="p">)</span>
+<span class="n">native_imp_df</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_glonaf_wcvp_h3_res3_try6_summary_stats_CS_log10_notrim_imputed_native.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">all_imp_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 43</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>count_all</th><th scope=col>count_native</th><th scope=col>count_sp_all</th><th scope=col>count_sp_native</th><th scope=col>mean_perc_na_all</th><th scope=col>X.X3117</th><th scope=col>X.X14</th><th scope=col>X.X50</th><th scope=col>X.X146</th><th scope=col>⋯</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>X.X47</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83831efffffffff</td><td>  150</td><td>   84</td><td>  73</td><td> 39</td><td>15.19</td><td>17.379</td><td>25.460</td><td>1.662</td><td>21.233</td><td>⋯</td><td>0.792</td><td>3.229</td><td>0.096</td><td>-0.056</td><td>85.078</td><td>2.187</td><td>2.984</td><td> 1.390</td><td>0.444</td><td>0.322</td></tr>
+	<tr><td>838218fffffffff</td><td>   38</td><td>   29</td><td>  28</td><td> 23</td><td>21.27</td><td>18.735</td><td>24.025</td><td>1.584</td><td>22.095</td><td>⋯</td><td>0.746</td><td>3.370</td><td>0.060</td><td> 0.166</td><td>87.139</td><td>2.013</td><td>3.227</td><td> 1.426</td><td>0.505</td><td>0.273</td></tr>
+	<tr><td>838233fffffffff</td><td>   30</td><td>   16</td><td>  21</td><td> 12</td><td>15.32</td><td>16.060</td><td>24.569</td><td>1.759</td><td>20.941</td><td>⋯</td><td>0.854</td><td>3.342</td><td>0.078</td><td> 0.155</td><td>89.118</td><td>1.703</td><td>3.139</td><td> 2.137</td><td>0.543</td><td>0.301</td></tr>
+	<tr><td>838230fffffffff</td><td>   35</td><td>   20</td><td>  28</td><td> 15</td><td>18.53</td><td>17.288</td><td>25.251</td><td>1.751</td><td>21.007</td><td>⋯</td><td>0.834</td><td>3.237</td><td>0.065</td><td> 0.069</td><td>88.969</td><td>2.139</td><td>3.015</td><td> 1.600</td><td>0.447</td><td>0.304</td></tr>
+	<tr><td>83be4dfffffffff</td><td>30491</td><td>29890</td><td> 541</td><td>400</td><td>22.81</td><td> 7.119</td><td>13.338</td><td>2.526</td><td>44.473</td><td>⋯</td><td>0.536</td><td>3.283</td><td>0.032</td><td> 0.137</td><td>87.296</td><td>2.418</td><td>3.263</td><td>-0.430</td><td>0.661</td><td>0.490</td></tr>
+	<tr><td>835f12fffffffff</td><td>10986</td><td> 9472</td><td>1087</td><td>945</td><td>21.39</td><td>17.637</td><td>22.000</td><td>1.485</td><td>24.232</td><td>⋯</td><td>0.703</td><td>3.384</td><td>0.029</td><td>-0.062</td><td>86.777</td><td>2.182</td><td>3.224</td><td> 1.438</td><td>0.502</td><td>0.302</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove columns count_all, count_native, count_sp_all, count_sp_native from both data frames</span>
+<span class="n">all_imp_df</span><span class="p">[,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;count_native&quot;</span><span class="p">,</span> <span class="s">&quot;count_sp_native&quot;</span><span class="p">)</span> <span class="o">:=</span> <span class="kc">NULL</span><span class="p">]</span>
+<span class="n">native_imp_df</span><span class="p">[,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;count_all&quot;</span><span class="p">,</span> <span class="s">&quot;count_sp_all&quot;</span><span class="p">)</span> <span class="o">:=</span> <span class="kc">NULL</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># rename count_native to count and count_sp_native to count_sp in native_imp_df</span>
+<span class="nf">setnames</span><span class="p">(</span><span class="n">native_imp_df</span><span class="p">,</span> <span class="n">old</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;count_native&quot;</span><span class="p">,</span> <span class="s">&quot;count_sp_native&quot;</span><span class="p">,</span> <span class="s">&quot;mean_perc_na_native&quot;</span><span class="p">),</span> <span class="n">new</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;count&quot;</span><span class="p">,</span> <span class="s">&quot;count_sp&quot;</span><span class="p">,</span> <span class="s">&quot;mean_perc_na&quot;</span><span class="p">))</span>
+
+<span class="nf">setnames</span><span class="p">(</span><span class="n">all_imp_df</span><span class="p">,</span> <span class="n">old</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;count_all&quot;</span><span class="p">,</span> <span class="s">&quot;count_sp_all&quot;</span><span class="p">,</span><span class="s">&quot;mean_perc_na_all&quot;</span><span class="p">),</span> <span class="n">new</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;count&quot;</span><span class="p">,</span> <span class="s">&quot;count_sp&quot;</span><span class="p">,</span> <span class="s">&quot;mean_perc_na&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># add column &quot;group&quot; to both data frames</span>
+<span class="n">all_imp_df</span><span class="p">[,</span> <span class="n">group</span> <span class="o">:=</span> <span class="s">&quot;all&quot;</span><span class="p">]</span>
+<span class="n">native_imp_df</span><span class="p">[,</span> <span class="n">group</span> <span class="o">:=</span> <span class="s">&quot;native&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">native_imp_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 42</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>mean_perc_na</th><th scope=col>X.X3117</th><th scope=col>X.X14</th><th scope=col>X.X50</th><th scope=col>X.X146</th><th scope=col>X.X3120</th><th scope=col>X.X224</th><th scope=col>⋯</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>X.X47</th><th scope=col>group</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83831efffffffff</td><td>   84</td><td> 39</td><td>14.12</td><td>16.271</td><td>23.225</td><td>1.561</td><td>22.426</td><td>4.568</td><td>0.519</td><td>⋯</td><td>3.231</td><td>0.107</td><td>-0.135</td><td>85.966</td><td>2.272</td><td>3.115</td><td> 1.213</td><td>0.420</td><td>0.322</td><td>native</td></tr>
+	<tr><td>838218fffffffff</td><td>   29</td><td> 23</td><td>23.58</td><td>18.166</td><td>23.001</td><td>1.612</td><td>23.548</td><td>3.840</td><td>0.348</td><td>⋯</td><td>3.320</td><td>0.064</td><td> 0.225</td><td>85.014</td><td>1.935</td><td>3.160</td><td> 1.439</td><td>0.533</td><td>0.293</td><td>native</td></tr>
+	<tr><td>838233fffffffff</td><td>   16</td><td> 12</td><td>23.82</td><td>14.784</td><td>24.338</td><td>1.794</td><td>22.751</td><td>3.367</td><td>0.393</td><td>⋯</td><td>3.322</td><td>0.051</td><td> 0.267</td><td>85.728</td><td>1.315</td><td>3.004</td><td> 2.012</td><td>0.576</td><td>0.290</td><td>native</td></tr>
+	<tr><td>838230fffffffff</td><td>   20</td><td> 15</td><td>20.14</td><td>15.522</td><td>22.007</td><td>1.717</td><td>24.100</td><td>3.869</td><td>0.455</td><td>⋯</td><td>3.126</td><td>0.097</td><td> 0.162</td><td>87.713</td><td>2.103</td><td>2.859</td><td> 0.933</td><td>0.444</td><td>0.308</td><td>native</td></tr>
+	<tr><td>83be4dfffffffff</td><td>29890</td><td>400</td><td>23.01</td><td> 6.868</td><td>13.089</td><td>2.546</td><td>44.958</td><td>1.973</td><td>0.337</td><td>⋯</td><td>3.274</td><td>0.032</td><td> 0.152</td><td>87.231</td><td>2.411</td><td>3.255</td><td>-0.462</td><td>0.666</td><td>0.496</td><td>native</td></tr>
+	<tr><td>835f12fffffffff</td><td> 9472</td><td>945</td><td>22.04</td><td>17.420</td><td>21.563</td><td>1.471</td><td>24.744</td><td>3.904</td><td>0.401</td><td>⋯</td><td>3.378</td><td>0.030</td><td>-0.049</td><td>86.423</td><td>2.160</td><td>3.227</td><td> 1.455</td><td>0.516</td><td>0.303</td><td>native</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#ROWBIND    </span>
+<span class="n">summary_df</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">all_imp_df</span><span class="p">,</span> <span class="n">native_imp_df</span><span class="p">)</span>
+<span class="c1"># sort summary_df by h3_res3</span>
+<span class="n">summary_df</span> <span class="o">&lt;-</span> <span class="n">summary_df</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">h3_res3</span><span class="p">)]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">summary_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 42</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>mean_perc_na</th><th scope=col>X.X3117</th><th scope=col>X.X14</th><th scope=col>X.X50</th><th scope=col>X.X146</th><th scope=col>X.X3120</th><th scope=col>X.X224</th><th scope=col>⋯</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>X.X47</th><th scope=col>group</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83001afffffffff</td><td>10</td><td>4</td><td> 5.68</td><td>21.336</td><td>22.08000</td><td>1.108</td><td>21.36900</td><td>9.488</td><td>0.401</td><td>⋯</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td><td>all   </td></tr>
+	<tr><td>83001afffffffff</td><td>10</td><td>4</td><td> 5.68</td><td>21.336</td><td>22.08000</td><td>1.108</td><td>21.36900</td><td>9.488</td><td>0.401</td><td>⋯</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td><td>native</td></tr>
+	<tr><td>83001cfffffffff</td><td> 1</td><td>1</td><td>16.22</td><td>15.259</td><td>19.08552</td><td>1.235</td><td>27.46942</td><td>8.495</td><td>0.447</td><td>⋯</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3166111</td><td>0.175</td><td>all   </td></tr>
+	<tr><td>83001cfffffffff</td><td> 1</td><td>1</td><td>16.22</td><td>15.259</td><td>18.59292</td><td>1.235</td><td>27.31443</td><td>8.495</td><td>0.447</td><td>⋯</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3291221</td><td>0.175</td><td>native</td></tr>
+	<tr><td>83001efffffffff</td><td> 4</td><td>3</td><td> 3.38</td><td>16.946</td><td>20.49600</td><td>1.295</td><td>23.68400</td><td>6.786</td><td>0.606</td><td>⋯</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td><td>all   </td></tr>
+	<tr><td>83001efffffffff</td><td> 4</td><td>3</td><td> 3.38</td><td>16.946</td><td>20.49600</td><td>1.295</td><td>23.68400</td><td>6.786</td><td>0.606</td><td>⋯</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td><td>native</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">summary_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>19504</li><li>42</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">fwrite</span><span class="p">(</span><span class="n">summary_df</span><span class="p">,</span> <span class="s">&quot;/net/scratch/swolf/GBIF/gbif_CS_glonaf_wcvp_res3_try6_mean_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-pca">
+<h1>Calculate PCA<a class="headerlink" href="#calculate-pca" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gbif_imputed</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_CS_glonaf_wcvp_res3_try6_mean_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load other packages</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="c1"># Load dplyr last</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+
+
+<span class="c1"># Perform PCA on the filtered and imputed mean trait data</span>
+<span class="n">pca_result</span> <span class="o">&lt;-</span> <span class="nf">prcomp</span><span class="p">(</span><span class="n">gbif_imputed</span> <span class="o">%&gt;%</span> <span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">)),</span> <span class="n">center</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">scale.</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">biplot</span><span class="p">(</span><span class="n">pca_result</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘dplyr’
+
+
+The following objects are masked from ‘package:data.table’:
+
+    between, first, last
+
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+</pre></div>
+</div>
+<img alt="_images/04.1_PCA_global_37_1.png" src="_images/04.1_PCA_global_37_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">biplot</span><span class="p">(</span><span class="n">pca_result</span><span class="p">,</span> <span class="n">choices</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/04.1_PCA_global_38_0.png" src="_images/04.1_PCA_global_38_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#pca_result$rotation[, &quot;PC3&quot;] &lt;- -pca_result$rotation[, &quot;PC3&quot;]</span>
+<span class="c1">#pca_result$x[, &quot;PC3&quot;] &lt;- -pca_result$x[, &quot;PC3&quot;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="hierarchical-clustering-of-traits-for-each-axis">
+<h2>Hierarchical clustering of traits for each axis<a class="headerlink" href="#hierarchical-clustering-of-traits-for-each-axis" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">loadings</span> <span class="o">&lt;-</span> <span class="n">pca_result</span><span class="o">$</span><span class="n">rotation</span>   <span class="c1"># traits × PCs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">contrib</span> <span class="o">&lt;-</span> <span class="nf">sweep</span><span class="p">(</span><span class="n">loadings</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">loadings</span><span class="o">^</span><span class="m">2</span><span class="p">),</span> <span class="n">FUN</span> <span class="o">=</span> <span class="s">&quot;/&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="m">100</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">contrib</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A matrix: 6 × 37 of type dbl</caption>
+<thead>
+	<tr><th></th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>PC6</th><th scope=col>PC7</th><th scope=col>PC8</th><th scope=col>PC9</th><th scope=col>PC10</th><th scope=col>⋯</th><th scope=col>PC28</th><th scope=col>PC29</th><th scope=col>PC30</th><th scope=col>PC31</th><th scope=col>PC32</th><th scope=col>PC33</th><th scope=col>PC34</th><th scope=col>PC35</th><th scope=col>PC36</th><th scope=col>PC37</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>X.X3117</th><td>0.3766243385</td><td>11.1591681</td><td> 0.4265677</td><td> 0.6894520</td><td>1.1642937</td><td>0.08957873</td><td>0.113135521</td><td>0.05721160</td><td>1.79105722</td><td>0.7532779446</td><td>⋯</td><td>8.384389958</td><td>0.373034672</td><td>0.68297024</td><td>0.20760724</td><td>0.002770444</td><td>1.872903212</td><td>0.017590226</td><td>0.368091838</td><td>0.5390042973</td><td>0.0156402247</td></tr>
+	<tr><th scope=row>X.X14</th><td>0.0002425063</td><td> 4.9783968</td><td>12.8741308</td><td> 1.3175757</td><td>3.4596866</td><td>1.32891636</td><td>0.060419989</td><td>2.20056896</td><td>1.76327908</td><td>0.0155716866</td><td>⋯</td><td>2.838911037</td><td>2.653952414</td><td>0.03172318</td><td>0.50491880</td><td>0.145186121</td><td>0.002467323</td><td>0.026539671</td><td>0.001214524</td><td>0.0019240063</td><td>0.0004262674</td></tr>
+	<tr><th scope=row>X.X50</th><td>0.3106486143</td><td> 7.4309252</td><td> 8.0605670</td><td> 1.0050364</td><td>0.2348901</td><td>0.04392781</td><td>0.009797596</td><td>1.86901457</td><td>0.89712426</td><td>0.4388410233</td><td>⋯</td><td>5.402124637</td><td>0.242155692</td><td>0.81619040</td><td>1.09443698</td><td>0.014159950</td><td>0.089955279</td><td>0.014499448</td><td>0.060005959</td><td>0.3444005028</td><td>0.0004269398</td></tr>
+	<tr><th scope=row>X.X146</th><td>0.0135769077</td><td> 4.8121616</td><td>12.9003768</td><td> 0.6875361</td><td>6.3963445</td><td>1.01646689</td><td>0.009373337</td><td>0.79453257</td><td>0.16442744</td><td>0.0003443635</td><td>⋯</td><td>0.007349388</td><td>3.097161894</td><td>0.50388514</td><td>0.01420761</td><td>1.767317948</td><td>0.086743307</td><td>0.221261678</td><td>0.012036169</td><td>0.2323525731</td><td>0.0064429137</td></tr>
+	<tr><th scope=row>X.X3120</th><td>1.3880611464</td><td> 7.4642254</td><td> 0.0189746</td><td> 0.7331395</td><td>0.3976803</td><td>0.14039938</td><td>0.057352507</td><td>0.07637016</td><td>0.02293123</td><td>2.9441922382</td><td>⋯</td><td>2.087348003</td><td>1.145121901</td><td>0.12185703</td><td>0.28542005</td><td>1.919570509</td><td>0.741290657</td><td>0.009188594</td><td>0.001088616</td><td>0.0188581972</td><td>0.1024772694</td></tr>
+	<tr><th scope=row>X.X224</th><td>0.6035685642</td><td> 0.5393882</td><td> 0.2291561</td><td>18.5611819</td><td>2.0696248</td><td>9.22867084</td><td>6.688286843</td><td>5.00641815</td><td>1.40645469</td><td>8.2293627926</td><td>⋯</td><td>2.585506113</td><td>0.006234542</td><td>0.76663192</td><td>1.08445461</td><td>2.474835301</td><td>0.475740190</td><td>0.070485655</td><td>0.001476095</td><td>0.0001702931</td><td>0.0074820304</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read ~/Func_Neo_Phytes/Data/trait_info.csv</span>
+<span class="n">trait_info</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/Func_Neo_Phytes/Data/trait_info.csv&quot;</span><span class="p">)</span> 
+<span class="c1"># remove last character form each string in column &quot;TraitID_TRY6&quot;</span>
+<span class="n">trait_info</span><span class="o">$</span><span class="n">TraitID_TRY6</span> <span class="o">&lt;-</span> <span class="nf">substr</span><span class="p">(</span><span class="n">trait_info</span><span class="o">$</span><span class="n">TraitID_TRY6</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="nf">nchar</span><span class="p">(</span><span class="n">trait_info</span><span class="o">$</span><span class="n">TraitID_TRY6</span><span class="p">)</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">trait_info</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 6</caption>
+<thead>
+	<tr><th scope=col>TraitID</th><th scope=col>TraitID_TRY6</th><th scope=col>TraitName</th><th scope=col>ShortName</th><th scope=col>sPlotOpenName</th><th scope=col>UnitName</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td> 4</td><td>X.X4 </td><td>Stem specific density (SSD, stem dry mass per stem fresh volume) or wood density</td><td>SSD          </td><td>SSD            </td><td>g/cm3</td></tr>
+	<tr><td> 6</td><td>X.X6 </td><td>Root rooting depth                                                              </td><td>Rooting depth</td><td>               </td><td>m    </td></tr>
+	<tr><td>13</td><td>X.X13</td><td>Leaf carbon (C) content per leaf dry mass                                       </td><td>Leaf C       </td><td>Leaf.C         </td><td>mg/g </td></tr>
+	<tr><td>14</td><td>X.X14</td><td>Leaf nitrogen (N) content per leaf dry mass                                     </td><td>Leaf N       </td><td>Leaf.N.per.mass</td><td>mg/g </td></tr>
+	<tr><td>15</td><td>X.X15</td><td>Leaf phosphorus (P) content per leaf dry mass                                   </td><td>Leaf P       </td><td>Leaf.P         </td><td>mg/g </td></tr>
+	<tr><td>21</td><td>X.X21</td><td>Stem diameter                                                                   </td><td>Stem diameter</td><td>               </td><td>m    </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set row names of contrib to &quot;ShortName&quot; from trait_info</span>
+<span class="nf">rownames</span><span class="p">(</span><span class="n">contrib</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">trait_info</span><span class="o">$</span><span class="n">ShortName</span><span class="p">[</span><span class="nf">match</span><span class="p">(</span><span class="nf">rownames</span><span class="p">(</span><span class="n">contrib</span><span class="p">),</span> <span class="n">trait_info</span><span class="o">$</span><span class="n">TraitID_TRY6</span><span class="p">)]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">contrib</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A matrix: 6 × 37 of type dbl</caption>
+<thead>
+	<tr><th></th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>PC6</th><th scope=col>PC7</th><th scope=col>PC8</th><th scope=col>PC9</th><th scope=col>PC10</th><th scope=col>⋯</th><th scope=col>PC28</th><th scope=col>PC29</th><th scope=col>PC30</th><th scope=col>PC31</th><th scope=col>PC32</th><th scope=col>PC33</th><th scope=col>PC34</th><th scope=col>PC35</th><th scope=col>PC36</th><th scope=col>PC37</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>SLA petiole in- or excluded</th><td>0.3766243385</td><td>11.1591681</td><td> 0.4265677</td><td> 0.6894520</td><td>1.1642937</td><td>0.08957873</td><td>0.113135521</td><td>0.05721160</td><td>1.79105722</td><td>0.7532779446</td><td>⋯</td><td>8.384389958</td><td>0.373034672</td><td>0.68297024</td><td>0.20760724</td><td>0.002770444</td><td>1.872903212</td><td>0.017590226</td><td>0.368091838</td><td>0.5390042973</td><td>0.0156402247</td></tr>
+	<tr><th scope=row>Leaf N</th><td>0.0002425063</td><td> 4.9783968</td><td>12.8741308</td><td> 1.3175757</td><td>3.4596866</td><td>1.32891636</td><td>0.060419989</td><td>2.20056896</td><td>1.76327908</td><td>0.0155716866</td><td>⋯</td><td>2.838911037</td><td>2.653952414</td><td>0.03172318</td><td>0.50491880</td><td>0.145186121</td><td>0.002467323</td><td>0.026539671</td><td>0.001214524</td><td>0.0019240063</td><td>0.0004262674</td></tr>
+	<tr><th scope=row>Leaf N per area</th><td>0.3106486143</td><td> 7.4309252</td><td> 8.0605670</td><td> 1.0050364</td><td>0.2348901</td><td>0.04392781</td><td>0.009797596</td><td>1.86901457</td><td>0.89712426</td><td>0.4388410233</td><td>⋯</td><td>5.402124637</td><td>0.242155692</td><td>0.81619040</td><td>1.09443698</td><td>0.014159950</td><td>0.089955279</td><td>0.014499448</td><td>0.060005959</td><td>0.3444005028</td><td>0.0004269398</td></tr>
+	<tr><th scope=row>Leaf C/N ratio</th><td>0.0135769077</td><td> 4.8121616</td><td>12.9003768</td><td> 0.6875361</td><td>6.3963445</td><td>1.01646689</td><td>0.009373337</td><td>0.79453257</td><td>0.16442744</td><td>0.0003443635</td><td>⋯</td><td>0.007349388</td><td>3.097161894</td><td>0.50388514</td><td>0.01420761</td><td>1.767317948</td><td>0.086743307</td><td>0.221261678</td><td>0.012036169</td><td>0.2323525731</td><td>0.0064429137</td></tr>
+	<tr><th scope=row>Leaf water content not saturated</th><td>1.3880611464</td><td> 7.4642254</td><td> 0.0189746</td><td> 0.7331395</td><td>0.3976803</td><td>0.14039938</td><td>0.057352507</td><td>0.07637016</td><td>0.02293123</td><td>2.9441922382</td><td>⋯</td><td>2.087348003</td><td>1.145121901</td><td>0.12185703</td><td>0.28542005</td><td>1.919570509</td><td>0.741290657</td><td>0.009188594</td><td>0.001088616</td><td>0.0188581972</td><td>0.1024772694</td></tr>
+	<tr><th scope=row>Chromosome cDNA content</th><td>0.6035685642</td><td> 0.5393882</td><td> 0.2291561</td><td>18.5611819</td><td>2.0696248</td><td>9.22867084</td><td>6.688286843</td><td>5.00641815</td><td>1.40645469</td><td>8.2293627926</td><td>⋯</td><td>2.585506113</td><td>0.006234542</td><td>0.76663192</td><td>1.08445461</td><td>2.474835301</td><td>0.475740190</td><td>0.070485655</td><td>0.001476095</td><td>0.0001702931</td><td>0.0074820304</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">pheatmap</span><span class="p">)</span>
+
+<span class="nf">pheatmap</span><span class="p">(</span><span class="n">contrib</span><span class="p">,</span>
+         <span class="n">cluster_rows</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+         <span class="n">cluster_cols</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+         <span class="n">scale</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">,</span>
+         <span class="n">display_numbers</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+         <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Trait contribution (%) across principal components&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/04.1_PCA_global_45_0.png" src="_images/04.1_PCA_global_45_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">final_plot</span> <span class="o">&lt;-</span> <span class="nf">pheatmap</span><span class="p">(</span><span class="n">contrib</span><span class="p">[,</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">],</span>
+         <span class="n">cluster_rows</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+         <span class="n">cluster_cols</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+         <span class="n">scale</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">,</span>
+         <span class="n">display_numbers</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+         <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Trait contribution (%) across principal components&quot;</span><span class="p">,</span>
+         <span class="n">color</span> <span class="o">=</span> <span class="nf">colorRampPalette</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;#FFFFFF&quot;</span><span class="p">,</span> <span class="s">&quot;#045A7FFF&quot;</span><span class="p">))(</span><span class="m">50</span><span class="p">),</span>
+         <span class="n">border_color</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
+
+<span class="nf">png</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/trait_contribution_heatmap_no_border_1-3_misstree.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">final_plot</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">final_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>pdf:</strong> 2</div><img alt="_images/04.1_PCA_global_46_1.png" src="_images/04.1_PCA_global_46_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">final_plot</span> <span class="o">&lt;-</span> <span class="nf">pheatmap</span><span class="p">(</span><span class="n">contrib</span><span class="p">[,</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">],</span>
+         <span class="n">cluster_rows</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+         <span class="n">cluster_cols</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+         <span class="n">scale</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">,</span>
+         <span class="n">display_numbers</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+         <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Trait contribution (%) across principal components&quot;</span><span class="p">,</span>
+         <span class="n">color</span> <span class="o">=</span> <span class="nf">colorRampPalette</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;#FFFFFF&quot;</span><span class="p">,</span> <span class="s">&quot;#045A7FFF&quot;</span><span class="p">))(</span><span class="m">50</span><span class="p">),</span>
+         <span class="n">border_color</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
+
+<span class="nf">png</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/trait_contribution_heatmap_no_border_1-5_misstree.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">final_plot</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">final_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>pdf:</strong> 2</div><img alt="_images/04.1_PCA_global_47_1.png" src="_images/04.1_PCA_global_47_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter contrib for PC1, PC2, PC3 with values greater than 5</span>
+<span class="n">contrib_filtered</span> <span class="o">&lt;-</span> <span class="n">contrib</span><span class="p">[</span><span class="nf">apply</span><span class="p">(</span><span class="n">contrib</span><span class="p">[,</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">],</span> <span class="m">1</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">any</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="m">5</span><span class="p">)),</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">final_plot</span> <span class="o">&lt;-</span> <span class="nf">pheatmap</span><span class="p">(</span><span class="n">contrib_filtered</span><span class="p">[,</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">],</span>
+         <span class="n">cluster_rows</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+         <span class="n">cluster_cols</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+         <span class="n">scale</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">,</span>
+         <span class="n">display_numbers</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+         <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Trait contribution (%) across principal components&quot;</span><span class="p">,</span>
+         <span class="n">color</span> <span class="o">=</span> <span class="nf">colorRampPalette</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;#FFFFFF&quot;</span><span class="p">,</span> <span class="s">&quot;#045A7FFF&quot;</span><span class="p">))(</span><span class="m">50</span><span class="p">),</span>
+         <span class="n">border_color</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
+
+<span class="nf">png</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/trait_contribution_heatmap_masked_1-3_filtered_misstree.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">final_plot</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">final_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>pdf:</strong> 2</div><img alt="_images/04.1_PCA_global_49_1.png" src="_images/04.1_PCA_global_49_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">contrib_filtered</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A matrix: 20 × 3 of type dbl</caption>
+<thead>
+	<tr><th></th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>SLA petiole in- or excluded</th><td>0.3766243385</td><td>1.115917e+01</td><td> 0.42656768</td></tr>
+	<tr><th scope=row>Leaf N</th><td>0.0002425063</td><td>4.978397e+00</td><td>12.87413085</td></tr>
+	<tr><th scope=row>Leaf N per area</th><td>0.3106486143</td><td>7.430925e+00</td><td> 8.06056701</td></tr>
+	<tr><th scope=row>Leaf C/N ratio</th><td>0.0135769077</td><td>4.812162e+00</td><td>12.90037683</td></tr>
+	<tr><th scope=row>Leaf water content not saturated</th><td>1.3880611464</td><td>7.464225e+00</td><td> 0.01897460</td></tr>
+	<tr><th scope=row>Leaf C</th><td>0.0811074502</td><td>3.431221e+00</td><td> 9.32901916</td></tr>
+	<tr><th scope=row>Leaf P</th><td>1.0959041610</td><td>6.373898e+00</td><td> 1.26023218</td></tr>
+	<tr><th scope=row>Leaf area 3114</th><td>5.0735620268</td><td>3.080653e+00</td><td> 0.85352141</td></tr>
+	<tr><th scope=row>Leaf area 3112</th><td>5.1244891766</td><td>3.408698e+00</td><td> 0.48817771</td></tr>
+	<tr><th scope=row>Plant height veg.</th><td>6.3094061811</td><td>1.869582e-01</td><td> 0.24325345</td></tr>
+	<tr><th scope=row>Seed length</th><td>5.8176789364</td><td>1.997502e-01</td><td> 0.03280758</td></tr>
+	<tr><th scope=row>Seed dry mass</th><td>5.6231237148</td><td>1.090457e-01</td><td> 0.23265823</td></tr>
+	<tr><th scope=row>Leaf dry mass</th><td>6.2947994314</td><td>7.707820e-01</td><td> 0.23565532</td></tr>
+	<tr><th scope=row>Leaf thickness</th><td>0.2107586056</td><td>5.533625e+00</td><td> 0.05059542</td></tr>
+	<tr><th scope=row>Wood vessel element length</th><td>0.3349389076</td><td>2.632941e+00</td><td>10.87425016</td></tr>
+	<tr><th scope=row>Leaf fresh mass</th><td>5.4687768349</td><td>2.467127e+00</td><td> 0.17620462</td></tr>
+	<tr><th scope=row>Plant height gen.</th><td>5.8926269046</td><td>2.421845e-04</td><td> 0.81454257</td></tr>
+	<tr><th scope=row>Leaf delta 15N</th><td>2.6632982181</td><td>5.366796e-02</td><td>11.33685609</td></tr>
+	<tr><th scope=row>SSD</th><td>1.1836931403</td><td>7.978563e+00</td><td> 0.04363411</td></tr>
+	<tr><th scope=row>LDMC</th><td>0.9818155400</td><td>9.581585e+00</td><td> 0.86731874</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">trait_pca</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">pca_result</span><span class="o">$</span><span class="n">rotation</span><span class="p">)</span>
+<span class="n">trait_pca</span><span class="o">$</span><span class="n">trait</span> <span class="o">&lt;-</span> <span class="nf">rownames</span><span class="p">(</span><span class="n">trait_pca</span><span class="p">)</span>
+<span class="nf">rownames</span><span class="p">(</span><span class="n">trait_pca</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="kc">NULL</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># save trait_pca to file</span>
+<span class="nf">fwrite</span><span class="p">(</span><span class="n">trait_pca</span><span class="p">,</span> <span class="s">&quot;/net/scratch/swolf/GBIF/trait_pca_glonaf_wcvp_res3_try6_mean_imp_CS_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variance-explained-by-each-axis">
+<h2>Variance explained by each axis<a class="headerlink" href="#variance-explained-by-each-axis" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variance explained by each PC</span>
+<span class="n">explained_variance</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">pca_result</span><span class="p">)</span><span class="o">$</span><span class="n">importance</span><span class="p">[</span><span class="m">2</span><span class="p">,]</span>
+
+<span class="c1"># sum of variance explained by first 3 PCs</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]))</span>
+
+<span class="nf">pdf</span><span class="p">(</span>
+  <span class="c1">#file = paste0(&quot;~/Func_Neo_Phytes/Results/Figures/pca_global_var_explained.pdf&quot;), </span>
+  <span class="n">file</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/pca_global_var_explained_GBIF_wcvp_CS_log10_misstree.pdf&quot;</span><span class="p">),</span> 
+  <span class="c1">#file = paste0(&quot;~/Func_Neo_Phytes/Results/Figures/pca_global_var_explained_GBIF_wcvp_CS_n100.pdf&quot;), </span>
+  <span class="n">width</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>  <span class="c1"># Width in inches</span>
+  <span class="n">height</span> <span class="o">=</span> <span class="m">7</span>   <span class="c1"># Height in inches</span>
+<span class="p">)</span>
+<span class="nf">barplot</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Variance Explained by Each Principal Component&quot;</span><span class="p">,</span> 
+        <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;#dad8eaff&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Proportion of Variance&quot;</span><span class="p">,</span> <span class="n">border</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
+
+<span class="nf">dev.off</span><span class="p">()</span>
+
+<span class="c1"># Print the barplot to the screen</span>
+<span class="nf">barplot</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Variance Explained by Each Principal Component&quot;</span><span class="p">,</span> 
+        <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;#dad8eaff&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Proportion of Variance&quot;</span><span class="p">,</span> <span class="n">border</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 0.62051
+</pre></div>
+</div>
+<div class="output text_html"><strong>pdf:</strong> 2</div><img alt="_images/04.1_PCA_global_54_2.png" src="_images/04.1_PCA_global_54_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the eigenvalues</span>
+<span class="n">eigenvalues</span> <span class="o">&lt;-</span> <span class="n">pca_result</span><span class="o">$</span><span class="n">sdev</span><span class="o">^</span><span class="m">2</span>
+<span class="nf">pdf</span><span class="p">(</span>
+  <span class="n">file</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/pca_global_eigenvalues_wcvp_CS_log10_notrim_misstree.pdf&quot;</span><span class="p">),</span> 
+  <span class="c1">#file = paste0(&quot;~/Func_Neo_Phytes/Results/Figures/pca_global_eigenvalues_wcvp_CS_n100.pdf&quot;), </span>
+
+  <span class="n">width</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>  <span class="c1"># Width in inches</span>
+  <span class="n">height</span> <span class="o">=</span> <span class="m">7</span>   <span class="c1"># Height in inches</span>
+<span class="p">)</span>       
+<span class="nf">barplot</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Eigenvalues of Principal Components&quot;</span><span class="p">,</span> 
+        <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;#264653&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Eigenvalue&quot;</span><span class="p">,</span> <span class="n">border</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>  
+
+<span class="nf">dev.off</span><span class="p">()</span>
+<span class="nf">barplot</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Eigenvalues of Principal Components&quot;</span><span class="p">,</span> 
+        <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;#264653&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Eigenvalue&quot;</span><span class="p">,</span> <span class="n">border</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>pdf:</strong> 2</div><img alt="_images/04.1_PCA_global_55_1.png" src="_images/04.1_PCA_global_55_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">explained_variance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>PC1</dt><dd>0.36424</dd><dt>PC2</dt><dd>0.17545</dd><dt>PC3</dt><dd>0.08082</dd><dt>PC4</dt><dd>0.05613</dd><dt>PC5</dt><dd>0.03818</dd><dt>PC6</dt><dd>0.03597</dd><dt>PC7</dt><dd>0.02893</dd><dt>PC8</dt><dd>0.02553</dd><dt>PC9</dt><dd>0.02357</dd><dt>PC10</dt><dd>0.02254</dd><dt>PC11</dt><dd>0.02042</dd><dt>PC12</dt><dd>0.01686</dd><dt>PC13</dt><dd>0.01579</dd><dt>PC14</dt><dd>0.01275</dd><dt>PC15</dt><dd>0.01079</dd><dt>PC16</dt><dd>0.00964</dd><dt>PC17</dt><dd>0.0083</dd><dt>PC18</dt><dd>0.00664</dd><dt>PC19</dt><dd>0.00601</dd><dt>PC20</dt><dd>0.00584</dd><dt>PC21</dt><dd>0.00554</dd><dt>PC22</dt><dd>0.00449</dd><dt>PC23</dt><dd>0.00407</dd><dt>PC24</dt><dd>0.00401</dd><dt>PC25</dt><dd>0.00299</dd><dt>PC26</dt><dd>0.00237</dd><dt>PC27</dt><dd>0.00204</dd><dt>PC28</dt><dd>0.00195</dd><dt>PC29</dt><dd>0.00158</dd><dt>PC30</dt><dd>0.00151</dd><dt>PC31</dt><dd>0.00118</dd><dt>PC32</dt><dd>0.0011</dd><dt>PC33</dt><dd>0.00105</dd><dt>PC34</dt><dd>0.00077</dd><dt>PC35</dt><dd>4e-04</dd><dt>PC36</dt><dd>0.00035</dd><dt>PC37</dt><dd>2e-04</dd></dl>
+</div></div>
+</div>
+</section>
+<section id="format-and-save-result">
+<h2>Format and save result<a class="headerlink" href="#format-and-save-result" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+
+<span class="c1"># Flip PC1</span>
+<span class="n">pca_scores</span> <span class="o">&lt;-</span> <span class="nf">data.table</span><span class="p">(</span>
+  <span class="n">h3_res3</span> <span class="o">=</span> <span class="n">gbif_imputed</span><span class="o">$</span><span class="n">h3_res3</span><span class="p">,</span>
+  <span class="n">group</span> <span class="o">=</span> <span class="n">gbif_imputed</span><span class="o">$</span><span class="n">group</span><span class="p">,</span>  <span class="c1"># &quot;all&quot; or &quot;native&quot;</span>
+  <span class="n">PC1</span> <span class="o">=</span> <span class="n">pca_result</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span> <span class="m">1</span><span class="p">],</span>  <span class="c1"># flip the sign of PC1 for GBIF_glonaf, GBIF_glonaf_wcvp_woody, GBIF_glonaf_wcvp_nonwoody</span>
+  <span class="n">PC2</span> <span class="o">=</span> <span class="n">pca_result</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span> <span class="m">2</span><span class="p">],</span>   <span class="c1"># flip the sign of PC2 for GBIF_glonaf_wcvp_all</span>
+  <span class="n">PC3</span> <span class="o">=</span> <span class="n">pca_result</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span> <span class="m">3</span><span class="p">],</span>
+  <span class="n">PC4</span> <span class="o">=</span> <span class="n">pca_result</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span> <span class="m">4</span><span class="p">],</span>
+  <span class="n">PC5</span> <span class="o">=</span> <span class="n">pca_result</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span> <span class="m">5</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pca_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 7</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>group</th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83001afffffffff</td><td>all   </td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td></tr>
+	<tr><td>83001afffffffff</td><td>native</td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td></tr>
+	<tr><td>83001cfffffffff</td><td>all   </td><td>-10.005360</td><td>-0.2380058</td><td> 0.2491376</td><td> 2.9137390</td><td>0.9757523</td></tr>
+	<tr><td>83001cfffffffff</td><td>native</td><td> -9.988809</td><td>-0.3014320</td><td> 0.2822225</td><td> 2.9136399</td><td>0.9666302</td></tr>
+	<tr><td>83001efffffffff</td><td>all   </td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td></tr>
+	<tr><td>83001efffffffff</td><td>native</td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reshape from long to wide format</span>
+<span class="n">pca_scores_wide</span> <span class="o">&lt;-</span> <span class="nf">dcast</span><span class="p">(</span><span class="n">pca_scores</span><span class="p">,</span> <span class="n">h3_res3</span> <span class="o">~</span> <span class="n">group</span><span class="p">,</span> <span class="n">value.var</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;PC1&quot;</span><span class="p">,</span> <span class="s">&quot;PC2&quot;</span><span class="p">,</span> <span class="s">&quot;PC3&quot;</span><span class="p">,</span> <span class="s">&quot;PC4&quot;</span><span class="p">,</span> <span class="s">&quot;PC5&quot;</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pca_scores_wide</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 11</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>PC1_all</th><th scope=col>PC1_native</th><th scope=col>PC2_all</th><th scope=col>PC2_native</th><th scope=col>PC3_all</th><th scope=col>PC3_native</th><th scope=col>PC4_all</th><th scope=col>PC4_native</th><th scope=col>PC5_all</th><th scope=col>PC5_native</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83001afffffffff</td><td>-10.334354</td><td>-10.334354</td><td> 1.3228614</td><td> 1.3228614</td><td>-1.7255834</td><td>-1.7255834</td><td> 1.0414618</td><td> 1.0414618</td><td>2.1589100</td><td>2.1589100</td></tr>
+	<tr><td>83001cfffffffff</td><td>-10.005360</td><td> -9.988809</td><td>-0.2380058</td><td>-0.3014320</td><td> 0.2491376</td><td> 0.2822225</td><td> 2.9137390</td><td> 2.9136399</td><td>0.9757523</td><td>0.9666302</td></tr>
+	<tr><td>83001efffffffff</td><td>-10.690103</td><td>-10.690103</td><td>-0.8713593</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.9452468</td><td>-0.2685651</td><td>-0.2685651</td><td>1.3119540</td><td>1.3119540</td></tr>
+	<tr><td>830025fffffffff</td><td> -9.944177</td><td> -9.944177</td><td> 0.6878973</td><td> 0.6878973</td><td>-1.3408168</td><td>-1.3408168</td><td>-0.1235437</td><td>-0.1235437</td><td>2.0710218</td><td>2.0710218</td></tr>
+	<tr><td>830028fffffffff</td><td>-10.170143</td><td>-10.170143</td><td>-1.6934754</td><td>-1.6934754</td><td>-1.1072216</td><td>-1.1072216</td><td> 0.0874861</td><td> 0.0874861</td><td>0.7784430</td><td>0.7784430</td></tr>
+	<tr><td>830029fffffffff</td><td> -9.799682</td><td> -9.799682</td><td>-0.7173000</td><td>-0.7173000</td><td>-1.1438049</td><td>-1.1438049</td><td> 1.0295538</td><td> 1.0295538</td><td>0.8704674</td><td>0.8704674</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Join the pca_scores with gbif_down by &#39;gbifID&#39;</span>
+<span class="n">gbif_summary</span> <span class="o">&lt;-</span> <span class="n">pca_scores_wide</span><span class="p">[</span><span class="n">gbif_summary</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 392</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>PC1_all</th><th scope=col>PC1_native</th><th scope=col>PC2_all</th><th scope=col>PC2_native</th><th scope=col>PC3_all</th><th scope=col>PC3_native</th><th scope=col>PC4_all</th><th scope=col>PC4_native</th><th scope=col>PC5_all</th><th scope=col>⋯</th><th scope=col>X.X47..mean_native</th><th scope=col>X.X47..median_all</th><th scope=col>X.X47..median_native</th><th scope=col>X.X47..percent_change_mean</th><th scope=col>X.X47..percent_change_median</th><th scope=col>X.X47..n_na_all</th><th scope=col>X.X47..perc_na_all</th><th scope=col>X.X47..n_na_native</th><th scope=col>X.X47..perc_na_native</th><th scope=col>resolution</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83831efffffffff</td><td>4.791148</td><td>3.7766291</td><td> 0.9721051</td><td> 1.1088903</td><td>-0.5431612</td><td>-0.34431243</td><td>-0.42136533</td><td> 1.02068041</td><td> 0.5774828</td><td>⋯</td><td>0.322</td><td>0.352</td><td>0.354</td><td> 0.00</td><td>-0.56</td><td>  37</td><td>24.67</td><td>  16</td><td>19.05</td><td>h3_res3</td></tr>
+	<tr><td>838218fffffffff</td><td>3.901431</td><td>5.0583305</td><td> 1.1307036</td><td> 0.5138983</td><td>-0.2462778</td><td> 0.05720839</td><td>-0.47252956</td><td>-0.54789381</td><td> 0.2955384</td><td>⋯</td><td>0.293</td><td>0.276</td><td>0.285</td><td>-6.83</td><td>-3.16</td><td>  10</td><td>26.32</td><td>  10</td><td>34.48</td><td>h3_res3</td></tr>
+	<tr><td>838233fffffffff</td><td>5.296893</td><td>7.9646210</td><td> 0.7344789</td><td> 0.1759947</td><td>-0.3730047</td><td> 0.69734595</td><td>-1.40549703</td><td>-1.56500099</td><td> 1.3152798</td><td>⋯</td><td>0.290</td><td>0.324</td><td>0.280</td><td> 3.79</td><td>15.71</td><td>   8</td><td>26.67</td><td>   7</td><td>43.75</td><td>h3_res3</td></tr>
+	<tr><td>838230fffffffff</td><td>5.160745</td><td>6.4376781</td><td> 1.1521587</td><td> 0.7619902</td><td>-0.9373319</td><td>-0.01892562</td><td> 0.09261112</td><td> 0.81461843</td><td> 0.8814747</td><td>⋯</td><td>0.308</td><td>0.305</td><td>0.315</td><td>-1.30</td><td>-3.17</td><td>  11</td><td>31.43</td><td>   8</td><td>40.00</td><td>h3_res3</td></tr>
+	<tr><td>83be4dfffffffff</td><td>0.601728</td><td>0.6843753</td><td>-7.7335394</td><td>-7.9253400</td><td> 2.7755032</td><td> 2.86621941</td><td> 0.47608132</td><td> 0.46676308</td><td>-0.6878360</td><td>⋯</td><td>0.496</td><td>0.497</td><td>0.514</td><td>-1.21</td><td>-3.31</td><td>7924</td><td>25.99</td><td>7837</td><td>26.22</td><td>h3_res3</td></tr>
+	<tr><td>835f12fffffffff</td><td>3.826443</td><td>4.0358059</td><td> 0.6390104</td><td> 0.5204550</td><td> 0.7138565</td><td> 0.88520839</td><td> 0.10669870</td><td> 0.06196723</td><td> 0.1184253</td><td>⋯</td><td>0.303</td><td>0.305</td><td>0.307</td><td>-0.33</td><td>-0.65</td><td>2374</td><td>21.61</td><td>2095</td><td>22.12</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">fwrite</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">,</span> <span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree.csv&quot;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">quote</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join the pca_scores with gbif by hexagon id</span>
+<span class="n">gbif_summary2</span> <span class="o">&lt;-</span> <span class="n">pca_scores</span><span class="p">[</span><span class="n">gbif_imputed</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;h3_res3&quot;</span><span class="p">,</span> <span class="s">&quot;group&quot;</span><span class="p">)]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_summary2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 47</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>group</th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>mean_perc_na</th><th scope=col>⋯</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>X.X47</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83001afffffffff</td><td>all   </td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td><td>10</td><td>4</td><td> 5.68</td><td>⋯</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td></tr>
+	<tr><td>83001afffffffff</td><td>native</td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td><td>10</td><td>4</td><td> 5.68</td><td>⋯</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td></tr>
+	<tr><td>83001cfffffffff</td><td>all   </td><td>-10.005360</td><td>-0.2380058</td><td> 0.2491376</td><td> 2.9137390</td><td>0.9757523</td><td> 1</td><td>1</td><td>16.22</td><td>⋯</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3166111</td><td>0.175</td></tr>
+	<tr><td>83001cfffffffff</td><td>native</td><td> -9.988809</td><td>-0.3014320</td><td> 0.2822225</td><td> 2.9136399</td><td>0.9666302</td><td> 1</td><td>1</td><td>16.22</td><td>⋯</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3291221</td><td>0.175</td></tr>
+	<tr><td>83001efffffffff</td><td>all   </td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td><td> 4</td><td>3</td><td> 3.38</td><td>⋯</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td></tr>
+	<tr><td>83001efffffffff</td><td>native</td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td><td> 4</td><td>3</td><td> 3.38</td><td>⋯</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">fwrite</span><span class="p">(</span><span class="n">gbif_summary2</span><span class="p">,</span> <span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree_group.csv&quot;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">quote</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plot-global-pca">
+<h1>Plot global PCA<a class="headerlink" href="#plot-global-pca" title="Permalink to this headline">#</a></h1>
+<p>I added PCA for wcvp version already in summary_stats.ipynb</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span> 
+<span class="n">dtn</span> <span class="o">=</span> <span class="m">10</span>
+<span class="nf">setDTthreads</span><span class="p">(</span><span class="n">threads</span> <span class="o">=</span> <span class="n">dtn</span><span class="p">)</span> <span class="c1">#defines how many threads data.table is allowed to use</span>
+
+<span class="n">gbif_summary</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 392</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>PC1_all</th><th scope=col>PC1_native</th><th scope=col>PC2_all</th><th scope=col>PC2_native</th><th scope=col>PC3_all</th><th scope=col>PC3_native</th><th scope=col>PC4_all</th><th scope=col>PC4_native</th><th scope=col>PC5_all</th><th scope=col>⋯</th><th scope=col>X.X47..mean_native</th><th scope=col>X.X47..median_all</th><th scope=col>X.X47..median_native</th><th scope=col>X.X47..percent_change_mean</th><th scope=col>X.X47..percent_change_median</th><th scope=col>X.X47..n_na_all</th><th scope=col>X.X47..perc_na_all</th><th scope=col>X.X47..n_na_native</th><th scope=col>X.X47..perc_na_native</th><th scope=col>resolution</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83831efffffffff</td><td>4.791148</td><td>3.7766291</td><td> 0.9721051</td><td> 1.1088903</td><td>-0.5431612</td><td>-0.34431243</td><td>-0.42136533</td><td> 1.02068041</td><td> 0.5774828</td><td>⋯</td><td>0.322</td><td>0.352</td><td>0.354</td><td> 0.00</td><td>-0.56</td><td>  37</td><td>24.67</td><td>  16</td><td>19.05</td><td>h3_res3</td></tr>
+	<tr><td>838218fffffffff</td><td>3.901431</td><td>5.0583305</td><td> 1.1307036</td><td> 0.5138983</td><td>-0.2462778</td><td> 0.05720839</td><td>-0.47252956</td><td>-0.54789381</td><td> 0.2955384</td><td>⋯</td><td>0.293</td><td>0.276</td><td>0.285</td><td>-6.83</td><td>-3.16</td><td>  10</td><td>26.32</td><td>  10</td><td>34.48</td><td>h3_res3</td></tr>
+	<tr><td>838233fffffffff</td><td>5.296893</td><td>7.9646210</td><td> 0.7344789</td><td> 0.1759947</td><td>-0.3730047</td><td> 0.69734595</td><td>-1.40549703</td><td>-1.56500099</td><td> 1.3152798</td><td>⋯</td><td>0.290</td><td>0.324</td><td>0.280</td><td> 3.79</td><td>15.71</td><td>   8</td><td>26.67</td><td>   7</td><td>43.75</td><td>h3_res3</td></tr>
+	<tr><td>838230fffffffff</td><td>5.160745</td><td>6.4376781</td><td> 1.1521587</td><td> 0.7619902</td><td>-0.9373319</td><td>-0.01892562</td><td> 0.09261112</td><td> 0.81461843</td><td> 0.8814747</td><td>⋯</td><td>0.308</td><td>0.305</td><td>0.315</td><td>-1.30</td><td>-3.17</td><td>  11</td><td>31.43</td><td>   8</td><td>40.00</td><td>h3_res3</td></tr>
+	<tr><td>83be4dfffffffff</td><td>0.601728</td><td>0.6843753</td><td>-7.7335394</td><td>-7.9253400</td><td> 2.7755032</td><td> 2.86621941</td><td> 0.47608132</td><td> 0.46676308</td><td>-0.6878360</td><td>⋯</td><td>0.496</td><td>0.497</td><td>0.514</td><td>-1.21</td><td>-3.31</td><td>7924</td><td>25.99</td><td>7837</td><td>26.22</td><td>h3_res3</td></tr>
+	<tr><td>835f12fffffffff</td><td>3.826443</td><td>4.0358059</td><td> 0.6390104</td><td> 0.5204550</td><td> 0.7138565</td><td> 0.88520839</td><td> 0.10669870</td><td> 0.06196723</td><td> 0.1184253</td><td>⋯</td><td>0.303</td><td>0.305</td><td>0.307</td><td>-0.33</td><td>-0.65</td><td>2374</td><td>21.61</td><td>2095</td><td>22.12</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">cowplot</span><span class="p">)</span>
+
+<span class="n">make_pca_biplot</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">pca_result</span><span class="p">,</span>
+                            <span class="n">gbif_imputed</span><span class="p">,</span>
+                            <span class="n">pcs</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+                            <span class="n">show_loading_labels</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+                            <span class="n">arrow_scale</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+                            <span class="n">label_offset</span> <span class="o">=</span> <span class="m">0.3</span><span class="p">)</span> <span class="p">{</span>
+  
+  <span class="c1"># -----------------------------</span>
+  <span class="c1"># Extract PCA scores</span>
+  <span class="c1"># -----------------------------</span>
+  
+  <span class="n">pca_scores</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">pca_result</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span> <span class="n">pcs</span><span class="p">])</span>
+  <span class="nf">names</span><span class="p">(</span><span class="n">pca_scores</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;PCx&quot;</span><span class="p">,</span> <span class="s">&quot;PCy&quot;</span><span class="p">)</span>
+  <span class="n">pca_scores</span><span class="o">$</span><span class="n">group</span> <span class="o">&lt;-</span> <span class="n">gbif_imputed</span><span class="o">$</span><span class="n">group</span>
+
+  <span class="c1"># Actual PC names</span>
+  <span class="n">pc_x_name</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC&quot;</span><span class="p">,</span> <span class="n">pcs</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+  <span class="n">pc_y_name</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC&quot;</span><span class="p">,</span> <span class="n">pcs</span><span class="p">[</span><span class="m">2</span><span class="p">])</span>
+  
+  <span class="c1"># -----------------------------</span>
+  <span class="c1"># Extract loadings</span>
+  <span class="c1"># -----------------------------</span>
+  
+  <span class="n">loadings</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">pca_result</span><span class="o">$</span><span class="n">rotation</span><span class="p">[,</span> <span class="n">pcs</span><span class="p">])</span>
+  <span class="nf">names</span><span class="p">(</span><span class="n">loadings</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;PCx&quot;</span><span class="p">,</span> <span class="s">&quot;PCy&quot;</span><span class="p">)</span>
+  <span class="n">loadings</span><span class="o">$</span><span class="n">trait</span> <span class="o">&lt;-</span> <span class="nf">rownames</span><span class="p">(</span><span class="n">loadings</span><span class="p">)</span>
+  
+  <span class="c1"># Scale loading arrows</span>
+  <span class="n">loadings</span> <span class="o">&lt;-</span> <span class="n">loadings</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span>
+      <span class="n">PCx</span> <span class="o">=</span> <span class="n">PCx</span> <span class="o">*</span> <span class="n">arrow_scale</span><span class="p">,</span>
+      <span class="n">PCy</span> <span class="o">=</span> <span class="n">PCy</span> <span class="o">*</span> <span class="n">arrow_scale</span><span class="p">,</span>
+      <span class="n">arrow_length</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">PCx</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="n">PCy</span><span class="o">^</span><span class="m">2</span><span class="p">),</span>
+      <span class="n">unit_x</span> <span class="o">=</span> <span class="n">PCx</span> <span class="o">/</span> <span class="n">arrow_length</span><span class="p">,</span>
+      <span class="n">unit_y</span> <span class="o">=</span> <span class="n">PCy</span> <span class="o">/</span> <span class="n">arrow_length</span><span class="p">,</span>
+      <span class="n">label_x</span> <span class="o">=</span> <span class="n">PCx</span> <span class="o">+</span> <span class="n">label_offset</span> <span class="o">*</span> <span class="n">unit_x</span><span class="p">,</span>
+      <span class="n">label_y</span> <span class="o">=</span> <span class="n">PCy</span> <span class="o">+</span> <span class="n">label_offset</span> <span class="o">*</span> <span class="n">unit_y</span>
+    <span class="p">)</span>
+  
+  <span class="c1"># Extract numbers from trait names</span>
+  <span class="n">loadings</span><span class="o">$</span><span class="n">trait</span> <span class="o">&lt;-</span> <span class="n">stringr</span><span class="o">::</span><span class="nf">str_extract</span><span class="p">(</span><span class="n">loadings</span><span class="o">$</span><span class="n">trait</span><span class="p">,</span> <span class="s">&quot;\\d+&quot;</span><span class="p">)</span>
+  
+  <span class="c1"># -----------------------------</span>
+  <span class="c1"># Base PCA plot</span>
+  <span class="c1"># -----------------------------</span>
+  
+  <span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">pca_scores</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">PCx</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">PCy</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">pc_x_name</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">pc_y_name</span>
+  <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">stat_density_2d</span><span class="p">(</span>
+      <span class="n">geom</span> <span class="o">=</span> <span class="s">&quot;polygon&quot;</span><span class="p">,</span>
+      <span class="nf">aes</span><span class="p">(</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">..level..</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="n">group</span><span class="p">,</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">group</span>
+      <span class="p">),</span>
+      <span class="n">bins</span> <span class="o">=</span> <span class="m">10</span>
+    <span class="p">)</span> <span class="o">+</span>
+
+    <span class="nf">scale_alpha_continuous</span><span class="p">(</span>
+    <span class="n">range</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.03</span><span class="p">,</span> <span class="m">0.4</span><span class="p">),</span>
+    <span class="n">guide</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">scale_fill_manual</span><span class="p">(</span>
+      <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+        <span class="s">&quot;all&quot;</span> <span class="o">=</span> <span class="s">&quot;#fc8d62&quot;</span><span class="p">,</span>
+        <span class="s">&quot;native&quot;</span> <span class="o">=</span> <span class="s">&quot;#2ed5c9&quot;</span>
+      <span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+    
+    <span class="nf">theme</span><span class="p">(</span>
+      <span class="n">panel.grid</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+      <span class="n">legend.position</span> <span class="o">=</span> <span class="s">&quot;right&quot;</span><span class="p">,</span>
+      <span class="n">axis.title</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">14</span><span class="p">),</span>
+      <span class="n">axis.text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">14</span><span class="p">),</span>
+      <span class="n">panel.border</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;darkgrey&quot;</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span>
+        <span class="n">linewidth</span> <span class="o">=</span> <span class="m">1</span>
+      <span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="c1"># Loading arrows</span>
+    <span class="nf">geom_segment</span><span class="p">(</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">loadings</span><span class="p">,</span>
+      <span class="nf">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+        <span class="n">xend</span> <span class="o">=</span> <span class="n">PCx</span><span class="p">,</span>
+        <span class="n">yend</span> <span class="o">=</span> <span class="n">PCy</span>
+      <span class="p">),</span>
+      <span class="n">arrow</span> <span class="o">=</span> <span class="nf">arrow</span><span class="p">(</span><span class="n">length</span> <span class="o">=</span> <span class="nf">unit</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span> <span class="s">&quot;cm&quot;</span><span class="p">)),</span>
+      <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;#045A7FFF&quot;</span><span class="p">,</span>
+      <span class="n">linewidth</span> <span class="o">=</span> <span class="m">0.5</span>
+    <span class="p">)</span>
+  
+  <span class="c1"># -----------------------------</span>
+  <span class="c1"># Optional loading labels</span>
+  <span class="c1"># -----------------------------</span>
+  
+  <span class="nf">if </span><span class="p">(</span><span class="n">show_loading_labels</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="n">p</span> <span class="o">&lt;-</span> <span class="n">p</span> <span class="o">+</span>
+      <span class="nf">geom_text</span><span class="p">(</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">loadings</span><span class="p">,</span>
+        <span class="nf">aes</span><span class="p">(</span>
+          <span class="n">x</span> <span class="o">=</span> <span class="n">label_x</span><span class="p">,</span>
+          <span class="n">y</span> <span class="o">=</span> <span class="n">label_y</span><span class="p">,</span>
+          <span class="n">label</span> <span class="o">=</span> <span class="n">trait</span>
+        <span class="p">),</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;#2F86AC&quot;</span><span class="p">,</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span>
+        <span class="n">hjust</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span>
+        <span class="n">vjust</span> <span class="o">=</span> <span class="m">0.5</span>
+      <span class="p">)</span>
+  <span class="p">}</span>
+  
+  <span class="c1"># -----------------------------</span>
+  <span class="c1"># Zero lines</span>
+  <span class="c1"># -----------------------------</span>
+  
+  <span class="n">p</span> <span class="o">&lt;-</span> <span class="n">p</span> <span class="o">+</span>
+    <span class="nf">geom_hline</span><span class="p">(</span>
+      <span class="n">yintercept</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+      <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;dimgrey&quot;</span><span class="p">,</span>
+      <span class="n">linetype</span> <span class="o">=</span> <span class="s">&quot;dashed&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_vline</span><span class="p">(</span>
+      <span class="n">xintercept</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+      <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;dimgrey&quot;</span><span class="p">,</span>
+      <span class="n">linetype</span> <span class="o">=</span> <span class="s">&quot;dashed&quot;</span>
+    <span class="p">)</span>
+  
+  <span class="c1"># -----------------------------</span>
+  <span class="c1"># Marginal density: PCx</span>
+  <span class="c1"># -----------------------------</span>
+  
+  <span class="n">xdens</span> <span class="o">&lt;-</span> <span class="nf">axis_canvas</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="s">&quot;x&quot;</span><span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">geom_density</span><span class="p">(</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">pca_scores</span><span class="p">,</span>
+      <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">PCx</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">group</span><span class="p">),</span>
+      <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.3</span><span class="p">,</span>
+      <span class="n">linewidth</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span>
+      <span class="n">adjust</span> <span class="o">=</span> <span class="m">1.5</span><span class="p">,</span>
+      <span class="n">color</span> <span class="o">=</span> <span class="kc">NA</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">scale_fill_manual</span><span class="p">(</span>
+      <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+        <span class="s">&quot;all&quot;</span> <span class="o">=</span> <span class="s">&quot;#fc8d62&quot;</span><span class="p">,</span>
+        <span class="s">&quot;native&quot;</span> <span class="o">=</span> <span class="s">&quot;#2ed5c9&quot;</span>
+      <span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">geom_vline</span><span class="p">(</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">pca_scores</span> <span class="o">%&gt;%</span>
+        <span class="nf">group_by</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="o">%&gt;%</span>
+        <span class="nf">summarise</span><span class="p">(</span><span class="n">median_PCx</span> <span class="o">=</span> <span class="nf">median</span><span class="p">(</span><span class="n">PCx</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)),</span>
+      <span class="nf">aes</span><span class="p">(</span>
+        <span class="n">xintercept</span> <span class="o">=</span> <span class="n">median_PCx</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">group</span>
+      <span class="p">),</span>
+      <span class="n">linetype</span> <span class="o">=</span> <span class="s">&quot;solid&quot;</span><span class="p">,</span>
+      <span class="n">linewidth</span> <span class="o">=</span> <span class="m">1</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">scale_color_manual</span><span class="p">(</span>
+      <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+        <span class="s">&quot;all&quot;</span> <span class="o">=</span> <span class="s">&quot;#fc8d62&quot;</span><span class="p">,</span>
+        <span class="s">&quot;native&quot;</span> <span class="o">=</span> <span class="s">&quot;#2ed5c9&quot;</span>
+      <span class="p">)</span>
+    <span class="p">)</span>
+  
+  <span class="c1"># -----------------------------</span>
+  <span class="c1"># Marginal density: PCy</span>
+  <span class="c1"># -----------------------------</span>
+  
+  <span class="n">ydens</span> <span class="o">&lt;-</span> <span class="nf">axis_canvas</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">coord_flip</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">geom_density</span><span class="p">(</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">pca_scores</span><span class="p">,</span>
+      <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">PCy</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">group</span><span class="p">),</span>
+      <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.3</span><span class="p">,</span>
+      <span class="n">linewidth</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span>
+      <span class="n">adjust</span> <span class="o">=</span> <span class="m">1.5</span><span class="p">,</span>
+      <span class="n">color</span> <span class="o">=</span> <span class="kc">NA</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">scale_fill_manual</span><span class="p">(</span>
+      <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+        <span class="s">&quot;all&quot;</span> <span class="o">=</span> <span class="s">&quot;#fc8d62&quot;</span><span class="p">,</span>
+        <span class="s">&quot;native&quot;</span> <span class="o">=</span> <span class="s">&quot;#2ed5c9&quot;</span>
+      <span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">geom_vline</span><span class="p">(</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">pca_scores</span> <span class="o">%&gt;%</span>
+        <span class="nf">group_by</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="o">%&gt;%</span>
+        <span class="nf">summarise</span><span class="p">(</span><span class="n">median_PCy</span> <span class="o">=</span> <span class="nf">median</span><span class="p">(</span><span class="n">PCy</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)),</span>
+      <span class="nf">aes</span><span class="p">(</span>
+        <span class="n">xintercept</span> <span class="o">=</span> <span class="n">median_PCy</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">group</span>
+      <span class="p">),</span>
+      <span class="n">linetype</span> <span class="o">=</span> <span class="s">&quot;solid&quot;</span><span class="p">,</span>
+      <span class="n">linewidth</span> <span class="o">=</span> <span class="m">1</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">scale_color_manual</span><span class="p">(</span>
+      <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+        <span class="s">&quot;all&quot;</span> <span class="o">=</span> <span class="s">&quot;#fc8d62&quot;</span><span class="p">,</span>
+        <span class="s">&quot;native&quot;</span> <span class="o">=</span> <span class="s">&quot;#2ed5c9&quot;</span>
+      <span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span>
+    
+    <span class="nf">coord_flip</span><span class="p">()</span>
+  
+  <span class="c1"># -----------------------------</span>
+  <span class="c1"># Combine plot + marginal densities</span>
+  <span class="c1"># -----------------------------</span>
+  
+  <span class="n">final_plot</span> <span class="o">&lt;-</span> <span class="n">p</span> <span class="o">%&gt;%</span>
+    <span class="nf">insert_xaxis_grob</span><span class="p">(</span>
+      <span class="n">xdens</span><span class="p">,</span>
+      <span class="n">grid</span><span class="o">::</span><span class="nf">unit</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="s">&quot;in&quot;</span><span class="p">),</span>
+      <span class="n">position</span> <span class="o">=</span> <span class="s">&quot;top&quot;</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">insert_yaxis_grob</span><span class="p">(</span>
+      <span class="n">ydens</span><span class="p">,</span>
+      <span class="n">grid</span><span class="o">::</span><span class="nf">unit</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="s">&quot;in&quot;</span><span class="p">),</span>
+      <span class="n">position</span> <span class="o">=</span> <span class="s">&quot;right&quot;</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">ggdraw</span><span class="p">()</span>
+  
+  <span class="nf">return</span><span class="p">(</span><span class="n">final_plot</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pc_combinations</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span>
+  <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+  <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span>
+  <span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">label_options</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">pcs</span> <span class="n">in</span> <span class="n">pc_combinations</span><span class="p">)</span> <span class="p">{</span>
+  
+  <span class="nf">for </span><span class="p">(</span><span class="n">show_labels</span> <span class="n">in</span> <span class="n">label_options</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="n">final_plot</span> <span class="o">&lt;-</span> <span class="nf">make_pca_biplot</span><span class="p">(</span>
+      <span class="n">pca_result</span><span class="p">,</span>
+      <span class="n">gbif_imputed</span><span class="p">,</span>
+      <span class="n">pcs</span> <span class="o">=</span> <span class="n">pcs</span><span class="p">,</span>
+      <span class="n">show_loading_labels</span> <span class="o">=</span> <span class="n">show_labels</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Create filename</span>
+    <span class="n">pc_name</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC&quot;</span><span class="p">,</span> <span class="n">pcs</span><span class="p">[</span><span class="m">1</span><span class="p">],</span> <span class="s">&quot;_PC&quot;</span><span class="p">,</span> <span class="n">pcs</span><span class="p">[</span><span class="m">2</span><span class="p">])</span>
+    <span class="n">label_name</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">show_labels</span><span class="p">,</span> <span class="s">&quot;labels&quot;</span><span class="p">,</span> <span class="s">&quot;nolabels&quot;</span><span class="p">)</span>
+    
+    <span class="n">filename</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span>
+      <span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/&quot;</span><span class="p">,</span>
+      <span class="s">&quot;pca_global_densities_biplot_GBIF_wcvp_all_CS_log10_notrim_misstree_&quot;</span><span class="p">,</span>
+      <span class="n">pc_name</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="n">label_name</span><span class="p">,</span> <span class="s">&quot;.png&quot;</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Save</span>
+    <span class="nf">png</span><span class="p">(</span>
+      <span class="n">file</span> <span class="o">=</span> <span class="n">filename</span><span class="p">,</span>
+      <span class="n">width</span> <span class="o">=</span> <span class="m">9</span><span class="p">,</span>
+      <span class="n">height</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span>
+      <span class="n">units</span> <span class="o">=</span> <span class="s">&quot;in&quot;</span><span class="p">,</span>
+      <span class="n">res</span> <span class="o">=</span> <span class="m">300</span>
+    <span class="p">)</span>
+    
+    <span class="nf">print</span><span class="p">(</span><span class="n">final_plot</span><span class="p">)</span>
+    <span class="nf">dev.off</span><span class="p">()</span>
+    
+    <span class="c1"># Print to screen</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">final_plot</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“The dot-dot notation (`..level..`) was deprecated in ggplot2 3.4.0.
+<span class=" -Color -Color-Cyan">ℹ</span> Please use `after_stat(level)` instead.”
+Warning message:
+“Removed 604 rows containing non-finite outside the scale range
+(`stat_density()`).”
+Warning message:
+“Removed 777 rows containing non-finite outside the scale range
+(`stat_density()`).”
+Warning message:
+“Removed 604 rows containing non-finite outside the scale range
+(`stat_density()`).”
+Warning message:
+“Removed 777 rows containing non-finite outside the scale range
+(`stat_density()`).”
+Warning message:
+“Removed 480 rows containing non-finite outside the scale range
+(`stat_density()`).”
+Warning message:
+“Removed 963 rows containing non-finite outside the scale range
+(`stat_density()`).”
+</pre></div>
+</div>
+<img alt="_images/04.1_PCA_global_68_1.png" src="_images/04.1_PCA_global_68_1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“Removed 614 rows containing non-finite outside the scale range
+(`stat_density()`).”
+Warning message:
+“Removed 963 rows containing non-finite outside the scale range
+(`stat_density()`).”
+</pre></div>
+</div>
+<img alt="_images/04.1_PCA_global_68_3.png" src="_images/04.1_PCA_global_68_3.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“Removed 1990 rows containing non-finite outside the scale range
+(`stat_density()`).”
+Warning message:
+“Removed 495 rows containing non-finite outside the scale range
+(`stat_density()`).”
+</pre></div>
+</div>
+<img alt="_images/04.1_PCA_global_68_5.png" src="_images/04.1_PCA_global_68_5.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“Removed 2257 rows containing non-finite outside the scale range
+(`stat_density()`).”
+Warning message:
+“Removed 595 rows containing non-finite outside the scale range
+(`stat_density()`).”
+</pre></div>
+</div>
+<img alt="_images/04.1_PCA_global_68_7.png" src="_images/04.1_PCA_global_68_7.png" />
+<img alt="_images/04.1_PCA_global_68_8.png" src="_images/04.1_PCA_global_68_8.png" />
+<img alt="_images/04.1_PCA_global_68_9.png" src="_images/04.1_PCA_global_68_9.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "rstudio_r"
+        },
+        kernelOptions: {
+            kernelName: "rstudio_r",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'rstudio_r'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="03_Grid_cell_trait_means.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Aggregate into hexbins</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04.1_Plot_global_maps_PCA.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plot global gradients of main principal components</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

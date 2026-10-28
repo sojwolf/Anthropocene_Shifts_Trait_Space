@@ -1,0 +1,2520 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>GloNAF Data &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Aggregate into hexbins" href="03_Grid_cell_trait_means.html" />
+    <link rel="prev" title="Add hexagonal grid coordinates to GBIF" href="01.3_H3_grid_preprocessing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/02_Native_introduced_status_match.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F02_Native_introduced_status_match.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/02_Native_introduced_status_match.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   GloNAF Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-h3-indices-to-polygons">
+     Add h3_indices to Polygons
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-tricky-polygons">
+     Some tricky polygons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wcvp-data">
+   WCVP Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-wcvp-data">
+     Load WCVP Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wcvp-polygon-to-h3-hexagons">
+     WCVP polygon to h3 hexagons
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-glonaf-txr">
+     Load GloNAF TxR
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-with-gbif-observations">
+   Merge with GBIF observations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-check-with-one-chunk">
+     Code check with one chunk
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-for-all-observations">
+     Run for all observations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-woodiness">
+   Add Woodiness
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>GloNAF Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   GloNAF Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-h3-indices-to-polygons">
+     Add h3_indices to Polygons
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-tricky-polygons">
+     Some tricky polygons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wcvp-data">
+   WCVP Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-wcvp-data">
+     Load WCVP Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wcvp-polygon-to-h3-hexagons">
+     WCVP polygon to h3 hexagons
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-glonaf-txr">
+     Load GloNAF TxR
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-with-gbif-observations">
+   Merge with GBIF observations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-check-with-one-chunk">
+     Code check with one chunk
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-for-all-observations">
+     Run for all observations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-woodiness">
+   Add Woodiness
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="glonaf-data">
+<h1>GloNAF Data<a class="headerlink" href="#glonaf-data" title="Permalink to this headline">#</a></h1>
+<section id="add-h3-indices-to-polygons">
+<h2>Add h3_indices to Polygons<a class="headerlink" href="#add-h3-indices-to-polygons" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## Preprocess GloNAF</span>
+
+<span class="c1"># Load spatial and data-manipulation packages</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>         <span class="c1"># Read and process spatial vector data</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span> <span class="c1"># Efficient data manipulation</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">geos</span><span class="p">)</span>       <span class="c1"># Planar geometry operations</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>      <span class="c1"># Data-frame manipulation</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>  <span class="c1"># Additional data-wrangling and visualization tools</span>
+
+<span class="c1"># Read the GloNAF shapefile/layer from the specified data directory</span>
+<span class="n">glonaf_shapes</span> <span class="o">&lt;-</span> <span class="nf">read_sf</span><span class="p">(</span>
+  <span class="n">dsn</span> <span class="o">=</span> <span class="s">&quot;../../Data/GloNAF2/glonaf_2024_nol&quot;</span><span class="p">,</span>
+  <span class="n">layer</span> <span class="o">=</span> <span class="s">&quot;glonaf_2024_nol&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Repair invalid geometries to support subsequent spatial operations</span>
+<span class="n">glonaf_shapes</span> <span class="o">&lt;-</span> <span class="n">glonaf_shapes</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">geometry</span> <span class="o">=</span> <span class="nf">st_make_valid</span><span class="p">(</span><span class="n">geometry</span><span class="p">))</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">glonaf_shapes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
+
+
+Attaching package: ‘dplyr’
+
+
+The following objects are masked from ‘package:data.table’:
+
+    between, first, last
+
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+── <span class=" -Color -Color-Bold">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats  </span> 1.0.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr    </span> 2.1.5
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2  </span> 4.0.3     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr  </span> 1.5.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">lubridate</span> 1.9.3     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble   </span> 3.2.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr    </span> 1.0.2     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr    </span> 1.3.1
+── <span class=" -Color -Color-Bold">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">between()</span>     masks <span class=" -Color -Color-Blue">data.table</span>::between()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span>      masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">first()</span>       masks <span class=" -Color -Color-Blue">data.table</span>::first()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">hour()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::hour()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">isoweek()</span> masks <span class=" -Color -Color-Blue">data.table</span>::isoweek()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>         masks <span class=" -Color -Color-Blue">stats</span>::lag()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">last()</span>        masks <span class=" -Color -Color-Blue">data.table</span>::last()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">mday()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::mday()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">minute()</span>  masks <span class=" -Color -Color-Blue">data.table</span>::minute()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">month()</span>   masks <span class=" -Color -Color-Blue">data.table</span>::month()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">quarter()</span> masks <span class=" -Color -Color-Blue">data.table</span>::quarter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">second()</span>  masks <span class=" -Color -Color-Blue">data.table</span>::second()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">purrr</span>::<span class=" -Color -Color-Green">transpose()</span>   masks <span class=" -Color -Color-Blue">data.table</span>::transpose()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">wday()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::wday()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">week()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::week()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">yday()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::yday()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">year()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::year()
+<span class=" -Color -Color-Cyan">ℹ</span> Use the conflicted package (<span class=" -Color -Color-Blue">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors
+ERROR while rich displaying an object: Error in loadNamespace(x): there is no package called ‘geojsonio’
+
+Traceback:
+1. sapply(x, f, simplify = simplify)
+2. lapply(X = X, FUN = FUN, ...)
+3. FUN(X[[i]], ...)
+4. tryCatch(withCallingHandlers({
+ .     if (!mime %in% names(repr::mime2repr)) 
+ .         stop(&quot;No repr_* for mimetype &quot;, mime, &quot; in repr::mime2repr&quot;)
+ .     rpr &lt;- repr::mime2repr[[mime]](obj)
+ .     if (is.null(rpr)) 
+ .         return(NULL)
+ .     prepare_content(is.raw(rpr), rpr)
+ . }, error = error_handler), error = outer_handler)
+5. tryCatchList(expr, classes, parentenv, handlers)
+6. tryCatchOne(expr, names, parentenv, handlers[[1L]])
+7. doTryCatch(return(expr), name, parentenv, handler)
+8. withCallingHandlers({
+ .     if (!mime %in% names(repr::mime2repr)) 
+ .         stop(&quot;No repr_* for mimetype &quot;, mime, &quot; in repr::mime2repr&quot;)
+ .     rpr &lt;- repr::mime2repr[[mime]](obj)
+ .     if (is.null(rpr)) 
+ .         return(NULL)
+ .     prepare_content(is.raw(rpr), rpr)
+ . }, error = error_handler)
+9. repr::mime2repr[[mime]](obj)
+10. repr_geojson.sf(obj)
+11. repr_geojson(geojsonio::geojson_list(obj), ...)
+12. loadNamespace(x)
+13. withRestarts(stop(cond), retry_loadNamespace = function() NULL)
+14. withOneRestart(expr, restarts[[1L]])
+15. doWithOneRestart(return(expr), restart)
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A sf: 6 × 9</caption>
+<thead>
+	<tr><th scope=col>OBJIDsic</th><th scope=col>IDregion</th><th scope=col>ISOcountry</th><th scope=col>LAT</th><th scope=col>LON</th><th scope=col>name</th><th scope=col>SRichness</th><th scope=col>Area_SqKm</th><th scope=col>geometry</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;MULTIPOLYGON [°]&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td> 2</td><td>AFG       </td><td>AFG</td><td> 33.835188</td><td> 66.00674</td><td>Afghanistan        </td><td> 60</td><td>641084</td><td>MULTIPOLYGON (((65.69755 37...</td></tr>
+	<tr><td> 5</td><td>RUS.SIB.AK</td><td>RUS</td><td> 52.611114</td><td> 82.62185</td><td>Altay              </td><td>207</td><td>170808</td><td>MULTIPOLYGON (((79.36609 51...</td></tr>
+	<tr><td>17</td><td>CHL.AC    </td><td>CHL</td><td>-55.146721</td><td>-68.63069</td><td>Antártica Chilena  </td><td>  9</td><td>  9039</td><td>MULTIPOLYGON (((-67.21224 -...</td></tr>
+	<tr><td>18</td><td>ATG       </td><td>ATG</td><td> 17.266173</td><td>-61.79668</td><td>Antigua and Barbuda</td><td> 17</td><td>   425</td><td>MULTIPOLYGON (((-61.83264 1...</td></tr>
+	<tr><td>26</td><td>ARM       </td><td>ARM</td><td> 40.286200</td><td> 44.94739</td><td>Armenia            </td><td>370</td><td> 29669</td><td>MULTIPOLYGON (((46.49554 38...</td></tr>
+	<tr><td>32</td><td>SHN.AC    </td><td>GBR</td><td> -7.943513</td><td>-14.36703</td><td>Ascension Island   </td><td>  3</td><td>    99</td><td>MULTIPOLYGON (((-14.38028 -...</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert each GloNAF polygon into H3 cells and add neighboring cells</span>
+<span class="n">glonaf_h3</span> <span class="o">&lt;-</span> <span class="n">glonaf_shapes</span> <span class="o">%&gt;%</span>
+  <span class="nf">rowwise</span><span class="p">()</span> <span class="o">%&gt;%</span>  <span class="c1"># Process each polygon independently</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="c1"># Find H3 cells whose centroids fall within the polygon</span>
+    <span class="n">h3_indexes</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">pf</span> <span class="o">&lt;-</span> <span class="n">h3</span><span class="o">::</span><span class="nf">polyfill</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+
+      <span class="c1"># If no H3 cell is found, use the polygon centroid as a fallback</span>
+      <span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">pf</span><span class="p">)</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">centroid</span> <span class="o">&lt;-</span> <span class="n">sf</span><span class="o">::</span><span class="nf">st_centroid</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+        <span class="n">coords</span> <span class="o">&lt;-</span> <span class="n">sf</span><span class="o">::</span><span class="nf">st_coordinates</span><span class="p">(</span><span class="n">centroid</span><span class="p">)</span>
+
+        <span class="c1"># H3 coordinates must be supplied in latitude-longitude order</span>
+        <span class="n">pf</span> <span class="o">&lt;-</span> <span class="n">h3</span><span class="o">::</span><span class="nf">geo_to_h3</span><span class="p">(</span>
+          <span class="nf">matrix</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">)],</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">1</span><span class="p">),</span>
+          <span class="n">res</span> <span class="o">=</span> <span class="m">3</span>
+        <span class="p">)</span>
+      <span class="p">}</span>
+
+      <span class="c1"># Store the H3 indexes as a list-column</span>
+      <span class="nf">list</span><span class="p">(</span><span class="n">pf</span><span class="p">)</span>
+    <span class="p">},</span>
+
+    <span class="c1"># Add the central H3 cells and their first-order neighbors</span>
+    <span class="n">h3_indexes_k1</span> <span class="o">=</span> <span class="nf">list</span><span class="p">({</span>
+      <span class="n">base</span> <span class="o">&lt;-</span> <span class="n">h3_indexes</span>
+
+      <span class="c1"># Generate a one-ring neighborhood around each base H3 cell</span>
+      <span class="n">expanded</span> <span class="o">&lt;-</span> <span class="nf">unique</span><span class="p">(</span><span class="nf">unlist</span><span class="p">(</span>
+        <span class="nf">lapply</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span> <span class="n">h3</span><span class="o">::</span><span class="nf">k_ring</span><span class="p">(</span><span class="n">ix</span><span class="p">))</span>
+      <span class="p">))</span>
+
+      <span class="n">expanded</span>
+    <span class="p">}),</span>
+
+    <span class="c1"># Keep only the neighboring cells that are not in the original set</span>
+    <span class="n">h3_outer_ring</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="nf">setdiff</span><span class="p">(</span><span class="n">h3_indexes_k1</span><span class="p">,</span> <span class="n">h3_indexes</span><span class="p">))</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">ungroup</span><span class="p">()</span>  <span class="c1"># Return to standard, non-rowwise data-frame behavior</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">### Convert polygon to h3 index</span>
+
+<span class="c1"># Generate H3 indexes for each polygon</span>
+<span class="n">glonaf_h3_plain</span> <span class="o">&lt;-</span> <span class="n">glonaf_shapes</span> <span class="o">%&gt;%</span>
+  <span class="nf">rowwise</span><span class="p">()</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">h3_indexes</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">h3</span><span class="o">::</span><span class="nf">polyfill</span><span class="p">(</span><span class="nf">st_geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">),</span> <span class="n">res</span> <span class="o">=</span> <span class="m">3</span><span class="p">)))</span> <span class="o">%&gt;%</span> 
+  <span class="nf">ungroup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">glonaf_h3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simple feature collection with 983 features and 11 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -180 ymin: -75.3207 xmax: 180 ymax: 83.60415
+Geodetic CRS:  WGS 84
+# A tibble: 983 × 12
+   OBJIDsic IDregion   ISOcountry    LAT   LON name          SRichness Area_SqKm
+      &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;
+ 1        2 AFG        AFG         33.8   66.0 Afghanistan          60    641084
+ 2        5 RUS.SIB.AK RUS         52.6   82.6 Altay               207    170808
+ 3       17 CHL.AC     CHL        -<span class=" -Color -Color-Red">55.1</span>  -<span class=" -Color -Color-Red">68.6</span> Antártica Ch…         9      9039
+ 4       18 ATG        ATG         17.3  -<span class=" -Color -Color-Red">61.8</span> Antigua and …        17       425
+ 5       26 ARM        ARM         40.3   44.9 Armenia             370     29669
+ 6       32 SHN.AC     GBR         -<span class=" -Color -Color-Red">7.94</span> -<span class=" -Color -Color-Red">14.4</span> Ascension Is…         3        99
+ 7       34 CHL.RAT    CHL        -<span class=" -Color -Color-Red">27.4</span>  -<span class=" -Color -Color-Red">69.9</span> Región de At…       146     77960
+ 8       36 CHL.RAI    CHL        -<span class=" -Color -Color-Red">46.3</span>  -<span class=" -Color -Color-Red">73.4</span> Región Aisén…       116     75990
+ 9       37 AZE        AZE         40.3   48.8 Azerbaijan           40    164478
+10       38 BHR        BHR         26.0   50.5 Bahrain               2       236
+# ℹ 973 more rows
+# ℹ 4 more variables: geometry &lt;MULTIPOLYGON [°]&gt;, h3_indexes &lt;list&gt;,
+#   h3_indexes_k1 &lt;list&gt;, h3_outer_ring &lt;list&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">glonaf_h3</span><span class="o">$</span><span class="n">geometry</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02_Native_introduced_status_match_7_0.png" src="_images/02_Native_introduced_status_match_7_0.png" />
+</div>
+</div>
+</section>
+<section id="some-tricky-polygons">
+<h2>Some tricky polygons<a class="headerlink" href="#some-tricky-polygons" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="c1"># Convert the first two H3 index lists to polygons from glonaf_h3</span>
+<span class="n">h3_polygons</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">glonaf_h3</span><span class="o">$</span><span class="n">h3_indexes_k1</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">],</span> <span class="n">h3</span><span class="o">::</span><span class="n">h3_to_geo_boundary_sf</span><span class="p">))</span>
+
+<span class="c1"># Convert the first two H3 index lists to polygons from glonaf_h3_plain</span>
+<span class="n">h3_polygons_plain</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">glonaf_h3_plain</span><span class="o">$</span><span class="n">h3_indexes</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">],</span> <span class="n">h3</span><span class="o">::</span><span class="n">h3_to_geo_boundary_sf</span><span class="p">))</span>
+
+<span class="c1"># Plot the polygons with overlay</span>
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">h3_polygons</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">h3_polygons_plain</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;H3 Index Polygons&quot;</span><span class="p">,</span> 
+         <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&quot;Overlay of H3 polygons from glonaf_h3 and glonaf_h3_plain&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">coord_sf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02_Native_introduced_status_match_9_0.png" src="_images/02_Native_introduced_status_match_9_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting of potentially problematic polygons (date line / wide bbox)</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">h3</span><span class="p">)</span>
+
+<span class="n">crosses_date_line_or_spans_globe</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">bb</span> <span class="o">&lt;-</span> <span class="nf">st_bbox</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">bb</span><span class="p">[</span><span class="s">&quot;xmax&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">bb</span><span class="p">[</span><span class="s">&quot;xmin&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="m">180</span> <span class="o">||</span> <span class="n">bb</span><span class="p">[</span><span class="s">&quot;xmin&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="m">-180</span> <span class="o">||</span> <span class="n">bb</span><span class="p">[</span><span class="s">&quot;xmax&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="m">180</span>
+<span class="p">}</span>
+
+<span class="c1"># Optionally wrap geometries that cross the dateline</span>
+<span class="n">glonaf_shapes_wrapped</span> <span class="o">&lt;-</span> <span class="nf">st_wrap_dateline</span><span class="p">(</span><span class="n">glonaf_shapes</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;WRAPDATELINE&quot;</span><span class="p">,</span><span class="s">&quot;DATELINEOFFSET&quot;</span><span class="p">),</span> <span class="n">quiet</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Use wrapped geometries for polyfill to reduce oddities (only if you want to recompute)</span>
+<span class="c1"># glonaf_h3$geometry &lt;- glonaf_shapes_wrapped$geometry</span>
+
+<span class="n">filtered_polygons</span> <span class="o">&lt;-</span> <span class="n">glonaf_h3</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="nf">sapply</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">crosses_date_line_or_spans_globe</span><span class="p">))</span>
+
+<span class="n">h3_vec_to_sf</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">h3_vec</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">h3_vec</span> <span class="o">&lt;-</span> <span class="nf">unique</span><span class="p">(</span><span class="n">h3_vec</span><span class="p">)</span>
+  <span class="n">h3_vec</span> <span class="o">&lt;-</span> <span class="n">h3_vec</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">h3_vec</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nf">nzchar</span><span class="p">(</span><span class="n">h3_vec</span><span class="p">)]</span>
+  <span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">length</span><span class="p">(</span><span class="n">h3_vec</span><span class="p">))</span> <span class="nf">return</span><span class="p">(</span><span class="kc">NULL</span><span class="p">)</span>
+  <span class="c1"># one index at a time</span>
+  <span class="n">parts</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">h3_vec</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># try-catch to skip any malformed index</span>
+    <span class="nf">tryCatch</span><span class="p">(</span><span class="n">h3</span><span class="o">::</span><span class="nf">h3_to_geo_boundary_sf</span><span class="p">(</span><span class="n">ix</span><span class="p">),</span> <span class="n">error</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="kc">NULL</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="n">parts</span> <span class="o">&lt;-</span> <span class="nf">Filter</span><span class="p">(</span><span class="nf">Negate</span><span class="p">(</span><span class="n">is.null</span><span class="p">),</span> <span class="n">parts</span><span class="p">)</span>
+  <span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">length</span><span class="p">(</span><span class="n">parts</span><span class="p">))</span> <span class="nf">return</span><span class="p">(</span><span class="kc">NULL</span><span class="p">)</span>
+  <span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="n">parts</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">filtered_polygons</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="n">polygon</span> <span class="o">&lt;-</span> <span class="n">filtered_polygons</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">]</span>
+
+    <span class="n">idx_base</span>  <span class="o">&lt;-</span> <span class="nf">unlist</span><span class="p">(</span><span class="n">polygon</span><span class="o">$</span><span class="n">h3_indexes</span><span class="p">,</span>      <span class="n">use.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+    <span class="n">idx_k1</span>    <span class="o">&lt;-</span> <span class="nf">unlist</span><span class="p">(</span><span class="n">polygon</span><span class="o">$</span><span class="n">h3_indexes_k1</span><span class="p">,</span>   <span class="n">use.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+
+    <span class="c1"># Filter out hexagons that cross the date line</span>
+    <span class="n">idx_base</span> <span class="o">&lt;-</span> <span class="n">idx_base</span><span class="p">[</span><span class="o">!</span><span class="nf">sapply</span><span class="p">(</span><span class="n">idx_base</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">h3_polygon</span> <span class="o">&lt;-</span> <span class="n">h3</span><span class="o">::</span><span class="nf">h3_to_geo_boundary_sf</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span>
+        <span class="nf">crosses_date_line_or_spans_globe</span><span class="p">(</span><span class="n">h3_polygon</span><span class="p">)</span>
+    <span class="p">})]</span>
+
+    <span class="n">idx_k1</span> <span class="o">&lt;-</span> <span class="n">idx_k1</span><span class="p">[</span><span class="o">!</span><span class="nf">sapply</span><span class="p">(</span><span class="n">idx_k1</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">h3_polygon</span> <span class="o">&lt;-</span> <span class="n">h3</span><span class="o">::</span><span class="nf">h3_to_geo_boundary_sf</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span>
+        <span class="nf">crosses_date_line_or_spans_globe</span><span class="p">(</span><span class="n">h3_polygon</span><span class="p">)</span>
+    <span class="p">})]</span>
+
+    <span class="n">h3_polygons_base</span> <span class="o">&lt;-</span> <span class="nf">h3_vec_to_sf</span><span class="p">(</span><span class="n">idx_base</span><span class="p">)</span>
+    <span class="n">h3_polygons_k1</span>   <span class="o">&lt;-</span> <span class="nf">h3_vec_to_sf</span><span class="p">(</span><span class="n">idx_k1</span><span class="p">)</span>
+
+    <span class="nf">if </span><span class="p">(</span><span class="nf">is.null</span><span class="p">(</span><span class="n">h3_polygons_k1</span><span class="p">)</span> <span class="o">||</span> <span class="nf">is.null</span><span class="p">(</span><span class="n">h3_polygons_base</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nf">message</span><span class="p">(</span><span class="s">&quot;Skipping OBJIDsic=&quot;</span><span class="p">,</span> <span class="n">polygon</span><span class="o">$</span><span class="n">OBJIDsic</span><span class="p">,</span> <span class="s">&quot; (no valid H3 cells)&quot;</span><span class="p">)</span>
+        <span class="n">next</span>
+    <span class="p">}</span>
+
+    <span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+        <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">h3_polygons_k1</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">)</span> <span class="o">+</span>
+        <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">h3_polygons_base</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="m">0.15</span><span class="p">)</span> <span class="o">+</span>
+        <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+        <span class="nf">labs</span><span class="p">(</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="nf">paste</span><span class="p">(</span><span class="s">&quot;H3 coverage (k=1) vs base for OBJIDsic&quot;</span><span class="p">,</span> <span class="n">polygon</span><span class="o">$</span><span class="n">OBJIDsic</span><span class="p">),</span>
+            <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&quot;Light blue = base + neighbors; Red = base&quot;</span>
+        <span class="p">)</span> <span class="o">+</span>
+        <span class="nf">coord_sf</span><span class="p">()</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘h3’
+
+
+The following object is masked from ‘package:purrr’:
+
+    compact
+</pre></div>
+</div>
+<img alt="_images/02_Native_introduced_status_match_10_1.png" src="_images/02_Native_introduced_status_match_10_1.png" />
+<img alt="_images/02_Native_introduced_status_match_10_2.png" src="_images/02_Native_introduced_status_match_10_2.png" />
+<img alt="_images/02_Native_introduced_status_match_10_3.png" src="_images/02_Native_introduced_status_match_10_3.png" />
+<img alt="_images/02_Native_introduced_status_match_10_4.png" src="_images/02_Native_introduced_status_match_10_4.png" />
+<img alt="_images/02_Native_introduced_status_match_10_5.png" src="_images/02_Native_introduced_status_match_10_5.png" />
+<img alt="_images/02_Native_introduced_status_match_10_6.png" src="_images/02_Native_introduced_status_match_10_6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter out rows with empty h3_indexes (i.e., empty lists)</span>
+<span class="n">glonaf_h3_filtered</span> <span class="o">&lt;-</span> <span class="n">glonaf_h3</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="nf">lengths</span><span class="p">(</span><span class="n">h3_indexes_k1</span><span class="p">)</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span>  <span class="c1"># Keeps only rows with non-empty h3_indexes</span>
+
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">glonaf_h3_filtered</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_sf</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Polygons from GloNAF&quot;</span><span class="p">,</span> 
+       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&quot;Visualizing region polgons that don&#39;t intersect with h3 polygon&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">coord_sf</span><span class="p">()</span>  <span class="c1"># Adjust the map projection if necessary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02_Native_introduced_status_match_11_0.png" src="_images/02_Native_introduced_status_match_11_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="wcvp-data">
+<h1>WCVP Data<a class="headerlink" href="#wcvp-data" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span> 
+<span class="n">dtn</span> <span class="o">=</span> <span class="m">10</span>
+<span class="nf">setDTthreads</span><span class="p">(</span><span class="n">threads</span> <span class="o">=</span> <span class="n">dtn</span><span class="p">)</span> <span class="c1">#defines how many threads data.table is allowed to use</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-wcvp-data">
+<h2>Load WCVP Data<a class="headerlink" href="#load-wcvp-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#read csv  TRY_GloNAF_GBIF_matching_growthForm_Sophie_2025-09-16</span>
+<span class="n">status_match</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;../../Data/TRY_GloNAF_GBIF_matching_growthForm_Sophie_2025-09-16&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">status_match</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 40</caption>
+<thead>
+	<tr><th scope=col>TRY_name</th><th scope=col>GloNAF_name</th><th scope=col>nameIn</th><th scope=col>authorsIn</th><th scope=col>familyWCVP</th><th scope=col>statusWCVP</th><th scope=col>nameInWCVP</th><th scope=col>authorsInWCVP</th><th scope=col>nameOutWCVP</th><th scope=col>authorsOutWCVP</th><th scope=col>⋯</th><th scope=col>canonicalNameGBIF</th><th scope=col>rankGBIF</th><th scope=col>authorshipGBIF</th><th scope=col>familyGBIF</th><th scope=col>orderGBIF</th><th scope=col>classGBIF</th><th scope=col>phylumGBIF</th><th scope=col>kingdomGBIF</th><th scope=col>woodiness</th><th scope=col>growthForm</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>⋯</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>ACAENA NOVAE-ZELANDIAE   </td><td></td><td>Acaena novae-zelandiae   </td><td></td><td>Rosaceae    </td><td>accepted</td><td>Acaena novaezelandiae   </td><td>Kirk         </td><td>Acaena novaezelandiae   </td><td>Kirk         </td><td>⋯</td><td>Acaena novae-zelandiae   </td><td>SPECIES</td><td>Kirk         </td><td>Rosaceae    </td><td>Rosales     </td><td>Magnoliopsida </td><td>Tracheophyta</td><td>Plantae</td><td>woody    </td><td>herb        </td></tr>
+	<tr><td>ADIANTUM CAPILLUS-VENERIS</td><td></td><td>Adiantum capillus-veneris</td><td></td><td>Pteridaceae </td><td>accepted</td><td>Adiantum capillusveneris</td><td>L.           </td><td>Adiantum capillusveneris</td><td>L.           </td><td>⋯</td><td>Adiantum capillus-veneris</td><td>SPECIES</td><td>L.           </td><td>Pteridaceae </td><td>Polypodiales</td><td>Polypodiopsida</td><td>Tracheophyta</td><td>Plantae</td><td>non-woody</td><td>pteridophyte</td></tr>
+	<tr><td>ALISMA PLANTAGO-AQUATICA </td><td></td><td>Alisma plantago-aquatica </td><td></td><td>Alismataceae</td><td>accepted</td><td>Alisma plantagoaquatica </td><td>L.           </td><td>Alisma plantagoaquatica </td><td>L.           </td><td>⋯</td><td>Alisma plantago-aquatica </td><td>SPECIES</td><td>L.           </td><td>Alismataceae</td><td>Alismatales </td><td>Liliopsida    </td><td>Tracheophyta</td><td>Plantae</td><td>non-woody</td><td>herb        </td></tr>
+	<tr><td>APERA SPICA-VENTI        </td><td></td><td>Apera spica-venti        </td><td></td><td>Poaceae     </td><td>accepted</td><td>Apera spicaventi        </td><td>(L.) P.Beauv.</td><td>Apera spicaventi        </td><td>(L.) P.Beauv.</td><td>⋯</td><td>Apera spica-venti        </td><td>SPECIES</td><td>(L.) P.Beauv.</td><td>Poaceae     </td><td>Poales      </td><td>Liliopsida    </td><td>Tracheophyta</td><td>Plantae</td><td>non-woody</td><td>herb        </td></tr>
+	<tr><td>ARCTOSTAPHYLOS UVA-URSI  </td><td></td><td>Arctostaphylos uva-ursi  </td><td></td><td>Ericaceae   </td><td>accepted</td><td>Arctostaphylos uvaursi  </td><td>(L.) Spreng. </td><td>Arctostaphylos uvaursi  </td><td>(L.) Spreng. </td><td>⋯</td><td>Arctostaphylos uva-ursi  </td><td>SPECIES</td><td>(L.) Spreng. </td><td>Ericaceae   </td><td>Ericales    </td><td>Magnoliopsida </td><td>Tracheophyta</td><td>Plantae</td><td>woody    </td><td>shrub       </td></tr>
+	<tr><td>ATROPA BELLA-DONNA       </td><td></td><td>Atropa bella-donna       </td><td></td><td>Solanaceae  </td><td>accepted</td><td>Atropa belladonna       </td><td>L.           </td><td>Atropa belladonna       </td><td>L.           </td><td>⋯</td><td>Atropa belladonna        </td><td>SPECIES</td><td>L.           </td><td>Solanaceae  </td><td>Solanales   </td><td>Magnoliopsida </td><td>Tracheophyta</td><td>Plantae</td><td>non-woody</td><td>shrub       </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">colnames</span><span class="p">(</span><span class="n">status_match</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'TRY_name'</li><li>'GloNAF_name'</li><li>'nameIn'</li><li>'authorsIn'</li><li>'familyWCVP'</li><li>'statusWCVP'</li><li>'nameInWCVP'</li><li>'authorsInWCVP'</li><li>'nameOutWCVP'</li><li>'authorsOutWCVP'</li><li>'rowWCVP'</li><li>'diffGenWCVP'</li><li>'diffSpecWCVP'</li><li>'diffRestWCVP'</li><li>'diffAuthorsWCVP'</li><li>'distWCVP'</li><li>'distWCVPInt'</li><li>'GBIFKeyGBIF'</li><li>'searchTypeGBIF'</li><li>'synonymGBIF'</li><li>'matchNameGBIF'</li><li>'matchedScientificNameGBIF'</li><li>'matchedCanonicalNameGBIF'</li><li>'matchedAuthorshipGBIF'</li><li>'diffGenGBIF'</li><li>'diffSpecGBIF'</li><li>'diffRestGBIF'</li><li>'diffAuthorsGBIF'</li><li>'timeGBIF'</li><li>'scientificNameGBIF'</li><li>'canonicalNameGBIF'</li><li>'rankGBIF'</li><li>'authorshipGBIF'</li><li>'familyGBIF'</li><li>'orderGBIF'</li><li>'classGBIF'</li><li>'phylumGBIF'</li><li>'kingdomGBIF'</li><li>'woodiness'</li><li>'growthForm'</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># subset status_match to &#39;GBIFKeyGBIF&#39; &#39;woodiness&#39;&#39;growthForm&#39; distWCVP	distWCVPInt </span>
+<span class="n">status_match_subset</span> <span class="o">&lt;-</span> <span class="n">status_match</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">GBIFKeyGBIF</span><span class="p">,</span> <span class="n">woodiness</span><span class="p">,</span> <span class="n">growthForm</span><span class="p">,</span> <span class="n">distWCVP</span><span class="p">,</span> <span class="n">distWCVPInt</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">status_match_subset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 5</caption>
+<thead>
+	<tr><th scope=col>GBIFKeyGBIF</th><th scope=col>woodiness</th><th scope=col>growthForm</th><th scope=col>distWCVP</th><th scope=col>distWCVPInt</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5370755</td><td>woody    </td><td>herb        </td><td>NWG NSW QLD SOA TAS VIC WAU ATP CTM NZN NZS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </td><td>GRB IRE ORE CAL                                                                                                        </td></tr>
+	<tr><td>2651816</td><td>non-woody</td><td>pteridophyte</td><td>GRB IRE SWI BAL COR FRA POR SAR SPA ALB BUL GRC ITA KRI SIC TUE YUG KRY ALG EGY LBY MOR TUN AZO CNY CVI MDR MLI MTN NGA NGR SEN ZAI CHA DJI ETH SOC SOM SUD KEN TAN UGA ANG MLW MOZ ZAM ZIM BOT CPP LES NAM NAT OFS SWZ COM MAU MDG REU ROD KAZ TZK UZB NCS TCS AFG CYP IRN IRQ LBS PAL SIN TUR GST OMA SAU YEM CHC CHN CHS CHT JAP KOR NNS TAI ASS BAN EHM IND NEP PAK SRL WHM CBD LAO MYA THA VIE LSI MLY PHI NSW NTA QLD SOA VIC WAU FIJ NWC SAM TON SCI TUB HAW BRC COL MSO OKL SDA NWY OHI ARI CAL NEV UTA NWM TEX ALA ARK FLA GEO KTY LOU MRY MSI NCA SCA TEN VRG MXC MXE MXG MXN MXS MXT BLZ GUA HON BAH CUB HAI JAM PUE TRT WIN VEN PER BZE BZL BZN BZS CLC CLN</td><td>AUT BGM CZE GER NET                                                                                                    </td></tr>
+	<tr><td>2865100</td><td>non-woody</td><td>herb        </td><td>DEN FIN GRB IRE NOR SWE AUT BGM CZE GER HUN NET POL SWI BAL COR FRA POR SAR SPA ALB BUL GRC ITA KRI ROM SIC TUE YUG BLR BLT KRY RUC RUE RUN RUS RUW UKR ALG EGY MOR BUR RWA ZAI ERI ETH SUD KEN TAN UGA ALT BRY CTA IRK KRA TVA WSB YAK AMU KAM KHA PRM SAK KAZ KGZ TZK UZB NCS TCS AFG EAI IRN IRQ LBS PAL TUR CHC CHI CHM CHN CHQ CHS CHX MON JAP KOR ASS BAN EHM NEP PAK WHM MYA THA VIE                                                                                                                                                                                                                                                                            </td><td>ANG ZIM CPP NAT OFS TVL NSW QLD SOA TAS VIC NZN NZS ASK AGS CLC                                                        </td></tr>
+	<tr><td>5289642</td><td>non-woody</td><td>herb        </td><td>DEN AUT BGM CZE GER HUN NET POL SWI FRA SAR SPA ALB BUL GRC ITA ROM TUE YUG BLR KRY RUC RUE RUS RUW UKR ALG EGY LBY MOR TUN CNY MDR MTN BRY IRK KRA TVA WSB YAK KAZ NCS TCS EAI IRN TUR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </td><td>FIN GRB IRE NOR SWE COR BLT RUN KHA PRM SAK ONT IDA ORE WAS MSO CNT MAI MAS MIC NWY OHI PEN VER CAL TEX DEL KTY MRY WDC</td></tr>
+	<tr><td>2882580</td><td>woody    </td><td>shrub       </td><td>DEN FIN GRB ICE IRE NOR SWE AUT CZE GER NET POL SWI FRA SPA ALB BUL GRC ITA ROM YUG BLR BLT RUC RUE RUN RUW UKR BRY CTA IRK KRA WSB YAK AMU KHA SAK MON ALU ASK GNL NUN NWT YUK ABT BRC MAN SAS LAB NFL NSC ONT PEI QUE COL IDA MNT ORE WAS WYO ILL IOW MIN NDA SDA WIS CNT INI MAI MAS MIC NWH NWJ NWY OHI PEN RHO VER WVA ARI CAL NEV UTA NWM DEL MRY VRG                                                                                                                                                                                                                                                                                                            </td><td>                                                                                                                       </td></tr>
+	<tr><td>3802655</td><td>non-woody</td><td>shrub       </td><td>GRB AUT BGM CZE GER HUN NET POL SWI COR FRA POR SAR SPA ALB BUL GRC ITA ROM SIC TUE YUG KRY UKR ALG MOR NCS TCS IRN LBS TUR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </td><td>DEN IRE SWE BLT CHS SOA NZS WAS ILL MSO MIC NWJ CAL                                                                    </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">setnames</span><span class="p">(</span><span class="n">status_match_subset</span><span class="p">,</span> <span class="s">&quot;GBIFKeyGBIF&quot;</span><span class="p">,</span> <span class="s">&quot;speciesKey&quot;</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">status_match_subset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 5</caption>
+<thead>
+	<tr><th scope=col>speciesKey</th><th scope=col>woodiness</th><th scope=col>growthForm</th><th scope=col>distWCVP</th><th scope=col>distWCVPInt</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5370755</td><td>woody    </td><td>herb        </td><td>NWG NSW QLD SOA TAS VIC WAU ATP CTM NZN NZS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </td><td>GRB IRE ORE CAL                                                                                                        </td></tr>
+	<tr><td>2651816</td><td>non-woody</td><td>pteridophyte</td><td>GRB IRE SWI BAL COR FRA POR SAR SPA ALB BUL GRC ITA KRI SIC TUE YUG KRY ALG EGY LBY MOR TUN AZO CNY CVI MDR MLI MTN NGA NGR SEN ZAI CHA DJI ETH SOC SOM SUD KEN TAN UGA ANG MLW MOZ ZAM ZIM BOT CPP LES NAM NAT OFS SWZ COM MAU MDG REU ROD KAZ TZK UZB NCS TCS AFG CYP IRN IRQ LBS PAL SIN TUR GST OMA SAU YEM CHC CHN CHS CHT JAP KOR NNS TAI ASS BAN EHM IND NEP PAK SRL WHM CBD LAO MYA THA VIE LSI MLY PHI NSW NTA QLD SOA VIC WAU FIJ NWC SAM TON SCI TUB HAW BRC COL MSO OKL SDA NWY OHI ARI CAL NEV UTA NWM TEX ALA ARK FLA GEO KTY LOU MRY MSI NCA SCA TEN VRG MXC MXE MXG MXN MXS MXT BLZ GUA HON BAH CUB HAI JAM PUE TRT WIN VEN PER BZE BZL BZN BZS CLC CLN</td><td>AUT BGM CZE GER NET                                                                                                    </td></tr>
+	<tr><td>2865100</td><td>non-woody</td><td>herb        </td><td>DEN FIN GRB IRE NOR SWE AUT BGM CZE GER HUN NET POL SWI BAL COR FRA POR SAR SPA ALB BUL GRC ITA KRI ROM SIC TUE YUG BLR BLT KRY RUC RUE RUN RUS RUW UKR ALG EGY MOR BUR RWA ZAI ERI ETH SUD KEN TAN UGA ALT BRY CTA IRK KRA TVA WSB YAK AMU KAM KHA PRM SAK KAZ KGZ TZK UZB NCS TCS AFG EAI IRN IRQ LBS PAL TUR CHC CHI CHM CHN CHQ CHS CHX MON JAP KOR ASS BAN EHM NEP PAK WHM MYA THA VIE                                                                                                                                                                                                                                                                            </td><td>ANG ZIM CPP NAT OFS TVL NSW QLD SOA TAS VIC NZN NZS ASK AGS CLC                                                        </td></tr>
+	<tr><td>5289642</td><td>non-woody</td><td>herb        </td><td>DEN AUT BGM CZE GER HUN NET POL SWI FRA SAR SPA ALB BUL GRC ITA ROM TUE YUG BLR KRY RUC RUE RUS RUW UKR ALG EGY LBY MOR TUN CNY MDR MTN BRY IRK KRA TVA WSB YAK KAZ NCS TCS EAI IRN TUR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </td><td>FIN GRB IRE NOR SWE COR BLT RUN KHA PRM SAK ONT IDA ORE WAS MSO CNT MAI MAS MIC NWY OHI PEN VER CAL TEX DEL KTY MRY WDC</td></tr>
+	<tr><td>2882580</td><td>woody    </td><td>shrub       </td><td>DEN FIN GRB ICE IRE NOR SWE AUT CZE GER NET POL SWI FRA SPA ALB BUL GRC ITA ROM YUG BLR BLT RUC RUE RUN RUW UKR BRY CTA IRK KRA WSB YAK AMU KHA SAK MON ALU ASK GNL NUN NWT YUK ABT BRC MAN SAS LAB NFL NSC ONT PEI QUE COL IDA MNT ORE WAS WYO ILL IOW MIN NDA SDA WIS CNT INI MAI MAS MIC NWH NWJ NWY OHI PEN RHO VER WVA ARI CAL NEV UTA NWM DEL MRY VRG                                                                                                                                                                                                                                                                                                            </td><td>                                                                                                                       </td></tr>
+	<tr><td>3802655</td><td>non-woody</td><td>shrub       </td><td>GRB AUT BGM CZE GER HUN NET POL SWI COR FRA POR SAR SPA ALB BUL GRC ITA ROM SIC TUE YUG KRY UKR ALG MOR NCS TCS IRN LBS TUR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </td><td>DEN IRE SWE BLT CHS SOA NZS WAS ILL MSO MIC NWJ CAL                                                                    </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
+
+
+<span class="c1"># 1) Prepare WCVP in long format</span>
+<span class="n">wcvp_sp_long</span> <span class="o">&lt;-</span> <span class="n">status_match_subset</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="c1"># split string into vector</span>
+    <span class="n">distWCVP</span> <span class="o">=</span> <span class="nf">str_split</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">distWCVP</span><span class="p">),</span> <span class="s">&quot;\\s+&quot;</span><span class="p">),</span>
+    <span class="c1"># rename early so unnest carries the name</span>
+    <span class="n">LEVEL3_COD</span> <span class="o">=</span> <span class="n">distWCVP</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">,</span> <span class="n">woodiness</span><span class="p">,</span> <span class="n">growthForm</span><span class="p">,</span> <span class="n">LEVEL3_COD</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">unnest</span><span class="p">(</span><span class="n">LEVEL3_COD</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">LEVEL3_COD</span> <span class="o">=</span> <span class="nf">toupper</span><span class="p">(</span><span class="nf">trimws</span><span class="p">(</span><span class="n">LEVEL3_COD</span><span class="p">)))</span> <span class="o">%&gt;%</span>
+  <span class="nf">distinct</span><span class="p">()</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">wcvp_sp_long</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>speciesKey</th><th scope=col>woodiness</th><th scope=col>growthForm</th><th scope=col>LEVEL3_COD</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>NWG</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>NSW</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>QLD</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>SOA</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>TAS</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>VIC</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># remove duplicates in wcvp_sp_long</span>
+    <span class="n">wcvp_sp_long</span> <span class="o">&lt;-</span> <span class="n">wcvp_sp_long</span> <span class="o">%&gt;%</span>
+        <span class="nf">distinct</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">wcvp_sp_long</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>speciesKey</th><th scope=col>woodiness</th><th scope=col>growthForm</th><th scope=col>LEVEL3_COD</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>NWG</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>NSW</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>QLD</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>SOA</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>TAS</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>VIC</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
+
+
+<span class="c1"># 1) Prepare WCVP in long format</span>
+<span class="n">wcvp_sp_long_int</span> <span class="o">&lt;-</span> <span class="n">status_match_subset</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="c1"># split string into vector</span>
+    <span class="n">distWCVPInt</span> <span class="o">=</span> <span class="nf">str_split</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">distWCVPInt</span><span class="p">),</span> <span class="s">&quot;\\s+&quot;</span><span class="p">),</span>
+    <span class="c1"># rename early so unnest carries the name</span>
+    <span class="n">LEVEL3_COD</span> <span class="o">=</span> <span class="n">distWCVPInt</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">,</span> <span class="n">woodiness</span><span class="p">,</span> <span class="n">growthForm</span><span class="p">,</span> <span class="n">LEVEL3_COD</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">unnest</span><span class="p">(</span><span class="n">LEVEL3_COD</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">LEVEL3_COD</span> <span class="o">=</span> <span class="nf">toupper</span><span class="p">(</span><span class="nf">trimws</span><span class="p">(</span><span class="n">LEVEL3_COD</span><span class="p">)))</span> <span class="o">%&gt;%</span>
+  <span class="nf">distinct</span><span class="p">()</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">wcvp_sp_long_int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>speciesKey</th><th scope=col>woodiness</th><th scope=col>growthForm</th><th scope=col>LEVEL3_COD</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5370755</td><td>woody    </td><td>herb        </td><td>GRB</td></tr>
+	<tr><td>5370755</td><td>woody    </td><td>herb        </td><td>IRE</td></tr>
+	<tr><td>5370755</td><td>woody    </td><td>herb        </td><td>ORE</td></tr>
+	<tr><td>5370755</td><td>woody    </td><td>herb        </td><td>CAL</td></tr>
+	<tr><td>2651816</td><td>non-woody</td><td>pteridophyte</td><td>AUT</td></tr>
+	<tr><td>2651816</td><td>non-woody</td><td>pteridophyte</td><td>BGM</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># add column and make all &quot;native&quot; wcvp_sp_long</span>
+<span class="n">wcvp_sp_long</span> <span class="o">&lt;-</span> <span class="n">wcvp_sp_long</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">status_flag_wcvp</span> <span class="o">=</span> <span class="s">&quot;native&quot;</span><span class="p">)</span>
+
+<span class="c1"># add column and make all &quot;non-native&quot; wcvp_sp_long_int</span>
+<span class="n">wcvp_sp_long_int</span> <span class="o">&lt;-</span> <span class="n">wcvp_sp_long_int</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">status_flag_wcvp</span> <span class="o">=</span> <span class="s">&quot;non-native&quot;</span><span class="p">)</span>
+
+<span class="c1"># concatenate both dataframes</span>
+<span class="n">wcvp_sp_long</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">wcvp_sp_long</span><span class="p">,</span> <span class="n">wcvp_sp_long_int</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">wcvp_sp_long</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 5</caption>
+<thead>
+	<tr><th scope=col>speciesKey</th><th scope=col>woodiness</th><th scope=col>growthForm</th><th scope=col>LEVEL3_COD</th><th scope=col>status_flag_wcvp</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>NWG</td><td>native</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>NSW</td><td>native</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>QLD</td><td>native</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>SOA</td><td>native</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>TAS</td><td>native</td></tr>
+	<tr><td>5370755</td><td>woody</td><td>herb</td><td>VIC</td><td>native</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove duplicates in wcvp_sp_long</span>
+<span class="n">wcvp_sp_long</span> <span class="o">&lt;-</span> <span class="n">wcvp_sp_long</span> <span class="o">%&gt;%</span>
+        <span class="nf">distinct</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install if needed</span>
+<span class="c1">#install.packages(&quot;rWCVP&quot;)</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">rWCVP</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+
+<span class="c1"># Load the level 3 polygon sf object</span>
+<span class="n">tdwg3</span> <span class="o">&lt;-</span> <span class="n">wgsrpd3</span>  <span class="c1"># this is included in the package</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">st_geometry</span><span class="p">(</span><span class="n">tdwg3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The package `rWCVPdata` is not installed.
+You will need to either:
+	• run `remotes::install_github(&#39;matildabrown/rWCVPdata&#39;)`
+	• pass a local WCVP using `wcvp_names` and `wcvp_distributions`
+</pre></div>
+</div>
+<img alt="_images/02_Native_introduced_status_match_26_1.png" src="_images/02_Native_introduced_status_match_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">tdwg3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simple feature collection with 369 features and 4 fields
+Geometry type: GEOMETRY
+Dimension:     XY
+Bounding box:  xmin: -180 ymin: -90 xmax: 180 ymax: 83.62361
+Geodetic CRS:  WGS 84
+First 10 features:
+            LEVEL3_NAM LEVEL3_COD LEVEL2_COD LEVEL1_COD
+1              Alberta        ABT         71          7
+2          Afghanistan        AFG         34          3
+3  Argentina Northeast        AGE         85          8
+4      Argentina South        AGS         85          8
+5  Argentina Northwest        AGW         85          8
+6              Alabama        ALA         78          7
+7              Albania        ALB         13          1
+8              Aldabra        ALD         29          2
+9              Algeria        ALG         20          2
+10               Altay        ALT         30          3
+                         geometry
+1  POLYGON ((-114.8644 50.4263...
+2  POLYGON ((71.26777 38.30211...
+3  MULTIPOLYGON (((-61.66776 -...
+4  MULTIPOLYGON (((-70.37476 -...
+5  POLYGON ((-65.73416 -22.113...
+6  MULTIPOLYGON (((-88.19554 3...
+7  POLYGON ((19.76607 42.58551...
+8  MULTIPOLYGON (((46.47607 -9...
+9  POLYGON ((6.949974 36.88331...
+10 POLYGON ((85.44717 54.19581...
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="wcvp-polygon-to-h3-hexagons">
+<h2>WCVP polygon to h3 hexagons<a class="headerlink" href="#wcvp-polygon-to-h3-hexagons" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">wcvp_h3</span> <span class="o">&lt;-</span> <span class="n">tdwg3</span> <span class="o">%&gt;%</span>
+  <span class="nf">rowwise</span><span class="p">()</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">h3_indexes</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">pf</span> <span class="o">&lt;-</span> <span class="n">h3</span><span class="o">::</span><span class="nf">polyfill</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+      <span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">pf</span><span class="p">)</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1"># small polygons where the no h3_hexagon centroid fall within the polygon</span>
+        <span class="c1"># Fallback: use centroid</span>
+        <span class="n">centroid</span> <span class="o">&lt;-</span> <span class="n">sf</span><span class="o">::</span><span class="nf">st_centroid</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+        <span class="n">coords</span> <span class="o">&lt;-</span> <span class="n">sf</span><span class="o">::</span><span class="nf">st_coordinates</span><span class="p">(</span><span class="n">centroid</span><span class="p">)</span>
+        <span class="n">pf</span> <span class="o">&lt;-</span> <span class="n">h3</span><span class="o">::</span><span class="nf">geo_to_h3</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">)],</span> <span class="n">nrow</span><span class="o">=</span><span class="m">1</span><span class="p">),</span> <span class="n">res</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>  <span class="c1"># lat, lon order</span>
+      <span class="p">}</span>
+      <span class="nf">list</span><span class="p">(</span><span class="n">pf</span><span class="p">)</span>
+    <span class="p">},</span>
+    
+    <span class="c1"># Expand one ring as before</span>
+    <span class="n">h3_indexes_k1</span> <span class="o">=</span> <span class="nf">list</span><span class="p">({</span>
+      <span class="n">base</span> <span class="o">&lt;-</span> <span class="n">h3_indexes</span>
+      <span class="n">expanded</span> <span class="o">&lt;-</span> <span class="nf">unique</span><span class="p">(</span><span class="nf">unlist</span><span class="p">(</span><span class="nf">lapply</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span> <span class="n">h3</span><span class="o">::</span><span class="nf">k_ring</span><span class="p">(</span><span class="n">ix</span><span class="p">))))</span>
+      <span class="n">expanded</span>
+    <span class="p">}),</span>
+    
+    <span class="n">h3_outer_ring</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="nf">setdiff</span><span class="p">(</span><span class="n">h3_indexes_k1</span><span class="p">,</span> <span class="n">h3_indexes</span><span class="p">))</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">ungroup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+
+polygon has holes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="c1"># Convert the first H3 index list to polygons from wcvp_h3</span>
+<span class="n">h3_polygon</span> <span class="o">&lt;-</span> <span class="n">h3</span><span class="o">::</span><span class="nf">h3_to_geo_boundary_sf</span><span class="p">(</span><span class="n">wcvp_h3</span><span class="o">$</span><span class="n">h3_indexes_k1</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+<span class="c1"># Plot the polygon</span>
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+     <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">h3_polygon</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">)</span> <span class="o">+</span>
+     <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+     <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;H3 Index Polygon&quot;</span><span class="p">,</span> 
+           <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&quot;First polygon based on h3_indexes_k1 from wcvp_h3&quot;</span><span class="p">)</span> <span class="o">+</span>
+     <span class="nf">coord_sf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02_Native_introduced_status_match_30_0.png" src="_images/02_Native_introduced_status_match_30_0.png" />
+</div>
+</div>
+</section>
+<section id="load-glonaf-txr">
+<h2>Load GloNAF TxR<a class="headerlink" href="#load-glonaf-txr" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">TxR_glonaf</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;../../Data/GloNAF2/glonaf_TxR_tax_harmony.csv&quot;</span><span class="p">)</span>
+
+<span class="nf">setnames</span><span class="p">(</span><span class="n">TxR_glonaf</span><span class="p">,</span> <span class="s">&quot;GBIFKeyGBIF&quot;</span><span class="p">,</span> <span class="s">&quot;speciesKey&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">TxR_glonaf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 988</caption>
+<thead>
+	<tr><th scope=col>taxa_accepted</th><th scope=col>speciesKey</th><th scope=col>wcvp12_accepted_plant_name_id</th><th scope=col>ABW</th><th scope=col>AFG</th><th scope=col>AGO</th><th scope=col>AIA</th><th scope=col>ALB</th><th scope=col>AND</th><th scope=col>ARE</th><th scope=col>⋯</th><th scope=col>WSM.NUE</th><th scope=col>YEM</th><th scope=col>ZAF</th><th scope=col>ZMB</th><th scope=col>ZWE.C</th><th scope=col>ZWE.E</th><th scope=col>ZWE.N</th><th scope=col>ZWE.S</th><th scope=col>ZWE.W</th><th scope=col>frequency</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>⋯</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Abelia chinensis                  </td><td>5599251</td><td>2609453</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td> 3</td></tr>
+	<tr><td>Abelia grandiflora                </td><td>5599251</td><td>2609470</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>11</td></tr>
+	<tr><td>Abelmoschus esculentus            </td><td>3152707</td><td>2609574</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>54</td></tr>
+	<tr><td>Abelmoschus ficulneus             </td><td>3940858</td><td>2609577</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td> 9</td></tr>
+	<tr><td>Abelmoschus manihot               </td><td>3152706</td><td>2609589</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>11</td></tr>
+	<tr><td>Abelmoschus manihot subsp. manihot</td><td>7279656</td><td>3261487</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td> 4</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Columns containing metadata rather than regional status values</span>
+<span class="n">exclude_cols</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span>
+  <span class="s">&quot;taxa_accepted&quot;</span><span class="p">,</span>
+  <span class="s">&quot;wcvp12_accepted_plant_name_id&quot;</span><span class="p">,</span>
+  <span class="s">&quot;frequency&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Convert regional status columns from wide to long format</span>
+<span class="n">species_status_long</span> <span class="o">&lt;-</span> <span class="n">TxR_glonaf</span> <span class="o">%&gt;%</span>
+  <span class="nf">pivot_longer</span><span class="p">(</span>
+    <span class="c1"># Keep identifiers and metadata unchanged; reshape all regional columns</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">,</span> <span class="nf">all_of</span><span class="p">(</span><span class="n">exclude_cols</span><span class="p">)),</span>
+    <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;IDregion&quot;</span><span class="p">,</span>       <span class="c1"># Original column name becomes the region ID</span>
+    <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;status_flag&quot;</span>    <span class="c1"># Cell value becomes the status</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="c1"># Ensure region identifiers use a consistent character type</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">IDregion</span> <span class="o">=</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">IDregion</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="c1"># Retain only the columns needed for subsequent joins</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">,</span> <span class="n">IDregion</span><span class="p">,</span> <span class="n">status_flag</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">species_status_long</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 3</caption>
+<thead>
+	<tr><th scope=col>speciesKey</th><th scope=col>IDregion</th><th scope=col>status_flag</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5599251</td><td>ABW</td><td>0</td></tr>
+	<tr><td>5599251</td><td>AFG</td><td>0</td></tr>
+	<tr><td>5599251</td><td>AGO</td><td>0</td></tr>
+	<tr><td>5599251</td><td>AIA</td><td>0</td></tr>
+	<tr><td>5599251</td><td>ALB</td><td>0</td></tr>
+	<tr><td>5599251</td><td>AND</td><td>0</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+</section>
+<section id="merge-with-gbif-observations">
+<h1>Merge with GBIF observations<a class="headerlink" href="#merge-with-gbif-observations" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span> 
+<span class="n">dtn</span> <span class="o">=</span> <span class="m">30</span>
+<span class="nf">setDTthreads</span><span class="p">(</span><span class="n">threads</span> <span class="o">=</span> <span class="n">dtn</span><span class="p">)</span> <span class="c1">#defines how many threads data.table is allowed to use</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">GBIF_sample</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res4_res3_try6_cs.csv&quot;</span><span class="p">,</span>  
+                     <span class="n">select</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;gbifID&quot;</span><span class="p">,</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">,</span> <span class="s">&quot;speciesKey&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">GBIF_sample</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 3</caption>
+<thead>
+	<tr><th scope=col>gbifID</th><th scope=col>h3_res3</th><th scope=col>speciesKey</th></tr>
+	<tr><th scope=col>&lt;int64&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5167350772</td><td>838230fffffffff</td><td>1204404</td></tr>
+	<tr><td>4987455975</td><td>838230fffffffff</td><td>1204404</td></tr>
+	<tr><td>2445057444</td><td>83831efffffffff</td><td>1204404</td></tr>
+	<tr><td>2851019390</td><td>83831efffffffff</td><td>1204404</td></tr>
+	<tr><td>2465115388</td><td>838218fffffffff</td><td>1204404</td></tr>
+	<tr><td>2988502417</td><td>838233fffffffff</td><td>1204404</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># split GBIF_sample into chunks to avoid memory issues</span>
+<span class="n">chunk_size</span> <span class="o">&lt;-</span> <span class="m">100000</span>  <span class="c1"># Adjust chunk size based on your system&#39;s memory capacity</span>
+<span class="n">num_chunks</span> <span class="o">&lt;-</span> <span class="nf">ceiling</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">GBIF_sample</span><span class="p">)</span> <span class="o">/</span> <span class="n">chunk_size</span><span class="p">)</span>
+<span class="n">GBIF_chunks</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="n">GBIF_sample</span><span class="p">,</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">num_chunks</span><span class="p">,</span> <span class="n">each</span> <span class="o">=</span> <span class="n">chunk_size</span><span class="p">,</span> <span class="n">length.out</span> <span class="o">=</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">GBIF_sample</span><span class="p">)))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># for each GBIF_chunk,  save GBIF_chunks to file as csv</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_along</span><span class="p">(</span><span class="n">GBIF_chunks</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">GBIF_chunk</span> <span class="o">&lt;-</span> <span class="n">GBIF_chunks</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="nf">fwrite</span><span class="p">(</span><span class="n">GBIF_chunk</span><span class="p">,</span> <span class="n">file</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/GBIF_CS_chunk_&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;.csv&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># check number of chunk files saved</span>
+<span class="nf">length</span><span class="p">(</span><span class="nf">list.files</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/&quot;</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&quot;GBIF_CS_chunk_.*\\.csv&quot;</span><span class="p">,</span> <span class="n">full.names</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">642</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+
+<span class="c1"># function to join with glonaf_h3 and wcvp REGIONS</span>
+<span class="n">merge_gbif_with_regions</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">GBIF_data</span><span class="p">,</span> <span class="n">glonaf_h3</span><span class="p">,</span> <span class="n">wcvp_h3</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1"># 1) Unnest the H3 neighborhoods so each region–cell pair is a row</span>
+    <span class="n">glonaf_cells</span> <span class="o">&lt;-</span> <span class="n">glonaf_h3</span> <span class="o">%&gt;%</span>
+        <span class="nf">select</span><span class="p">(</span><span class="n">IDregion</span><span class="p">,</span> <span class="n">h3_indexes_k1</span><span class="p">)</span> <span class="o">%&gt;%</span>       <span class="c1"># only keep what we need</span>
+        <span class="nf">unnest_longer</span><span class="p">(</span><span class="n">h3_indexes_k1</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>  <span class="c1"># rename to match GBIF col</span>
+        <span class="nf">distinct</span><span class="p">(</span><span class="n">IDregion</span><span class="p">,</span> <span class="n">h3_res3</span><span class="p">)</span>                <span class="c1"># one row per region–cell</span>
+
+    <span class="c1"># 2) Join to GBIF_sample by h3_res3</span>
+    <span class="n">gbif_with_region</span> <span class="o">&lt;-</span> <span class="n">GBIF_data</span> <span class="o">%&gt;%</span>
+        <span class="nf">left_join</span><span class="p">(</span><span class="n">glonaf_cells</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">,</span> <span class="n">relationship</span> <span class="o">=</span> <span class="s">&quot;many-to-many&quot;</span><span class="p">)</span>
+        
+    <span class="c1"># Merge with WCVP regions</span>
+    <span class="n">wcvp_cells</span> <span class="o">&lt;-</span> <span class="n">wcvp_h3</span> <span class="o">%&gt;%</span>
+        <span class="nf">select</span><span class="p">(</span><span class="n">LEVEL3_COD</span><span class="p">,</span> <span class="n">h3_indexes_k1</span><span class="p">)</span> <span class="o">%&gt;%</span>       <span class="c1"># only keep what we need</span>
+        <span class="nf">unnest_longer</span><span class="p">(</span><span class="n">h3_indexes_k1</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>  <span class="c1"># rename to match GBIF col</span>
+        <span class="nf">distinct</span><span class="p">(</span><span class="n">LEVEL3_COD</span><span class="p">,</span> <span class="n">h3_res3</span><span class="p">)</span>                <span class="c1"># one row per region–cell</span>
+
+        <span class="c1"># 2) Join to WCVP region by h3_res3</span>
+    <span class="n">gbif_with_region</span> <span class="o">&lt;-</span> <span class="n">gbif_with_region</span> <span class="o">%&gt;%</span>
+        <span class="nf">left_join</span><span class="p">(</span><span class="n">wcvp_cells</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">,</span> <span class="n">relationship</span> <span class="o">=</span> <span class="s">&quot;many-to-many&quot;</span><span class="p">)</span>
+
+<span class="nf">return</span><span class="p">(</span><span class="n">gbif_with_region</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to add STATUS </span>
+
+<span class="n">add_status_to_gbif</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">gbif_with_region</span><span class="p">,</span> <span class="n">species_status_long</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># Merge with GBIF_regions</span>
+    <span class="n">GBIF_GloNAF</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">gbif_with_region</span><span class="p">,</span> <span class="n">species_status_long</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;speciesKey&quot;</span><span class="p">,</span> <span class="s">&quot;IDregion&quot;</span><span class="p">),</span> <span class="n">all.x</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+    
+    <span class="c1"># remove duplicates</span>
+    <span class="n">GBIF_GloNAF</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF</span> <span class="o">%&gt;%</span>
+        <span class="nf">distinct</span><span class="p">()</span>
+
+
+    <span class="n">GBIF_GloNAF_WCVP</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">GBIF_GloNAF</span><span class="p">,</span> <span class="n">wcvp_sp_long</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;speciesKey&quot;</span><span class="p">,</span> <span class="s">&quot;LEVEL3_COD&quot;</span><span class="p">),</span> <span class="n">all.x</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+
+    <span class="c1">#if GBIF_GloNAF_WCVP$status_flag==1, change to &quot;non-native&quot;</span>
+    <span class="n">GBIF_GloNAF_WCVP</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP</span> <span class="o">%&gt;%</span>
+        <span class="nf">mutate</span><span class="p">(</span><span class="n">status_flag</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+            <span class="n">status_flag</span> <span class="o">==</span> <span class="m">1</span> <span class="o">~</span> <span class="s">&quot;non-native&quot;</span><span class="p">,</span>
+            <span class="n">status_flag</span> <span class="o">==</span> <span class="m">0</span> <span class="o">~</span> <span class="s">&quot;native&quot;</span><span class="p">,</span>
+            <span class="kc">TRUE</span> <span class="o">~</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">status_flag</span><span class="p">)</span>  <span class="c1"># keep existing value if not 0 or 1</span>
+        <span class="p">))</span>
+
+    <span class="nf">return</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to filter out duplicates</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+
+
+<span class="n">filter_duplicates</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP</span><span class="p">)</span> <span class="p">{</span>
+    
+<span class="c1"># drop woodiness and growthform columns </span>
+<span class="n">GBIF_GloNAF_WCVP</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">woodiness</span><span class="p">,</span> <span class="n">growthForm</span><span class="p">))</span>
+
+<span class="n">GBIF_GloNAF_WCVP_unique1</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP</span> <span class="o">%&gt;%</span>
+    <span class="nf">distinct</span><span class="p">(</span>
+        <span class="n">gbifID</span><span class="p">,</span> 
+        <span class="nf">across</span><span class="p">(</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">IDregion</span><span class="p">,</span> <span class="n">LEVEL3_COD</span><span class="p">)),</span>  <span class="c1"># use all columns except IDregion &amp; LEVEL3_COD for uniqueness</span>
+        <span class="n">.keep_all</span> <span class="o">=</span> <span class="kc">TRUE</span>                     <span class="c1"># preserve all columns</span>
+    <span class="p">)</span>
+
+<span class="c1"># Filter for rows where gbifID is not unique and sort by gbifID</span>
+<span class="n">GBIF_GloNAF_WCVP_dupl</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP_unique1</span><span class="p">[</span>
+    <span class="p">,</span> <span class="nf">if </span><span class="p">(</span><span class="n">.N</span> <span class="o">&gt;</span> <span class="m">1</span><span class="p">)</span> <span class="n">.SD</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="n">gbifID</span>
+<span class="p">][</span><span class="nf">order</span><span class="p">(</span><span class="n">gbifID</span><span class="p">)]</span>
+
+<span class="n">DT</span> <span class="o">&lt;-</span> <span class="nf">as.data.table</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_dupl</span><span class="p">)</span>  <span class="c1"># or use GBIF_GloNAF_WCVP_unique1</span>
+<span class="n">norm</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">tolower</span><span class="p">(</span><span class="nf">trimws</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="n">DT</span><span class="p">[,</span> <span class="nf">`:=`</span><span class="p">(</span>
+  <span class="n">status_flag</span>      <span class="o">=</span> <span class="nf">norm</span><span class="p">(</span><span class="n">status_flag</span><span class="p">),</span>
+  <span class="n">status_flag_wcvp</span> <span class="o">=</span> <span class="nf">norm</span><span class="p">(</span><span class="n">status_flag_wcvp</span><span class="p">)</span>
+<span class="p">)]</span>
+
+<span class="n">levels2</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;native&quot;</span><span class="p">,</span><span class="s">&quot;non-native&quot;</span><span class="p">)</span>
+
+<span class="n">majority_by_id</span> <span class="o">&lt;-</span> <span class="n">DT</span><span class="p">[,</span> <span class="p">{</span>
+  <span class="c1"># all votes from both columns (ignore NA/&quot;&quot;)</span>
+  <span class="n">vals_all</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">status_flag</span><span class="p">,</span> <span class="n">status_flag_wcvp</span><span class="p">)</span>
+  <span class="n">vals_all</span> <span class="o">&lt;-</span> <span class="n">vals_all</span><span class="p">[</span><span class="n">vals_all</span> <span class="o">%chin%</span> <span class="n">levels2</span><span class="p">]</span>
+  <span class="n">ca</span> <span class="o">&lt;-</span> <span class="nf">table</span><span class="p">(</span><span class="nf">factor</span><span class="p">(</span><span class="n">vals_all</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">levels2</span><span class="p">))</span>
+
+  <span class="n">pick</span> <span class="o">&lt;-</span> <span class="kc">NA_character_</span>
+  <span class="nf">if </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">ca</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">ca</span><span class="p">[</span><span class="s">&quot;native&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ca</span><span class="p">[</span><span class="s">&quot;non-native&quot;</span><span class="p">])</span> <span class="p">{</span>
+      <span class="n">pick</span> <span class="o">&lt;-</span> <span class="s">&quot;native&quot;</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="n">ca</span><span class="p">[</span><span class="s">&quot;non-native&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ca</span><span class="p">[</span><span class="s">&quot;native&quot;</span><span class="p">])</span> <span class="p">{</span>
+      <span class="n">pick</span> <span class="o">&lt;-</span> <span class="s">&quot;non-native&quot;</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+      <span class="c1"># tie across both -&gt; check WCVP-only</span>
+      <span class="n">w</span> <span class="o">&lt;-</span> <span class="n">status_flag_wcvp</span><span class="p">[</span><span class="n">status_flag_wcvp</span> <span class="o">%chin%</span> <span class="n">levels2</span><span class="p">]</span>
+      <span class="n">cw</span> <span class="o">&lt;-</span> <span class="nf">table</span><span class="p">(</span><span class="nf">factor</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">levels2</span><span class="p">))</span>
+
+      <span class="nf">if </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">cw</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="o">&amp;&amp;</span> <span class="n">cw</span><span class="p">[</span><span class="s">&quot;native&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">cw</span><span class="p">[</span><span class="s">&quot;non-native&quot;</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">pick</span> <span class="o">&lt;-</span> <span class="nf">if </span><span class="p">(</span><span class="n">cw</span><span class="p">[</span><span class="s">&quot;native&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cw</span><span class="p">[</span><span class="s">&quot;non-native&quot;</span><span class="p">])</span> <span class="s">&quot;native&quot;</span> <span class="n">else</span> <span class="s">&quot;non-native&quot;</span>
+      <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+        <span class="c1"># WCVP empty or tied -&gt; decide by status_flag-only</span>
+        <span class="n">s</span>  <span class="o">&lt;-</span> <span class="n">status_flag</span><span class="p">[</span><span class="n">status_flag</span> <span class="o">%chin%</span> <span class="n">levels2</span><span class="p">]</span>
+        <span class="n">cs</span> <span class="o">&lt;-</span> <span class="nf">table</span><span class="p">(</span><span class="nf">factor</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">levels2</span><span class="p">))</span>
+        <span class="nf">if </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nf">if </span><span class="p">(</span><span class="n">cs</span><span class="p">[</span><span class="s">&quot;native&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;non-native&quot;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">pick</span> <span class="o">&lt;-</span> <span class="s">&quot;native&quot;</span>
+          <span class="p">}</span> <span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="n">cs</span><span class="p">[</span><span class="s">&quot;non-native&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;native&quot;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">pick</span> <span class="o">&lt;-</span> <span class="s">&quot;non-native&quot;</span>
+          <span class="p">}</span> <span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">cw</span><span class="p">)</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1"># WCVP empty/NA AND status_flag tied -&gt; choose native</span>
+            <span class="n">pick</span> <span class="o">&lt;-</span> <span class="s">&quot;native&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nf">.</span><span class="p">(</span><span class="n">majority_status</span> <span class="o">=</span> <span class="n">pick</span><span class="p">)</span>
+<span class="p">},</span> <span class="n">by</span> <span class="o">=</span> <span class="n">gbifID</span><span class="p">]</span>  <span class="c1"># change to by = .(gbifID, h3_res3) for per-hex voting</span>
+
+<span class="c1"># Attach and keep rows matching the group majority using WCVP override as the row label</span>
+<span class="n">DT</span> <span class="o">&lt;-</span> <span class="n">majority_by_id</span><span class="p">[</span><span class="n">DT</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s">&quot;gbifID&quot;</span><span class="p">]</span>
+<span class="n">DT</span><span class="p">[,</span> <span class="n">resolved</span> <span class="o">:=</span> <span class="nf">fifelse</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">status_flag_wcvp</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nf">nzchar</span><span class="p">(</span><span class="n">status_flag_wcvp</span><span class="p">),</span>
+                         <span class="n">status_flag_wcvp</span><span class="p">,</span> <span class="n">status_flag</span><span class="p">)]</span>
+<span class="n">DT_majority_rows</span> <span class="o">&lt;-</span> <span class="n">DT</span><span class="p">[</span><span class="n">resolved</span> <span class="o">==</span> <span class="n">majority_status</span><span class="p">]</span>
+
+<span class="c1"># head(majority_by_id) </span>
+
+<span class="c1"># merge GBIF_GloNAF_WCVP_dupl with majority_by_id to get majority_status column</span>
+<span class="n">GBIF_GloNAF_WCVP_dupl</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_dupl</span><span class="p">,</span> <span class="n">majority_by_id</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;gbifID&quot;</span><span class="p">,</span> <span class="n">all.x</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>  
+
+<span class="c1"># drop from GBIF_GloNAF_WCVP_dupl: LEVEL3_COD, IDregion, status_flag, status_flag_wcvp</span>
+<span class="n">GBIF_GloNAF_WCVP_dupl</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP_dupl</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">LEVEL3_COD</span><span class="p">,</span> <span class="n">IDregion</span><span class="p">,</span> <span class="n">status_flag</span><span class="p">,</span> <span class="n">status_flag_wcvp</span><span class="p">))</span>
+
+<span class="c1">#remove duplicae rows from GBIF_GloNAF_WCVP_dupl</span>
+<span class="n">GBIF_GloNAF_WCVP_dupl</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP_dupl</span> <span class="o">%&gt;%</span>
+  <span class="nf">distinct</span><span class="p">()</span>    
+
+<span class="c1"># filter GBIF_GloNAF_WCVP_unique1 for gbifID not in GBIF_GloNAF_WCVP_dupl</span>
+<span class="n">GBIF_GloNAF_WCVP_unique_no_dupl</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP_unique1</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="n">gbifID</span> <span class="o">%in%</span> <span class="n">GBIF_GloNAF_WCVP_dupl</span><span class="o">$</span><span class="n">gbifID</span><span class="p">)</span>
+
+<span class="n">valid</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;native&quot;</span><span class="p">,</span><span class="s">&quot;non-native&quot;</span><span class="p">)</span>
+
+<span class="n">GBIF_GloNAF_WCVP_unique_no_dupl</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP_unique_no_dupl</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">status_flag</span>      <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="nf">trimws</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">status_flag</span><span class="p">))),</span>
+    <span class="n">status_flag_wcvp</span> <span class="o">=</span> <span class="nf">tolower</span><span class="p">(</span><span class="nf">trimws</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">status_flag_wcvp</span><span class="p">))),</span>
+    <span class="n">majority_status</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+      <span class="n">status_flag_wcvp</span> <span class="o">%in%</span> <span class="n">valid</span> <span class="o">~</span> <span class="n">status_flag_wcvp</span><span class="p">,</span>          <span class="c1"># WCVP wins when present</span>
+      <span class="n">status_flag</span> <span class="o">%in%</span> <span class="n">valid</span>      <span class="o">~</span> <span class="n">status_flag</span><span class="p">,</span>               <span class="c1"># fall back to status_flag</span>
+      <span class="kc">TRUE</span>                        <span class="o">~</span> <span class="kc">NA_character_</span>              <span class="c1"># both missing/invalid</span>
+    <span class="p">)</span>
+  <span class="p">)</span>
+
+<span class="c1"># drop from GBIF_GloNAF_WCVP_dupl: LEVEL3_COD, IDregion, status_flag, status_flag_wcvp</span>
+<span class="n">GBIF_GloNAF_WCVP_unique_no_dupl</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP_unique_no_dupl</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">LEVEL3_COD</span><span class="p">,</span> <span class="n">IDregion</span><span class="p">,</span> <span class="n">status_flag</span><span class="p">,</span> <span class="n">status_flag_wcvp</span><span class="p">))</span>
+
+<span class="c1"># rbind GBIF_GloNAF_WCVP_unique_no_dupl and GBIF_GloNAF_WCVP_dupl</span>
+<span class="n">GBIF_GloNAF_WCVP_final</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_unique_no_dupl</span><span class="p">,</span> <span class="n">GBIF_GloNAF_WCVP_dupl</span><span class="p">)</span>
+
+
+<span class="nf">return</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_final</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check work: does above algorthim succesfully determine the majority vote?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge GBIF_GloNAF_WCVP_dupl with majority_by_id to get majority_status column</span>
+<span class="n">GBIF_GloNAF_WCVP_dupl</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_dupl</span><span class="p">,</span> <span class="n">majority_by_id</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;gbifID&quot;</span><span class="p">,</span> <span class="n">all.x</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>  
+<span class="nf">head</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_dupl</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="m">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="code-check-with-one-chunk">
+<h2>Code check with one chunk<a class="headerlink" href="#code-check-with-one-chunk" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># check code for one chunk</span>
+<span class="c1"># read chunk 120 from file</span>
+<span class="n">GBIF_chunk</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/GBIF_CS_chunk_120.csv&quot;</span><span class="p">)</span>
+
+<span class="c1">#GBIF_chunk &lt;- GBIF_chunks[[120]]</span>
+<span class="n">gbif_with_region</span> <span class="o">&lt;-</span> <span class="nf">merge_gbif_with_regions</span><span class="p">(</span><span class="n">GBIF_chunk</span><span class="p">,</span> <span class="n">glonaf_h3</span><span class="p">,</span> <span class="n">wcvp_h3</span><span class="p">)</span>
+<span class="n">gbif_with_status</span> <span class="o">&lt;-</span> <span class="nf">add_status_to_gbif</span><span class="p">(</span><span class="n">gbif_with_region</span><span class="p">,</span> <span class="n">species_status_long</span><span class="p">)</span>
+<span class="n">gbif_filtered</span> <span class="o">&lt;-</span> <span class="nf">filter_duplicates</span><span class="p">(</span><span class="n">gbif_with_status</span><span class="p">)</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">gbif_with_status</span><span class="p">)</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">gbif_with_region</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_filtered</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>speciesKey</th><th scope=col>gbifID</th><th scope=col>h3_res3</th><th scope=col>majority_status</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int64&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>2913130</td><td>4946177954</td><td>831928fffffffff</td><td>NA    </td></tr>
+	<tr><td>2913130</td><td>2988323206</td><td>83214bfffffffff</td><td>native</td></tr>
+	<tr><td>2913130</td><td>3953974921</td><td>830bb4fffffffff</td><td>native</td></tr>
+	<tr><td>2913130</td><td>3330696474</td><td>830bb2fffffffff</td><td>native</td></tr>
+	<tr><td>2913130</td><td>4903881625</td><td>830bb0fffffffff</td><td>native</td></tr>
+	<tr><td>2913130</td><td>2823249159</td><td>832069fffffffff</td><td>native</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">gbif_filtered</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>100000</li><li>4</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># get most common speciesKey with counts for native and non-native statuses</span>
+<span class="n">most_common_species</span> <span class="o">&lt;-</span> <span class="n">gbif_filtered</span> <span class="o">%&gt;%</span>
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">summarise</span><span class="p">(</span>
+    <span class="n">total_count</span> <span class="o">=</span> <span class="nf">n</span><span class="p">(),</span>
+    <span class="n">native_count</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">majority_status</span> <span class="o">==</span> <span class="s">&quot;native&quot;</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),</span>
+    <span class="n">non_native_count</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">majority_status</span> <span class="o">==</span> <span class="s">&quot;non-native&quot;</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">non_native_count</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">slice_head</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+
+
+<span class="nf">head</span><span class="p">(</span><span class="n">most_common_species</span><span class="p">,</span> <span class="m">10</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 3 × 4</caption>
+<thead>
+	<tr><th scope=col>speciesKey</th><th scope=col>total_count</th><th scope=col>native_count</th><th scope=col>non_native_count</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>2913548</td><td>69987</td><td>42790</td><td>27142</td></tr>
+	<tr><td>2913169</td><td>  420</td><td>  286</td><td>  134</td></tr>
+	<tr><td>2913214</td><td> 1226</td><td> 1197</td><td>   29</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot percentage of status == &quot;non-native&quot; per h3_res3</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="n">top_species</span> <span class="o">&lt;-</span> <span class="n">most_common_species</span><span class="o">$</span><span class="n">speciesKey</span>
+
+<span class="n">plots</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">top_species</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">species</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">species_data</span> <span class="o">&lt;-</span> <span class="n">gbif_filtered</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="n">speciesKey</span> <span class="o">==</span> <span class="n">species</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">h3_res3</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">summarise</span><span class="p">(</span>
+      <span class="n">non_native_count</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">majority_status</span> <span class="o">==</span> <span class="s">&quot;non-native&quot;</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),</span>
+      <span class="n">total_count</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">majority_status</span><span class="p">)),</span>
+      <span class="n">non_native_percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">non_native_count</span> <span class="o">/</span> <span class="n">total_count</span><span class="p">)</span> <span class="o">*</span> <span class="m">100</span>
+    <span class="p">)</span>
+  
+  <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">rnaturalearth</span><span class="o">::</span><span class="nf">ne_countries</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="s">&quot;medium&quot;</span><span class="p">,</span> <span class="n">returnclass</span> <span class="o">=</span> <span class="s">&quot;sf&quot;</span><span class="p">),</span> 
+            <span class="n">fill</span> <span class="o">=</span> <span class="s">&quot;grey80&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;white&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">h3</span><span class="o">::</span><span class="nf">h3_to_geo_boundary_sf</span><span class="p">(</span><span class="n">species_data</span><span class="o">$</span><span class="n">h3_res3</span><span class="p">),</span> 
+            <span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">species_data</span><span class="o">$</span><span class="n">non_native_percentage</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_fill_viridis_c</span><span class="p">(</span><span class="n">option</span> <span class="o">=</span> <span class="s">&quot;plasma&quot;</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Non-Native (%)&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Global Map of Non-Native Percentage for Species Key&quot;</span><span class="p">,</span> <span class="n">species</span><span class="p">),</span>
+         <span class="n">fill</span> <span class="o">=</span> <span class="s">&quot;Non-Native (%)&quot;</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="c1"># Display the first plot as an example</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">plots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1]]
+
+[[2]]
+</pre></div>
+</div>
+<img alt="_images/02_Native_introduced_status_match_51_1.png" src="_images/02_Native_introduced_status_match_51_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3]]
+</pre></div>
+</div>
+<img alt="_images/02_Native_introduced_status_match_51_3.png" src="_images/02_Native_introduced_status_match_51_3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="_images/02_Native_introduced_status_match_51_5.png" src="_images/02_Native_introduced_status_match_51_5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># summary of majority_status</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">gbif_filtered</span><span class="o">$</span><span class="n">majority_status</span><span class="p">,</span> <span class="n">useNA</span> <span class="o">=</span> <span class="s">&quot;ifany&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    native non-native       &lt;NA&gt; 
+     71964      27342        694 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-for-all-observations">
+<h2>Run for all observations<a class="headerlink" href="#run-for-all-observations" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+
+<span class="n">process_chunk</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">message</span><span class="p">(</span><span class="s">&quot;Processing chunk &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+  
+  <span class="c1"># Read the chunk</span>
+  <span class="n">GBIF_chunk</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/GBIF_CS_chunk_&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;.csv&quot;</span><span class="p">))</span>
+  
+  <span class="c1"># Apply your custom processing pipeline</span>
+  <span class="n">gbif_with_region</span> <span class="o">&lt;-</span> <span class="nf">merge_gbif_with_regions</span><span class="p">(</span><span class="n">GBIF_chunk</span><span class="p">,</span> <span class="n">glonaf_h3</span><span class="p">,</span> <span class="n">wcvp_h3</span><span class="p">)</span>
+  <span class="n">gbif_with_status</span> <span class="o">&lt;-</span> <span class="nf">add_status_to_gbif</span><span class="p">(</span><span class="n">gbif_with_region</span><span class="p">,</span> <span class="n">species_status_long</span><span class="p">)</span>
+  <span class="n">gbif_filtered</span> <span class="o">&lt;-</span> <span class="nf">filter_duplicates</span><span class="p">(</span><span class="n">gbif_with_status</span><span class="p">)</span>
+  
+  <span class="c1"># Memory cleanup</span>
+  <span class="nf">rm</span><span class="p">(</span><span class="n">gbif_with_status</span><span class="p">,</span> <span class="n">gbif_with_region</span><span class="p">,</span> <span class="n">GBIF_chunk</span><span class="p">)</span>
+  <span class="nf">gc</span><span class="p">()</span>
+  
+  <span class="c1"># Save results</span>
+  <span class="n">out_path</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/GBIF_GloNAF_WCVP_status_unique_CS_&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;.csv&quot;</span><span class="p">)</span>
+  <span class="nf">fwrite</span><span class="p">(</span><span class="n">gbif_filtered</span><span class="p">,</span> <span class="n">out_path</span><span class="p">)</span>
+  
+  <span class="nf">rm</span><span class="p">(</span><span class="n">gbif_filtered</span><span class="p">)</span>
+  <span class="nf">gc</span><span class="p">()</span>
+  
+  <span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Chunk&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;done&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1"># Number of chunks and cores</span>
+<span class="n">chunk_ids</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="n">num_chunks</span>      <span class="c1"># adjust as needed</span>
+<span class="c1">#chunk_ids &lt;- c(29:31)</span>
+<span class="n">num_cores</span> <span class="o">&lt;-</span> <span class="m">30</span>         <span class="c1"># leave one or two cores free if the server is shared</span>
+
+<span class="c1"># Run in parallel using forked processes (no need for exports)</span>
+<span class="n">results</span> <span class="o">&lt;-</span> <span class="nf">mclapply</span><span class="p">(</span><span class="n">chunk_ids</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">tryCatch</span><span class="p">(</span>
+    <span class="nf">process_chunk</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nf">message</span><span class="p">(</span><span class="s">&quot;Error in chunk &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nf">conditionMessage</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+      <span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Chunk&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;failed&quot;</span><span class="p">))</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+<span class="p">},</span> <span class="n">mc.cores</span> <span class="o">=</span> <span class="n">num_cores</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge all processed chunks into a single file</span>
+<span class="nf">message</span><span class="p">(</span><span class="s">&quot;Merging all chunks...&quot;</span><span class="p">)</span>
+
+<span class="n">merged_data</span> <span class="o">&lt;-</span> <span class="nf">rbindlist</span><span class="p">(</span>
+  <span class="nf">lapply</span><span class="p">(</span><span class="n">chunk_ids</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">path</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/GBIF_GloNAF_WCVP_status_unique_CS_&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;.csv&quot;</span><span class="p">)</span>
+    <span class="nf">if </span><span class="p">(</span><span class="nf">file.exists</span><span class="p">(</span><span class="n">path</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nf">fread</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+      <span class="nf">warning</span><span class="p">(</span><span class="s">&quot;Missing chunk file: &quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+      <span class="kc">NULL</span>
+    <span class="p">}</span>
+  <span class="p">}),</span>
+  <span class="n">use.names</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+  <span class="n">fill</span> <span class="o">=</span> <span class="kc">TRUE</span>
+<span class="p">)</span>
+
+<span class="nf">message</span><span class="p">(</span><span class="s">&quot;Total rows merged: &quot;</span><span class="p">,</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">merged_data</span><span class="p">))</span>
+
+<span class="c1"># Save merged output</span>
+<span class="nf">fwrite</span><span class="p">(</span><span class="n">merged_data</span><span class="p">,</span> <span class="s">&quot;/net/scratch/swolf/GBIF/GBIF_GloNAF_WCVP_status_unique_CS_all.csv&quot;</span><span class="p">)</span>
+<span class="nf">message</span><span class="p">(</span><span class="s">&quot;Merged file saved.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Merging all chunks...
+
+Total rows merged: 64141357
+
+Merged file saved.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="add-woodiness">
+<h1>Add Woodiness<a class="headerlink" href="#add-woodiness" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">woodiness</span> <span class="o">&lt;-</span> <span class="n">wcvp_sp_long</span> <span class="o">%&gt;%</span>
+    <span class="nf">select</span><span class="p">(</span><span class="n">woodiness</span><span class="p">,</span> <span class="n">speciesKey</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">distinct</span><span class="p">()</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">woodiness</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 2</caption>
+<thead>
+	<tr><th scope=col>woodiness</th><th scope=col>speciesKey</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>woody    </td><td>5370755</td></tr>
+	<tr><td>non-woody</td><td>2651816</td></tr>
+	<tr><td>non-woody</td><td>2865100</td></tr>
+	<tr><td>non-woody</td><td>5289642</td></tr>
+	<tr><td>woody    </td><td>2882580</td></tr>
+	<tr><td>non-woody</td><td>3802655</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#delete rows with NA or &quot;&quot; in woodiness and growthForm</span>
+<span class="n">woodiness</span> <span class="o">&lt;-</span> <span class="n">woodiness</span> <span class="o">%&gt;%</span>
+    <span class="c1">#filter(!is.na(woodiness) &amp; nzchar(woodiness) &amp; !is.na(growthForm) &amp; nzchar(growthForm))</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">woodiness</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nf">nzchar</span><span class="p">(</span><span class="n">woodiness</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">distinct</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">woodiness</span><span class="o">$</span><span class="n">speciesKey</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">51973</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">length</span><span class="p">(</span><span class="n">woodiness</span><span class="o">$</span><span class="n">speciesKey</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">51998</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stats_woodiness</span> <span class="o">&lt;-</span> <span class="n">woodiness</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">woodiness</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">summarise</span><span class="p">(</span><span class="n">count</span> <span class="o">=</span> <span class="nf">n_distinct</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+
+<span class="n">stats_woodiness</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 3 × 2</caption>
+<thead>
+	<tr><th scope=col>woodiness</th><th scope=col>count</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>woody     </td><td>31751</td></tr>
+	<tr><td>non-woody </td><td>20159</td></tr>
+	<tr><td>semi-woody</td><td>   88</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># print duplicates in woodiness</span>
+<span class="n">woodiness_duplicates</span> <span class="o">&lt;-</span> <span class="n">woodiness</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nf">n</span><span class="p">()</span> <span class="o">&gt;</span> <span class="m">1</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">arrange</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">)</span>
+<span class="n">woodiness_duplicates</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A grouped_df: 50 × 2</caption>
+<thead>
+	<tr><th scope=col>woodiness</th><th scope=col>speciesKey</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>woody    </td><td>2701052</td></tr>
+	<tr><td>non-woody</td><td>2701052</td></tr>
+	<tr><td>woody    </td><td>2703325</td></tr>
+	<tr><td>non-woody</td><td>2703325</td></tr>
+	<tr><td>non-woody</td><td>2721893</td></tr>
+	<tr><td>woody    </td><td>2721893</td></tr>
+	<tr><td>non-woody</td><td>2794881</td></tr>
+	<tr><td>woody    </td><td>2794881</td></tr>
+	<tr><td>woody    </td><td>2918700</td></tr>
+	<tr><td>non-woody</td><td>2918700</td></tr>
+	<tr><td>non-woody</td><td>2949250</td></tr>
+	<tr><td>woody    </td><td>2949250</td></tr>
+	<tr><td>woody    </td><td>3083576</td></tr>
+	<tr><td>non-woody</td><td>3083576</td></tr>
+	<tr><td>woody    </td><td>3084023</td></tr>
+	<tr><td>non-woody</td><td>3084023</td></tr>
+	<tr><td>woody    </td><td>3093682</td></tr>
+	<tr><td>non-woody</td><td>3093682</td></tr>
+	<tr><td>non-woody</td><td>3100573</td></tr>
+	<tr><td>woody    </td><td>3100573</td></tr>
+	<tr><td>non-woody</td><td>3118430</td></tr>
+	<tr><td>woody    </td><td>3118430</td></tr>
+	<tr><td>non-woody</td><td>3119618</td></tr>
+	<tr><td>woody    </td><td>3119618</td></tr>
+	<tr><td>woody    </td><td>3149747</td></tr>
+	<tr><td>non-woody</td><td>3149747</td></tr>
+	<tr><td>non-woody</td><td>3152374</td></tr>
+	<tr><td>woody    </td><td>3152374</td></tr>
+	<tr><td>non-woody</td><td>3169790</td></tr>
+	<tr><td>woody    </td><td>3169790</td></tr>
+	<tr><td>woody    </td><td>3172047</td></tr>
+	<tr><td>non-woody</td><td>3172047</td></tr>
+	<tr><td>non-woody</td><td>4090205</td></tr>
+	<tr><td>woody    </td><td>4090205</td></tr>
+	<tr><td>woody    </td><td>5384048</td></tr>
+	<tr><td>non-woody</td><td>5384048</td></tr>
+	<tr><td>woody    </td><td>7126693</td></tr>
+	<tr><td>non-woody</td><td>7126693</td></tr>
+	<tr><td>non-woody</td><td>7148551</td></tr>
+	<tr><td>woody    </td><td>7148551</td></tr>
+	<tr><td>woody    </td><td>7322650</td></tr>
+	<tr><td>non-woody</td><td>7322650</td></tr>
+	<tr><td>non-woody</td><td>7324560</td></tr>
+	<tr><td>woody    </td><td>7324560</td></tr>
+	<tr><td>non-woody</td><td>7480365</td></tr>
+	<tr><td>woody    </td><td>7480365</td></tr>
+	<tr><td>non-woody</td><td>7672574</td></tr>
+	<tr><td>woody    </td><td>7672574</td></tr>
+	<tr><td>woody    </td><td>9587676</td></tr>
+	<tr><td>non-woody</td><td>9587676</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove duplicates in woodiness, delete both</span>
+<span class="n">woodiness</span> <span class="o">&lt;-</span> <span class="n">woodiness</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nf">n</span><span class="p">()</span> <span class="o">==</span> <span class="m">1</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">ungroup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge woodiness with GBIF_GloNAF_WCVP_final by gbifID</span>
+<span class="n">GBIF_GloNAF_WCVP_final_woody</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_final</span><span class="p">,</span> <span class="n">woodiness</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;speciesKey&quot;</span><span class="p">,</span> <span class="n">all.x</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_final_woody</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 5</caption>
+<thead>
+	<tr><th scope=col>speciesKey</th><th scope=col>gbifID</th><th scope=col>h3_res3</th><th scope=col>majority_status</th><th scope=col>woodiness</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int64&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1204404</td><td>5167350772</td><td>838230fffffffff</td><td>native</td><td>NA</td></tr>
+	<tr><td>1204404</td><td>4987455975</td><td>838230fffffffff</td><td>native</td><td>NA</td></tr>
+	<tr><td>1204404</td><td>2445057444</td><td>83831efffffffff</td><td>native</td><td>NA</td></tr>
+	<tr><td>1204404</td><td>2851019390</td><td>83831efffffffff</td><td>native</td><td>NA</td></tr>
+	<tr><td>1204404</td><td>2988502417</td><td>838233fffffffff</td><td>native</td><td>NA</td></tr>
+	<tr><td>1204404</td><td>2465115388</td><td>838218fffffffff</td><td>native</td><td>NA</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_final_woody</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>64141357</li><li>5</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop coumns &quot;speciesKey&quot;, &quot;h3_res3&quot; in GBIF_GloNAF_WCVP_final_woody</span>
+<span class="n">GBIF_GloNAF_WCVP_final_woody</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP_final_woody</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">,</span> <span class="n">h3_res3</span><span class="p">))</span>   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># stats on woodiness in GBIF_GloNAF_WCVP_final_woody</span>
+<span class="n">stats_woodiness_gbif</span> <span class="o">&lt;-</span> <span class="n">GBIF_GloNAF_WCVP_final_woody</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">woodiness</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">summarise</span><span class="p">(</span><span class="n">count</span> <span class="o">=</span> <span class="nf">n_distinct</span><span class="p">(</span><span class="n">gbifID</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+<span class="n">stats_woodiness_gbif</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 4 × 2</caption>
+<thead>
+	<tr><th scope=col>woodiness</th><th scope=col>count</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>non-woody </td><td>39348978</td></tr>
+	<tr><td>woody     </td><td>21790284</td></tr>
+	<tr><td>NA        </td><td> 2051716</td></tr>
+	<tr><td>semi-woody</td><td>  950379</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Percentage of observations that could not be labelled with a native/non-native status:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">535655</span><span class="o">/</span><span class="p">(</span><span class="m">14345486+535655+2125772</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.031496309765329</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># save GBIF_GloNAF_WCVP to csv </span>
+<span class="nf">fwrite</span><span class="p">(</span><span class="n">GBIF_GloNAF_WCVP_final</span><span class="p">,</span> <span class="s">&quot;/net/scratch/swolf/GBIF/GBIF_try6_GloNAF_WCVP_status_woodiness_CS.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "rstudio_r"
+        },
+        kernelOptions: {
+            kernelName: "rstudio_r",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'rstudio_r'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="01.3_H3_grid_preprocessing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Add hexagonal grid coordinates to GBIF</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03_Grid_cell_trait_means.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Aggregate into hexbins</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

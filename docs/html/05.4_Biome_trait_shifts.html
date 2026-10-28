@@ -1,0 +1,1830 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Individual trait shifts in each biome &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="01 · Environmental predictors per H3 cell (local rasters)" href="01_prepare_env_predictors.html" />
+    <link rel="prev" title="Plot hexagons" href="05.3_Plot_maps_with_biomes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/05.4_Biome_trait_shifts.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F05.4_Biome_trait_shifts.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/05.4_Biome_trait_shifts.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data">
+   Load Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#significance-test-for-trait-shifts">
+   Significance Test for Trait shifts
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#effect-sizes">
+   Effect Sizes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-effect-sizes">
+   Plot Effect Sizes
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Individual trait shifts in each biome</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data">
+   Load Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#significance-test-for-trait-shifts">
+   Significance Test for Trait shifts
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#effect-sizes">
+   Effect Sizes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-effect-sizes">
+   Plot Effect Sizes
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="individual-trait-shifts-in-each-biome">
+<h1>Individual trait shifts in each biome<a class="headerlink" href="#individual-trait-shifts-in-each-biome" title="Permalink to this headline">#</a></h1>
+<p>Set path to include RStudio packages</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read /net/home/swolf/Func_Neo_Phytes/Data/tde202616123616.txt, skip first 3 lines, tab delimited</span>
+<span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">read.table</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/Func_Neo_Phytes/Data/tde202616123616.txt&quot;</span><span class="p">,</span> <span class="n">skip</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;\t&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the trait data</span>
+<span class="n">trait_ids</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">27</span><span class="p">,</span> <span class="m">46</span><span class="p">,</span> <span class="m">47</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">95</span><span class="p">,</span> <span class="m">138</span><span class="p">,</span> <span class="m">144</span><span class="p">,</span> <span class="m">145</span><span class="p">,</span> <span class="m">146</span><span class="p">,</span> <span class="m">163</span><span class="p">,</span> <span class="m">169</span><span class="p">,</span> 
+               <span class="m">223</span><span class="p">,</span> <span class="m">224</span><span class="p">,</span> <span class="m">237</span><span class="p">,</span> <span class="m">281</span><span class="p">,</span> <span class="m">282</span><span class="p">,</span> <span class="m">289</span><span class="p">,</span> <span class="m">297</span><span class="p">,</span> <span class="m">351</span><span class="p">,</span> <span class="m">614</span><span class="p">,</span> <span class="m">1080</span><span class="p">,</span> <span class="m">3086</span><span class="p">,</span> <span class="m">3106</span><span class="p">,</span> <span class="m">3107</span><span class="p">,</span> <span class="m">3108</span><span class="p">,</span> <span class="m">3109</span><span class="p">,</span> 
+               <span class="m">3110</span><span class="p">,</span> <span class="m">3111</span><span class="p">,</span> <span class="m">3112</span><span class="p">,</span> <span class="m">3113</span><span class="p">,</span> <span class="m">3114</span><span class="p">,</span> <span class="m">3115</span><span class="p">,</span> <span class="m">3116</span><span class="p">,</span> <span class="m">3117</span><span class="p">,</span> <span class="m">3120</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_data</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">TraitID</span> <span class="o">%in%</span> <span class="n">trait_ids</span><span class="p">,</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort data by ObsNum, inverted</span>
+<span class="n">filtered_data</span> <span class="o">&lt;-</span> <span class="n">filtered_data</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="o">-</span><span class="n">filtered_data</span><span class="o">$</span><span class="n">ObsNum</span><span class="p">),</span> <span class="p">]</span>
+<span class="n">filtered_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 44 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>TraitID</th><th scope=col>Trait</th><th scope=col>ObsNum</th><th scope=col>ObsGRNum</th><th scope=col>AccSpecNum</th><th scope=col>X</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1724</th><td>3106</td><td>Plant height vegetative                                                                             </td><td>368479</td><td>268607</td><td>35466</td><td>NA</td></tr>
+	<tr><th scope=row>2064</th><td>  26</td><td>Seed dry mass                                                                                       </td><td>317501</td><td> 27134</td><td>43227</td><td>NA</td></tr>
+	<tr><th scope=row>1031</th><td>  47</td><td>Leaf dry mass per leaf fresh mass (leaf dry matter content, LDMC)                                   </td><td>293469</td><td>277713</td><td> 9688</td><td>NA</td></tr>
+	<tr><th scope=row>944</th><td>3117</td><td>Leaf area per leaf dry mass (specific leaf area, SLA or 1/LMA): undefined if petiole is in- or exclu</td><td>249181</td><td>206176</td><td>16599</td><td>NA</td></tr>
+	<tr><th scope=row>2315</th><td>  21</td><td>Stem diameter                                                                                       </td><td>215415</td><td>199436</td><td> 8426</td><td>NA</td></tr>
+	<tr><th scope=row>1024</th><td>  55</td><td>Leaf dry mass (single leaf)                                                                         </td><td>177383</td><td>151623</td><td> 8696</td><td>NA</td></tr>
+	<tr><th scope=row>1143</th><td>  14</td><td>Leaf nitrogen (N) content per leaf dry mass                                                         </td><td>165142</td><td>142471</td><td>13621</td><td>NA</td></tr>
+	<tr><th scope=row>1273</th><td>  46</td><td>Leaf thickness                                                                                      </td><td>126654</td><td>116389</td><td> 7773</td><td>NA</td></tr>
+	<tr><th scope=row>1319</th><td>3120</td><td>Leaf water content per leaf dry mass (not saturated)                                                </td><td>114633</td><td>114633</td><td> 3608</td><td>NA</td></tr>
+	<tr><th scope=row>943</th><td>3116</td><td>Leaf area per leaf dry mass (specific leaf area, SLA or 1/LMA): petiole included                    </td><td>105140</td><td> 93329</td><td> 8245</td><td>NA</td></tr>
+	<tr><th scope=row>1330</th><td> 145</td><td>Leaf width                                                                                          </td><td> 96570</td><td> 72599</td><td>10859</td><td>NA</td></tr>
+	<tr><th scope=row>2389</th><td>   4</td><td>Stem specific density (SSD, stem dry mass per stem fresh volume) or wood density                    </td><td> 96095</td><td> 44571</td><td>12812</td><td>NA</td></tr>
+	<tr><th scope=row>929</th><td>3114</td><td>Leaf area (in case of compound leaves undefined if leaf or leaflet, undefined if petiole is in- or e</td><td> 96078</td><td> 65197</td><td> 8770</td><td>NA</td></tr>
+	<tr><th scope=row>1142</th><td>  50</td><td>Leaf nitrogen (N) content per leaf area                                                             </td><td> 89709</td><td> 79443</td><td>10067</td><td>NA</td></tr>
+	<tr><th scope=row>2195</th><td> 224</td><td>Species genotype: chromosome cDNA content                                                           </td><td> 85668</td><td> 83646</td><td> 6907</td><td>NA</td></tr>
+	<tr><th scope=row>2196</th><td> 223</td><td>Species genotype: chromosome number                                                                 </td><td> 85214</td><td> 74071</td><td> 7916</td><td>NA</td></tr>
+	<tr><th scope=row>1051</th><td> 163</td><td>Leaf fresh mass                                                                                     </td><td> 83586</td><td> 82517</td><td> 3442</td><td>NA</td></tr>
+	<tr><th scope=row>942</th><td>3115</td><td>Leaf area per leaf dry mass (specific leaf area, SLA or 1/LMA): petiole excluded                    </td><td> 82364</td><td> 70925</td><td> 8120</td><td>NA</td></tr>
+	<tr><th scope=row>970</th><td>  13</td><td>Leaf carbon (C) content per leaf dry mass                                                           </td><td> 77666</td><td> 70380</td><td> 7509</td><td>NA</td></tr>
+	<tr><th scope=row>1184</th><td>  15</td><td>Leaf phosphorus (P) content per leaf dry mass                                                       </td><td> 73072</td><td> 57689</td><td> 8671</td><td>NA</td></tr>
+	<tr><th scope=row>2072</th><td>  95</td><td>Seed germination rate (germination efficiency)                                                      </td><td> 71098</td><td>   422</td><td>15724</td><td>NA</td></tr>
+	<tr><th scope=row>1083</th><td> 144</td><td>Leaf length                                                                                         </td><td> 66551</td><td> 44685</td><td>11500</td><td>NA</td></tr>
+	<tr><th scope=row>933</th><td>3109</td><td>Leaf area (in case of compound leaves: leaflet, petiole excluded)                                   </td><td> 64042</td><td> 58920</td><td> 5029</td><td>NA</td></tr>
+	<tr><th scope=row>931</th><td>3110</td><td>Leaf area (in case of compound leaves: leaf, petiole included)                                      </td><td> 60604</td><td> 57052</td><td> 3990</td><td>NA</td></tr>
+	<tr><th scope=row>930</th><td>3108</td><td>Leaf area (in case of compound leaves: leaf, petiole excluded)                                      </td><td> 48556</td><td> 45162</td><td> 3284</td><td>NA</td></tr>
+	<tr><th scope=row>935</th><td>3113</td><td>Leaf area (in case of compound leaves: leaflet, undefined if petiole is in- or excluded)            </td><td> 48331</td><td> 47915</td><td>11097</td><td>NA</td></tr>
+	<tr><th scope=row>973</th><td> 146</td><td>Leaf carbon/nitrogen (C/N) ratio                                                                    </td><td> 47595</td><td> 44708</td><td> 5843</td><td>NA</td></tr>
+	<tr><th scope=row>1718</th><td>3107</td><td>Plant height generative                                                                             </td><td> 41669</td><td> 20363</td><td> 3734</td><td>NA</td></tr>
+	<tr><th scope=row>2079</th><td>  27</td><td>Seed length                                                                                         </td><td> 27848</td><td>   749</td><td> 3861</td><td>NA</td></tr>
+	<tr><th scope=row>1148</th><td>  78</td><td>Leaf nitrogen (N) isotope signature (delta 15N)                                                     </td><td> 23956</td><td> 23446</td><td> 3561</td><td>NA</td></tr>
+	<tr><th scope=row>2301</th><td> 281</td><td>Stem conduit diameter (vessels, tracheids)                                                          </td><td> 23257</td><td>  4194</td><td> 7189</td><td>NA</td></tr>
+	<tr><th scope=row>932</th><td>3112</td><td>Leaf area (in case of compound leaves: leaf, undefined if petiole in- or excluded)                  </td><td> 22803</td><td> 21349</td><td> 7467</td><td>NA</td></tr>
+	<tr><th scope=row>934</th><td>3111</td><td>Leaf area (in case of compound leaves: leaflet, petiole included)                                   </td><td> 22436</td><td> 18085</td><td> 2929</td><td>NA</td></tr>
+	<tr><th scope=row>2300</th><td> 169</td><td>Stem conduit density (vessels and tracheids)                                                        </td><td> 21077</td><td>  2190</td><td> 8211</td><td>NA</td></tr>
+	<tr><th scope=row>402</th><td> 237</td><td>Dispersal unit length                                                                               </td><td> 19094</td><td>   165</td><td> 2933</td><td>NA</td></tr>
+	<tr><th scope=row>2579</th><td> 289</td><td>Wood fiber lengths                                                                                  </td><td> 16363</td><td>    NA</td><td> 5777</td><td>NA</td></tr>
+	<tr><th scope=row>2634</th><td> 282</td><td>Wood vessel element length; stem conduit (vessel and tracheids) element length                      </td><td> 15243</td><td>    NA</td><td> 5757</td><td>NA</td></tr>
+	<tr><th scope=row>2090</th><td> 138</td><td>Seed number per reproducton unit                                                                    </td><td> 14887</td><td>   143</td><td> 1754</td><td>NA</td></tr>
+	<tr><th scope=row>2011</th><td>   6</td><td>Root rooting depth                                                                                  </td><td> 11616</td><td>  8019</td><td> 4032</td><td>NA</td></tr>
+	<tr><th scope=row>1935</th><td>1080</td><td>Root length per root dry mass (specific root length, SRL)                                           </td><td>  8330</td><td>  5081</td><td>  720</td><td>NA</td></tr>
+	<tr><th scope=row>2612</th><td> 297</td><td>Wood rays per millimetre (wood ray density)                                                         </td><td>  7512</td><td>    NA</td><td> 5038</td><td>NA</td></tr>
+	<tr><th scope=row>699</th><td> 614</td><td>Fine root length per fine root dry mass (specific fine root length, SRL)                            </td><td>  7310</td><td>  5644</td><td> 1308</td><td>NA</td></tr>
+	<tr><th scope=row>2086</th><td> 351</td><td>Seed number per dispersal unit                                                                      </td><td>  2860</td><td>    48</td><td> 2586</td><td>NA</td></tr>
+	<tr><th scope=row>941</th><td>3086</td><td>Leaf area per leaf dry mass (specific leaf area, SLA or 1/LMA) petiole, rhachis and midrib excluded </td><td>  2311</td><td>  2085</td><td>  484</td><td>NA</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="load-data">
+<h1>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the aggregated shapefile</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+<span class="n">wwf_aggregated</span> <span class="o">&lt;-</span> <span class="nf">st_read</span><span class="p">(</span><span class="s">&quot;~/iNaturalist/Data/WWF/wwf_terr_ecos_aggregated.shp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading layer `wwf_terr_ecos_aggregated&#39; from data source 
+  `/net/home/swolf/iNaturalist/Data/WWF/wwf_terr_ecos_aggregated.shp&#39; 
+  using driver `ESRI Shapefile&#39;
+Simple feature collection with 64 features and 1 field
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -180 ymin: -87.26008 xmax: 180 ymax: 83.62313
+Geodetic CRS:  WGS 84
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span> 
+<span class="n">dtn</span> <span class="o">=</span> <span class="m">10</span>
+<span class="nf">setDTthreads</span><span class="p">(</span><span class="n">threads</span> <span class="o">=</span> <span class="n">dtn</span><span class="p">)</span> <span class="c1">#defines how many threads data.table is allowed to use</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">combined_data</span> <span class="o">=</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree_group.csv&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 47</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>group</th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>mean_perc_na</th><th scope=col>⋯</th><th scope=col>X.X223</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83001afffffffff</td><td>all   </td><td>-10.340785</td><td> 1.3463123</td><td>-1.7276493</td><td>-1.0482630</td><td>-2.1657556</td><td>10</td><td>4</td><td>  5.68</td><td>⋯</td><td>33.517</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td></tr>
+	<tr><td>83001afffffffff</td><td>native</td><td>-10.340785</td><td> 1.3463123</td><td>-1.7276493</td><td>-1.0482630</td><td>-2.1657556</td><td>10</td><td>4</td><td> 55.68</td><td>⋯</td><td>33.517</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td></tr>
+	<tr><td>83001cfffffffff</td><td>all   </td><td> -9.994814</td><td>-0.2430451</td><td> 0.2367820</td><td>-2.9060144</td><td>-1.0022472</td><td> 1</td><td>1</td><td> 16.22</td><td>⋯</td><td>32.155</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3272027</td></tr>
+	<tr><td>83001cfffffffff</td><td>native</td><td>-10.002619</td><td>-0.3291607</td><td> 0.3134314</td><td>-2.9203937</td><td>-0.9736157</td><td> 1</td><td>1</td><td>116.22</td><td>⋯</td><td>32.155</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3360682</td></tr>
+	<tr><td>83001efffffffff</td><td>all   </td><td>-10.704678</td><td>-0.8306347</td><td>-0.9563224</td><td> 0.2603966</td><td>-1.3077282</td><td> 4</td><td>3</td><td>  3.38</td><td>⋯</td><td>32.650</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td></tr>
+	<tr><td>83001efffffffff</td><td>native</td><td>-10.704678</td><td>-0.8306347</td><td>-0.9563224</td><td> 0.2603966</td><td>-1.3077282</td><td> 4</td><td>3</td><td>  3.38</td><td>⋯</td><td>32.650</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Trait names</span>
+
+<span class="c1"># Define the trait data</span>
+<span class="n">trait_ids</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">27</span><span class="p">,</span> <span class="m">46</span><span class="p">,</span> <span class="m">47</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">55</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">95</span><span class="p">,</span> <span class="m">138</span><span class="p">,</span> <span class="m">144</span><span class="p">,</span> <span class="m">145</span><span class="p">,</span> <span class="m">146</span><span class="p">,</span> <span class="m">163</span><span class="p">,</span> <span class="m">169</span><span class="p">,</span> 
+               <span class="m">223</span><span class="p">,</span> <span class="m">224</span><span class="p">,</span> <span class="m">237</span><span class="p">,</span> <span class="m">281</span><span class="p">,</span> <span class="m">282</span><span class="p">,</span> <span class="m">289</span><span class="p">,</span> <span class="m">297</span><span class="p">,</span> <span class="m">351</span><span class="p">,</span> <span class="m">614</span><span class="p">,</span> <span class="m">1080</span><span class="p">,</span> <span class="m">3086</span><span class="p">,</span> <span class="m">3106</span><span class="p">,</span> <span class="m">3107</span><span class="p">,</span> <span class="m">3108</span><span class="p">,</span> <span class="m">3109</span><span class="p">,</span> 
+               <span class="m">3110</span><span class="p">,</span> <span class="m">3111</span><span class="p">,</span> <span class="m">3112</span><span class="p">,</span> <span class="m">3113</span><span class="p">,</span> <span class="m">3114</span><span class="p">,</span> <span class="m">3115</span><span class="p">,</span> <span class="m">3116</span><span class="p">,</span> <span class="m">3117</span><span class="p">,</span> <span class="m">3120</span><span class="p">)</span>
+
+<span class="n">trait_names</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span>
+  <span class="s">&quot;Stem specific density (SSD, stem dry mass per stem fresh volume) or wood density&quot;</span><span class="p">,</span> <span class="s">&quot;Root rooting depth&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf carbon (C) content per leaf dry mass&quot;</span><span class="p">,</span> <span class="s">&quot;Leaf nitrogen (N) content per leaf dry mass&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf phosphorus (P) content per leaf dry mass&quot;</span><span class="p">,</span> <span class="s">&quot;Stem diameter&quot;</span><span class="p">,</span> <span class="s">&quot;Seed dry mass&quot;</span><span class="p">,</span> <span class="s">&quot;Seed length&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf thickness&quot;</span><span class="p">,</span> <span class="s">&quot;Leaf dry mass per leaf fresh mass (leaf dry matter content, LDMC)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf nitrogen (N) content per leaf area&quot;</span><span class="p">,</span> <span class="s">&quot;Leaf dry mass (single leaf)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf nitrogen (N) isotope signature (delta 15N)&quot;</span><span class="p">,</span> <span class="s">&quot;Seed germination rate (germination efficiency)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Seed number per reproduction unit&quot;</span><span class="p">,</span> <span class="s">&quot;Leaf length&quot;</span><span class="p">,</span> <span class="s">&quot;Leaf width&quot;</span><span class="p">,</span> <span class="s">&quot;Leaf carbon/nitrogen (C/N) ratio&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf fresh mass&quot;</span><span class="p">,</span> <span class="s">&quot;Stem conduit density (vessels and tracheids)&quot;</span><span class="p">,</span> <span class="s">&quot;Species genotype: chromosome number&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Species genotype: chromosome cDNA content&quot;</span><span class="p">,</span> <span class="s">&quot;Dispersal unit length&quot;</span><span class="p">,</span> <span class="s">&quot;Stem conduit diameter (vessels, tracheids)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Wood vessel element length; stem conduit (vessel and tracheids) element length&quot;</span><span class="p">,</span> <span class="s">&quot;Wood fiber lengths&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Wood rays per millimetre (wood ray density)&quot;</span><span class="p">,</span> <span class="s">&quot;Seed number per dispersal unit&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Fine root length per fine root dry mass (specific fine root length, SRL)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Root length per root dry mass (specific root length, SRL)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area per leaf dry mass (SLA or 1/LMA) petiole, rhachis and midrib excluded&quot;</span><span class="p">,</span> <span class="s">&quot;Plant height vegetative&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Plant height generative&quot;</span><span class="p">,</span> <span class="s">&quot;Leaf area (in case of compound leaves: leaf, petiole excluded)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area (in case of compound leaves: leaflet, petiole excluded)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area (in case of compound leaves: leaf, petiole included)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area (in case of compound leaves: leaflet, petiole included)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area (in case of compound leaves: leaf, undefined if petiole in- or excluded)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area (in case of compound leaves: leaflet, undefined if petiole is in- or excluded)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area (in case of compound leaves undefined if leaf or leaflet, if petiole is in- or excluded)&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area per leaf dry mass (SLA or 1/LMA): petiole excluded&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area per leaf dry mass (SLA or 1/LMA): petiole included&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area per leaf dry mass (SLA or 1/LMA): undefined if petiole is in- or excluded&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf water content per leaf dry mass (not saturated)&quot;</span>
+<span class="p">)</span>
+
+
+<span class="n">short_names</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span>
+  <span class="s">&quot;SSD&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Rooting depth&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf C&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf N&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf P&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Stem diameter&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Seed dry mass&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Seed length&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf thickness&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;LDMC&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf N per area&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf dry mass&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf delta 15N&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Germination efficiency&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Seed number/rep. unit&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf length&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf width&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf C/N ratio&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf fresh mass&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Stem conduit density&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Chromosome number&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Chromosome cDNA content&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Dispersal unit length&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Stem conduit diameter&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Wood vessel element length&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Wood fiber lengths&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Wood ray density&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Seed number/disp. unit&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Specific fine root length&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Specific root length&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;SLA midrib excl.&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Plant height veg.&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Plant height gen.&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area 3108 &quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area 3109&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area 3110&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area 3111&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area 3112&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area 3113&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf area 3114&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;SLA petiole excl.&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;SLA petiole incl.&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;SLA petiole in- or excluded&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Leaf water content not saturated&quot;</span>
+<span class="p">)</span>
+
+
+
+<span class="n">sPlotOpen_name</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span>
+  <span class="s">&quot;SSD&quot;</span><span class="p">,</span>          <span class="c1"># SSD</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Rooting depth</span>
+  <span class="s">&quot;Leaf.C&quot;</span><span class="p">,</span>  <span class="c1"># Leaf C</span>
+  <span class="s">&quot;Leaf.N.per.mass&quot;</span><span class="p">,</span>             <span class="c1"># Leaf N</span>
+  <span class="s">&quot;Leaf.P&quot;</span><span class="p">,</span>             <span class="c1"># Leaf P</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Stem diameter</span>
+  <span class="s">&quot;Seed.mass&quot;</span><span class="p">,</span>          <span class="c1"># Seed dry mass</span>
+  <span class="s">&quot;Seed.length&quot;</span><span class="p">,</span>       <span class="c1"># Seed length</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Leaf thickness</span>
+  <span class="s">&quot;LDMC&quot;</span><span class="p">,</span>              <span class="c1"># LDMC</span>
+  <span class="s">&quot;Leaf.N.per.area&quot;</span><span class="p">,</span>      <span class="c1"># Leaf N per area</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Leaf dry mass</span>
+  <span class="s">&quot;Leaf.delta15N&quot;</span><span class="p">,</span>    <span class="c1"># Leaf delta 15N</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Germination efficiency</span>
+  <span class="s">&quot;Seeds.per.rep..unit&quot;</span><span class="p">,</span> <span class="c1"># Seed number/rep. unit</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Leaf length</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Leaf width</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>       <span class="c1"># Leaf C/N ratio</span>
+  <span class="s">&quot;Leaf.fresh.mass&quot;</span><span class="p">,</span>     <span class="c1"># Leaf fresh mass</span>
+  <span class="s">&quot;Stem.conduit.density&quot;</span><span class="p">,</span>    <span class="c1"># Stem conduit density</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Chromosome number</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Chromosome cDNA content</span>
+  <span class="s">&quot;Dispersal.unit.length&quot;</span><span class="p">,</span>    <span class="c1"># Dispersal unit length</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Stem conduit diameter</span>
+  <span class="s">&quot;Conduit.element.length&quot;</span><span class="p">,</span><span class="c1"># Wood vessel element length</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Wood fiber lengths</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Wood ray density</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Seed number/disp. unit</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Specific fine root length</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Specific root length</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># SLA midrib excl.</span>
+  <span class="s">&quot;Plant.Height&quot;</span><span class="p">,</span>       <span class="c1"># Plant height veg.</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Plant height gen.</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                       <span class="c1"># Leaf area 3108</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Leaf area 3109</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Leaf area 3110</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Leaf area 3111</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Leaf area 3112</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># Leaf area 3113</span>
+  <span class="s">&quot;Leaf.Area&quot;</span><span class="p">,</span>          <span class="c1"># Leaf area 3114</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>                      <span class="c1"># SLA petiole excl.</span>
+  <span class="s">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># SLA petiole incl.</span>
+  <span class="s">&quot;SLA&quot;</span><span class="p">,</span>                      <span class="c1"># SLA petiole in- or excluded</span>
+  <span class="s">&quot;&quot;</span>                       <span class="c1"># Leaf water content not saturated</span>
+<span class="p">)</span>
+
+
+<span class="n">unit_names</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;g/cm3&quot;</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span> <span class="s">&quot;mg/g&quot;</span><span class="p">,</span> <span class="s">&quot;mg/g&quot;</span><span class="p">,</span> <span class="s">&quot;mg/g&quot;</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span> <span class="s">&quot;mg&quot;</span><span class="p">,</span> <span class="s">&quot;mm&quot;</span><span class="p">,</span> <span class="s">&quot;mm&quot;</span><span class="p">,</span> <span class="s">&quot;g/g&quot;</span><span class="p">,</span> <span class="s">&quot;g m-2&quot;</span><span class="p">,</span> <span class="s">&quot;mg&quot;</span><span class="p">,</span> <span class="s">&quot;per mill&quot;</span><span class="p">,</span> 
+                <span class="s">&quot;%&quot;</span><span class="p">,</span> <span class="s">&quot;number&quot;</span><span class="p">,</span> <span class="s">&quot;mm&quot;</span><span class="p">,</span> <span class="s">&quot;cm&quot;</span><span class="p">,</span> <span class="s">&quot;g g-1&quot;</span><span class="p">,</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> <span class="s">&quot;mm-2&quot;</span><span class="p">,</span> <span class="s">&quot;n&quot;</span><span class="p">,</span> <span class="s">&quot;pg&quot;</span><span class="p">,</span> <span class="s">&quot;mm&quot;</span><span class="p">,</span> <span class="s">&quot;micro m&quot;</span><span class="p">,</span> <span class="s">&quot;micro m&quot;</span><span class="p">,</span> 
+                <span class="s">&quot;micro m&quot;</span><span class="p">,</span> <span class="s">&quot;1/mm&quot;</span><span class="p">,</span> <span class="s">&quot;number&quot;</span><span class="p">,</span> <span class="s">&quot;cm/g&quot;</span><span class="p">,</span> <span class="s">&quot;cm/g&quot;</span><span class="p">,</span> <span class="s">&quot;mm2/mg&quot;</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span> <span class="s">&quot;mm2&quot;</span><span class="p">,</span> <span class="s">&quot;mm2&quot;</span><span class="p">,</span> <span class="s">&quot;mm2&quot;</span><span class="p">,</span> 
+                <span class="s">&quot;mm2&quot;</span><span class="p">,</span> <span class="s">&quot;mm2&quot;</span><span class="p">,</span> <span class="s">&quot;mm2&quot;</span><span class="p">,</span> <span class="s">&quot;mm2&quot;</span><span class="p">,</span> <span class="s">&quot;mm2/mg&quot;</span><span class="p">,</span> <span class="s">&quot;mm2/mg&quot;</span><span class="p">,</span> <span class="s">&quot;mm2/mg&quot;</span><span class="p">,</span> <span class="s">&quot;g(W)/g(DM)&quot;</span><span class="p">)</span>
+
+<span class="c1"># add &quot;X.X&quot; prefix and &quot;.&quot; suffix to TraitID</span>
+<span class="n">trait_ids_try6</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;X.X&quot;</span><span class="p">,</span> <span class="n">trait_ids</span><span class="p">)</span>
+
+<span class="c1"># Create the dataframe</span>
+<span class="n">traits</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">TraitID</span> <span class="o">=</span> <span class="n">trait_ids</span><span class="p">,</span> <span class="n">TraitID_TRY6</span> <span class="o">=</span> <span class="n">trait_ids_try6</span><span class="p">,</span> <span class="n">TraitName</span> <span class="o">=</span> <span class="n">trait_names</span><span class="p">,</span> <span class="n">ShortName</span> <span class="o">=</span> <span class="n">short_names</span><span class="p">,</span> <span class="n">sPlotOpenName</span><span class="o">=</span><span class="n">sPlotOpen_name</span><span class="p">,</span> <span class="n">UnitName</span> <span class="o">=</span> <span class="n">unit_names</span><span class="p">)</span>
+
+<span class="c1"># View the dataframe</span>
+<span class="n">traits</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 44 × 6</caption>
+<thead>
+	<tr><th scope=col>TraitID</th><th scope=col>TraitID_TRY6</th><th scope=col>TraitName</th><th scope=col>ShortName</th><th scope=col>sPlotOpenName</th><th scope=col>UnitName</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>   4</td><td>X.X4   </td><td>Stem specific density (SSD, stem dry mass per stem fresh volume) or wood density                  </td><td>SSD                             </td><td>SSD                   </td><td>g/cm3     </td></tr>
+	<tr><td>   6</td><td>X.X6   </td><td>Root rooting depth                                                                                </td><td>Rooting depth                   </td><td>                      </td><td>m         </td></tr>
+	<tr><td>  13</td><td>X.X13  </td><td>Leaf carbon (C) content per leaf dry mass                                                         </td><td>Leaf C                          </td><td>Leaf.C                </td><td>mg/g      </td></tr>
+	<tr><td>  14</td><td>X.X14  </td><td>Leaf nitrogen (N) content per leaf dry mass                                                       </td><td>Leaf N                          </td><td>Leaf.N.per.mass       </td><td>mg/g      </td></tr>
+	<tr><td>  15</td><td>X.X15  </td><td>Leaf phosphorus (P) content per leaf dry mass                                                     </td><td>Leaf P                          </td><td>Leaf.P                </td><td>mg/g      </td></tr>
+	<tr><td>  21</td><td>X.X21  </td><td>Stem diameter                                                                                     </td><td>Stem diameter                   </td><td>                      </td><td>m         </td></tr>
+	<tr><td>  26</td><td>X.X26  </td><td>Seed dry mass                                                                                     </td><td>Seed dry mass                   </td><td>Seed.mass             </td><td>mg        </td></tr>
+	<tr><td>  27</td><td>X.X27  </td><td>Seed length                                                                                       </td><td>Seed length                     </td><td>Seed.length           </td><td>mm        </td></tr>
+	<tr><td>  46</td><td>X.X46  </td><td>Leaf thickness                                                                                    </td><td>Leaf thickness                  </td><td>                      </td><td>mm        </td></tr>
+	<tr><td>  47</td><td>X.X47  </td><td>Leaf dry mass per leaf fresh mass (leaf dry matter content, LDMC)                                 </td><td>LDMC                            </td><td>LDMC                  </td><td>g/g       </td></tr>
+	<tr><td>  50</td><td>X.X50  </td><td>Leaf nitrogen (N) content per leaf area                                                           </td><td>Leaf N per area                 </td><td>Leaf.N.per.area       </td><td>g m-2     </td></tr>
+	<tr><td>  55</td><td>X.X55  </td><td>Leaf dry mass (single leaf)                                                                       </td><td>Leaf dry mass                   </td><td>                      </td><td>mg        </td></tr>
+	<tr><td>  78</td><td>X.X78  </td><td>Leaf nitrogen (N) isotope signature (delta 15N)                                                   </td><td>Leaf delta 15N                  </td><td>Leaf.delta15N         </td><td>per mill  </td></tr>
+	<tr><td>  95</td><td>X.X95  </td><td>Seed germination rate (germination efficiency)                                                    </td><td>Germination efficiency          </td><td>                      </td><td>%         </td></tr>
+	<tr><td> 138</td><td>X.X138 </td><td>Seed number per reproduction unit                                                                 </td><td>Seed number/rep. unit           </td><td>Seeds.per.rep..unit   </td><td>number    </td></tr>
+	<tr><td> 144</td><td>X.X144 </td><td>Leaf length                                                                                       </td><td>Leaf length                     </td><td>                      </td><td>mm        </td></tr>
+	<tr><td> 145</td><td>X.X145 </td><td>Leaf width                                                                                        </td><td>Leaf width                      </td><td>                      </td><td>cm        </td></tr>
+	<tr><td> 146</td><td>X.X146 </td><td>Leaf carbon/nitrogen (C/N) ratio                                                                  </td><td>Leaf C/N ratio                  </td><td>                      </td><td>g g-1     </td></tr>
+	<tr><td> 163</td><td>X.X163 </td><td>Leaf fresh mass                                                                                   </td><td>Leaf fresh mass                 </td><td>Leaf.fresh.mass       </td><td>g         </td></tr>
+	<tr><td> 169</td><td>X.X169 </td><td>Stem conduit density (vessels and tracheids)                                                      </td><td>Stem conduit density            </td><td>Stem.conduit.density  </td><td>mm-2      </td></tr>
+	<tr><td> 223</td><td>X.X223 </td><td>Species genotype: chromosome number                                                               </td><td>Chromosome number               </td><td>                      </td><td>n         </td></tr>
+	<tr><td> 224</td><td>X.X224 </td><td>Species genotype: chromosome cDNA content                                                         </td><td>Chromosome cDNA content         </td><td>                      </td><td>pg        </td></tr>
+	<tr><td> 237</td><td>X.X237 </td><td>Dispersal unit length                                                                             </td><td>Dispersal unit length           </td><td>Dispersal.unit.length </td><td>mm        </td></tr>
+	<tr><td> 281</td><td>X.X281 </td><td>Stem conduit diameter (vessels, tracheids)                                                        </td><td>Stem conduit diameter           </td><td>                      </td><td>micro m   </td></tr>
+	<tr><td> 282</td><td>X.X282 </td><td>Wood vessel element length; stem conduit (vessel and tracheids) element length                    </td><td>Wood vessel element length      </td><td>Conduit.element.length</td><td>micro m   </td></tr>
+	<tr><td> 289</td><td>X.X289 </td><td>Wood fiber lengths                                                                                </td><td>Wood fiber lengths              </td><td>                      </td><td>micro m   </td></tr>
+	<tr><td> 297</td><td>X.X297 </td><td>Wood rays per millimetre (wood ray density)                                                       </td><td>Wood ray density                </td><td>                      </td><td>1/mm      </td></tr>
+	<tr><td> 351</td><td>X.X351 </td><td>Seed number per dispersal unit                                                                    </td><td>Seed number/disp. unit          </td><td>                      </td><td>number    </td></tr>
+	<tr><td> 614</td><td>X.X614 </td><td>Fine root length per fine root dry mass (specific fine root length, SRL)                          </td><td>Specific fine root length       </td><td>                      </td><td>cm/g      </td></tr>
+	<tr><td>1080</td><td>X.X1080</td><td>Root length per root dry mass (specific root length, SRL)                                         </td><td>Specific root length            </td><td>                      </td><td>cm/g      </td></tr>
+	<tr><td>3086</td><td>X.X3086</td><td>Leaf area per leaf dry mass (SLA or 1/LMA) petiole, rhachis and midrib excluded                   </td><td>SLA midrib excl.                </td><td>                      </td><td>mm2/mg    </td></tr>
+	<tr><td>3106</td><td>X.X3106</td><td>Plant height vegetative                                                                           </td><td>Plant height veg.               </td><td>Plant.Height          </td><td>m         </td></tr>
+	<tr><td>3107</td><td>X.X3107</td><td>Plant height generative                                                                           </td><td>Plant height gen.               </td><td>                      </td><td>m         </td></tr>
+	<tr><td>3108</td><td>X.X3108</td><td>Leaf area (in case of compound leaves: leaf, petiole excluded)                                    </td><td>Leaf area 3108                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3109</td><td>X.X3109</td><td>Leaf area (in case of compound leaves: leaflet, petiole excluded)                                 </td><td>Leaf area 3109                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3110</td><td>X.X3110</td><td>Leaf area (in case of compound leaves: leaf, petiole included)                                    </td><td>Leaf area 3110                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3111</td><td>X.X3111</td><td>Leaf area (in case of compound leaves: leaflet, petiole included)                                 </td><td>Leaf area 3111                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3112</td><td>X.X3112</td><td>Leaf area (in case of compound leaves: leaf, undefined if petiole in- or excluded)                </td><td>Leaf area 3112                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3113</td><td>X.X3113</td><td>Leaf area (in case of compound leaves: leaflet, undefined if petiole is in- or excluded)          </td><td>Leaf area 3113                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3114</td><td>X.X3114</td><td>Leaf area (in case of compound leaves undefined if leaf or leaflet, if petiole is in- or excluded)</td><td>Leaf area 3114                  </td><td>Leaf.Area             </td><td>mm2       </td></tr>
+	<tr><td>3115</td><td>X.X3115</td><td>Leaf area per leaf dry mass (SLA or 1/LMA): petiole excluded                                      </td><td>SLA petiole excl.               </td><td>                      </td><td>mm2/mg    </td></tr>
+	<tr><td>3116</td><td>X.X3116</td><td>Leaf area per leaf dry mass (SLA or 1/LMA): petiole included                                      </td><td>SLA petiole incl.               </td><td>                      </td><td>mm2/mg    </td></tr>
+	<tr><td>3117</td><td>X.X3117</td><td>Leaf area per leaf dry mass (SLA or 1/LMA): undefined if petiole is in- or excluded               </td><td>SLA petiole in- or excluded     </td><td>SLA                   </td><td>mm2/mg    </td></tr>
+	<tr><td>3120</td><td>X.X3120</td><td>Leaf water content per leaf dry mass (not saturated)                                              </td><td>Leaf water content not saturated</td><td>                      </td><td>g(W)/g(DM)</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.csv</span><span class="p">(</span><span class="n">traits</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s">&quot;~/Func_Neo_Phytes/Data/trait_info.csv&quot;</span><span class="p">,</span> <span class="n">row.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">traits</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 44 × 6</caption>
+<thead>
+	<tr><th scope=col>TraitID</th><th scope=col>TraitID_TRY6</th><th scope=col>TraitName</th><th scope=col>ShortName</th><th scope=col>sPlotOpenName</th><th scope=col>UnitName</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>   4</td><td>X.X4.   </td><td>Stem specific density (SSD, stem dry mass per stem fresh volume) or wood density                  </td><td>SSD                             </td><td>SSD                   </td><td>g/cm3     </td></tr>
+	<tr><td>   6</td><td>X.X6.   </td><td>Root rooting depth                                                                                </td><td>Rooting depth                   </td><td>                      </td><td>m         </td></tr>
+	<tr><td>  13</td><td>X.X13.  </td><td>Leaf carbon (C) content per leaf dry mass                                                         </td><td>Leaf C                          </td><td>Leaf.C                </td><td>mg/g      </td></tr>
+	<tr><td>  14</td><td>X.X14.  </td><td>Leaf nitrogen (N) content per leaf dry mass                                                       </td><td>Leaf N                          </td><td>Leaf.N.per.mass       </td><td>mg/g      </td></tr>
+	<tr><td>  15</td><td>X.X15.  </td><td>Leaf phosphorus (P) content per leaf dry mass                                                     </td><td>Leaf P                          </td><td>Leaf.P                </td><td>mg/g      </td></tr>
+	<tr><td>  21</td><td>X.X21.  </td><td>Stem diameter                                                                                     </td><td>Stem diameter                   </td><td>                      </td><td>m         </td></tr>
+	<tr><td>  26</td><td>X.X26.  </td><td>Seed dry mass                                                                                     </td><td>Seed dry mass                   </td><td>Seed.mass             </td><td>mg        </td></tr>
+	<tr><td>  27</td><td>X.X27.  </td><td>Seed length                                                                                       </td><td>Seed length                     </td><td>Seed.length           </td><td>mm        </td></tr>
+	<tr><td>  46</td><td>X.X46.  </td><td>Leaf thickness                                                                                    </td><td>Leaf thickness                  </td><td>                      </td><td>mm        </td></tr>
+	<tr><td>  47</td><td>X.X47.  </td><td>Leaf dry mass per leaf fresh mass (leaf dry matter content, LDMC)                                 </td><td>LDMC                            </td><td>LDMC                  </td><td>g/g       </td></tr>
+	<tr><td>  50</td><td>X.X50.  </td><td>Leaf nitrogen (N) content per leaf area                                                           </td><td>Leaf N per area                 </td><td>Leaf.N.per.area       </td><td>g m-2     </td></tr>
+	<tr><td>  55</td><td>X.X55.  </td><td>Leaf dry mass (single leaf)                                                                       </td><td>Leaf dry mass                   </td><td>                      </td><td>mg        </td></tr>
+	<tr><td>  78</td><td>X.X78.  </td><td>Leaf nitrogen (N) isotope signature (delta 15N)                                                   </td><td>Leaf delta 15N                  </td><td>Leaf.delta15N         </td><td>per mill  </td></tr>
+	<tr><td>  95</td><td>X.X95.  </td><td>Seed germination rate (germination efficiency)                                                    </td><td>Germination efficiency          </td><td>                      </td><td>%         </td></tr>
+	<tr><td> 138</td><td>X.X138. </td><td>Seed number per reproduction unit                                                                 </td><td>Seed number/rep. unit           </td><td>Seeds.per.rep..unit   </td><td>number    </td></tr>
+	<tr><td> 144</td><td>X.X144. </td><td>Leaf length                                                                                       </td><td>Leaf length                     </td><td>                      </td><td>mm        </td></tr>
+	<tr><td> 145</td><td>X.X145. </td><td>Leaf width                                                                                        </td><td>Leaf width                      </td><td>                      </td><td>cm        </td></tr>
+	<tr><td> 146</td><td>X.X146. </td><td>Leaf carbon/nitrogen (C/N) ratio                                                                  </td><td>Leaf C/N ratio                  </td><td>                      </td><td>g g-1     </td></tr>
+	<tr><td> 163</td><td>X.X163. </td><td>Leaf fresh mass                                                                                   </td><td>Leaf fresh mass                 </td><td>Leaf.fresh.mass       </td><td>g         </td></tr>
+	<tr><td> 169</td><td>X.X169. </td><td>Stem conduit density (vessels and tracheids)                                                      </td><td>Stem conduit density            </td><td>Stem.conduit.density  </td><td>mm-2      </td></tr>
+	<tr><td> 223</td><td>X.X223. </td><td>Species genotype: chromosome number                                                               </td><td>Chromosome number               </td><td>                      </td><td>n         </td></tr>
+	<tr><td> 224</td><td>X.X224. </td><td>Species genotype: chromosome cDNA content                                                         </td><td>Chromosome cDNA content         </td><td>                      </td><td>pg        </td></tr>
+	<tr><td> 237</td><td>X.X237. </td><td>Dispersal unit length                                                                             </td><td>Dispersal unit length           </td><td>Dispersal.unit.length </td><td>mm        </td></tr>
+	<tr><td> 281</td><td>X.X281. </td><td>Stem conduit diameter (vessels, tracheids)                                                        </td><td>Stem conduit diameter           </td><td>                      </td><td>micro m   </td></tr>
+	<tr><td> 282</td><td>X.X282. </td><td>Wood vessel element length; stem conduit (vessel and tracheids) element length                    </td><td>Wood vessel element length      </td><td>Conduit.element.length</td><td>micro m   </td></tr>
+	<tr><td> 289</td><td>X.X289. </td><td>Wood fiber lengths                                                                                </td><td>Wood fiber lengths              </td><td>                      </td><td>micro m   </td></tr>
+	<tr><td> 297</td><td>X.X297. </td><td>Wood rays per millimetre (wood ray density)                                                       </td><td>Wood ray density                </td><td>                      </td><td>1/mm      </td></tr>
+	<tr><td> 351</td><td>X.X351. </td><td>Seed number per dispersal unit                                                                    </td><td>Seed number/disp. unit          </td><td>                      </td><td>number    </td></tr>
+	<tr><td> 614</td><td>X.X614. </td><td>Fine root length per fine root dry mass (specific fine root length, SRL)                          </td><td>Specific fine root length       </td><td>                      </td><td>cm/g      </td></tr>
+	<tr><td>1080</td><td>X.X1080.</td><td>Root length per root dry mass (specific root length, SRL)                                         </td><td>Specific root length            </td><td>                      </td><td>cm/g      </td></tr>
+	<tr><td>3086</td><td>X.X3086.</td><td>Leaf area per leaf dry mass (SLA or 1/LMA) petiole, rhachis and midrib excluded                   </td><td>SLA midrib excl.                </td><td>                      </td><td>mm2/mg    </td></tr>
+	<tr><td>3106</td><td>X.X3106.</td><td>Plant height vegetative                                                                           </td><td>Plant height veg.               </td><td>Plant.Height          </td><td>m         </td></tr>
+	<tr><td>3107</td><td>X.X3107.</td><td>Plant height generative                                                                           </td><td>Plant height gen.               </td><td>                      </td><td>m         </td></tr>
+	<tr><td>3108</td><td>X.X3108.</td><td>Leaf area (in case of compound leaves: leaf, petiole excluded)                                    </td><td>Leaf area 3108                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3109</td><td>X.X3109.</td><td>Leaf area (in case of compound leaves: leaflet, petiole excluded)                                 </td><td>Leaf area 3109                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3110</td><td>X.X3110.</td><td>Leaf area (in case of compound leaves: leaf, petiole included)                                    </td><td>Leaf area 3110                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3111</td><td>X.X3111.</td><td>Leaf area (in case of compound leaves: leaflet, petiole included)                                 </td><td>Leaf area 3111                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3112</td><td>X.X3112.</td><td>Leaf area (in case of compound leaves: leaf, undefined if petiole in- or excluded)                </td><td>Leaf area 3112                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3113</td><td>X.X3113.</td><td>Leaf area (in case of compound leaves: leaflet, undefined if petiole is in- or excluded)          </td><td>Leaf area 3113                  </td><td>                      </td><td>mm2       </td></tr>
+	<tr><td>3114</td><td>X.X3114.</td><td>Leaf area (in case of compound leaves undefined if leaf or leaflet, if petiole is in- or excluded)</td><td>Leaf area 3114                  </td><td>Leaf.Area             </td><td>mm2       </td></tr>
+	<tr><td>3115</td><td>X.X3115.</td><td>Leaf area per leaf dry mass (SLA or 1/LMA): petiole excluded                                      </td><td>SLA petiole excl.               </td><td>                      </td><td>mm2/mg    </td></tr>
+	<tr><td>3116</td><td>X.X3116.</td><td>Leaf area per leaf dry mass (SLA or 1/LMA): petiole included                                      </td><td>SLA petiole incl.               </td><td>                      </td><td>mm2/mg    </td></tr>
+	<tr><td>3117</td><td>X.X3117.</td><td>Leaf area per leaf dry mass (SLA or 1/LMA): undefined if petiole is in- or excluded               </td><td>SLA petiole in- or excluded     </td><td>SLA                   </td><td>mm2/mg    </td></tr>
+	<tr><td>3120</td><td>X.X3120.</td><td>Leaf water content per leaf dry mass (not saturated)                                              </td><td>Leaf water content not saturated</td><td>                      </td><td>g(W)/g(DM)</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">leaf_traits</span> <span class="o">&lt;-</span> <span class="n">traits</span><span class="p">[</span><span class="nf">startsWith</span><span class="p">(</span><span class="n">traits</span><span class="o">$</span><span class="n">ShortName</span><span class="p">,</span> <span class="s">&quot;Leaf area&quot;</span><span class="p">),</span> <span class="p">]</span>
+<span class="n">leaf_traits_ids</span> <span class="o">&lt;-</span> <span class="n">leaf_traits</span><span class="o">$</span><span class="n">TraitID_TRY6</span> 
+<span class="nf">print</span><span class="p">(</span><span class="n">leaf_traits_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;X.X3108&quot; &quot;X.X3109&quot; &quot;X.X3110&quot; &quot;X.X3111&quot; &quot;X.X3112&quot; &quot;X.X3113&quot; &quot;X.X3114&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">valid_leaf_trait_ids</span> <span class="o">&lt;-</span> <span class="n">leaf_traits_ids</span><span class="p">[</span><span class="n">leaf_traits_ids</span> <span class="o">%in%</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)]</span>
+<span class="n">valid_leaf_trait_ids</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'X.X3112'</li><li>'X.X3113'</li><li>'X.X3114'</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sla_traits</span> <span class="o">&lt;-</span> <span class="n">traits</span><span class="p">[</span><span class="nf">startsWith</span><span class="p">(</span><span class="n">traits</span><span class="o">$</span><span class="n">ShortName</span><span class="p">,</span> <span class="s">&quot;SLA&quot;</span><span class="p">),</span> <span class="p">]</span>
+<span class="n">sla_traits_ids</span> <span class="o">&lt;-</span> <span class="n">sla_traits</span><span class="o">$</span><span class="n">TraitID_TRY6</span> 
+<span class="nf">print</span><span class="p">(</span><span class="n">sla_traits_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;X.X3086&quot; &quot;X.X3115&quot; &quot;X.X3116&quot; &quot;X.X3117&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">valid_sla_trait_ids</span> <span class="o">&lt;-</span> <span class="n">sla_traits_ids</span><span class="p">[</span><span class="n">sla_traits_ids</span> <span class="o">%in%</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)]</span>
+<span class="n">valid_sla_trait_ids</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">'X.X3117'</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># print colnames of combined_data that start with &quot;X.X&quot; and end with &quot;.&quot;</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">traits</span><span class="p">)</span>
+<span class="nf">length</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)[</span><span class="nf">startsWith</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">combined_data</span><span class="p">),</span> <span class="s">&quot;X.X&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nf">endsWith</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">combined_data</span><span class="p">),</span> <span class="s">&quot;.&quot;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>44</li><li>6</li></ol>
+</div><div class="output text_html">0</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">combined_data</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_group_region_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="significance-test-for-trait-shifts">
+<h1>Significance Test for Trait shifts<a class="headerlink" href="#significance-test-for-trait-shifts" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">trait_columns</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)[</span><span class="nf">startsWith</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">combined_data</span><span class="p">),</span> <span class="s">&quot;X&quot;</span><span class="p">)]</span>
+<span class="c1">#trait_columns &lt;- c(trait_columns, &quot;PC1&quot;, &quot;PC2&quot;)</span>
+
+<span class="n">unpaired_wilcoxon_results</span> <span class="o">&lt;-</span> <span class="n">combined_data</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">region</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">summarise</span><span class="p">(</span>
+        <span class="nf">across</span><span class="p">(</span>
+            <span class="nf">all_of</span><span class="p">(</span><span class="n">trait_columns</span><span class="p">),</span>
+            <span class="o">~</span> <span class="p">{</span>
+                <span class="n">group_all</span> <span class="o">&lt;-</span> <span class="n">.x</span><span class="p">[</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;all&quot;</span><span class="p">]</span>
+                <span class="n">group_native</span> <span class="o">&lt;-</span> <span class="n">.x</span><span class="p">[</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;native&quot;</span><span class="p">]</span>
+                <span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">na.omit</span><span class="p">(</span><span class="n">group_all</span><span class="p">))</span> <span class="o">&gt;</span> <span class="m">1</span> <span class="o">&amp;&amp;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">na.omit</span><span class="p">(</span><span class="n">group_native</span><span class="p">))</span> <span class="o">&gt;</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nf">wilcox.test</span><span class="p">(</span><span class="n">group_all</span><span class="p">,</span> <span class="n">group_native</span><span class="p">,</span> <span class="n">paired</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span><span class="o">$</span><span class="n">p.value</span>
+                <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+                    <span class="kc">NA</span>  <span class="c1"># Return NA if there are not enough observations</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="n">.names</span> <span class="o">=</span> <span class="s">&quot;wilcox_p_value_{col}&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“There were 697 warnings in `summarise()`.
+The first warning was:
+<span class=" -Color -Color-Cyan">ℹ</span> In argument: `across(...)`.
+<span class=" -Color -Color-Cyan">ℹ</span> In group 2: `region = &quot;10_AA&quot;`.
+Caused by warning in `wilcox.test.default()`:
+<span class=" -Color -Color-Yellow">!</span> cannot compute exact p-value with ties
+<span class=" -Color -Color-Cyan">ℹ</span> Run `dplyr::last_dplyr_warnings()` to see the 696 remaining warnings.”
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># new df with adjusted p-values from unpaired_wilcoxon_results as * ** and *** and ns</span>
+<span class="n">significance_levels</span> <span class="o">&lt;-</span> <span class="n">unpaired_wilcoxon_results</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span>
+        <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;wilcox_p_value_&quot;</span><span class="p">),</span>
+        <span class="o">~</span> <span class="nf">p.adjust</span><span class="p">(</span><span class="n">.x</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;BH&quot;</span><span class="p">),</span>
+        <span class="n">.names</span> <span class="o">=</span> <span class="s">&quot;adjusted_{col}&quot;</span>
+    <span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span>
+        <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;adjusted_wilcox_p_value_&quot;</span><span class="p">),</span>
+        <span class="o">~</span> <span class="nf">case_when</span><span class="p">(</span>
+            <span class="n">.x</span> <span class="o">&lt;=</span> <span class="m">0.001</span> <span class="o">~</span> <span class="s">&quot;***&quot;</span><span class="p">,</span>
+            <span class="n">.x</span> <span class="o">&lt;=</span> <span class="m">0.01</span> <span class="o">~</span> <span class="s">&quot;**&quot;</span><span class="p">,</span>
+            <span class="n">.x</span> <span class="o">&lt;=</span> <span class="m">0.05</span> <span class="o">~</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
+            <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&quot;&quot;</span>
+        <span class="p">),</span>
+        <span class="n">.names</span> <span class="o">=</span> <span class="s">&quot;sig_{col}&quot;</span>
+    <span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;sig_&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove from significance_levels columns names the pattern &quot;sig_adjusted_wilcox_p_value_&quot; </span>
+<span class="n">significance_levels</span> <span class="o">&lt;-</span> <span class="n">significance_levels</span> <span class="o">%&gt;%</span>
+    <span class="nf">rename_with</span><span class="p">(</span><span class="o">~</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot;sig_adjusted_wilcox_p_value_&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">.</span><span class="p">),</span> <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;sig_adjusted_wilcox_p_value_&quot;</span><span class="p">))</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">significance_levels</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">significance_levels</span><span class="p">)</span>
+<span class="n">significance_levels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 63 × 38</caption>
+<thead>
+	<tr><th scope=col>region</th><th scope=col>X.X3117</th><th scope=col>X.X14</th><th scope=col>X.X50</th><th scope=col>X.X146</th><th scope=col>X.X3120</th><th scope=col>X.X224</th><th scope=col>X.X297</th><th scope=col>X.X21</th><th scope=col>X.X13</th><th scope=col>⋯</th><th scope=col>X.X223</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>⋯</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>     </td><td>   </td><td>*  </td><td></td><td>*  </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>10_AA</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>10_AT</td><td>*  </td><td>***</td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>10_IM</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>10_NT</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>10_PA</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>11_AA</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>11_NA</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>11_PA</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>12_AA</td><td>*  </td><td>   </td><td></td><td>   </td><td>*</td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>* </td></tr>
+	<tr><td>12_AT</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>12_NA</td><td>*  </td><td>***</td><td></td><td>*  </td><td>*</td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>** </td><td>**</td><td>** </td><td>   </td><td>**</td></tr>
+	<tr><td>12_NT</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>12_PA</td><td>   </td><td>** </td><td></td><td>   </td><td> </td><td>**</td><td></td><td>***</td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>***</td><td>***</td><td>** </td><td>  </td><td>***</td><td>***</td><td>  </td></tr>
+	<tr><td>13_AA</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>13_AT</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>13_IM</td><td>*  </td><td>***</td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>***</td><td></td><td></td><td>*  </td><td>   </td><td>   </td><td>  </td><td>   </td><td>***</td><td>  </td></tr>
+	<tr><td>13_NA</td><td>*  </td><td>*  </td><td></td><td>*  </td><td>*</td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>** </td><td>**</td><td>** </td><td>   </td><td>  </td></tr>
+	<tr><td>13_NT</td><td>   </td><td>***</td><td></td><td>*  </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>13_PA</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>14_AA</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>14_AT</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>14_IM</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>14_NT</td><td>   </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>1_AA </td><td>*  </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>1_AT </td><td>   </td><td>** </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>1_IM </td><td>***</td><td>***</td><td></td><td>***</td><td>*</td><td>  </td><td></td><td>***</td><td>* </td><td>⋯</td><td>*  </td><td></td><td></td><td>***</td><td>***</td><td>***</td><td>  </td><td>** </td><td>   </td><td>* </td></tr>
+	<tr><td>1_NT </td><td>   </td><td>***</td><td></td><td>** </td><td>*</td><td>  </td><td></td><td>   </td><td>**</td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>**</td></tr>
+	<tr><td>1_OC </td><td>   </td><td>*  </td><td></td><td>*  </td><td> </td><td>* </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>*  </td><td>  </td><td>   </td><td>   </td><td>* </td></tr>
+	<tr><td>1_PA </td><td>*  </td><td>   </td><td></td><td>   </td><td> </td><td>  </td><td></td><td>   </td><td>  </td><td>⋯</td><td>   </td><td></td><td></td><td>   </td><td>   </td><td>   </td><td>  </td><td>   </td><td>   </td><td>  </td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋱</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>2_NA</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>2_NT</td><td>   </td><td>   </td><td>   </td><td>*  </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>2_OC</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>3_IM</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>3_NA</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>3_NT</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>4_AA</td><td>***</td><td>***</td><td>   </td><td>***</td><td>***</td><td>*</td><td></td><td>*  </td><td>***</td><td>⋯</td><td>   </td><td>   </td><td>***</td><td> </td><td> </td><td>   </td><td>** </td><td>*  </td><td>*  </td><td>***</td></tr>
+	<tr><td>4_IM</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>4_NA</td><td>   </td><td>***</td><td>***</td><td>***</td><td>*  </td><td> </td><td></td><td>***</td><td>** </td><td>⋯</td><td>***</td><td>***</td><td>   </td><td>*</td><td> </td><td>***</td><td>***</td><td>***</td><td>** </td><td>***</td></tr>
+	<tr><td>4_NT</td><td>*  </td><td>*  </td><td>   </td><td>   </td><td>*  </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>4_PA</td><td>   </td><td>** </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td>*</td><td> </td><td>   </td><td>   </td><td>   </td><td>***</td><td>   </td></tr>
+	<tr><td>5_IM</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>5_NA</td><td>   </td><td>***</td><td>   </td><td>***</td><td>***</td><td> </td><td></td><td>*  </td><td>*  </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td>*</td><td> </td><td>***</td><td>   </td><td>** </td><td>*  </td><td>** </td></tr>
+	<tr><td>5_PA</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>6_NA</td><td>   </td><td>** </td><td>   </td><td>*  </td><td>   </td><td> </td><td></td><td>*  </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>*  </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>6_PA</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>7_AA</td><td>*  </td><td>***</td><td>   </td><td>*  </td><td>** </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>7_AT</td><td>*  </td><td>***</td><td>   </td><td>** </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>*  </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>7_IM</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>7_NA</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>7_NT</td><td>   </td><td>*  </td><td>   </td><td>   </td><td>*  </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>*  </td></tr>
+	<tr><td>8_AA</td><td>   </td><td>** </td><td>   </td><td>*  </td><td>*  </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>8_AT</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>8_NA</td><td>** </td><td>***</td><td>   </td><td>***</td><td>***</td><td> </td><td></td><td>   </td><td>***</td><td>⋯</td><td>***</td><td>***</td><td>   </td><td> </td><td> </td><td>***</td><td>***</td><td>***</td><td>***</td><td>***</td></tr>
+	<tr><td>8_NT</td><td>***</td><td>***</td><td>*  </td><td>***</td><td>***</td><td> </td><td></td><td>***</td><td>   </td><td>⋯</td><td>*  </td><td>***</td><td>   </td><td> </td><td>*</td><td>***</td><td>   </td><td>** </td><td>   </td><td>   </td></tr>
+	<tr><td>8_PA</td><td>   </td><td>*  </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>9_AT</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>9_IM</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>9_NT</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+	<tr><td>9_PA</td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> </td><td></td><td>   </td><td>   </td><td>⋯</td><td>   </td><td>   </td><td>   </td><td> </td><td> </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="effect-sizes">
+<h1>Effect Sizes<a class="headerlink" href="#effect-sizes" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">effsize</span><span class="p">)</span> <span class="c1"># For Cliff&#39;s Delta</span>
+
+<span class="c1"># Initialize an empty list to store results</span>
+<span class="n">cliffs_delta_results</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+
+<span class="c1"># Get all trait columns that start with &quot;X&quot;</span>
+<span class="n">trait_columns</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)[</span><span class="nf">startsWith</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">combined_data</span><span class="p">),</span> <span class="s">&quot;X&quot;</span><span class="p">)]</span>
+
+<span class="c1"># Loop over all unique regions in combined_data</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">current_region</span> <span class="n">in</span> <span class="nf">unique</span><span class="p">(</span><span class="n">combined_data</span><span class="o">$</span><span class="n">region</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1"># Filter data for the current region</span>
+    <span class="n">filtered_data</span> <span class="o">&lt;-</span> <span class="n">combined_data</span> <span class="o">%&gt;%</span>
+        <span class="nf">filter</span><span class="p">(</span><span class="n">region</span> <span class="o">==</span> <span class="n">current_region</span> <span class="o">&amp;</span> <span class="n">group</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;all&quot;</span><span class="p">,</span> <span class="s">&quot;native&quot;</span><span class="p">))</span>
+    
+    <span class="c1"># Skip if there is insufficient data for the test</span>
+    <span class="nf">if </span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">filtered_data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">next</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Initialize a list to store Cliff&#39;s Delta for each trait</span>
+    <span class="n">region_results</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+    
+    <span class="c1"># Loop over all trait columns</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">trait</span> <span class="n">in</span> <span class="n">trait_columns</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># Calculate Cliff&#39;s Delta for the current trait</span>
+        <span class="n">cliffs_delta</span> <span class="o">&lt;-</span> <span class="nf">tryCatch</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">effsize</span><span class="o">::</span><span class="nf">cliff.delta</span><span class="p">(</span>
+                    <span class="n">filtered_data</span><span class="p">[[</span><span class="n">trait</span><span class="p">]][</span><span class="n">filtered_data</span><span class="o">$</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;all&quot;</span><span class="p">],</span>
+                    <span class="n">filtered_data</span><span class="p">[[</span><span class="n">trait</span><span class="p">]][</span><span class="n">filtered_data</span><span class="o">$</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;native&quot;</span><span class="p">]</span>
+                <span class="p">)</span><span class="o">$</span><span class="n">estimate</span>
+            <span class="p">},</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="kc">NA</span>
+        <span class="p">)</span>
+        
+        <span class="c1"># Store the result</span>
+        <span class="n">region_results</span><span class="p">[[</span><span class="n">trait</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">cliffs_delta</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Combine results for the current region into a data frame</span>
+    <span class="n">cliffs_delta_results</span><span class="p">[[</span><span class="n">current_region</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="n">current_region</span><span class="p">,</span>
+        <span class="nf">t</span><span class="p">(</span><span class="n">region_results</span><span class="p">)</span>  <span class="c1"># Transpose the list to create columns for each trait</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Combine all results into a single data frame</span>
+<span class="n">cliffs_delta_results_df</span> <span class="o">&lt;-</span> <span class="nf">bind_rows</span><span class="p">(</span><span class="n">cliffs_delta_results</span><span class="p">)</span>
+<span class="c1"># Rename columns to include &quot;effect_&quot; prefix, except for the &quot;region&quot; column</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">cliffs_delta_results_df</span><span class="p">)[</span><span class="m">-1</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;effect_&quot;</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">cliffs_delta_results_df</span><span class="p">)[</span><span class="m">-1</span><span class="p">])</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">cliffs_delta_results_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in cliff.delta.default(filtered_data[[trait]][filtered_data$group == :
+“The samples are fully disjoint, using approximate Confidence Interval estimation”
+Warning message in cliff.delta.default(filtered_data[[trait]][filtered_data$group == :
+“The samples are fully disjoint, using approximate Confidence Interval estimation”
+Warning message in cliff.delta.default(filtered_data[[trait]][filtered_data$group == :
+“The samples are fully disjoint, using approximate Confidence Interval estimation”
+Warning message in cliff.delta.default(filtered_data[[trait]][filtered_data$group == :
+“The samples are fully disjoint, using approximate Confidence Interval estimation”
+Warning message in cliff.delta.default(filtered_data[[trait]][filtered_data$group == :
+“The samples are fully disjoint, using approximate Confidence Interval estimation”
+Warning message in cliff.delta.default(filtered_data[[trait]][filtered_data$group == :
+“The samples are fully disjoint, using approximate Confidence Interval estimation”
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 38</caption>
+<thead>
+	<tr><th></th><th scope=col>region</th><th scope=col>effect_X.X3117</th><th scope=col>effect_X.X14</th><th scope=col>effect_X.X50</th><th scope=col>effect_X.X146</th><th scope=col>effect_X.X3120</th><th scope=col>effect_X.X224</th><th scope=col>effect_X.X297</th><th scope=col>effect_X.X21</th><th scope=col>effect_X.X13</th><th scope=col>⋯</th><th scope=col>effect_X.X223</th><th scope=col>effect_X.X237</th><th scope=col>effect_X.X614</th><th scope=col>effect_X.X351</th><th scope=col>effect_X.X6</th><th scope=col>effect_X.X95</th><th scope=col>effect_X.X138</th><th scope=col>effect_X.X1080</th><th scope=col>effect_X.X78</th><th scope=col>effect_X.X4</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>⋯</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th><th scope=col>&lt;named list&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>11_PA</td><td>0.0119233</td><td>0.02419728</td><td>-0.00119233</td><td>-0.0163279</td><td>0.0108993</td><td>0.006129978</td><td>-0.01304549</td><td>-0.005695128</td><td>-0.01162872</td><td>⋯</td><td>-0.008654912</td><td>0.005049867</td><td>0.004530853</td><td>-0.001557042</td><td>0.01123596</td><td>-0.003408661</td><td>0.01227398</td><td>0.0007013705</td><td>0.007616883</td><td>0.00162718</td></tr>
+	<tr><th scope=row>2</th><td>     </td><td>0.1201271</td><td>0.1447073</td><td>0.0150804</td><td>-0.1277721</td><td>0.005935388</td><td>0.05064434</td><td>0.01075789</td><td>0.01119337</td><td>0.008483734</td><td>⋯</td><td>-0.09791778</td><td>-0.03361236</td><td>-0.004145094</td><td>-0.1322398</td><td>-0.04278963</td><td>0.03006403</td><td>0.01514492</td><td>-0.08383736</td><td>0.06617635</td><td>-0.05528943</td></tr>
+	<tr><th scope=row>3</th><td>11_NA</td><td>0.003946509</td><td>0.02171034</td><td>0.0002358833</td><td>-0.01451589</td><td>0.007330527</td><td>0.002930396</td><td>0.001905211</td><td>-0.01830817</td><td>-0.01061475</td><td>⋯</td><td>-0.008500871</td><td>-0.0003084628</td><td>-0.000753012</td><td>0.001242924</td><td>0.005289229</td><td>0.007022064</td><td>0.009117796</td><td>0.00823777</td><td>0.01471549</td><td>-0.005389026</td></tr>
+	<tr><th scope=row>4</th><td>6_PA </td><td>0.02319181</td><td>0.05717209</td><td>0.007775839</td><td>-0.04217137</td><td>0.03432225</td><td>-0.005544865</td><td>-0.03987526</td><td>-0.003020771</td><td>-0.03180359</td><td>⋯</td><td>-0.02026332</td><td>0.02232331</td><td>0.008527639</td><td>-0.008115099</td><td>0.024538</td><td>0.0199512</td><td>0.02397075</td><td>-0.009149163</td><td>0.02775689</td><td>-0.00604697</td></tr>
+	<tr><th scope=row>5</th><td>5_PA </td><td>0.03621338</td><td>0.1506316</td><td>0.04340231</td><td>-0.08882021</td><td>0.02452298</td><td>-0.05529428</td><td>0.01699812</td><td>-0.04158828</td><td>-0.04958345</td><td>⋯</td><td>-0.04958345</td><td>-0.01437786</td><td>0.0712846</td><td>0.01061543</td><td>0.02747917</td><td>0.02694168</td><td>0.04138672</td><td>0.02620263</td><td>0.1416958</td><td>0.006382693</td></tr>
+	<tr><th scope=row>6</th><td>4_PA </td><td>0.04630322</td><td>0.09787128</td><td>0.06582525</td><td>-0.01573785</td><td>0.02931876</td><td>-0.05673188</td><td>-0.05946778</td><td>0.05296865</td><td>0.01322368</td><td>⋯</td><td>-0.05957618</td><td>0.06758799</td><td>0.0263636</td><td>0.08423862</td><td>0.06841332</td><td>-0.01783935</td><td>0.01712981</td><td>-0.01126631</td><td>0.1454125</td><td>-0.01034244</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter effect_sizes based on significance_levels that are &quot;*&quot;, &quot;**&quot;, or &quot;***&quot;</span>
+<span class="n">filtered_effect_sizes</span> <span class="o">&lt;-</span> <span class="n">cliffs_delta_results_df</span> <span class="o">%&gt;%</span>
+    <span class="nf">left_join</span><span class="p">(</span><span class="n">significance_levels</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;region&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span>
+        <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;effect_&quot;</span><span class="p">),</span>
+        <span class="o">~</span> <span class="p">{</span>
+            <span class="n">sig_col</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="nf">gsub</span><span class="p">(</span><span class="s">&quot;effect_&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nf">cur_column</span><span class="p">()))</span>
+            <span class="n">sig_values</span> <span class="o">&lt;-</span> <span class="nf">get</span><span class="p">(</span><span class="n">sig_col</span><span class="p">)</span>
+            <span class="nf">ifelse</span><span class="p">(</span><span class="n">sig_values</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">,</span> <span class="s">&quot;**&quot;</span><span class="p">,</span> <span class="s">&quot;***&quot;</span><span class="p">),</span> <span class="n">.x</span><span class="p">,</span> <span class="kc">NA</span>  <span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
+
+<span class="c1"># remove columns that start with &quot;X&quot;</span>
+<span class="n">filtered_effect_sizes</span> <span class="o">&lt;-</span> <span class="n">filtered_effect_sizes</span> <span class="o">%&gt;%</span>
+    <span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;effect_&quot;</span><span class="p">))</span>
+
+<span class="c1"># remove &quot;effect_&quot; prefix from column names</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">filtered_effect_sizes</span><span class="p">)[</span><span class="m">-1</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot;effect_&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">filtered_effect_sizes</span><span class="p">)[</span><span class="m">-1</span><span class="p">])</span>
+
+
+<span class="n">filtered_effect_sizes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 63 × 38</caption>
+<thead>
+	<tr><th scope=col>region</th><th scope=col>X.X3117</th><th scope=col>X.X14</th><th scope=col>X.X50</th><th scope=col>X.X146</th><th scope=col>X.X3120</th><th scope=col>X.X224</th><th scope=col>X.X297</th><th scope=col>X.X21</th><th scope=col>X.X13</th><th scope=col>⋯</th><th scope=col>X.X223</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>⋯</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;list&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>11_PA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>     </td><td>NA</td><td>0.1447073</td><td>NA</td><td>-0.1277721</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>11_NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>6_PA </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>5_PA </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>4_PA </td><td>NA</td><td>0.09787128</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>0.08423862</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>0.1454125</td><td>NA</td></tr>
+	<tr><td>8_PA </td><td>NA</td><td>0.1075051</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>6_NA </td><td>NA</td><td>0.1309828</td><td>NA</td><td>-0.1124021</td><td>NA</td><td>NA</td><td>NA</td><td>-0.1391852</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>0.1382332</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>5_NA </td><td>NA</td><td>0.4033741</td><td>NA</td><td>-0.371749</td><td>0.2556171</td><td>NA</td><td>NA</td><td>-0.148892</td><td>-0.1646853</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>-0.1745152</td><td>NA</td><td>0.2997076</td><td>NA</td><td>0.1756502</td><td>0.166609</td><td>-0.196849</td></tr>
+	<tr><td>13_PA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>8_NA </td><td>0.196071</td><td>0.7127804</td><td>NA</td><td>-0.5918287</td><td>0.3496496</td><td>NA</td><td>NA</td><td>NA</td><td>-0.2577607</td><td>⋯</td><td>-0.2124791</td><td>-0.232985</td><td>NA</td><td>NA</td><td>NA</td><td>0.4807941</td><td>0.4348066</td><td>0.3061586</td><td>0.2436942</td><td>-0.2335015</td></tr>
+	<tr><td>9_PA </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>12_PA</td><td>NA</td><td>0.1623942</td><td>NA</td><td>NA</td><td>NA</td><td>-0.2078538</td><td>NA</td><td>0.2612181</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>0.3487088</td><td>0.2976461</td><td>-0.1907113</td><td>NA</td><td>-0.2741068</td><td>0.2236155</td><td>NA</td></tr>
+	<tr><td>10_PA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>4_IM </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>5_IM </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>4_NA </td><td>NA</td><td>0.4263883</td><td>0.261564</td><td>-0.480175</td><td>0.1421294</td><td>NA</td><td>NA</td><td>-0.3604322</td><td>-0.1948885</td><td>⋯</td><td>-0.2450933</td><td>-0.2594207</td><td>NA</td><td>-0.1567064</td><td>NA</td><td>0.675636</td><td>0.3490407</td><td>0.2972652</td><td>0.184642</td><td>-0.219022</td></tr>
+	<tr><td>13_NA</td><td>0.1602208</td><td>0.1725344</td><td>NA</td><td>-0.1845589</td><td>0.1843855</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>0.217713</td><td>0.2227136</td><td>0.2269337</td><td>NA</td><td>NA</td></tr>
+	<tr><td>12_NA</td><td>0.5617284</td><td>0.7901235</td><td>NA</td><td>-0.5555556</td><td>0.5277778</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>0.6975309</td><td>0.7808642</td><td>0.6450617</td><td>NA</td><td>-0.6728395</td></tr>
+	<tr><td>1_IM </td><td>0.2452992</td><td>0.2724</td><td>NA</td><td>-0.1891273</td><td>0.1072826</td><td>NA</td><td>NA</td><td>-0.197395</td><td>0.09999339</td><td>⋯</td><td>-0.1163603</td><td>NA</td><td>NA</td><td>-0.2599736</td><td>-0.2382116</td><td>0.1573719</td><td>NA</td><td>0.1162711</td><td>NA</td><td>-0.1076298</td></tr>
+	<tr><td>3_IM </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>2_IM </td><td>0.2647633</td><td>0.4674168</td><td>NA</td><td>-0.2423907</td><td>NA</td><td>NA</td><td>NA</td><td>-0.4081686</td><td>NA</td><td>⋯</td><td>-0.3634886</td><td>NA</td><td>0.2417404</td><td>-0.2443418</td><td>-0.3516519</td><td>NA</td><td>NA</td><td>0.2686004</td><td>0.2376431</td><td>-0.2825182</td></tr>
+	<tr><td>13_IM</td><td>0.2596122</td><td>0.3275346</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>-0.4344598</td><td>NA</td><td>NA</td><td>-0.2588366</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>0.3633241</td><td>NA</td></tr>
+	<tr><td>7_IM </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>1_PA </td><td>0.3174603</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>9_IM </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>13_AT</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>8_AT </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>9_NT </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>1_NT </td><td>NA</td><td>0.1429046</td><td>NA</td><td>-0.1158369</td><td>0.1035904</td><td>NA</td><td>NA</td><td>NA</td><td>-0.1137075</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-0.12573</td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋱</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>14_NT</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>1_OC </td><td>NA</td><td>0.5918367</td><td>NA</td><td>-0.6020408</td><td>NA</td><td>0.7653061</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>0.6734694</td><td>NA</td><td>NA</td><td>NA</td><td>-0.6377551</td></tr>
+	<tr><td>2_NA </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>3_NA </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>13_NT</td><td>NA</td><td>0.278656</td><td>NA</td><td>-0.201792</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>1_AT </td><td>NA</td><td>0.190678</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>10_AT</td><td>0.2598691</td><td>0.4225352</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>7_AT </td><td>0.1098681</td><td>0.1835239</td><td>NA</td><td>-0.1220763</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>-0.1034213</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>14_AT</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>9_AT </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>7_NT </td><td>NA</td><td>0.1364526</td><td>NA</td><td>NA</td><td>0.150278</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-0.1241821</td></tr>
+	<tr><td>14_IM</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>10_NT</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>10_IM</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>1_AA </td><td>0.1843262</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>10_AA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>2_AA </td><td>NA</td><td>0.768595</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>7_AA </td><td>0.1648803</td><td>0.2255147</td><td>NA</td><td>-0.1659768</td><td>0.2015844</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>13_AA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>2_AT </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>2_OC </td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>14_AA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>4_AA </td><td>0.4849135</td><td>0.4826411</td><td>NA</td><td>-0.3481884</td><td>0.5027143</td><td>0.275849</td><td>NA</td><td>-0.2808989</td><td>-0.4567605</td><td>⋯</td><td>NA</td><td>NA</td><td>0.3869461</td><td>NA</td><td>NA</td><td>NA</td><td>0.3196566</td><td>0.2333039</td><td>0.2410049</td><td>-0.3649792</td></tr>
+	<tr><td>8_AA </td><td>NA</td><td>0.3802626</td><td>NA</td><td>-0.30421</td><td>0.3128112</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>12_AA</td><td>0.2108619</td><td>NA</td><td>NA</td><td>NA</td><td>0.2469976</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>-0.2313742</td></tr>
+	<tr><td>8_NT </td><td>0.2998338</td><td>0.2363712</td><td>-0.189446</td><td>-0.2530748</td><td>0.3328809</td><td>NA</td><td>NA</td><td>-0.2500277</td><td>NA</td><td>⋯</td><td>-0.1795291</td><td>-0.2612465</td><td>NA</td><td>NA</td><td>-0.1923823</td><td>0.2358726</td><td>NA</td><td>0.2004432</td><td>NA</td><td>NA</td></tr>
+	<tr><td>12_AT</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>12_NT</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>4_NT </td><td>0.3277501</td><td>0.2851969</td><td>NA</td><td>NA</td><td>0.3481213</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><td>11_AA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>⋯</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="plot-effect-sizes">
+<h1>Plot Effect Sizes<a class="headerlink" href="#plot-effect-sizes" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>  <span class="c1"># Load the tidyr package</span>
+
+<span class="n">df_long</span> <span class="o">&lt;-</span> <span class="n">significance_levels</span> <span class="o">%&gt;%</span>
+    <span class="nf">pivot_longer</span><span class="p">(</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="o">-</span><span class="n">region</span><span class="p">,</span>
+        <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;trait&quot;</span><span class="p">,</span>
+        <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;signif&quot;</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="n">signif</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> <span class="o">&amp;</span> <span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">signif</span><span class="p">))</span> <span class="o">%&gt;%</span>   <span class="c1"># keep only significant shifts</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">weight</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+        <span class="n">signif</span> <span class="o">==</span> <span class="s">&quot;*&quot;</span> <span class="o">~</span> <span class="m">1</span><span class="p">,</span>
+        <span class="n">signif</span> <span class="o">==</span> <span class="s">&quot;**&quot;</span> <span class="o">~</span> <span class="m">2</span><span class="p">,</span>
+        <span class="n">signif</span> <span class="o">==</span> <span class="s">&quot;***&quot;</span> <span class="o">~</span> <span class="m">3</span>
+    <span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+
+<span class="c1"># convert all trait columns from list -&gt; numeric</span>
+<span class="n">trait_cols</span> <span class="o">&lt;-</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^X&quot;</span><span class="p">,</span> <span class="nf">names</span><span class="p">(</span><span class="n">filtered_effect_sizes</span><span class="p">),</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">filtered_effect_sizes</span> <span class="o">&lt;-</span> <span class="n">filtered_effect_sizes</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span><span class="nf">all_of</span><span class="p">(</span><span class="n">trait_cols</span><span class="p">),</span> <span class="o">~</span> <span class="nf">unlist</span><span class="p">(</span><span class="n">.</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+
+<span class="n">df_long_eff</span> <span class="o">&lt;-</span> <span class="n">filtered_effect_sizes</span> <span class="o">%&gt;%</span>
+  <span class="nf">pivot_longer</span><span class="p">(</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="nf">all_of</span><span class="p">(</span><span class="n">trait_cols</span><span class="p">),</span>
+    <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;trait&quot;</span><span class="p">,</span>
+    <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;effect_size&quot;</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">effect_size</span><span class="p">))</span>   <span class="c1"># keep only significant shifts</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">df_long_eff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 3</caption>
+<thead>
+	<tr><th scope=col>region</th><th scope=col>trait</th><th scope=col>effect_size</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>    </td><td>X.X14 </td><td> 0.14470734</td></tr>
+	<tr><td>    </td><td>X.X146</td><td>-0.12777213</td></tr>
+	<tr><td>4_PA</td><td>X.X14 </td><td> 0.09787128</td></tr>
+	<tr><td>4_PA</td><td>X.X169</td><td>-0.09501343</td></tr>
+	<tr><td>4_PA</td><td>X.X281</td><td> 0.09455642</td></tr>
+	<tr><td>4_PA</td><td>X.X282</td><td>-0.13500846</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge df_long and df_long_eff by region and trait</span>
+<span class="n">df_long</span> <span class="o">&lt;-</span> <span class="n">df_long</span> <span class="o">%&gt;%</span>
+    <span class="nf">left_join</span><span class="p">(</span><span class="n">df_long_eff</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;region&quot;</span><span class="p">,</span> <span class="s">&quot;trait&quot;</span><span class="p">))</span>    
+<span class="nf">head</span><span class="p">(</span><span class="n">df_long</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 5</caption>
+<thead>
+	<tr><th scope=col>region</th><th scope=col>trait</th><th scope=col>signif</th><th scope=col>weight</th><th scope=col>effect_size</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>     </td><td>X.X14  </td><td>*  </td><td>1</td><td> 0.1447073</td></tr>
+	<tr><td>     </td><td>X.X146 </td><td>*  </td><td>1</td><td>-0.1277721</td></tr>
+	<tr><td>10_AT</td><td>X.X3117</td><td>*  </td><td>1</td><td> 0.2598691</td></tr>
+	<tr><td>10_AT</td><td>X.X14  </td><td>***</td><td>3</td><td> 0.4225352</td></tr>
+	<tr><td>10_AT</td><td>X.X15  </td><td>***</td><td>3</td><td> 0.3828605</td></tr>
+	<tr><td>10_AT</td><td>X.X47  </td><td>*  </td><td>1</td><td>-0.2973616</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">traits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>TraitID</th><th scope=col>TraitID_TRY6</th><th scope=col>TraitName</th><th scope=col>ShortName</th><th scope=col>sPlotOpenName</th><th scope=col>UnitName</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td> 4</td><td>X.X4 </td><td>Stem specific density (SSD, stem dry mass per stem fresh volume) or wood density</td><td>SSD          </td><td>SSD            </td><td>g/cm3</td></tr>
+	<tr><th scope=row>2</th><td> 6</td><td>X.X6 </td><td>Root rooting depth                                                              </td><td>Rooting depth</td><td>               </td><td>m    </td></tr>
+	<tr><th scope=row>3</th><td>13</td><td>X.X13</td><td>Leaf carbon (C) content per leaf dry mass                                       </td><td>Leaf C       </td><td>Leaf.C         </td><td>mg/g </td></tr>
+	<tr><th scope=row>4</th><td>14</td><td>X.X14</td><td>Leaf nitrogen (N) content per leaf dry mass                                     </td><td>Leaf N       </td><td>Leaf.N.per.mass</td><td>mg/g </td></tr>
+	<tr><th scope=row>5</th><td>15</td><td>X.X15</td><td>Leaf phosphorus (P) content per leaf dry mass                                   </td><td>Leaf P       </td><td>Leaf.P         </td><td>mg/g </td></tr>
+	<tr><th scope=row>6</th><td>21</td><td>X.X21</td><td>Stem diameter                                                                   </td><td>Stem diameter</td><td>               </td><td>m    </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace trait name with corresponding &quot;ShortName&quot; from traits dataframe</span>
+<span class="n">df_long</span> <span class="o">&lt;-</span> <span class="n">df_long</span> <span class="o">%&gt;%</span> <span class="nf">left_join</span><span class="p">(</span><span class="n">traits</span> <span class="o">%&gt;%</span> <span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">TraitID_TRY6</span><span class="p">,</span> <span class="n">ShortName</span><span class="p">),</span> <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;trait&quot;</span> <span class="o">=</span> <span class="s">&quot;TraitID_TRY6&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">rename</span><span class="p">(</span><span class="n">trait_name</span> <span class="o">=</span> <span class="n">ShortName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_long</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 246 × 6</caption>
+<thead>
+	<tr><th scope=col>region</th><th scope=col>trait</th><th scope=col>signif</th><th scope=col>weight</th><th scope=col>effect_size</th><th scope=col>trait_name</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>     </td><td>X.X14  </td><td>*  </td><td>1</td><td> 0.1447073</td><td>Leaf N                          </td></tr>
+	<tr><td>     </td><td>X.X146 </td><td>*  </td><td>1</td><td>-0.1277721</td><td>Leaf C/N ratio                  </td></tr>
+	<tr><td>10_AT</td><td>X.X3117</td><td>*  </td><td>1</td><td> 0.2598691</td><td>SLA petiole in- or excluded     </td></tr>
+	<tr><td>10_AT</td><td>X.X14  </td><td>***</td><td>3</td><td> 0.4225352</td><td>Leaf N                          </td></tr>
+	<tr><td>10_AT</td><td>X.X15  </td><td>***</td><td>3</td><td> 0.3828605</td><td>Leaf P                          </td></tr>
+	<tr><td>10_AT</td><td>X.X47  </td><td>*  </td><td>1</td><td>-0.2973616</td><td>LDMC                            </td></tr>
+	<tr><td>10_NT</td><td>X.X15  </td><td>*  </td><td>1</td><td> 0.2683824</td><td>Leaf P                          </td></tr>
+	<tr><td>12_AA</td><td>X.X3117</td><td>*  </td><td>1</td><td> 0.2108619</td><td>SLA petiole in- or excluded     </td></tr>
+	<tr><td>12_AA</td><td>X.X3120</td><td>*  </td><td>1</td><td> 0.2469976</td><td>Leaf water content not saturated</td></tr>
+	<tr><td>12_AA</td><td>X.X47  </td><td>*  </td><td>1</td><td>-0.2200021</td><td>LDMC                            </td></tr>
+	<tr><td>12_AA</td><td>X.X4   </td><td>*  </td><td>1</td><td>-0.2313742</td><td>SSD                             </td></tr>
+	<tr><td>12_NA</td><td>X.X3117</td><td>*  </td><td>1</td><td> 0.5617284</td><td>SLA petiole in- or excluded     </td></tr>
+	<tr><td>12_NA</td><td>X.X14  </td><td>***</td><td>3</td><td> 0.7901235</td><td>Leaf N                          </td></tr>
+	<tr><td>12_NA</td><td>X.X146 </td><td>*  </td><td>1</td><td>-0.5555556</td><td>Leaf C/N ratio                  </td></tr>
+	<tr><td>12_NA</td><td>X.X3120</td><td>*  </td><td>1</td><td> 0.5277778</td><td>Leaf water content not saturated</td></tr>
+	<tr><td>12_NA</td><td>X.X15  </td><td>** </td><td>2</td><td> 0.6697531</td><td>Leaf P                          </td></tr>
+	<tr><td>12_NA</td><td>X.X169 </td><td>*  </td><td>1</td><td>-0.6172840</td><td>Stem conduit density            </td></tr>
+	<tr><td>12_NA</td><td>X.X281 </td><td>** </td><td>2</td><td> 0.6913580</td><td>Stem conduit diameter           </td></tr>
+	<tr><td>12_NA</td><td>X.X95  </td><td>** </td><td>2</td><td> 0.6975309</td><td>Germination efficiency          </td></tr>
+	<tr><td>12_NA</td><td>X.X138 </td><td>** </td><td>2</td><td> 0.7808642</td><td>Seed number/rep. unit           </td></tr>
+	<tr><td>12_NA</td><td>X.X1080</td><td>** </td><td>2</td><td> 0.6450617</td><td>Specific root length            </td></tr>
+	<tr><td>12_NA</td><td>X.X4   </td><td>** </td><td>2</td><td>-0.6728395</td><td>SSD                             </td></tr>
+	<tr><td>12_PA</td><td>X.X14  </td><td>** </td><td>2</td><td> 0.1623942</td><td>Leaf N                          </td></tr>
+	<tr><td>12_PA</td><td>X.X224 </td><td>** </td><td>2</td><td>-0.2078538</td><td>Chromosome cDNA content         </td></tr>
+	<tr><td>12_PA</td><td>X.X21  </td><td>***</td><td>3</td><td> 0.2612181</td><td>Stem diameter                   </td></tr>
+	<tr><td>12_PA</td><td>X.X3114</td><td>***</td><td>3</td><td> 0.2607260</td><td>Leaf area 3114                  </td></tr>
+	<tr><td>12_PA</td><td>X.X3113</td><td>***</td><td>3</td><td> 0.2405994</td><td>Leaf area 3113                  </td></tr>
+	<tr><td>12_PA</td><td>X.X3112</td><td>***</td><td>3</td><td> 0.2810749</td><td>Leaf area 3112                  </td></tr>
+	<tr><td>12_PA</td><td>X.X169 </td><td>***</td><td>3</td><td>-0.2629641</td><td>Stem conduit density            </td></tr>
+	<tr><td>12_PA</td><td>X.X3106</td><td>***</td><td>3</td><td> 0.3239790</td><td>Plant height veg.               </td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>8_NA</td><td>X.X146 </td><td>***</td><td>3</td><td>-0.5918287</td><td>Leaf C/N ratio                  </td></tr>
+	<tr><td>8_NA</td><td>X.X3120</td><td>***</td><td>3</td><td> 0.3496496</td><td>Leaf water content not saturated</td></tr>
+	<tr><td>8_NA</td><td>X.X13  </td><td>***</td><td>3</td><td>-0.2577607</td><td>Leaf C                          </td></tr>
+	<tr><td>8_NA</td><td>X.X15  </td><td>***</td><td>3</td><td> 0.3368055</td><td>Leaf P                          </td></tr>
+	<tr><td>8_NA</td><td>X.X47  </td><td>***</td><td>3</td><td>-0.3187789</td><td>LDMC                            </td></tr>
+	<tr><td>8_NA</td><td>X.X27  </td><td>*  </td><td>1</td><td>-0.1740845</td><td>Seed length                     </td></tr>
+	<tr><td>8_NA</td><td>X.X281 </td><td>***</td><td>3</td><td> 0.2401818</td><td>Stem conduit diameter           </td></tr>
+	<tr><td>8_NA</td><td>X.X223 </td><td>***</td><td>3</td><td>-0.2124791</td><td>Chromosome number               </td></tr>
+	<tr><td>8_NA</td><td>X.X237 </td><td>***</td><td>3</td><td>-0.2329850</td><td>Dispersal unit length           </td></tr>
+	<tr><td>8_NA</td><td>X.X95  </td><td>***</td><td>3</td><td> 0.4807941</td><td>Germination efficiency          </td></tr>
+	<tr><td>8_NA</td><td>X.X138 </td><td>***</td><td>3</td><td> 0.4348066</td><td>Seed number/rep. unit           </td></tr>
+	<tr><td>8_NA</td><td>X.X1080</td><td>***</td><td>3</td><td> 0.3061586</td><td>Specific root length            </td></tr>
+	<tr><td>8_NA</td><td>X.X78  </td><td>***</td><td>3</td><td> 0.2436942</td><td>Leaf delta 15N                  </td></tr>
+	<tr><td>8_NA</td><td>X.X4   </td><td>***</td><td>3</td><td>-0.2335015</td><td>SSD                             </td></tr>
+	<tr><td>8_NT</td><td>X.X3117</td><td>***</td><td>3</td><td> 0.2998338</td><td>SLA petiole in- or excluded     </td></tr>
+	<tr><td>8_NT</td><td>X.X14  </td><td>***</td><td>3</td><td> 0.2363712</td><td>Leaf N                          </td></tr>
+	<tr><td>8_NT</td><td>X.X50  </td><td>*  </td><td>1</td><td>-0.1894460</td><td>Leaf N per area                 </td></tr>
+	<tr><td>8_NT</td><td>X.X146 </td><td>***</td><td>3</td><td>-0.2530748</td><td>Leaf C/N ratio                  </td></tr>
+	<tr><td>8_NT</td><td>X.X3120</td><td>***</td><td>3</td><td> 0.3328809</td><td>Leaf water content not saturated</td></tr>
+	<tr><td>8_NT</td><td>X.X21  </td><td>***</td><td>3</td><td>-0.2500277</td><td>Stem diameter                   </td></tr>
+	<tr><td>8_NT</td><td>X.X15  </td><td>***</td><td>3</td><td> 0.2918837</td><td>Leaf P                          </td></tr>
+	<tr><td>8_NT</td><td>X.X47  </td><td>***</td><td>3</td><td>-0.2731856</td><td>LDMC                            </td></tr>
+	<tr><td>8_NT</td><td>X.X27  </td><td>*  </td><td>1</td><td>-0.1909418</td><td>Seed length                     </td></tr>
+	<tr><td>8_NT</td><td>X.X282 </td><td>*  </td><td>1</td><td> 0.1823823</td><td>Wood vessel element length      </td></tr>
+	<tr><td>8_NT</td><td>X.X223 </td><td>*  </td><td>1</td><td>-0.1795291</td><td>Chromosome number               </td></tr>
+	<tr><td>8_NT</td><td>X.X237 </td><td>***</td><td>3</td><td>-0.2612465</td><td>Dispersal unit length           </td></tr>
+	<tr><td>8_NT</td><td>X.X6   </td><td>*  </td><td>1</td><td>-0.1923823</td><td>Rooting depth                   </td></tr>
+	<tr><td>8_NT</td><td>X.X95  </td><td>***</td><td>3</td><td> 0.2358726</td><td>Germination efficiency          </td></tr>
+	<tr><td>8_NT</td><td>X.X1080</td><td>** </td><td>2</td><td> 0.2004432</td><td>Specific root length            </td></tr>
+	<tr><td>8_PA</td><td>X.X14  </td><td>*  </td><td>1</td><td> 0.1075051</td><td>Leaf N                          </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of unique regions and traits with significant shifts</span>
+<span class="n">num_regions</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">df_long</span><span class="o">$</span><span class="n">region</span><span class="p">))</span>
+<span class="n">num_traits</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">df_long</span><span class="o">$</span><span class="n">trait</span><span class="p">))</span>
+<span class="n">num_regions</span> 
+<span class="n">num_traits</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">33</div><div class="output text_html">35</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+
+<span class="n">df_plot</span> <span class="o">&lt;-</span> <span class="n">df_long</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">signif_num</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+    <span class="n">signif</span> <span class="o">==</span> <span class="s">&quot;*&quot;</span> <span class="o">~</span> <span class="m">1</span><span class="p">,</span>
+    <span class="n">signif</span> <span class="o">==</span> <span class="s">&quot;**&quot;</span> <span class="o">~</span> <span class="m">2</span><span class="p">,</span>
+    <span class="n">signif</span> <span class="o">==</span> <span class="s">&quot;***&quot;</span> <span class="o">~</span> <span class="m">3</span>
+  <span class="p">))</span>
+
+<span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">df_plot</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">trait</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">signif_num</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_tile</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">&quot;grey60&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">scale_fill_gradient</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Significance&quot;</span><span class="p">,</span> 
+    <span class="n">low</span> <span class="o">=</span> <span class="s">&quot;lightblue&quot;</span><span class="p">,</span> 
+    <span class="n">high</span> <span class="o">=</span> <span class="s">&quot;darkblue&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme_minimal</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme</span><span class="p">(</span>
+    <span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">),</span>
+    <span class="n">panel.grid.major</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>  <span class="c1"># Remove default grid lines</span>
+    <span class="n">panel.grid.minor</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">()</span>   <span class="c1"># Remove minor grid lines</span>
+  <span class="p">)</span>
+  <span class="c1"># Save the plot as a PNG file</span>
+  <span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/trait_significance_heatmap_log10_misstree.png&quot;</span><span class="p">,</span> <span class="n">plot</span> <span class="o">=</span> <span class="n">p</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">9</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/05.4_Biome_trait_shifts_37_0.png" src="_images/05.4_Biome_trait_shifts_37_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">df_long</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+	<tr><th scope=col>region</th><th scope=col>trait</th><th scope=col>signif</th><th scope=col>weight</th><th scope=col>effect_size</th><th scope=col>trait_name</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>     </td><td>X.X14  </td><td>*  </td><td>1</td><td> 0.1447073</td><td>Leaf N                     </td></tr>
+	<tr><td>     </td><td>X.X146 </td><td>*  </td><td>1</td><td>-0.1277721</td><td>Leaf C/N ratio             </td></tr>
+	<tr><td>10_AT</td><td>X.X3117</td><td>*  </td><td>1</td><td> 0.2598691</td><td>SLA petiole in- or excluded</td></tr>
+	<tr><td>10_AT</td><td>X.X14  </td><td>***</td><td>3</td><td> 0.4225352</td><td>Leaf N                     </td></tr>
+	<tr><td>10_AT</td><td>X.X15  </td><td>***</td><td>3</td><td> 0.3828605</td><td>Leaf P                     </td></tr>
+	<tr><td>10_AT</td><td>X.X47  </td><td>*  </td><td>1</td><td>-0.2973616</td><td>LDMC                       </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df_plot</span> <span class="o">&lt;-</span> <span class="n">df_long</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">effect_size_category</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+      <span class="n">effect_size</span> <span class="o">&gt;=</span> <span class="m">0.11</span> <span class="o">&amp;</span> <span class="n">effect_size</span> <span class="o">&lt;</span> <span class="m">0.28</span> <span class="o">~</span> <span class="m">1</span><span class="p">,</span>
+      <span class="n">effect_size</span> <span class="o">&gt;=</span> <span class="m">0.28</span> <span class="o">&amp;</span> <span class="n">effect_size</span> <span class="o">&lt;</span> <span class="m">0.43</span> <span class="o">~</span> <span class="m">2</span><span class="p">,</span>
+      <span class="n">effect_size</span> <span class="o">&gt;=</span> <span class="m">0.43</span> <span class="o">~</span> <span class="m">3</span><span class="p">,</span>
+      <span class="n">effect_size</span> <span class="o">&gt;</span> <span class="m">-0.11</span> <span class="o">&amp;</span> <span class="n">effect_size</span> <span class="o">&lt;</span> <span class="m">0.11</span> <span class="o">~</span> <span class="m">0</span><span class="p">,</span>
+      <span class="n">effect_size</span> <span class="o">&lt;=</span> <span class="m">-0.11</span> <span class="o">&amp;</span> <span class="n">effect_size</span> <span class="o">&gt;</span> <span class="m">-0.28</span> <span class="o">~</span> <span class="m">-1</span><span class="p">,</span>
+      <span class="n">effect_size</span> <span class="o">&lt;=</span> <span class="m">-0.28</span> <span class="o">&amp;</span> <span class="n">effect_size</span> <span class="o">&gt;</span> <span class="m">-0.43</span> <span class="o">~</span> <span class="m">-2</span><span class="p">,</span>  
+      <span class="n">effect_size</span> <span class="o">&lt;=</span> <span class="m">-0.43</span> <span class="o">~</span> <span class="m">-3</span>
+    <span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">trait_name</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">non_zero_count</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">effect_size_category</span> <span class="o">!=</span> <span class="m">0</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">trait_name</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">trait_name</span><span class="p">,</span> <span class="o">-</span><span class="n">non_zero_count</span><span class="p">))</span>  <span class="c1"># Sort traits by non-zero count</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>  <span class="c1"># optional, for str_extract</span>
+
+<span class="n">df_plot</span> <span class="o">&lt;-</span> <span class="n">df_plot</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">region_order</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span>
+    <span class="nf">sub</span><span class="p">(</span><span class="s">&quot;.*_&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">region</span><span class="p">),</span>
+    <span class="nf">c</span><span class="p">(</span><span class="s">&quot;AA&quot;</span><span class="p">,</span> <span class="s">&quot;IM&quot;</span><span class="p">,</span> <span class="s">&quot;AT&quot;</span><span class="p">,</span> <span class="s">&quot;PA&quot;</span><span class="p">,</span> <span class="s">&quot;NT&quot;</span><span class="p">,</span> <span class="s">&quot;NA&quot;</span><span class="p">)))</span> <span class="o">%&gt;%</span>  <span class="c1"># Extract and order by specified levels</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">region</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="nf">unique</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">region_order</span><span class="p">)])))</span>  <span class="c1"># Reorder factor</span>
+
+
+<span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">df_plot</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">trait_name</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="n">effect_size_category</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="nf">rev</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;-3&quot;</span><span class="p">,</span> <span class="s">&quot;-2&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">)))))</span> <span class="o">+</span>
+  <span class="nf">geom_tile</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">&quot;grey60&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">scale_fill_manual</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Effect size category&quot;</span><span class="p">,</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+      <span class="s">&quot;-3&quot;</span> <span class="o">=</span> <span class="s">&quot;#2F86AC&quot;</span><span class="p">,</span>
+      <span class="s">&quot;-2&quot;</span> <span class="o">=</span> <span class="s">&quot;#77bde6&quot;</span><span class="p">,</span>
+      <span class="s">&quot;-1&quot;</span> <span class="o">=</span> <span class="s">&quot;#c6e9f7&quot;</span><span class="p">,</span>
+      <span class="s">&quot;0&quot;</span> <span class="o">=</span> <span class="s">&quot;white&quot;</span><span class="p">,</span>
+      <span class="s">&quot;1&quot;</span> <span class="o">=</span> <span class="s">&quot;#f7c6c5&quot;</span><span class="p">,</span>
+      <span class="s">&quot;2&quot;</span> <span class="o">=</span> <span class="s">&quot;#e67a77&quot;</span><span class="p">,</span>
+      <span class="s">&quot;3&quot;</span> <span class="o">=</span> <span class="s">&quot;#b02f2c&quot;</span>
+    <span class="p">),</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+      <span class="s">&quot;-3&quot;</span> <span class="o">=</span> <span class="s">&quot;Strong negative&quot;</span><span class="p">,</span>
+      <span class="s">&quot;-2&quot;</span> <span class="o">=</span> <span class="s">&quot;Moderate negative&quot;</span><span class="p">,</span>
+      <span class="s">&quot;-1&quot;</span> <span class="o">=</span> <span class="s">&quot;Weak negative&quot;</span><span class="p">,</span>
+      <span class="s">&quot;0&quot;</span> <span class="o">=</span> <span class="s">&quot;No effect&quot;</span><span class="p">,</span>
+      <span class="s">&quot;1&quot;</span> <span class="o">=</span> <span class="s">&quot;Weak positive&quot;</span><span class="p">,</span>
+      <span class="s">&quot;2&quot;</span> <span class="o">=</span> <span class="s">&quot;Moderate positive&quot;</span><span class="p">,</span>
+      <span class="s">&quot;3&quot;</span> <span class="o">=</span> <span class="s">&quot;Strong positive&quot;</span>
+    <span class="p">)</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme_minimal</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme</span><span class="p">(</span>
+    <span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">90</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">),</span>
+    <span class="n">panel.grid.major</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+    <span class="n">panel.grid.minor</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">()</span>
+  <span class="p">)</span>
+
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/trait_effect_heatmap_log10_misstree.png&quot;</span><span class="p">,</span> <span class="n">plot</span> <span class="o">=</span> <span class="n">p</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/05.4_Biome_trait_shifts_39_0.png" src="_images/05.4_Biome_trait_shifts_39_0.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "rstudio_r"
+        },
+        kernelOptions: {
+            kernelName: "rstudio_r",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'rstudio_r'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="05.3_Plot_maps_with_biomes.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Plot hexagons</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="01_prepare_env_predictors.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">01 · Environmental predictors per H3 cell (local rasters)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

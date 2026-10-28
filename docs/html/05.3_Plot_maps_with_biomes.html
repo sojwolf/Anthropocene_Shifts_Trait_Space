@@ -1,0 +1,1977 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Plot hexagons &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Individual trait shifts in each biome" href="05.4_Biome_trait_shifts.html" />
+    <link rel="prev" title="Plot regional shifts in trait space" href="05.2_Plot_biome_shifts.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/05.3_Plot_maps_with_biomes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F05.3_Plot_maps_with_biomes.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/05.3_Plot_maps_with_biomes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-summary-stats-at-hexagon-level">
+   Load summary stats at hexagon level
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-pc-differences">
+   Calculate PC differences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-geodataframe-and-clean-geometries">
+     Create GeoDataFrame and Clean Geometries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-world-map">
+     Plot world map
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-olsen-biome-x-realm-regions">
+   Add Olsen Biome x Realm Regions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-maps">
+   Plot maps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biome-overview-map">
+   Biome overview map
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Plot hexagons</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-summary-stats-at-hexagon-level">
+   Load summary stats at hexagon level
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-pc-differences">
+   Calculate PC differences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-geodataframe-and-clean-geometries">
+     Create GeoDataFrame and Clean Geometries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-world-map">
+     Plot world map
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-olsen-biome-x-realm-regions">
+   Add Olsen Biome x Realm Regions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-maps">
+   Plot maps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biome-overview-map">
+   Biome overview map
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="plot-hexagons">
+<h1>Plot hexagons<a class="headerlink" href="#plot-hexagons" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pwd
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/Func_Neo_Phytes/notebooks/final_notebooks
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set working directory</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/net/home/swolf/Func_Neo_Phytes/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-summary-stats-at-hexagon-level">
+<h2>Load summary stats at hexagon level<a class="headerlink" href="#load-summary-stats-at-hexagon-level" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">h3pandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+
+<span class="n">summary_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>h3_res3</th>
+      <th>PC1_all</th>
+      <th>PC1_native</th>
+      <th>PC2_all</th>
+      <th>PC2_native</th>
+      <th>PC3_all</th>
+      <th>PC3_native</th>
+      <th>PC4_all</th>
+      <th>PC4_native</th>
+      <th>PC5_all</th>
+      <th>...</th>
+      <th>X.X4..mean_native</th>
+      <th>X.X4..median_all</th>
+      <th>X.X4..median_native</th>
+      <th>X.X4..percent_change_mean</th>
+      <th>X.X4..percent_change_median</th>
+      <th>X.X4..n_na_all</th>
+      <th>X.X4..perc_na_all</th>
+      <th>X.X4..n_na_native</th>
+      <th>X.X4..perc_na_native</th>
+      <th>resolution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>832830fffffffff</td>
+      <td>-1.723264</td>
+      <td>-1.278134</td>
+      <td>0.926335</td>
+      <td>0.167546</td>
+      <td>0.121624</td>
+      <td>0.599007</td>
+      <td>0.292163</td>
+      <td>0.465846</td>
+      <td>0.085470</td>
+      <td>...</td>
+      <td>0.468</td>
+      <td>0.430</td>
+      <td>0.461</td>
+      <td>-5.77</td>
+      <td>-6.72</td>
+      <td>108117</td>
+      <td>20.23</td>
+      <td>87976</td>
+      <td>23.23</td>
+      <td>h3_res3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>832834fffffffff</td>
+      <td>-1.685929</td>
+      <td>-1.214233</td>
+      <td>0.457878</td>
+      <td>-0.273587</td>
+      <td>0.143289</td>
+      <td>0.638465</td>
+      <td>0.480214</td>
+      <td>0.635850</td>
+      <td>0.192815</td>
+      <td>...</td>
+      <td>0.477</td>
+      <td>0.449</td>
+      <td>0.471</td>
+      <td>-5.24</td>
+      <td>-4.67</td>
+      <td>83297</td>
+      <td>18.52</td>
+      <td>70916</td>
+      <td>21.17</td>
+      <td>h3_res3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>832831fffffffff</td>
+      <td>-1.842768</td>
+      <td>-1.467624</td>
+      <td>0.789775</td>
+      <td>0.285863</td>
+      <td>0.670737</td>
+      <td>1.136367</td>
+      <td>0.017561</td>
+      <td>0.147281</td>
+      <td>-0.010408</td>
+      <td>...</td>
+      <td>0.460</td>
+      <td>0.437</td>
+      <td>0.458</td>
+      <td>-4.13</td>
+      <td>-4.59</td>
+      <td>14684</td>
+      <td>22.77</td>
+      <td>13393</td>
+      <td>25.91</td>
+      <td>h3_res3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>832655fffffffff</td>
+      <td>-0.280022</td>
+      <td>0.031346</td>
+      <td>2.347101</td>
+      <td>2.208605</td>
+      <td>0.594250</td>
+      <td>1.044935</td>
+      <td>0.414081</td>
+      <td>0.314642</td>
+      <td>0.295809</td>
+      <td>...</td>
+      <td>0.446</td>
+      <td>0.435</td>
+      <td>0.438</td>
+      <td>-1.12</td>
+      <td>-0.68</td>
+      <td>2264</td>
+      <td>12.19</td>
+      <td>2178</td>
+      <td>14.93</td>
+      <td>h3_res3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>832a16fffffffff</td>
+      <td>-0.848952</td>
+      <td>-0.321254</td>
+      <td>2.670935</td>
+      <td>2.316182</td>
+      <td>0.802047</td>
+      <td>1.815812</td>
+      <td>0.484026</td>
+      <td>0.651619</td>
+      <td>0.017235</td>
+      <td>...</td>
+      <td>0.440</td>
+      <td>0.406</td>
+      <td>0.426</td>
+      <td>-4.09</td>
+      <td>-4.69</td>
+      <td>5072</td>
+      <td>8.12</td>
+      <td>4484</td>
+      <td>11.52</td>
+      <td>h3_res3</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 392 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="calculate-pc-differences">
+<h2>Calculate PC differences<a class="headerlink" href="#calculate-pc-differences" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate differences between native and all for PC1 and PC2</span>
+<span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC1_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC1_all&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC1_native&#39;</span><span class="p">]</span>
+<span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC2_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC2_all&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC2_native&#39;</span><span class="p">]</span>
+<span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC3_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC3_all&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC3_native&#39;</span><span class="p">]</span>
+<span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC4_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC4_all&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;PC4_native&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="create-geodataframe-and-clean-geometries">
+<h3>Create GeoDataFrame and Clean Geometries<a class="headerlink" href="#create-geodataframe-and-clean-geometries" title="Permalink to this headline">#</a></h3>
+<p>This code block converts H3 hexagon indices to polygons, wraps longitudes to the range [-180, 180], and creates a GeoDataFrame. Invalid geometries and polygons spanning more than 180° longitude are removed to ensure clean and accurate spatial data for further analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_df</span> <span class="o">=</span> <span class="n">summary_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">h3</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
+<span class="kn">from</span> <span class="nn">shapely.ops</span> <span class="kn">import</span> <span class="n">transform</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+<span class="c1"># Function to convert H3 cell to polygon</span>
+<span class="k">def</span> <span class="nf">h3_to_polygon</span><span class="p">(</span><span class="n">h3_index</span><span class="p">):</span>
+    <span class="n">boundary</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">h3_to_geo_boundary</span><span class="p">(</span><span class="n">h3_index</span><span class="p">,</span> <span class="n">geo_json</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">boundary</span><span class="p">)</span>
+
+<span class="c1"># Function to wrap longitudes to [-180, 180]</span>
+<span class="k">def</span> <span class="nf">wrap_geometry</span><span class="p">(</span><span class="n">geom</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrap_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">x_wrapped</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span>
+        <span class="k">return</span> <span class="n">x_wrapped</span><span class="p">,</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">wrap_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">geom</span><span class="p">)</span>
+
+<span class="c1"># Build geometry column</span>
+<span class="n">final_df</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">final_df</span><span class="p">[</span><span class="s2">&quot;h3_res3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">wrap_geometry</span><span class="p">(</span><span class="n">h3_to_polygon</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="c1"># Create GeoDataFrame</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">final_df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+
+<span class="c1"># Fix column names</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+
+<span class="c1"># 💥 Remove invalid geometries and those spanning too much longitude</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">is_valid</span><span class="p">]</span>  <span class="c1"># remove invalid</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">maxx</span> <span class="o">-</span> <span class="n">gdf</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">minx</span> <span class="o">&lt;</span> <span class="mi">180</span><span class="p">]</span>  <span class="c1"># remove polygons &gt;180° wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4001941/3219989185.py:28: FutureWarning: The default value of regex will change from True to False in a future version. In addition, single character regular expressions will *not* be treated as literal strings when regex=True.
+  gdf.columns = gdf.columns.str.replace(&#39;.&#39;, &#39;_&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-world-map">
+<h3>Plot world map<a class="headerlink" href="#plot-world-map" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define your custom colors</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;#2ed5c9&quot;</span><span class="p">,</span> <span class="s2">&quot;#FFDAB9&quot;</span><span class="p">,</span> <span class="s2">&quot;#FF6F61&quot;</span><span class="p">]</span>
+
+<span class="c1"># Create the colormap</span>
+<span class="n">native_non_cmap</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s2">&quot;custom_gradient&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="p">)</span>
+
+<span class="c1"># OPTIONAL: Visualize it with a gradient bar</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">native_non_cmap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Custom Gradient: Coral → Peach → Soft Turquoise&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/05.3_Plot_maps_with_biomes_12_0.png" src="_images/05.3_Plot_maps_with_biomes_12_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
+
+<span class="c1"># Define your colors</span>
+<span class="n">low_color</span> <span class="o">=</span> <span class="s2">&quot;#2F86AC&quot;</span>      <span class="c1"># like native_color</span>
+<span class="n">mid_color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">high_color</span> <span class="o">=</span> <span class="s2">&quot;#b02f2c&quot;</span>     <span class="c1"># like all_color</span>
+
+<span class="c1"># Create a custom diverging colormap</span>
+<span class="n">div_cmap</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span>
+    <span class="s2">&quot;custom_diverging&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">low_color</span><span class="p">,</span> <span class="n">mid_color</span><span class="p">,</span> <span class="n">high_color</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">output_suffix</span><span class="o">=</span><span class="s2">&quot;meanbased_trim01_GBIF_wcvp_CS_log10_notrim_LCweighted&quot;</span><span class="p">):</span>
+    
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+    <span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Results/Figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Loop over columns matching the pattern</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pattern</span><span class="p">)]:</span>
+
+        <span class="c1"># -------------------------</span>
+        <span class="c1"># Set colour scale</span>
+        <span class="c1"># -------------------------</span>
+
+        <span class="k">if</span> <span class="s2">&quot;percent_change&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;rank_biserial_r&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;perc_naturalized&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;conifer_percentage&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;annual_percentage&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">40</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu_r&quot;</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC1_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC2_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC3_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC4_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC5_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">column</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;urban_diff&quot;</span><span class="p">,</span> <span class="s2">&quot;nat_diff&quot;</span><span class="p">,</span> <span class="s2">&quot;crop_diff&quot;</span><span class="p">]):</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">99</span><span class="p">)</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+
+        <span class="c1"># -------------------------</span>
+        <span class="c1"># Create map</span>
+        <span class="c1"># -------------------------</span>
+
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+            <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">()}</span>
+        <span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span>
+            <span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;#afafafff&quot;</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span>
+            <span class="n">cfeature</span><span class="o">.</span><span class="n">OCEAN</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;#dad8eaff&quot;</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleXon</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleYon</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Plot hexagons</span>
+        <span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+            <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+            <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.45</span><span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2"> per hexagon&quot;</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">spine</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;#dad8eaff&quot;</span><span class="p">)</span>
+            <span class="n">spine</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+        <span class="c1"># -------------------------</span>
+        <span class="c1"># Save</span>
+        <span class="c1"># -------------------------</span>
+
+        <span class="n">output_path</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Results/Figures/&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">output_suffix</span><span class="si">}</span><span class="s2">.png&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="n">output_path</span><span class="p">,</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="add-olsen-biome-x-realm-regions">
+<h2>Add Olsen Biome x Realm Regions<a class="headerlink" href="#add-olsen-biome-x-realm-regions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">expanduser</span>
+
+<span class="c1"># Expand the user path and read the aggregated shapefile</span>
+<span class="n">wwf_aggregated</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/iNaturalist/Data/WWF/wwf_terr_ecos_aggregated.shp&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read biome shift results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;~/Func_Neo_Phytes/Results/quantification_shifts_regions_Olsen_GBIF_wcvp_CS_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove coluns that end with _PC4 and _PC5</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="o">~</span><span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;_PC4&#39;</span><span class="p">,</span> <span class="s1">&#39;_PC5&#39;</span><span class="p">))]</span>
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>region</th>
+      <th>biome_number</th>
+      <th>biome_name</th>
+      <th>realm_abbrev</th>
+      <th>realm_name</th>
+      <th>cliffs_delta_PC1</th>
+      <th>cliffs_delta_PC2</th>
+      <th>cliffs_delta_PC3</th>
+      <th>effect_size_PC1</th>
+      <th>effect_size_PC2</th>
+      <th>effect_size_PC3</th>
+      <th>significance_PC1</th>
+      <th>significance_PC2</th>
+      <th>significance_PC3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1_IM</td>
+      <td>1</td>
+      <td>Tropical &amp; Subtropical Moist Broadleaf Forests</td>
+      <td>IM</td>
+      <td>Indomalaya</td>
+      <td>-0.217127</td>
+      <td>0.120380</td>
+      <td>-0.246734</td>
+      <td>small</td>
+      <td>small</td>
+      <td>small</td>
+      <td>***</td>
+      <td>**</td>
+      <td>***</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1_NT</td>
+      <td>1</td>
+      <td>Tropical &amp; Subtropical Moist Broadleaf Forests</td>
+      <td>NT</td>
+      <td>Neotropical</td>
+      <td>-0.020237</td>
+      <td>0.122341</td>
+      <td>-0.133989</td>
+      <td>negligible</td>
+      <td>small</td>
+      <td>small</td>
+      <td>NaN</td>
+      <td>**</td>
+      <td>***</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2_AA</td>
+      <td>2</td>
+      <td>Tropical &amp; Subtropical Dry Broadleaf Forests</td>
+      <td>AA</td>
+      <td>Australasia</td>
+      <td>0.305785</td>
+      <td>0.008264</td>
+      <td>-0.553719</td>
+      <td>medium</td>
+      <td>negligible</td>
+      <td>large</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2_IM</td>
+      <td>2</td>
+      <td>Tropical &amp; Subtropical Dry Broadleaf Forests</td>
+      <td>IM</td>
+      <td>Indomalaya</td>
+      <td>-0.297997</td>
+      <td>0.265479</td>
+      <td>-0.294615</td>
+      <td>medium</td>
+      <td>small</td>
+      <td>medium</td>
+      <td>**</td>
+      <td>**</td>
+      <td>***</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2_NT</td>
+      <td>2</td>
+      <td>Tropical &amp; Subtropical Dry Broadleaf Forests</td>
+      <td>NT</td>
+      <td>Neotropical</td>
+      <td>-0.040680</td>
+      <td>0.155141</td>
+      <td>-0.210614</td>
+      <td>negligible</td>
+      <td>small</td>
+      <td>small</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>*</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4_AA</td>
+      <td>4</td>
+      <td>Temperate Broadleaf &amp; Mixed Forests</td>
+      <td>AA</td>
+      <td>Australasia</td>
+      <td>-0.112233</td>
+      <td>0.379876</td>
+      <td>-0.307663</td>
+      <td>small</td>
+      <td>medium</td>
+      <td>medium</td>
+      <td>NaN</td>
+      <td>***</td>
+      <td>**</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4_NA</td>
+      <td>4</td>
+      <td>Temperate Broadleaf &amp; Mixed Forests</td>
+      <td>NaN</td>
+      <td>Nearctic</td>
+      <td>-0.175629</td>
+      <td>0.119317</td>
+      <td>-0.438602</td>
+      <td>small</td>
+      <td>small</td>
+      <td>large</td>
+      <td>**</td>
+      <td>NaN</td>
+      <td>***</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4_NT</td>
+      <td>4</td>
+      <td>Temperate Broadleaf &amp; Mixed Forests</td>
+      <td>NT</td>
+      <td>Neotropical</td>
+      <td>-0.131734</td>
+      <td>0.326392</td>
+      <td>-0.232232</td>
+      <td>small</td>
+      <td>medium</td>
+      <td>small</td>
+      <td>NaN</td>
+      <td>*</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5_NA</td>
+      <td>5</td>
+      <td>Temperate Coniferous Forests</td>
+      <td>NaN</td>
+      <td>Nearctic</td>
+      <td>-0.048092</td>
+      <td>0.186711</td>
+      <td>-0.307441</td>
+      <td>negligible</td>
+      <td>small</td>
+      <td>medium</td>
+      <td>NaN</td>
+      <td>**</td>
+      <td>***</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>6_NA</td>
+      <td>6</td>
+      <td>Boreal Forests / Taiga</td>
+      <td>NaN</td>
+      <td>Nearctic</td>
+      <td>-0.005508</td>
+      <td>0.048500</td>
+      <td>-0.137018</td>
+      <td>negligible</td>
+      <td>negligible</td>
+      <td>small</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>*</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7_AA</td>
+      <td>7</td>
+      <td>Tropical &amp; Subtropical Grasslands, Savannas &amp; ...</td>
+      <td>AA</td>
+      <td>Australasia</td>
+      <td>-0.069242</td>
+      <td>0.171541</td>
+      <td>-0.155917</td>
+      <td>negligible</td>
+      <td>small</td>
+      <td>small</td>
+      <td>NaN</td>
+      <td>*</td>
+      <td>*</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7_NT</td>
+      <td>7</td>
+      <td>Tropical &amp; Subtropical Grasslands, Savannas &amp; ...</td>
+      <td>NT</td>
+      <td>Neotropical</td>
+      <td>-0.046118</td>
+      <td>0.131330</td>
+      <td>-0.088959</td>
+      <td>negligible</td>
+      <td>small</td>
+      <td>negligible</td>
+      <td>NaN</td>
+      <td>*</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>8_NA</td>
+      <td>8</td>
+      <td>Temperate Grasslands, Savannas &amp; Shrublands</td>
+      <td>NaN</td>
+      <td>Nearctic</td>
+      <td>-0.122226</td>
+      <td>0.221191</td>
+      <td>-0.329798</td>
+      <td>small</td>
+      <td>small</td>
+      <td>medium</td>
+      <td>NaN</td>
+      <td>***</td>
+      <td>***</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>8_NT</td>
+      <td>8</td>
+      <td>Temperate Grasslands, Savannas &amp; Shrublands</td>
+      <td>NT</td>
+      <td>Neotropical</td>
+      <td>-0.135873</td>
+      <td>0.254377</td>
+      <td>-0.092659</td>
+      <td>small</td>
+      <td>small</td>
+      <td>negligible</td>
+      <td>NaN</td>
+      <td>***</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>10_AT</td>
+      <td>10</td>
+      <td>Montane Grasslands &amp; Shrublands</td>
+      <td>AT</td>
+      <td>Afrotropical</td>
+      <td>0.017060</td>
+      <td>0.277723</td>
+      <td>-0.366991</td>
+      <td>negligible</td>
+      <td>small</td>
+      <td>medium</td>
+      <td>NaN</td>
+      <td>*</td>
+      <td>**</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>12_AA</td>
+      <td>12</td>
+      <td>Mediterranean Forests, Woodlands &amp; Scrub</td>
+      <td>AA</td>
+      <td>Australasia</td>
+      <td>-0.099904</td>
+      <td>0.264215</td>
+      <td>-0.064619</td>
+      <td>negligible</td>
+      <td>small</td>
+      <td>negligible</td>
+      <td>NaN</td>
+      <td>*</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>12_NA</td>
+      <td>12</td>
+      <td>Mediterranean Forests, Woodlands &amp; Scrub</td>
+      <td>NaN</td>
+      <td>Nearctic</td>
+      <td>-0.333333</td>
+      <td>0.518519</td>
+      <td>-0.370370</td>
+      <td>medium</td>
+      <td>large</td>
+      <td>medium</td>
+      <td>NaN</td>
+      <td>*</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>12_PA</td>
+      <td>12</td>
+      <td>Mediterranean Forests, Woodlands &amp; Scrub</td>
+      <td>PA</td>
+      <td>Palearctic</td>
+      <td>0.308947</td>
+      <td>0.116506</td>
+      <td>-0.008603</td>
+      <td>medium</td>
+      <td>small</td>
+      <td>negligible</td>
+      <td>***</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>13_IM</td>
+      <td>13</td>
+      <td>Deserts &amp; Xeric Shrublands</td>
+      <td>IM</td>
+      <td>Indomalaya</td>
+      <td>-0.011967</td>
+      <td>0.303823</td>
+      <td>-0.191025</td>
+      <td>negligible</td>
+      <td>medium</td>
+      <td>small</td>
+      <td>NaN</td>
+      <td>**</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add column with realm extra (after the &quot;_&quot; in &quot;bim_rlm&quot;)</span>
+<span class="n">wwf_aggregated</span><span class="p">[</span><span class="s1">&#39;realm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wwf_aggregated</span><span class="p">[</span><span class="s1">&#39;bim_rlm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simplify polygons with a lower tolerance value</span>
+<span class="n">wwf_aggregated</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wwf_aggregated</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">tolerance</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">preserve_topology</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># add buffer around polygons</span>
+<span class="n">wwf_aggregated</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wwf_aggregated</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4001941/816051289.py:5: UserWarning: Geometry is in a geographic CRS. Results from &#39;buffer&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+
+  wwf_aggregated[&#39;geometry&#39;] = wwf_aggregated[&#39;geometry&#39;].buffer(1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_hex_maps_with_biomes</span><span class="p">(</span>
+    <span class="n">gdf</span><span class="p">,</span>
+    <span class="n">pattern</span><span class="p">,</span>
+    <span class="n">results</span><span class="p">,</span>
+    <span class="n">wwf_aggregated</span><span class="p">,</span>
+    <span class="n">div_cmap</span><span class="p">,</span>
+    <span class="n">output_suffix</span><span class="o">=</span><span class="s2">&quot;map&quot;</span><span class="p">,</span>
+    <span class="n">pc_axes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+    <span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Results/Figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># ── Pre-process wwf_aggregated (once, on a copy) ──────────────────────────</span>
+    <span class="n">wwf</span> <span class="o">=</span> <span class="n">wwf_aggregated</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">wwf</span><span class="p">[</span><span class="s2">&quot;realm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wwf</span><span class="p">[</span><span class="s2">&quot;bim_rlm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">wwf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wwf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">tolerance</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">preserve_topology</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">wwf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wwf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># ── Dissolve all regions once for the background outline ─────────────────</span>
+    <span class="n">all_regions</span> <span class="o">=</span> <span class="n">wwf</span><span class="o">.</span><span class="n">dissolve</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;bim_rlm&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ── Infer available PC axes from results columns ──────────────────────────</span>
+    <span class="k">if</span> <span class="n">pc_axes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pc_axes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;significance_PC&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span>
+            <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;significance_PC&quot;</span><span class="p">)</span>
+        <span class="p">])</span>
+
+    <span class="c1"># ── Pre-compute significant bim_rlm values per axis ──────────────────────</span>
+    <span class="n">sig_realms</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">pc_axes</span><span class="p">:</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;significance_PC</span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">sig_realms</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">(),</span> <span class="s2">&quot;bim_rlm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sig_realms</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># ── Helper: infer which PC axis a column belongs to ──────────────────────</span>
+    <span class="k">def</span> <span class="nf">_get_pc_axis</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">pc_axes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;PC</span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s2">_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;PC</span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s2">_&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">ax</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="c1"># ── Loop over matching columns ────────────────────────────────────────────</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pattern</span><span class="p">)]:</span>
+
+        <span class="c1"># ── Colour scale ─────────────────────────────────────────────────────</span>
+        <span class="k">if</span> <span class="s2">&quot;percent_change&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;rank_biserial_r&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;perc_naturalized&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;conifer_percentage&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;annual_percentage&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">40</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu_r&quot;</span>
+
+        <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PC</span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s2">_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">pc_axes</span><span class="p">):</span>
+            <span class="n">ref_col</span> <span class="o">=</span> <span class="s2">&quot;PC1_diff&quot;</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">ref_col</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">ref_col</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">column</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;urban_diff&quot;</span><span class="p">,</span> <span class="s2">&quot;nat_diff&quot;</span><span class="p">,</span> <span class="s2">&quot;crop_diff&quot;</span><span class="p">]):</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">99</span><span class="p">)</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+
+        <span class="c1"># ── Figure ───────────────────────────────────────────────────────────</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+            <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">()}</span>
+        <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span>  <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;#afafafff&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">OCEAN</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;#dad8eaff&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleXon</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleYon</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># ── Hexagons ─────────────────────────────────────────────────────────</span>
+        <span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+            <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+            <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.45</span><span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="c1"># ── Biome outlines: all realms (thin, background reference) ──────────</span>
+        <span class="c1">#regions = wwf_aggregated.dissolve(by=&#39;realm&#39;)</span>
+        <span class="n">all_regions</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;#045A7F55&quot;</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># ── Biome outlines: significant realms only (bold) ───────────────────</span>
+        <span class="n">pc_ax</span> <span class="o">=</span> <span class="n">_get_pc_axis</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pc_ax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">sig_realms</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pc_ax</span><span class="p">):</span>
+            <span class="n">sig</span> <span class="o">=</span> <span class="n">all_regions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+                <span class="n">all_regions</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">sig_realms</span><span class="p">[</span><span class="n">pc_ax</span><span class="p">])</span>
+            <span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">sig</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+                <span class="n">sig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                    <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+                    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;#045A7FFF&quot;</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+                    <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                <span class="p">)</span>
+
+        <span class="c1"># ── Styling ──────────────────────────────────────────────────────────</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2"> per hexagon&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">spine</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;#dad8eaff&quot;</span><span class="p">)</span>
+            <span class="n">spine</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+        <span class="c1"># ── Save ─────────────────────────────────────────────────────────────</span>
+        <span class="n">output_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Results/Figures/</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">output_suffix</span><span class="si">}</span><span class="s2">.png&quot;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-maps">
+<h2>Plot maps<a class="headerlink" href="#plot-maps" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot differeces in PC space for PC1, PC2, and PC3</span>
+<span class="n">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="s2">&quot;PC1_diff&quot;</span><span class="p">,</span> <span class="n">output_suffix</span><span class="o">=</span><span class="s2">&quot;meanbased_GBIF_wcvp_CS_log10_notrim_misstree&quot;</span><span class="p">)</span>
+<span class="n">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="s2">&quot;PC2_diff&quot;</span><span class="p">,</span> <span class="n">output_suffix</span><span class="o">=</span><span class="s2">&quot;meanbased_GBIF_wcvp_CS_log10_notrim_misstree&quot;</span><span class="p">)</span>
+<span class="n">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="s2">&quot;PC3_diff&quot;</span><span class="p">,</span> <span class="n">output_suffix</span><span class="o">=</span><span class="s2">&quot;meanbased_GBIF_wcvp_CS_log10_notrim_misstree&quot;</span><span class="p">)</span>
+<span class="n">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="s2">&quot;PC4_diff&quot;</span><span class="p">,</span> <span class="n">output_suffix</span><span class="o">=</span><span class="s2">&quot;meanbased_GBIF_wcvp_CS_log10_notrim_misstree&quot;</span><span class="p">)</span>
+<span class="n">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="s2">&quot;PC5_diff&quot;</span><span class="p">,</span> <span class="n">output_suffix</span><span class="o">=</span><span class="s2">&quot;meanbased_GBIF_wcvp_CS_log10_notrim_misstree&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:256: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  line_strings = list(multi_line_string)
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:256: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  line_strings = list(multi_line_string)
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:402: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  line_strings.extend(multi_line_string)
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:402: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  line_strings.extend(multi_line_string)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/PC1_diff_meanbased_GBIF_wcvp_CS_log10_notrim_misstree.png
+</pre></div>
+</div>
+<img alt="_images/05.3_Plot_maps_with_biomes_23_2.png" src="_images/05.3_Plot_maps_with_biomes_23_2.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/PC2_diff_meanbased_GBIF_wcvp_CS_log10_notrim_misstree.png
+</pre></div>
+</div>
+<img alt="_images/05.3_Plot_maps_with_biomes_23_5.png" src="_images/05.3_Plot_maps_with_biomes_23_5.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/PC3_diff_meanbased_GBIF_wcvp_CS_log10_notrim_misstree.png
+</pre></div>
+</div>
+<img alt="_images/05.3_Plot_maps_with_biomes_23_8.png" src="_images/05.3_Plot_maps_with_biomes_23_8.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/PC4_diff_meanbased_GBIF_wcvp_CS_log10_notrim_misstree.png
+</pre></div>
+</div>
+<img alt="_images/05.3_Plot_maps_with_biomes_23_11.png" src="_images/05.3_Plot_maps_with_biomes_23_11.png" />
+</div>
+</div>
+</section>
+<section id="biome-overview-map">
+<h2>Biome overview map<a class="headerlink" href="#biome-overview-map" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">expanduser</span>
+
+<span class="c1"># Expand the user path and read the aggregated shapefile</span>
+<span class="n">wwf_aggregated</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/iNaturalist/Data/WWF/wwf_terr_ecos_aggregated.shp&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colormaps</span>
+
+
+<span class="c1">#pattern = &quot;perc_&quot;</span>
+<span class="c1">#pattern = &quot;count_&quot;</span>
+<span class="c1">#pattern = &quot;X&quot;</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="s2">&quot;PC1_diff&quot;</span>
+<span class="c1">#pattern = &quot;PC1_all&quot;</span>
+<span class="c1">#pattern = &quot;PC2_percent_change&quot;</span>
+
+
+<span class="c1"># Ensure the results directory exists</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Results/Figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Loop over all columns that start with &quot;X&quot;</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pattern</span><span class="p">)]:</span> 
+<span class="c1">#for column in [col for col in gdf.columns if &quot;percent_change&quot; in col]:</span>
+<span class="c1">#for column in [col for col in gdf.columns if col.endswith(&quot;percent_change_median&quot;)]:</span>
+<span class="c1">#for column in [col for col in gdf.columns if col.endswith(&quot;p_value&quot;)]:</span>
+<span class="c1">#for column in [col for col in gdf.columns if col.endswith(&quot;rank_biserial_r&quot;)]:</span>
+
+    <span class="k">if</span> <span class="s2">&quot;percent_change&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+        <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+    <span class="k">elif</span> <span class="s2">&quot;rank_biserial_r&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+        <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+    <span class="k">elif</span> <span class="s2">&quot;perc_naturalized&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+        <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span>
+    <span class="k">elif</span> <span class="s2">&quot;PC1_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+        <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+    <span class="k">elif</span> <span class="s2">&quot;PC2_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+        <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">99</span><span class="p">)</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+        
+    <span class="c1"># Create plot with Robinson projection</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">()})</span>
+    <span class="c1">#fig, ax = plt.subplots(figsize=(32, 18), subplot_kw={&#39;projection&#39;: ccrs.EqualEarth()})</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
+    <span class="c1">#ax.add_feature(cfeature.LAND, facecolor=&#39;#2F86AC&#39;, edgecolor=&#39;none&#39;)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    <span class="c1">#ax.add_feature(cfeature.LAND, facecolor=&#39;#A7AE9C&#39;, edgecolor=&#39;none&#39;)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleXon</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleYon</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+    <span class="c1"># Plot hexagons</span>
+    <span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="n">vmin</span><span class="p">,</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">vmax</span><span class="p">,</span>
+        <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+        <span class="c1">#edgecolor=&quot;black&quot;,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.45</span><span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2"> per hexagon&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="c1">#ax.set_title(f&quot;Community science observations: {column} per hexagon&quot;, fontsize=14)</span>
+    <span class="c1">#ax.set_title(f&quot;GBIF sample (min. 1, max. 5000): Percent naturalized per hexagon&quot;, fontsize=14)</span>
+    
+    <span class="c1">#add coastlines</span>
+    <span class="c1">#ax.coastlines(resolution=&#39;110m&#39;, color=&#39;#2F86AC&#39;, linewidth=0.7)</span>
+    <span class="c1">#ax.coastlines(resolution=&#39;110m&#39;, color=&#39;pink&#39;, linewidth=0.9)</span>
+    <span class="c1">#ax.coastlines(resolution=&#39;110m&#39;, color=&#39;pink&#39;, linewidth=2)</span>
+    
+    <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">spine</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>       <span class="c1"># Color of the frame</span>
+        <span class="n">spine</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>           <span class="c1"># Thickness of the frame</span>
+        <span class="c1">#spine.set_linewidth(2)</span>
+
+    <span class="c1"># Filter and plot region polygons (excluding oceans)</span>
+    <span class="c1"># PC1 significant regions</span>
+    <span class="c1">#sig_regions =[ &quot;12_PA&quot;, &quot;1_IM&quot;,  &quot;2_IM&quot;,  &quot;4_NA&quot;,  &quot;8_NA&quot;,  &quot;8_NT&quot;,  &quot;8_PA&quot; ]</span>
+    
+    <span class="c1"># PC2 significant regions</span>
+    <span class="c1">#sig_regions = [&quot;13_IM&quot;, &quot;1_IM&quot;,  &quot;2_IM&quot;,  &quot;4_AA&quot;,  &quot;4_NT&quot;,  &quot;5_NA&quot;,  &quot;7_AA&quot;,  &quot;8_NA&quot;,  &quot;8_NT&quot; ]</span>
+
+    <span class="n">sig_regions</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;12_PA&quot;</span><span class="p">,</span> <span class="s2">&quot;1_IM&quot;</span><span class="p">,</span> <span class="s2">&quot;2_IM&quot;</span><span class="p">,</span> <span class="s2">&quot;4_NA&quot;</span><span class="p">,</span> <span class="s2">&quot;10_AT&quot;</span><span class="p">,</span> <span class="s2">&quot;12_AA&quot;</span><span class="p">,</span> <span class="s2">&quot;12_NA&quot;</span><span class="p">,</span> <span class="s2">&quot;13_IM&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;13_NA&quot;</span><span class="p">,</span> <span class="s2">&quot;1_NT&quot;</span><span class="p">,</span> <span class="s2">&quot;4_AA&quot;</span><span class="p">,</span> <span class="s2">&quot;4_NT&quot;</span><span class="p">,</span> <span class="s2">&quot;5_NA&quot;</span><span class="p">,</span> <span class="s2">&quot;7_AA&quot;</span><span class="p">,</span> <span class="s2">&quot;7_AT&quot;</span><span class="p">,</span> <span class="s2">&quot;7_NT&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;8_NA&quot;</span><span class="p">,</span> <span class="s2">&quot;8_NT&quot;</span><span class="p">,</span> <span class="s2">&quot;13_NT&quot;</span><span class="p">,</span> <span class="s2">&quot;2_NT&quot;</span><span class="p">,</span> <span class="s2">&quot;6_NA&quot;</span>
+    <span class="p">]</span>
+
+
+    <span class="n">regions</span> <span class="o">=</span> <span class="n">wwf_aggregated</span><span class="p">[</span><span class="n">wwf_aggregated</span><span class="p">[</span><span class="s2">&quot;bim_rlm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">sig_regions</span><span class="p">)]</span>
+    
+    <span class="c1"># color for each region based on all_regions</span>
+    
+    <span class="c1"># Ensure no NaN values in the color mapping</span>
+    <span class="n">facecolor_mapping</span> <span class="o">=</span> <span class="n">regions</span><span class="p">[</span><span class="s2">&quot;bim_rlm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+        <span class="s2">&quot;10_AT&quot;</span><span class="p">:</span> <span class="s2">&quot;#37a2ee&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;12_NA&quot;</span><span class="p">:</span> <span class="s2">&quot;#6a3d9a&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;12_PA&quot;</span><span class="p">:</span> <span class="s2">&quot;#6a3d9a&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;12_AA&quot;</span><span class="p">:</span> <span class="s2">&quot;#6a3d9a&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;13_IM&quot;</span><span class="p">:</span> <span class="s2">&quot;#d62728&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;13_NA&quot;</span><span class="p">:</span> <span class="s2">&quot;#d62728&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;13_NT&quot;</span><span class="p">:</span> <span class="s2">&quot;#d62728&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1_IM&quot;</span><span class="p">:</span> <span class="s2">&quot;#4ae5ce&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1_NT&quot;</span><span class="p">:</span> <span class="s2">&quot;#4ae5ce&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2_IM&quot;</span><span class="p">:</span> <span class="s2">&quot;#bcbd22&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2_NT&quot;</span><span class="p">:</span> <span class="s2">&quot;#bcbd22&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;4_AA&quot;</span><span class="p">:</span> <span class="s2">&quot;#33a02c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;4_NA&quot;</span><span class="p">:</span> <span class="s2">&quot;#33a02c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;4_NT&quot;</span><span class="p">:</span> <span class="s2">&quot;#33a02c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;5_NA&quot;</span><span class="p">:</span> <span class="s2">&quot;#fdbf6f&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;6_NA&quot;</span><span class="p">:</span> <span class="s2">&quot;#e18e85&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;7_AA&quot;</span><span class="p">:</span> <span class="s2">&quot;#cab2d6&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;7_NT&quot;</span><span class="p">:</span> <span class="s2">&quot;#cab2d6&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;7_AT&quot;</span><span class="p">:</span> <span class="s2">&quot;#cab2d6&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;8_NA&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff7f00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;8_NT&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff7f00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;8_PA&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff7f00&quot;</span><span class="p">,</span>
+    <span class="p">})</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;#d3d3d3&quot;</span><span class="p">)</span>  <span class="c1"># Default to light grey for unmapped regions</span>
+
+
+    <span class="n">regions</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor_mapping</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Add region acronyms (optional)</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">regions</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">point</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">representative_point</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+            <span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;bim_rlm&quot;</span><span class="p">],</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+            <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round,pad=0.2&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    
+    <span class="c1"># Save the plot</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Results/Figures/</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_meanbased_trim01_GBIF_wcvp_CS_Olsen_plain_log10.png&quot;</span>
+    <span class="c1">#plt.savefig(output_path, format=&quot;pdf&quot;)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Show the plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<img alt="_images/05.3_Plot_maps_with_biomes_26_1.png" src="_images/05.3_Plot_maps_with_biomes_26_1.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="05.2_Plot_biome_shifts.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Plot regional shifts in trait space</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="05.4_Biome_trait_shifts.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Individual trait shifts in each biome</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

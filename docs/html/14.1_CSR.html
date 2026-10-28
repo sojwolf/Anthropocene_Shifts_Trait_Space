@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>CSR global &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plot global gradients of main principal components" href="14.2_Plot_global_maps_CSR.html" />
+    <link rel="prev" title="02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation" href="02_trait_env_xgboost_shap.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/14.1_CSR.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F14.1_CSR.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/14.1_CSR.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>CSR global</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="csr-global">
+<h1>CSR global<a class="headerlink" href="#csr-global" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span> 
+<span class="n">dtn</span> <span class="o">=</span> <span class="m">10</span>
+<span class="nf">setDTthreads</span><span class="p">(</span><span class="n">threads</span> <span class="o">=</span> <span class="n">dtn</span><span class="p">)</span> <span class="c1">#defines how many threads data.table is allowed to use</span>
+
+<span class="n">gbif_group</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree_group.csv&quot;</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_group</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 47</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>group</th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>mean_perc_na</th><th scope=col>⋯</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>X.X47</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83001afffffffff</td><td>all   </td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td><td>10</td><td>4</td><td> 5.68</td><td>⋯</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td></tr>
+	<tr><td>83001afffffffff</td><td>native</td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td><td>10</td><td>4</td><td> 5.68</td><td>⋯</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td></tr>
+	<tr><td>83001cfffffffff</td><td>all   </td><td>-10.005360</td><td>-0.2380058</td><td> 0.2491376</td><td> 2.9137390</td><td>0.9757523</td><td> 1</td><td>1</td><td>16.22</td><td>⋯</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3166111</td><td>0.175</td></tr>
+	<tr><td>83001cfffffffff</td><td>native</td><td> -9.988809</td><td>-0.3014320</td><td> 0.2822225</td><td> 2.9136399</td><td>0.9666302</td><td> 1</td><td>1</td><td>16.22</td><td>⋯</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3291221</td><td>0.175</td></tr>
+	<tr><td>83001efffffffff</td><td>all   </td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td><td> 4</td><td>3</td><td> 3.38</td><td>⋯</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td></tr>
+	<tr><td>83001efffffffff</td><td>native</td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td><td> 4</td><td>3</td><td> 3.38</td><td>⋯</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">gbif_group</span><span class="o">$</span><span class="n">X.X47</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.070   0.257   0.284   0.293   0.318   0.656 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+
+<span class="c1"># ── StrateFy (Pierce et al. 2017) ─────────────────────────────────────────────</span>
+<span class="n">stratefy</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">LA</span><span class="p">,</span> <span class="n">LDMC</span><span class="p">,</span> <span class="n">SLA</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1"># Units: LA mm², LDMC in %, SLA mm² mg⁻¹</span>
+  <span class="n">la_t</span>   <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">LA</span> <span class="o">/</span> <span class="m">894205</span><span class="p">)</span> <span class="o">*</span> <span class="m">100</span>
+  <span class="n">ldmc_t</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">((</span><span class="n">LDMC</span> <span class="o">/</span> <span class="m">100</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="n">LDMC</span> <span class="o">/</span> <span class="m">100</span><span class="p">))</span>
+  <span class="n">sla_t</span>  <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="n">SLA</span><span class="p">)</span>
+
+  <span class="n">c_raw</span> <span class="o">&lt;-</span> <span class="m">-0.8678</span> <span class="o">+</span> <span class="m">1.6464</span> <span class="o">*</span> <span class="n">la_t</span>
+  <span class="n">s_raw</span> <span class="o">&lt;-</span> <span class="m">1.3369</span> <span class="o">+</span> <span class="m">0.000010019</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-0.0000000000022303</span> <span class="o">*</span> <span class="n">ldmc_t</span><span class="p">))</span> <span class="o">+</span>
+           <span class="m">4.5835</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-0.2328</span> <span class="o">*</span> <span class="n">ldmc_t</span><span class="p">))</span>
+  <span class="n">r_raw</span> <span class="o">&lt;-</span> <span class="m">-57.5924</span> <span class="o">+</span> <span class="m">62.6802</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-0.0288</span> <span class="o">*</span> <span class="n">sla_t</span><span class="p">)</span>
+
+  <span class="n">minC</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="p">;</span>                  <span class="n">maxC</span> <span class="o">&lt;-</span> <span class="m">57.3756711966087</span>
+  <span class="n">minS</span> <span class="o">&lt;-</span> <span class="m">-0.756451214853076</span><span class="p">;</span> <span class="n">maxS</span> <span class="o">&lt;-</span> <span class="m">5.79158377609218</span>
+  <span class="n">minR</span> <span class="o">&lt;-</span> <span class="m">-11.3467682227961</span><span class="p">;</span>  <span class="n">maxR</span> <span class="o">&lt;-</span> <span class="m">1.10795515716546</span>
+
+  <span class="n">c_raw</span> <span class="o">&lt;-</span> <span class="nf">pmin</span><span class="p">(</span><span class="nf">pmax</span><span class="p">(</span><span class="n">c_raw</span><span class="p">,</span> <span class="n">minC</span><span class="p">),</span> <span class="n">maxC</span><span class="p">)</span>
+  <span class="n">s_raw</span> <span class="o">&lt;-</span> <span class="nf">pmin</span><span class="p">(</span><span class="nf">pmax</span><span class="p">(</span><span class="n">s_raw</span><span class="p">,</span> <span class="n">minS</span><span class="p">),</span> <span class="n">maxS</span><span class="p">)</span>
+  <span class="n">r_raw</span> <span class="o">&lt;-</span> <span class="nf">pmin</span><span class="p">(</span><span class="nf">pmax</span><span class="p">(</span><span class="n">r_raw</span><span class="p">,</span> <span class="n">minR</span><span class="p">),</span> <span class="n">maxR</span><span class="p">)</span>
+
+  <span class="n">pC</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">c_raw</span> <span class="o">-</span> <span class="n">minC</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">maxC</span> <span class="o">-</span> <span class="n">minC</span><span class="p">)</span> <span class="o">*</span> <span class="m">100</span>
+  <span class="n">pS</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">s_raw</span> <span class="o">-</span> <span class="n">minS</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">maxS</span> <span class="o">-</span> <span class="n">minS</span><span class="p">)</span> <span class="o">*</span> <span class="m">100</span>
+  <span class="n">pR</span> <span class="o">&lt;-</span> <span class="m">100</span> <span class="o">-</span> <span class="p">(</span><span class="n">r_raw</span> <span class="o">-</span> <span class="n">minR</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">maxR</span> <span class="o">-</span> <span class="n">minR</span><span class="p">)</span> <span class="o">*</span> <span class="m">100</span>   <span class="c1"># SLA loads negatively</span>
+
+  <span class="n">k</span> <span class="o">&lt;-</span> <span class="m">100</span> <span class="o">/</span> <span class="p">(</span><span class="n">pC</span> <span class="o">+</span> <span class="n">pS</span> <span class="o">+</span> <span class="n">pR</span><span class="p">)</span>
+  <span class="nf">list</span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="n">pC</span> <span class="o">*</span> <span class="n">k</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">pS</span> <span class="o">*</span> <span class="n">k</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">pR</span> <span class="o">*</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># ── Apply to your data ────────────────────────────────────────────────────────</span>
+
+<span class="n">LA_COLS</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;X.X3114&quot;</span><span class="p">,</span> <span class="s">&quot;X.X3113&quot;</span><span class="p">,</span> <span class="s">&quot;X.X3112&quot;</span><span class="p">)</span>   <span class="c1"># preferred order</span>
+
+<span class="c1"># 1. Resolve LA first</span>
+<span class="n">gbif_group</span><span class="p">[,</span> <span class="n">LA_resolved</span> <span class="o">:=</span> <span class="nf">fcoalesce</span><span class="p">(</span><span class="n">.SD</span><span class="p">),</span> <span class="n">.SDcols</span> <span class="o">=</span> <span class="n">LA_COLS</span><span class="p">]</span>
+
+<span class="c1"># 2. Check units before computing</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">gbif_group</span><span class="p">[,</span> <span class="nf">.</span><span class="p">(</span><span class="n">LA_resolved</span><span class="p">,</span> <span class="n">X.X47</span><span class="p">,</span> <span class="n">X.X3117</span><span class="p">)])</span>
+
+<span class="c1"># 3. Compute CSR (LDMC g/g → %)</span>
+<span class="n">gbif_group</span><span class="p">[,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="s">&quot;S&quot;</span><span class="p">,</span> <span class="s">&quot;R&quot;</span><span class="p">)</span> <span class="o">:=</span> <span class="nf">stratefy</span><span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="n">LA_resolved</span><span class="p">,</span> <span class="n">X.X47</span> <span class="o">*</span> <span class="m">100</span><span class="p">,</span> <span class="n">X.X3117</span><span class="p">)]</span>
+
+<span class="c1"># 4. Summary</span>
+<span class="n">gbif_group</span><span class="p">[,</span> <span class="nf">.</span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),</span>
+               <span class="n">S</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),</span>
+               <span class="n">R</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)),</span> <span class="n">by</span> <span class="o">=</span> <span class="n">group</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  LA_resolved        X.X47          X.X3117      
+ Min.   :0.626   Min.   :0.070   Min.   : 3.143  
+ 1st Qu.:2.597   1st Qu.:0.257   1st Qu.:14.114  
+ Median :2.867   Median :0.284   Median :17.274  
+ Mean   :2.850   Mean   :0.293   Mean   :17.383  
+ 3rd Qu.:3.120   3rd Qu.:0.318   3rd Qu.:20.481  
+ Max.   :4.731   Max.   :0.656   Max.   :58.834  
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 2 × 4</caption>
+<thead>
+	<tr><th scope=col>group</th><th scope=col>C</th><th scope=col>S</th><th scope=col>R</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>all   </td><td>23.57530</td><td>50.75085</td><td>25.67385</td></tr>
+	<tr><td>native</td><td>23.66794</td><td>52.14462</td><td>24.18744</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">gbif_group</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 51</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>group</th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>mean_perc_na</th><th scope=col>⋯</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>X.X47</th><th scope=col>LA_resolved</th><th scope=col>C</th><th scope=col>S</th><th scope=col>R</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83001afffffffff</td><td>all   </td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td><td>10</td><td>4</td><td> 5.68</td><td>⋯</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td><td>1.449</td><td>0.9115658</td><td> 0.00000</td><td>99.08843</td></tr>
+	<tr><td>83001afffffffff</td><td>native</td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td><td>10</td><td>4</td><td> 5.68</td><td>⋯</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td><td>1.449</td><td>0.9115658</td><td> 0.00000</td><td>99.08843</td></tr>
+	<tr><td>83001cfffffffff</td><td>all   </td><td>-10.005360</td><td>-0.2380058</td><td> 0.2491376</td><td> 2.9137390</td><td>0.9757523</td><td> 1</td><td>1</td><td>16.22</td><td>⋯</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3166111</td><td>0.175</td><td>1.518</td><td>2.9437334</td><td>19.72053</td><td>77.33574</td></tr>
+	<tr><td>83001cfffffffff</td><td>native</td><td> -9.988809</td><td>-0.3014320</td><td> 0.2822225</td><td> 2.9136399</td><td>0.9666302</td><td> 1</td><td>1</td><td>16.22</td><td>⋯</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3291221</td><td>0.175</td><td>1.518</td><td>2.9437334</td><td>19.72053</td><td>77.33574</td></tr>
+	<tr><td>83001efffffffff</td><td>all   </td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td><td> 4</td><td>3</td><td> 3.38</td><td>⋯</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td><td>1.391</td><td>0.0000000</td><td>47.80706</td><td>52.19294</td></tr>
+	<tr><td>83001efffffffff</td><td>native</td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td><td> 4</td><td>3</td><td> 3.38</td><td>⋯</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td><td>1.391</td><td>0.0000000</td><td>47.80706</td><td>52.19294</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the updated data.table to a new CSV file</span>
+<span class="nf">fwrite</span><span class="p">(</span><span class="n">gbif_group</span><span class="p">,</span> <span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree_group_with_CSR.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ggtern&quot;</span><span class="p">)</span>  <span class="c1"># if needed</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggtern</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="c1"># Group means for the centroid markers</span>
+<span class="n">group_means</span> <span class="o">&lt;-</span> <span class="n">gbif_group</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">C</span><span class="p">),</span>
+                           <span class="nf">.</span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">C</span><span class="p">),</span> <span class="n">S</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">R</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">R</span><span class="p">)),</span>
+                           <span class="n">by</span> <span class="o">=</span> <span class="n">group</span><span class="p">]</span>
+
+<span class="c1"># CVD-friendly two-colour pair</span>
+<span class="n">cols</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">native</span> <span class="o">=</span> <span class="s">&quot;#2166AC&quot;</span><span class="p">,</span> <span class="n">all</span> <span class="o">=</span> <span class="s">&quot;#D95F02&quot;</span><span class="p">)</span>
+
+<span class="c1"># In ggtern: aes(x=) → left corner, aes(y=) → top, aes(z=) → right</span>
+<span class="c1"># Mapping: R bottom-left, C top, S bottom-right  (standard CSR layout)</span>
+<span class="nf">ggtern</span><span class="p">(</span><span class="n">data</span>    <span class="o">=</span> <span class="n">gbif_group</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">C</span><span class="p">)],</span>
+       <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">R</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">C</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">S</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">group</span><span class="p">))</span> <span class="o">+</span>
+
+  <span class="c1"># Density contours per group (shows the bulk of the distribution)</span>
+  <span class="nf">stat_density_tern</span><span class="p">(</span>
+    <span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">group</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="nf">after_stat</span><span class="p">(</span><span class="n">level</span><span class="p">)),</span>
+    <span class="n">geom</span>   <span class="o">=</span> <span class="s">&quot;polygon&quot;</span><span class="p">,</span>
+    <span class="n">colour</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span>
+    <span class="n">bins</span>   <span class="o">=</span> <span class="m">7</span>
+  <span class="p">)</span> <span class="o">+</span>
+
+  <span class="c1"># Individual pixels (very transparent — gives a sense of spread)</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="m">16</span><span class="p">)</span> <span class="o">+</span>
+
+  <span class="c1"># Group centroids as bold filled circles</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span>   <span class="o">=</span> <span class="n">group_means</span><span class="p">,</span>
+             <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">R</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">C</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">S</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">group</span><span class="p">),</span>
+             <span class="n">shape</span>  <span class="o">=</span> <span class="m">21</span><span class="p">,</span>
+             <span class="n">size</span>   <span class="o">=</span> <span class="m">3</span><span class="p">,</span>
+             <span class="n">colour</span> <span class="o">=</span> <span class="s">&quot;white&quot;</span><span class="p">,</span>
+             <span class="n">stroke</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span> <span class="o">+</span>
+
+  <span class="nf">scale_colour_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="n">cols</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">scale_fill_manual</span><span class="p">(</span>  <span class="n">values</span> <span class="o">=</span> <span class="n">cols</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">scale_alpha_continuous</span><span class="p">(</span><span class="n">range</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.05</span><span class="p">,</span> <span class="m">0.35</span><span class="p">),</span> <span class="n">guide</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">)</span> <span class="o">+</span>
+
+  <span class="c1"># Axis labels at the three corners</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;CSR functional strategy space&quot;</span><span class="p">,</span>
+       <span class="n">x</span>     <span class="o">=</span> <span class="s">&quot;R — Ruderal&quot;</span><span class="p">,</span>
+       <span class="n">y</span>     <span class="o">=</span> <span class="s">&quot;C — Competitor&quot;</span><span class="p">,</span>
+       <span class="n">z</span>     <span class="o">=</span> <span class="s">&quot;S — Stress-tolerator&quot;</span><span class="p">)</span> <span class="o">+</span>
+
+  <span class="nf">theme_rgbw</span><span class="p">()</span> <span class="o">+</span>
+  <span class="nf">theme_showarrows</span><span class="p">()</span> <span class="o">+</span>
+  <span class="nf">theme</span><span class="p">(</span>
+    <span class="n">legend.position</span>      <span class="o">=</span> <span class="s">&quot;bottom&quot;</span><span class="p">,</span>
+    <span class="n">legend.key</span>           <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+    <span class="n">plot.title</span>           <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">face</span> <span class="o">=</span> <span class="s">&quot;bold&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">13</span><span class="p">),</span>
+    <span class="n">tern.axis.title.size</span> <span class="o">=</span> <span class="m">0.9</span>
+  <span class="p">)</span>
+
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;csr_triangle.pdf&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4’
+(as ‘lib’ is unspecified)
+
+Warning message in geom_point(data = group_means, aes(x = R, y = C, z = S, fill = group), :
+“Ignoring unknown aesthetics: <span class=" -Color -Color-Green">z</span>”
+Warning message in ggint$plot_theme(plot):
+“The `tern.axis.title.size` theme element is not defined in the element
+hierarchy.”
+Warning message:
+“Removed 640 rows containing non-finite outside the scale range
+(`StatDensityTern()`).”
+Warning message:
+“stat_density_tern: You have not specified a below-detection-limit (bdl) value (Ref. &#39;bdl&#39; and &#39;bdl.val&#39; arguments in ?stat_density_tern). Presently you have 2x value/s below a detection limit of 0.001, which acounts for 0.022% of your data. Density values at fringes may appear abnormally high attributed to the mathematics of the ILR transformation. 
+You can either:
+1. Ignore this warning,
+2. Set the bdl value appropriately so that fringe values are omitted from the ILR calculation, or
+3. Accept the high density values if they exist, and manually set the &#39;breaks&#39; argument 
+   so that the countours at lower densities are represented appropriately.”
+Warning message:
+“Removed 811 rows containing non-finite outside the scale range
+(`StatDensityTern()`).”
+Warning message:
+“stat_density_tern: You have not specified a below-detection-limit (bdl) value (Ref. &#39;bdl&#39; and &#39;bdl.val&#39; arguments in ?stat_density_tern). Presently you have 6x value/s below a detection limit of 0.001, which acounts for 0.067% of your data. Density values at fringes may appear abnormally high attributed to the mathematics of the ILR transformation. 
+You can either:
+1. Ignore this warning,
+2. Set the bdl value appropriately so that fringe values are omitted from the ILR calculation, or
+3. Accept the high density values if they exist, and manually set the &#39;breaks&#39; argument 
+   so that the countours at lower densities are represented appropriately.”
+Warning message in ggint$plot_theme(plot):
+“The `tern.axis.title.size` theme element is not defined in the element
+hierarchy.”
+Warning message in ggint$plot_theme(plot):
+“The `tern.axis.title.size` theme element is not defined in the element
+hierarchy.”
+Warning message in ggint$plot_theme(plot):
+“The `tern.axis.title.size` theme element is not defined in the element
+hierarchy.”
+Warning message:
+“Removed 640 rows containing non-finite outside the scale range
+(`StatDensityTern()`).”
+Warning message:
+“stat_density_tern: You have not specified a below-detection-limit (bdl) value (Ref. &#39;bdl&#39; and &#39;bdl.val&#39; arguments in ?stat_density_tern). Presently you have 2x value/s below a detection limit of 0.001, which acounts for 0.022% of your data. Density values at fringes may appear abnormally high attributed to the mathematics of the ILR transformation. 
+You can either:
+1. Ignore this warning,
+2. Set the bdl value appropriately so that fringe values are omitted from the ILR calculation, or
+3. Accept the high density values if they exist, and manually set the &#39;breaks&#39; argument 
+   so that the countours at lower densities are represented appropriately.”
+Warning message:
+“Removed 811 rows containing non-finite outside the scale range
+(`StatDensityTern()`).”
+Warning message:
+“stat_density_tern: You have not specified a below-detection-limit (bdl) value (Ref. &#39;bdl&#39; and &#39;bdl.val&#39; arguments in ?stat_density_tern). Presently you have 6x value/s below a detection limit of 0.001, which acounts for 0.067% of your data. Density values at fringes may appear abnormally high attributed to the mathematics of the ILR transformation. 
+You can either:
+1. Ignore this warning,
+2. Set the bdl value appropriately so that fringe values are omitted from the ILR calculation, or
+3. Accept the high density values if they exist, and manually set the &#39;breaks&#39; argument 
+   so that the countours at lower densities are represented appropriately.”
+Warning message in ggint$plot_theme(plot):
+“The `tern.axis.title.size` theme element is not defined in the element
+hierarchy.”
+Warning message in ggint$plot_theme(plot):
+“The `tern.axis.title.size` theme element is not defined in the element
+hierarchy.”
+Warning message in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+“for &#39;C — Competitor&#39; in &#39;mbcsToSbcs&#39;: - substituted for — (U+2014)”
+Warning message in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+“for &#39;R — Ruderal&#39; in &#39;mbcsToSbcs&#39;: - substituted for — (U+2014)”
+Warning message in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+“for &#39;S — Stress-tolerator&#39; in &#39;mbcsToSbcs&#39;: - substituted for — (U+2014)”
+Warning message in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+“for &#39;C — Competitor&#39; in &#39;mbcsToSbcs&#39;: - substituted for — (U+2014)”
+Warning message in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+“for &#39;R — Ruderal&#39; in &#39;mbcsToSbcs&#39;: - substituted for — (U+2014)”
+Warning message in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+“for &#39;S — Stress-tolerator&#39; in &#39;mbcsToSbcs&#39;: - substituted for — (U+2014)”
+</pre></div>
+</div>
+<img alt="_images/14.1_CSR_7_1.png" src="_images/14.1_CSR_7_1.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "rstudio_r"
+        },
+        kernelOptions: {
+            kernelName: "rstudio_r",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'rstudio_r'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02_trait_env_xgboost_shap.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="14.2_Plot_global_maps_CSR.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plot global gradients of main principal components</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

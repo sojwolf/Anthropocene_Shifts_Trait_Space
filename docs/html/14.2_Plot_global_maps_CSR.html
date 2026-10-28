@@ -1,0 +1,1359 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Plot global gradients of main principal components &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CSR PC123 Symbolic Regression" href="14.3_CSR_symbolic_regression.html" />
+    <link rel="prev" title="CSR global" href="14.1_CSR.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/14.2_Plot_global_maps_CSR.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F14.2_Plot_global_maps_CSR.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/14.2_Plot_global_maps_CSR.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-summary-stats-at-hexagon-level">
+   Load summary stats at hexagon level
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#map-hexagons">
+   Map hexagons
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-geodataframe-and-clean-geometries">
+     Create GeoDataFrame and Clean Geometries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-world-map">
+     Plot world map
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rgb-map">
+   RGB map
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Plot global gradients of main principal components</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-summary-stats-at-hexagon-level">
+   Load summary stats at hexagon level
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#map-hexagons">
+   Map hexagons
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-geodataframe-and-clean-geometries">
+     Create GeoDataFrame and Clean Geometries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-world-map">
+     Plot world map
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rgb-map">
+   RGB map
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="plot-global-gradients-of-main-principal-components">
+<h1>Plot global gradients of main principal components<a class="headerlink" href="#plot-global-gradients-of-main-principal-components" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pwd
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/Func_Neo_Phytes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set working directory</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/net/home/swolf/Func_Neo_Phytes/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-summary-stats-at-hexagon-level">
+<h2>Load summary stats at hexagon level<a class="headerlink" href="#load-summary-stats-at-hexagon-level" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">h3pandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree_group_with_CSR.csv&quot;</span><span class="p">)</span>
+<span class="n">summary_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>h3_res3</th>
+      <th>group</th>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>PC3</th>
+      <th>PC4</th>
+      <th>PC5</th>
+      <th>count</th>
+      <th>count_sp</th>
+      <th>mean_perc_na</th>
+      <th>...</th>
+      <th>X.X95</th>
+      <th>X.X138</th>
+      <th>X.X1080</th>
+      <th>X.X78</th>
+      <th>X.X4</th>
+      <th>X.X47</th>
+      <th>LA_resolved</th>
+      <th>C</th>
+      <th>S</th>
+      <th>R</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>83001afffffffff</td>
+      <td>all</td>
+      <td>-10.334354</td>
+      <td>1.322861</td>
+      <td>-1.725583</td>
+      <td>1.041462</td>
+      <td>2.158910</td>
+      <td>10</td>
+      <td>4</td>
+      <td>5.68</td>
+      <td>...</td>
+      <td>85.452</td>
+      <td>2.183</td>
+      <td>3.140</td>
+      <td>-0.547</td>
+      <td>0.333000</td>
+      <td>0.152</td>
+      <td>1.449</td>
+      <td>0.911566</td>
+      <td>0.000000</td>
+      <td>99.088434</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>83001afffffffff</td>
+      <td>native</td>
+      <td>-10.334354</td>
+      <td>1.322861</td>
+      <td>-1.725583</td>
+      <td>1.041462</td>
+      <td>2.158910</td>
+      <td>10</td>
+      <td>4</td>
+      <td>5.68</td>
+      <td>...</td>
+      <td>85.452</td>
+      <td>2.183</td>
+      <td>3.140</td>
+      <td>-0.547</td>
+      <td>0.333000</td>
+      <td>0.152</td>
+      <td>1.449</td>
+      <td>0.911566</td>
+      <td>0.000000</td>
+      <td>99.088434</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>83001cfffffffff</td>
+      <td>all</td>
+      <td>-10.005360</td>
+      <td>-0.238006</td>
+      <td>0.249138</td>
+      <td>2.913739</td>
+      <td>0.975752</td>
+      <td>1</td>
+      <td>1</td>
+      <td>16.22</td>
+      <td>...</td>
+      <td>92.099</td>
+      <td>2.545</td>
+      <td>3.121</td>
+      <td>-0.563</td>
+      <td>0.316611</td>
+      <td>0.175</td>
+      <td>1.518</td>
+      <td>2.943733</td>
+      <td>19.720529</td>
+      <td>77.335738</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>83001cfffffffff</td>
+      <td>native</td>
+      <td>-9.988809</td>
+      <td>-0.301432</td>
+      <td>0.282222</td>
+      <td>2.913640</td>
+      <td>0.966630</td>
+      <td>1</td>
+      <td>1</td>
+      <td>16.22</td>
+      <td>...</td>
+      <td>92.099</td>
+      <td>2.545</td>
+      <td>3.121</td>
+      <td>-0.563</td>
+      <td>0.329122</td>
+      <td>0.175</td>
+      <td>1.518</td>
+      <td>2.943733</td>
+      <td>19.720529</td>
+      <td>77.335738</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>83001efffffffff</td>
+      <td>all</td>
+      <td>-10.690103</td>
+      <td>-0.871359</td>
+      <td>-0.945247</td>
+      <td>-0.268565</td>
+      <td>1.311954</td>
+      <td>4</td>
+      <td>3</td>
+      <td>3.38</td>
+      <td>...</td>
+      <td>88.269</td>
+      <td>2.311</td>
+      <td>3.671</td>
+      <td>-1.933</td>
+      <td>0.409000</td>
+      <td>0.211</td>
+      <td>1.391</td>
+      <td>0.000000</td>
+      <td>47.807063</td>
+      <td>52.192937</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 51 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="map-hexagons">
+<h2>Map hexagons<a class="headerlink" href="#map-hexagons" title="Permalink to this headline">#</a></h2>
+<section id="create-geodataframe-and-clean-geometries">
+<h3>Create GeoDataFrame and Clean Geometries<a class="headerlink" href="#create-geodataframe-and-clean-geometries" title="Permalink to this headline">#</a></h3>
+<p>This code block converts H3 hexagon indices to polygons, wraps longitudes to the range [-180, 180], and creates a GeoDataFrame. Invalid geometries and polygons spanning more than 180° longitude are removed to ensure clean and accurate spatial data for further analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_df</span> <span class="o">=</span> <span class="n">summary_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">h3</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
+<span class="kn">from</span> <span class="nn">shapely.ops</span> <span class="kn">import</span> <span class="n">transform</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+<span class="c1"># Function to convert H3 cell to polygon</span>
+<span class="k">def</span> <span class="nf">h3_to_polygon</span><span class="p">(</span><span class="n">h3_index</span><span class="p">):</span>
+    <span class="n">boundary</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">h3_to_geo_boundary</span><span class="p">(</span><span class="n">h3_index</span><span class="p">,</span> <span class="n">geo_json</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">boundary</span><span class="p">)</span>
+
+<span class="c1"># Function to wrap longitudes to [-180, 180]</span>
+<span class="k">def</span> <span class="nf">wrap_geometry</span><span class="p">(</span><span class="n">geom</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrap_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">x_wrapped</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span>
+        <span class="k">return</span> <span class="n">x_wrapped</span><span class="p">,</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">wrap_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">geom</span><span class="p">)</span>
+
+<span class="c1"># Build geometry column</span>
+<span class="n">final_df</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">final_df</span><span class="p">[</span><span class="s2">&quot;h3_res3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">wrap_geometry</span><span class="p">(</span><span class="n">h3_to_polygon</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="c1"># Create GeoDataFrame</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">final_df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+
+<span class="c1"># Fix column names</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+
+<span class="c1"># 💥 Remove invalid geometries and those spanning too much longitude</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">is_valid</span><span class="p">]</span>  <span class="c1"># remove invalid</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">maxx</span> <span class="o">-</span> <span class="n">gdf</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">minx</span> <span class="o">&lt;</span> <span class="mi">180</span><span class="p">]</span>  <span class="c1"># remove polygons &gt;180° wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_95540/3219989185.py:28: FutureWarning: The default value of regex will change from True to False in a future version. In addition, single character regular expressions will *not* be treated as literal strings when regex=True.
+  gdf.columns = gdf.columns.str.replace(&#39;.&#39;, &#39;_&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-world-map">
+<h3>Plot world map<a class="headerlink" href="#plot-world-map" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define your custom colors</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;#2ed5c9&quot;</span><span class="p">,</span> <span class="s2">&quot;#FFDAB9&quot;</span><span class="p">,</span> <span class="s2">&quot;#FF6F61&quot;</span><span class="p">]</span>
+
+<span class="c1"># Create the colormap</span>
+<span class="n">native_non_cmap</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s2">&quot;custom_gradient&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="p">)</span>
+
+<span class="c1"># OPTIONAL: Visualize it with a gradient bar</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">native_non_cmap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Custom Gradient: Coral → Peach → Soft Turquoise&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/14.2_Plot_global_maps_CSR_11_0.png" src="_images/14.2_Plot_global_maps_CSR_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
+
+<span class="c1"># Define your colors</span>
+<span class="n">low_color</span> <span class="o">=</span> <span class="s2">&quot;#2F86AC&quot;</span>      <span class="c1"># like native_color</span>
+<span class="n">mid_color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="n">high_color</span> <span class="o">=</span> <span class="s2">&quot;#b02f2c&quot;</span>     <span class="c1"># like all_color</span>
+
+<span class="c1"># Create a custom diverging colormap</span>
+<span class="n">div_cmap</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span>
+    <span class="s2">&quot;custom_diverging&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">low_color</span><span class="p">,</span> <span class="n">mid_color</span><span class="p">,</span> <span class="n">high_color</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">output_suffix</span><span class="o">=</span><span class="s2">&quot;meanbased_trim01_GBIF_wcvp_CS_log10_notrim_LCweighted&quot;</span><span class="p">):</span>
+    
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+    <span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Results/Figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Loop over columns matching the pattern</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pattern</span><span class="p">)]:</span>
+
+        <span class="c1"># -------------------------</span>
+        <span class="c1"># Set colour scale</span>
+        <span class="c1"># -------------------------</span>
+
+        <span class="k">if</span> <span class="s2">&quot;percent_change&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;rank_biserial_r&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;perc_naturalized&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;conifer_percentage&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;annual_percentage&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">40</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu_r&quot;</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC1_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC2_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC3_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC4_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;PC5_diff&quot;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;PC1_diff&quot;</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+            <span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">))</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">column</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;urban_diff&quot;</span><span class="p">,</span> <span class="s2">&quot;nat_diff&quot;</span><span class="p">,</span> <span class="s2">&quot;crop_diff&quot;</span><span class="p">]):</span>
+            <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">div_cmap</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="mi">99</span><span class="p">)</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlGnBu&quot;</span>
+
+        <span class="c1"># -------------------------</span>
+        <span class="c1"># Create map</span>
+        <span class="c1"># -------------------------</span>
+
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+            <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">()}</span>
+        <span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span>
+            <span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;#afafafff&quot;</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span>
+            <span class="n">cfeature</span><span class="o">.</span><span class="n">OCEAN</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;#dad8eaff&quot;</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleXon</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleYon</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Plot hexagons</span>
+        <span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+            <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+            <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.45</span><span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2"> per hexagon&quot;</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">spine</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;#dad8eaff&quot;</span><span class="p">)</span>
+            <span class="n">spine</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+        <span class="c1"># -------------------------</span>
+        <span class="c1"># Save</span>
+        <span class="c1"># -------------------------</span>
+
+        <span class="n">output_path</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Results/Figures/&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">output_suffix</span><span class="si">}</span><span class="s2">.png&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="n">output_path</span><span class="p">,</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot PC axes 1-5 for all and native</span>
+
+<span class="n">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">plot_maps</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:256: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  line_strings = list(multi_line_string)
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:256: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  line_strings = list(multi_line_string)
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:402: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  line_strings.extend(multi_line_string)
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:402: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  line_strings.extend(multi_line_string)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/C_meanbased_trim01_GBIF_wcvp_CS_log10_notrim_LCweighted.png
+</pre></div>
+</div>
+<img alt="_images/14.2_Plot_global_maps_CSR_14_2.png" src="_images/14.2_Plot_global_maps_CSR_14_2.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/S_meanbased_trim01_GBIF_wcvp_CS_log10_notrim_LCweighted.png
+</pre></div>
+</div>
+<img alt="_images/14.2_Plot_global_maps_CSR_14_5.png" src="_images/14.2_Plot_global_maps_CSR_14_5.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/R_meanbased_trim01_GBIF_wcvp_CS_log10_notrim_LCweighted.png
+</pre></div>
+</div>
+<img alt="_images/14.2_Plot_global_maps_CSR_14_8.png" src="_images/14.2_Plot_global_maps_CSR_14_8.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="rgb-map">
+<h2>RGB map<a class="headerlink" href="#rgb-map" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">h3</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
+
+<span class="c1"># ── 1. Long → wide: one row per hexagon ──────────────────────────────────────</span>
+<span class="n">wide</span> <span class="o">=</span> <span class="n">summary_data</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;h3_res3&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;count_sp&quot;</span><span class="p">])</span>
+<span class="n">wide</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">grp</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">grp</span> <span class="ow">in</span> <span class="n">wide</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>   <span class="c1"># → C_all, C_native, ...</span>
+<span class="n">wide</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># ── 2. Hexagon polygons ──────────────────────────────────────────────────────</span>
+<span class="k">def</span> <span class="nf">hex_polygon</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">h3</span><span class="p">,</span> <span class="s2">&quot;cell_to_boundary&quot;</span><span class="p">):</span>                    <span class="c1"># h3 v4</span>
+        <span class="k">return</span> <span class="n">Polygon</span><span class="p">([(</span><span class="n">lng</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span> <span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lng</span> <span class="ow">in</span> <span class="n">h3</span><span class="o">.</span><span class="n">cell_to_boundary</span><span class="p">(</span><span class="n">cell</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">h3</span><span class="o">.</span><span class="n">h3_to_geo_boundary</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">geo_json</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>   <span class="c1"># h3 v3: already (lng, lat)</span>
+
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">wide</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">wide</span><span class="p">[</span><span class="s2">&quot;h3_res3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">hex_polygon</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+
+<span class="c1"># Drop hexagons crossing the antimeridian (they&#39;d smear across the whole map)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[(</span><span class="n">gdf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="s2">&quot;maxx&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">gdf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="s2">&quot;minx&quot;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">180</span><span class="p">]</span>
+
+<span class="c1"># ── 3. Drop species-poor hexagons ────────────────────────────────────────────</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;count_sp_native&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;count_sp_all&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)]</span>
+
+<span class="c1"># ── 4. Plot (functions from before) ──────────────────────────────────────────</span>
+<span class="n">cols_native</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;C_native&quot;</span><span class="p">,</span> <span class="s2">&quot;S_native&quot;</span><span class="p">,</span> <span class="s2">&quot;R_native&quot;</span><span class="p">)</span>
+<span class="n">cols_all</span>    <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;C_all&quot;</span><span class="p">,</span>    <span class="s2">&quot;S_all&quot;</span><span class="p">,</span>    <span class="s2">&quot;R_all&quot;</span><span class="p">)</span>
+
+<span class="n">lims</span> <span class="o">=</span> <span class="n">stretch_limits</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="p">[</span><span class="n">cols_native</span><span class="p">,</span> <span class="n">cols_all</span><span class="p">])</span>
+<span class="n">plot_csr_rgb</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">cols_native</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;CSR native&quot;</span><span class="p">,</span> <span class="s2">&quot;rgb_stretched&quot;</span><span class="p">)</span>
+<span class="n">plot_csr_rgb</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">cols_all</span><span class="p">,</span>    <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;CSR all&quot;</span><span class="p">,</span>    <span class="s2">&quot;rgb_stretched&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/CSR_native_rgb_stretched.png
+</pre></div>
+</div>
+<img alt="_images/14.2_Plot_global_maps_CSR_16_2.png" src="_images/14.2_Plot_global_maps_CSR_16_2.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/CSR_all_rgb_stretched.png
+</pre></div>
+</div>
+<img alt="_images/14.2_Plot_global_maps_CSR_16_5.png" src="_images/14.2_Plot_global_maps_CSR_16_5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+
+<span class="k">def</span> <span class="nf">csr_to_rgb</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">lims</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;C, S, R in % → N×3 RGB (C=red, S=green, R=blue).</span>
+<span class="sd">    lims=(lo, hi): per-channel stretch, arrays of length 3 in 0–1 units.&quot;&quot;&quot;</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">R</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="k">if</span> <span class="n">lims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="n">lims</span>
+        <span class="n">rgb</span> <span class="o">=</span> <span class="p">(</span><span class="n">rgb</span> <span class="o">-</span> <span class="n">lo</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">stretch_limits</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">col_sets</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">98</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;Shared stretch across several maps (e.g. native + all) so colours are comparable.&quot;&quot;&quot;</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">gdf</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">cols</span><span class="p">)]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="k">for</span> <span class="n">cols</span> <span class="ow">in</span> <span class="n">col_sets</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">ternary_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Coloured CSR triangle (C top, S bottom-left, R bottom-right) + data points.&quot;&quot;&quot;</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">res</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">res</span><span class="p">))</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">c</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">c</span> <span class="o">-</span> <span class="n">r</span>
+    <span class="n">inside</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">s</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">csr_to_rgb</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">lims</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">([</span><span class="n">rgb</span><span class="p">,</span> <span class="n">inside</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)]),</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>   <span class="c1"># where the hexagons actually fall</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span> <span class="o">/</span> <span class="mi">100</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">h</span> <span class="o">*</span> <span class="n">d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+                   <span class="n">s</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.04</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.04</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="mf">1.12</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mf">0.15</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_csr_rgb</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">output_suffix</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Results/Figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">cols</span><span class="p">))</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">csr_to_rgb</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">),</span> <span class="n">lims</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">()})</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleXon</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">_autoscaleYon</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;#afafafff&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">OCEAN</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;#dad8eaff&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+
+    <span class="n">g</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">rgb</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">spine</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;#dad8eaff&quot;</span><span class="p">);</span> <span class="n">spine</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+    <span class="n">leg</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">])</span>   <span class="c1"># adjust position as needed</span>
+    <span class="n">ternary_legend</span><span class="p">(</span><span class="n">leg</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">g</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">cols</span><span class="p">)]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Results/Figures/</span><span class="si">{</span><span class="n">title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">output_suffix</span><span class="si">}</span><span class="s2">.png&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="c1"># ── Usage: adjust column names to yours ──────────────────────────────────────</span>
+<span class="n">cols_native</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;C_native&quot;</span><span class="p">,</span> <span class="s2">&quot;S_native&quot;</span><span class="p">,</span> <span class="s2">&quot;R_native&quot;</span><span class="p">)</span>
+<span class="n">cols_all</span>    <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;C_all&quot;</span><span class="p">,</span>    <span class="s2">&quot;S_all&quot;</span><span class="p">,</span>    <span class="s2">&quot;R_all&quot;</span><span class="p">)</span>
+
+<span class="n">lims</span> <span class="o">=</span> <span class="n">stretch_limits</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="p">[</span><span class="n">cols_native</span><span class="p">,</span> <span class="n">cols_all</span><span class="p">])</span>   <span class="c1"># one shared stretch</span>
+
+<span class="n">plot_csr_rgb</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">cols_native</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;CSR native&quot;</span><span class="p">,</span> <span class="s2">&quot;rgb_stretched&quot;</span><span class="p">)</span>
+<span class="n">plot_csr_rgb</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">cols_all</span><span class="p">,</span>    <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;CSR all&quot;</span><span class="p">,</span>    <span class="s2">&quot;rgb_stretched&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/CSR_native_rgb_stretched.png
+</pre></div>
+</div>
+<img alt="_images/14.2_Plot_global_maps_CSR_17_2.png" src="_images/14.2_Plot_global_maps_CSR_17_2.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:245: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:297: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/cartopy/crs.py:364: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results/Figures/CSR_all_rgb_stretched.png
+</pre></div>
+</div>
+<img alt="_images/14.2_Plot_global_maps_CSR_17_5.png" src="_images/14.2_Plot_global_maps_CSR_17_5.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="14.1_CSR.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">CSR global</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="14.3_CSR_symbolic_regression.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CSR PC123 Symbolic Regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

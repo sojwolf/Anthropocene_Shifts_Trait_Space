@@ -1,0 +1,1290 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Longevity Data &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Human Population density" href="12_human_pop.html" />
+    <link rel="prev" title="Preprocessing and filtering data" href="11.1_conifers_longevity_preprocessing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/11.2_longevity.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F11.2_longevity.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/11.2_longevity.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Longevity Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="longevity-data">
+<h1>Longevity Data<a class="headerlink" href="#longevity-data" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read ~/Func_Neo_Phytes/Data/TRY/47270_17022026112317/47270.txt as pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;~/Func_Neo_Phytes/Data/TRY/47270_17022026112317/47270.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LastName</th>
+      <th>FirstName</th>
+      <th>DatasetID</th>
+      <th>Dataset</th>
+      <th>SpeciesName</th>
+      <th>AccSpeciesID</th>
+      <th>AccSpeciesName</th>
+      <th>ObservationID</th>
+      <th>ObsDataID</th>
+      <th>TraitID</th>
+      <th>...</th>
+      <th>Replicates</th>
+      <th>StdValue</th>
+      <th>UnitName</th>
+      <th>RelUncertaintyPercent</th>
+      <th>OrigObsDataID</th>
+      <th>ErrorRisk</th>
+      <th>Reference</th>
+      <th>Comment</th>
+      <th>StdValueStr</th>
+      <th>Unnamed: 28</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Cornelissen</td>
+      <td>Johannes</td>
+      <td>1</td>
+      <td>Abisko &amp; Sheffield Database</td>
+      <td>Achillea millefolium</td>
+      <td>909</td>
+      <td>Achillea millefolium</td>
+      <td>15141</td>
+      <td>432393</td>
+      <td>59.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>year</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Cornelissen, J. H. C., H. M. Quested, D. Gwynn...</td>
+      <td>P=Perennial, A=Annual</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cornelissen</td>
+      <td>Johannes</td>
+      <td>1</td>
+      <td>Abisko &amp; Sheffield Database</td>
+      <td>Angelica sylvestris</td>
+      <td>3738</td>
+      <td>Angelica sylvestris</td>
+      <td>15144</td>
+      <td>432400</td>
+      <td>59.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>year</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Cornelissen, J. H. C., H. M. Quested, D. Gwynn...</td>
+      <td>P=Perennial, A=Annual</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cornelissen</td>
+      <td>Johannes</td>
+      <td>1</td>
+      <td>Abisko &amp; Sheffield Database</td>
+      <td>Anthriscus sylvsteris</td>
+      <td>4045</td>
+      <td>Anthriscus sylvestris</td>
+      <td>15145</td>
+      <td>432403</td>
+      <td>59.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>year</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Cornelissen, J. H. C., H. M. Quested, D. Gwynn...</td>
+      <td>P=Perennial, A=Annual</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Cornelissen</td>
+      <td>Johannes</td>
+      <td>1</td>
+      <td>Abisko &amp; Sheffield Database</td>
+      <td>Bartsia alpina</td>
+      <td>6930</td>
+      <td>Bartsia alpina</td>
+      <td>15149</td>
+      <td>432411</td>
+      <td>59.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>year</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Cornelissen, J. H. C., H. M. Quested, D. Gwynn...</td>
+      <td>P=Perennial, A=Annual</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Cornelissen</td>
+      <td>Johannes</td>
+      <td>1</td>
+      <td>Abisko &amp; Sheffield Database</td>
+      <td>Caltha palustris</td>
+      <td>9768</td>
+      <td>Caltha palustris</td>
+      <td>15153</td>
+      <td>432422</td>
+      <td>59.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>year</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Cornelissen, J. H. C., H. M. Quested, D. Gwynn...</td>
+      <td>P=Perennial, A=Annual</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 29 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of unique values in &quot;AccSpeciesName&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;AccSpeciesName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24672
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># column names</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;LastName&#39;, &#39;FirstName&#39;, &#39;DatasetID&#39;, &#39;Dataset&#39;, &#39;SpeciesName&#39;,
+       &#39;AccSpeciesID&#39;, &#39;AccSpeciesName&#39;, &#39;ObservationID&#39;, &#39;ObsDataID&#39;,
+       &#39;TraitID&#39;, &#39;TraitName&#39;, &#39;DataID&#39;, &#39;DataName&#39;, &#39;OriglName&#39;,
+       &#39;OrigValueStr&#39;, &#39;OrigUnitStr&#39;, &#39;ValueKindName&#39;, &#39;OrigUncertaintyStr&#39;,
+       &#39;UncertaintyName&#39;, &#39;Replicates&#39;, &#39;StdValue&#39;, &#39;UnitName&#39;,
+       &#39;RelUncertaintyPercent&#39;, &#39;OrigObsDataID&#39;, &#39;ErrorRisk&#39;, &#39;Reference&#39;,
+       &#39;Comment&#39;, &#39;StdValueStr&#39;, &#39;Unnamed: 28&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter for columns &#39;StdValueStr&#39;, &#39;OrigValueStr&#39;, &#39;OrigUnitStr&#39;, &#39;TraitID&#39;, &#39;AccSpeciesID&#39;, &#39;AccSpeciesName&#39;</span>
+<span class="n">df_longevity</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;StdValueStr&#39;</span><span class="p">,</span> <span class="s1">&#39;OrigValueStr&#39;</span><span class="p">,</span> <span class="s1">&#39;OrigUnitStr&#39;</span><span class="p">,</span> <span class="s1">&#39;TraitID&#39;</span><span class="p">,</span> <span class="s1">&#39;AccSpeciesID&#39;</span><span class="p">,</span> <span class="s1">&#39;AccSpeciesName&#39;</span><span class="p">,</span> <span class="s1">&#39;Comment&#39;</span><span class="p">]]</span>
+<span class="n">df_longevity</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>StdValueStr</th>
+      <th>OrigValueStr</th>
+      <th>OrigUnitStr</th>
+      <th>TraitID</th>
+      <th>AccSpeciesID</th>
+      <th>AccSpeciesName</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>909</td>
+      <td>Achillea millefolium</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>3738</td>
+      <td>Angelica sylvestris</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>4045</td>
+      <td>Anthriscus sylvestris</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>6930</td>
+      <td>Bartsia alpina</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>9768</td>
+      <td>Caltha palustris</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>NaN</td>
+      <td>100-160</td>
+      <td>m</td>
+      <td>NaN</td>
+      <td>56268</td>
+      <td>Veronica persica</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>NaN</td>
+      <td>annual</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>6328</td>
+      <td>Avena barbata</td>
+      <td>Lifespan: annual ; perennial</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>NaN</td>
+      <td>43.85</td>
+      <td>degree</td>
+      <td>NaN</td>
+      <td>6328</td>
+      <td>Avena barbata</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>NaN</td>
+      <td>3.93</td>
+      <td>degree</td>
+      <td>NaN</td>
+      <td>6328</td>
+      <td>Avena barbata</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>NaN</td>
+      <td>100-160</td>
+      <td>m</td>
+      <td>NaN</td>
+      <td>6328</td>
+      <td>Avena barbata</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter for &quot;annual&quot; or &quot;perennial&quot; in &quot;OrigValueStr&quot;</span>
+<span class="n">df_longevity_cat</span> <span class="o">=</span> <span class="n">df_longevity</span><span class="p">[</span><span class="n">df_longevity</span><span class="p">[</span><span class="s1">&#39;OrigValueStr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;annual&#39;</span><span class="p">,</span> <span class="s1">&#39;perennial&#39;</span><span class="p">])]</span>
+<span class="n">df_longevity_cat</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>StdValueStr</th>
+      <th>OrigValueStr</th>
+      <th>OrigUnitStr</th>
+      <th>TraitID</th>
+      <th>AccSpeciesID</th>
+      <th>AccSpeciesName</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>909</td>
+      <td>Achillea millefolium</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>3738</td>
+      <td>Angelica sylvestris</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>4045</td>
+      <td>Anthriscus sylvestris</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>6930</td>
+      <td>Bartsia alpina</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>perennial</td>
+      <td>NN</td>
+      <td>59.0</td>
+      <td>9768</td>
+      <td>Caltha palustris</td>
+      <td>P=Perennial, A=Annual</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_longevity_cat</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(38760, 7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># keep only columns &quot;AccSpeciesName&quot; and &quot;OrigValueStr&quot;</span>
+<span class="n">df_longevity_cat</span> <span class="o">=</span> <span class="n">df_longevity_cat</span><span class="p">[[</span><span class="s1">&#39;AccSpeciesName&#39;</span><span class="p">,</span> <span class="s1">&#39;OrigValueStr&#39;</span><span class="p">]]</span>
+<span class="n">df_longevity_cat</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AccSpeciesName</th>
+      <th>OrigValueStr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Achillea millefolium</td>
+      <td>perennial</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Angelica sylvestris</td>
+      <td>perennial</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Anthriscus sylvestris</td>
+      <td>perennial</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Bartsia alpina</td>
+      <td>perennial</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Caltha palustris</td>
+      <td>perennial</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter for unique rows</span>
+<span class="n">df_longevity_cat</span> <span class="o">=</span> <span class="n">df_longevity_cat</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">df_longevity_cat</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AccSpeciesName</th>
+      <th>OrigValueStr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Achillea millefolium</td>
+      <td>perennial</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Angelica sylvestris</td>
+      <td>perennial</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Anthriscus sylvestris</td>
+      <td>perennial</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Bartsia alpina</td>
+      <td>perennial</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Caltha palustris</td>
+      <td>perennial</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get dimensions of df_longevity_cat</span>
+<span class="n">df_longevity_cat</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(23978, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of unique values for &quot;AccSpeciesName&quot;</span>
+<span class="n">df_longevity_cat</span><span class="p">[</span><span class="s1">&#39;AccSpeciesName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21254
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save df_longevity_cat as csv</span>
+<span class="n">df_longevity_cat</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;~/Func_Neo_Phytes/Data/TRY/47270_17022026112317/47270_longevity_categorical.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># unique values for &quot;OrigValueStr&quot;</span>
+<span class="n">df_longevity</span><span class="p">[</span><span class="s1">&#39;OrigValueStr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="c1"># count unique values for &quot;OrigValueStr&quot;</span>
+<span class="c1">#df_longevity[&#39;OrigValueStr&#39;].nunique()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;perennial&#39;, &#39;annual&#39;, &#39;43.85&#39;, ..., &#39;1.0094&#39;, &#39;1.0321&#39;, &#39;1.0201&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter for values in &quot;OrigValueStr&quot; that are numeric</span>
+<span class="n">df_longevity_numeric</span> <span class="o">=</span> <span class="n">df_longevity</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">df_longevity</span><span class="p">[</span><span class="s1">&#39;OrigValueStr&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">df_longevity</span><span class="p">[</span><span class="s1">&#39;OrigValueStr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()]</span>
+<span class="n">df_longevity_numeric</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>StdValueStr</th>
+      <th>OrigValueStr</th>
+      <th>OrigUnitStr</th>
+      <th>TraitID</th>
+      <th>AccSpeciesID</th>
+      <th>AccSpeciesName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>151</th>
+      <td>NaN</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>839</td>
+      <td>Acer monspessulanum</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>NaN</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>839</td>
+      <td>Acer monspessulanum</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>NaN</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>839</td>
+      <td>Acer monspessulanum</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>NaN</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>909</td>
+      <td>Achillea millefolium</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>NaN</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>909</td>
+      <td>Achillea millefolium</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get info on &quot;OrigValueStr&quot; column</span>
+<span class="n">df_longevity_numeric</span><span class="p">[</span><span class="s1">&#39;OrigValueStr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    74220.000000
+mean      2049.219051
+std       7037.661981
+min          0.000000
+25%          8.000000
+50%         77.000000
+75%        781.000000
+max      61197.000000
+Name: OrigValueStr, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="11.1_conifers_longevity_preprocessing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Preprocessing and filtering data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="12_human_pop.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Human Population density</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

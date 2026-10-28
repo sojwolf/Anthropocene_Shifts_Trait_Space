@@ -1,0 +1,991 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Preprocessing and filtering data &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Preprocessing and filtering TRY" href="01.2_TRY_preprocessing.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/01.1_GBIF_preprocessing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F01.1_GBIF_preprocessing.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/01.1_GBIF_preprocessing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-and-initial-filtering-of-gbif-data">
+   Import and initial filtering of GBIF data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spatial-cleaning">
+   Spatial Cleaning
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Preprocessing and filtering data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-and-initial-filtering-of-gbif-data">
+   Import and initial filtering of GBIF data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spatial-cleaning">
+   Spatial Cleaning
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="preprocessing-and-filtering-data">
+<h1>Preprocessing and filtering data<a class="headerlink" href="#preprocessing-and-filtering-data" title="Permalink to this headline">#</a></h1>
+<p>Set path to include RStudio packages</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">CoordinateCleaner</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dggridR</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">terra</span><span class="p">)</span> <span class="c1">#for intersection of points</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">readxl</span><span class="p">)</span> <span class="c1">#to read GloNAF files</span>
+
+
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;~/Func_Neo_Phytes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr    </span> 1.1.4     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr    </span> 2.1.5
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats  </span> 1.0.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr  </span> 1.5.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2  </span> 3.5.1     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble   </span> 3.2.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">lubridate</span> 1.9.3     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr    </span> 1.3.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr    </span> 1.0.2     
+── <span class=" -Color -Color-Bold">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">between()</span>     masks <span class=" -Color -Color-Blue">data.table</span>::between()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span>      masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">first()</span>       masks <span class=" -Color -Color-Blue">data.table</span>::first()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">hour()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::hour()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">isoweek()</span> masks <span class=" -Color -Color-Blue">data.table</span>::isoweek()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>         masks <span class=" -Color -Color-Blue">stats</span>::lag()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">last()</span>        masks <span class=" -Color -Color-Blue">data.table</span>::last()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">mday()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::mday()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">minute()</span>  masks <span class=" -Color -Color-Blue">data.table</span>::minute()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">month()</span>   masks <span class=" -Color -Color-Blue">data.table</span>::month()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">quarter()</span> masks <span class=" -Color -Color-Blue">data.table</span>::quarter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">second()</span>  masks <span class=" -Color -Color-Blue">data.table</span>::second()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">purrr</span>::<span class=" -Color -Color-Green">transpose()</span>   masks <span class=" -Color -Color-Blue">data.table</span>::transpose()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">wday()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::wday()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">week()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::week()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">yday()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::yday()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">lubridate</span>::<span class=" -Color -Color-Green">year()</span>    masks <span class=" -Color -Color-Blue">data.table</span>::year()
+<span class=" -Color -Color-Cyan">ℹ</span> Use the conflicted package (<span class=" -Color -Color-Blue">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors
+Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
+
+terra 1.7.78
+
+
+Attaching package: ‘terra’
+
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-and-initial-filtering-of-gbif-data">
+<h1>Import and initial filtering of GBIF data<a class="headerlink" href="#import-and-initial-filtering-of-gbif-data" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+<span class="n">dtn</span> <span class="o">=</span> <span class="m">10</span>
+<span class="nf">setDTthreads</span><span class="p">(</span><span class="n">threads</span> <span class="o">=</span> <span class="n">dtn</span><span class="p">)</span> <span class="c1">#defines how many threads data.table is allowed to use</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># GBIF full dataset</span>
+<span class="n">file_csv</span> <span class="o">&lt;-</span> <span class="s">&quot;/net/data/GBIF/2024_04_26/0001058-240425142415019.csv&quot;</span>
+
+<span class="c1"># alternative file citizen scince only</span>
+<span class="n">file_csv</span> <span class="o">&lt;-</span> <span class="s">&quot;/net/data/GBIF/2025_06_15_cit_science_only/0047329-250525065834625.csv&quot;</span>
+
+<span class="n">test</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="n">file_csv</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">na.strings</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 50</caption>
+<thead>
+	<tr><th scope=col>gbifID</th><th scope=col>datasetKey</th><th scope=col>occurrenceID</th><th scope=col>kingdom</th><th scope=col>phylum</th><th scope=col>class</th><th scope=col>order</th><th scope=col>family</th><th scope=col>genus</th><th scope=col>species</th><th scope=col>⋯</th><th scope=col>identifiedBy</th><th scope=col>dateIdentified</th><th scope=col>license</th><th scope=col>rightsHolder</th><th scope=col>recordedBy</th><th scope=col>typeStatus</th><th scope=col>establishmentMeans</th><th scope=col>lastInterpreted</th><th scope=col>mediaType</th><th scope=col>issue</th></tr>
+	<tr><th scope=col>&lt;int64&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>⋯</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>3352641301</td><td>0a013f89-5381-4578-9d82-5f28fd5f1ef6</td><td> 7213446</td><td>Plantae</td><td>Tracheophyta</td><td>Magnoliopsida </td><td>Asterales   </td><td>Asteraceae  </td><td>Matricaria  </td><td>Matricaria discoidea      </td><td>⋯</td><td>Conservation Data Management Unit, RSPB</td><td>NA</td><td>CC_BY_4_0</td><td>Botanical Society of Britain and Ireland and Biological Records Centre</td><td>Christie, M. Michael</td><td>NA</td><td>NA</td><td>2025-06-11T15:06:08.718Z</td><td>NA</td><td>CONTINENT_DERIVED_FROM_COORDINATES;TAXON_MATCH_TAXON_ID_IGNORED;TAXON_MATCH_TAXON_CONCEPT_ID_IGNORED                         </td></tr>
+	<tr><td>4951294464</td><td>0a013f89-5381-4578-9d82-5f28fd5f1ef6</td><td>36680109</td><td>Plantae</td><td>Tracheophyta</td><td>Liliopsida    </td><td>Poales      </td><td>Poaceae     </td><td>Deschampsia </td><td>Deschampsia cespitosa     </td><td>⋯</td><td>Common, James                          </td><td>NA</td><td>CC_BY_4_0</td><td>Botanical Society of Britain and Ireland and Biological Records Centre</td><td>Common, J. James    </td><td>NA</td><td>NA</td><td>2025-06-11T15:06:08.739Z</td><td>NA</td><td>CONTINENT_DERIVED_FROM_COORDINATES;TAXON_MATCH_TAXON_ID_IGNORED;TAXON_MATCH_TAXON_CONCEPT_ID_IGNORED                         </td></tr>
+	<tr><td>4866764380</td><td>0a013f89-5381-4578-9d82-5f28fd5f1ef6</td><td>34977000</td><td>Plantae</td><td>Tracheophyta</td><td>Magnoliopsida </td><td>Fagales     </td><td>Fagaceae    </td><td>Quercus     </td><td>Quercus robur             </td><td>⋯</td><td>Common, James                          </td><td>NA</td><td>CC_BY_4_0</td><td>Botanical Society of Britain and Ireland and Biological Records Centre</td><td>Common, J. James    </td><td>NA</td><td>NA</td><td>2025-06-11T15:07:00.854Z</td><td>NA</td><td>CONTINENT_DERIVED_FROM_COORDINATES;TAXON_MATCH_TAXON_ID_IGNORED;TAXON_MATCH_TAXON_CONCEPT_ID_IGNORED                         </td></tr>
+	<tr><td>3098399480</td><td>0a013f89-5381-4578-9d82-5f28fd5f1ef6</td><td>12254837</td><td>Plantae</td><td>Tracheophyta</td><td>Magnoliopsida </td><td>Saxifragales</td><td>Haloragaceae</td><td>Myriophyllum</td><td>Myriophyllum verticillatum</td><td>⋯</td><td>Norfolk Flora Group                    </td><td>NA</td><td>CC_BY_4_0</td><td>Botanical Society of Britain and Ireland and Biological Records Centre</td><td>Norfolk Flora Group </td><td>NA</td><td>NA</td><td>2025-06-11T15:07:00.854Z</td><td>NA</td><td>INDIVIDUAL_COUNT_INVALID;CONTINENT_DERIVED_FROM_COORDINATES;TAXON_MATCH_TAXON_ID_IGNORED;TAXON_MATCH_TAXON_CONCEPT_ID_IGNORED</td></tr>
+	<tr><td>3352641302</td><td>0a013f89-5381-4578-9d82-5f28fd5f1ef6</td><td>18230781</td><td>Plantae</td><td>Tracheophyta</td><td>Polypodiopsida</td><td>Polypodiales</td><td>Aspleniaceae</td><td>Asplenium   </td><td>Asplenium trichomanes     </td><td>⋯</td><td>Shuttleworth, Ali                      </td><td>NA</td><td>CC_BY_4_0</td><td>Botanical Society of Britain and Ireland and Biological Records Centre</td><td>Shuttleworth, A. Ali</td><td>NA</td><td>NA</td><td>2025-06-11T15:06:08.769Z</td><td>NA</td><td>INDIVIDUAL_COUNT_INVALID;CONTINENT_DERIVED_FROM_COORDINATES;TAXON_MATCH_TAXON_ID_IGNORED;TAXON_MATCH_TAXON_CONCEPT_ID_IGNORED</td></tr>
+	<tr><td>5158856302</td><td>0a013f89-5381-4578-9d82-5f28fd5f1ef6</td><td>40476637</td><td>Plantae</td><td>Tracheophyta</td><td>Magnoliopsida </td><td>Ericales    </td><td>Primulaceae </td><td>Primula     </td><td>Primula veris             </td><td>⋯</td><td>Pescott, Oli                           </td><td>NA</td><td>CC_BY_4_0</td><td>Botanical Society of Britain and Ireland and Biological Records Centre</td><td>Pescott, O. Oli     </td><td>NA</td><td>NA</td><td>2025-06-11T15:06:08.782Z</td><td>NA</td><td>CONTINENT_DERIVED_FROM_COORDINATES;TAXON_MATCH_TAXON_ID_IGNORED;TAXON_MATCH_TAXON_CONCEPT_ID_IGNORED                         </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Raw data: 285,132,563 observations
+Raw data cit science only: 75261671</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span>  <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;gbifID&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;speciesKey&quot;</span><span class="p">,</span> <span class="s">&quot;species&quot;</span><span class="p">,</span><span class="s">&quot;decimalLatitude&quot;</span><span class="p">,</span> <span class="s">&quot;decimalLongitude&quot;</span><span class="p">,</span> <span class="s">&quot;coordinateUncertaintyInMeters&quot;</span><span class="p">,</span> <span class="s">&quot;establishmentMeans&quot;</span><span class="p">)</span>
+
+<span class="n">gbif_dt</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="n">file_csv</span><span class="p">,</span> <span class="n">select</span> <span class="o">=</span> <span class="n">columns</span><span class="p">,</span> <span class="n">na.strings</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">#, nrow = 100000</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">speciesKey</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># return taxons at the level of species and below, i.e. subspecies, varieties, and forms</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="n">class</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Polypodiopsida&quot;</span><span class="p">,</span><span class="s">&quot;Lycopodiopsida&quot;</span><span class="p">,</span> <span class="kc">NA</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># filtering out ferns and mosses as we are interested only in seed plants</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="n">coordinateUncertaintyInMeters</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="m">301</span><span class="p">,</span> <span class="m">3036</span><span class="p">,</span> <span class="m">999</span><span class="p">,</span> <span class="m">9999</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># exclude errors that produced by geocoding software and do not represent real uncertainty values</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">coordinateUncertaintyInMeters</span> <span class="o">&lt;=</span> <span class="m">10000</span> <span class="o">|</span> <span class="nf">is.na</span><span class="p">(</span><span class="n">coordinateUncertaintyInMeters</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># exclude records with too high uncertainty values</span>
+  <span class="c1">#distinct(species, establishmentMeans, round(decimalLatitude, 4), round(decimalLongitude, 4), .keep_all = T) %&gt;% # SW: I removed this because we want the abundances fo our analysis select only unique observations by species and establishment means as we are interested in pres-abs, but not abundances. The idea of trimming coordinates to 4 digits https://peerj.com/articles/9916.pdf</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">gbifID</span><span class="p">,</span> <span class="n">speciesKey</span><span class="p">,</span> <span class="n">class</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">decimalLatitude</span><span class="p">,</span> <span class="n">decimalLongitude</span><span class="p">,</span> <span class="n">establishmentMeans</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Number of observations after first filtering step</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">gbif_dt</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Number of species </span>
+<span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">gbif_dt</span><span class="p">[[</span><span class="s">&quot;speciesKey&quot;</span><span class="p">]]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Percentage of observations kept</span>
+<span class="c1">#dim(gbif_dt)[1]/285132563 # all GBIF data</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">gbif_dt</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="o">/</span><span class="m">75261671</span> <span class="c1"># citizen science only</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save filtering step as file</span>
+
+<span class="nf">fwrite</span><span class="p">(</span><span class="n">gbif_dt</span><span class="p">,</span> <span class="s">&quot;Results/Data/01_prep_gbif-import-init_cs.csv&quot;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">list</span> <span class="o">=</span> <span class="nf">ls</span><span class="p">())</span>
+<span class="nf">gc</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This resolves into 261,756,861 records (91% from the initial amount) and 261,251 species by species names for whole GBIF. With citizen scince only, 92% kept, with 69703083 records and 114322 species.</p>
+</section>
+<section id="spatial-cleaning">
+<h1>Spatial Cleaning<a class="headerlink" href="#spatial-cleaning" title="Permalink to this headline">#</a></h1>
+<p>We know from the previous step that the total number of records is 261,756,861. We now split them into separate chunks ~100,000 records per chunk, so that we can read and process the chunks in parallel</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#gbif_dt &lt;- fread(&quot;Results/Data/01_prep_gbif-import-init.csv&quot;)</span>
+<span class="n">gbif_dt</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;Results/Data/01_prep_gbif-import-init_cs.csv&quot;</span><span class="p">)</span>  <span class="c1"># for cs only</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">obs_num</span> <span class="o">&lt;-</span> <span class="nf">dim</span><span class="p">(</span><span class="n">gbif_dt</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span>
+
+<span class="c1">#chunks &lt;- split(1:obs_num, sort(rep_len(1:1500, length(1:obs_num))))</span>
+<span class="n">chunks</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">obs_num</span><span class="p">,</span> <span class="nf">sort</span><span class="p">(</span><span class="nf">rep_len</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">obs_num</span><span class="p">))))</span> <span class="c1"># for cs only</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cc_fun</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
+  
+  <span class="n">filename</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_cclean/01_prep_gbif-cclean-chunk&quot;</span><span class="p">,</span> <span class="n">i</span> <span class="p">,</span><span class="s">&quot;.csv&quot;</span><span class="p">)</span>
+  
+  <span class="nf">if</span><span class="p">(</span><span class="o">!</span><span class="nf">file.exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)){</span>
+    <span class="n">gbif_chunk_dt</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;Results/Data/01_prep_gbif-import-init_cs.csv&quot;</span><span class="p">,</span> <span class="n">na.strings</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+                           <span class="n">nrow</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">chunks</span><span class="p">[[</span><span class="n">i</span><span class="p">]]),</span> <span class="n">skip</span> <span class="o">=</span> <span class="n">chunks</span><span class="p">[[</span><span class="n">i</span><span class="p">]][</span><span class="m">1</span><span class="p">]</span><span class="m">-1</span><span class="p">,</span>
+                           <span class="n">colClasses</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;integer&quot;</span><span class="p">,</span> <span class="s">&quot;integer&quot;</span><span class="p">,</span> <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;character&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+                                          <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;numeric&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="s">&quot;character&quot;</span><span class="p">))</span>
+    <span class="nf">colnames</span><span class="p">(</span><span class="n">gbif_chunk_dt</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;gbifID&quot;</span><span class="p">,</span> <span class="s">&quot;speciesKey&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;species&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;decimalLatitude&quot;</span><span class="p">,</span> <span class="s">&quot;decimalLongitude&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;establishmentMeans&quot;</span><span class="p">)</span>
+    
+    <span class="n">gbif_clean_dt</span> <span class="o">&lt;-</span> <span class="nf">cc_cap</span><span class="p">(</span><span class="n">gbif_chunk_dt</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="m">5000</span><span class="p">)</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_cen</span><span class="p">(</span><span class="n">buffer</span> <span class="o">=</span> <span class="m">5000</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">#when there is no centroid in the area, it throws an error https://github.com/ropensci/CoordinateCleaner/issues/89, should be corrected when 3.0 matures</span>
+      <span class="nf">cc_aohi</span><span class="p">(</span><span class="n">taxa</span> <span class="o">=</span> <span class="s">&quot;Plantae&quot;</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="m">5000</span><span class="p">)</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_inst</span><span class="p">(</span><span class="n">buffer</span> <span class="o">=</span> <span class="m">1000</span><span class="p">)</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_gbif</span><span class="p">(</span><span class="n">buffer</span> <span class="o">=</span> <span class="m">1000</span><span class="p">)</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_zero</span><span class="p">()</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_equ</span><span class="p">()</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_sea</span><span class="p">(</span><span class="n">ref</span> <span class="o">=</span> <span class="n">terra</span><span class="o">::</span><span class="nf">unwrap</span><span class="p">(</span><span class="n">buffland</span><span class="p">),</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+    
+    <span class="nf">fwrite</span><span class="p">(</span><span class="n">gbif_clean_dt</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">quote</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+    <span class="nf">rm</span><span class="p">(</span><span class="n">gbif_chunk_dt</span><span class="p">,</span> <span class="n">gbif_clean_dt</span><span class="p">)</span>
+    <span class="nf">gc</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+  <span class="p">}</span>
+  
+<span class="p">}</span>
+
+
+<span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">makeForkCluster</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+<span class="n">begin</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
+<span class="nf">parLapplyLB</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="nf">seq_along</span><span class="p">(</span><span class="n">chunks</span><span class="p">),</span> <span class="n">cc_fun</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">begin</span><span class="p">)</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+
+<span class="c1">#read and process rows across the index to merge them into a single data table</span>
+<span class="c1">#when reading make sure using column classes</span>
+<span class="n">chunk_files</span> <span class="o">&lt;-</span> <span class="nf">list.files</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_cclean/&quot;</span><span class="p">,</span> <span class="n">full.names</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+<span class="c1">#to check if any chunk was unprocessed (because of absent centorid)</span>
+<span class="n">nmbr</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">lapply</span><span class="p">(</span><span class="nf">str_extract_all</span><span class="p">(</span><span class="n">chunk_files</span><span class="p">,</span> <span class="s">&quot;\\d+&quot;</span><span class="p">),</span> <span class="s">&quot;[[&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">))</span>
+
+<span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">setdiff</span><span class="p">(</span><span class="nf">seq_along</span><span class="p">(</span><span class="n">chunks</span><span class="p">),</span> <span class="n">nmbr</span><span class="p">))</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">gbif_cclean_dt</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">chunk_files</span><span class="p">,</span> <span class="n">fread</span><span class="p">,</span> <span class="n">na.strings</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+                                          <span class="n">colClasses</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;integer&quot;</span><span class="p">,</span> <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;character&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+                                                         <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;numeric&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="s">&quot;character&quot;</span><span class="p">)))</span>
+<span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">&quot;There are&quot;</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="nf">setdiff</span><span class="p">(</span><span class="nf">seq_along</span><span class="p">(</span><span class="n">chunks</span><span class="p">),</span> <span class="n">nmbr</span><span class="p">)),</span> <span class="s">&quot;files missing&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">dim</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">)</span>
+<span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">[[</span><span class="s">&quot;speciesKey&quot;</span><span class="p">]]))</span>
+
+
+<span class="nf">fwrite</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">,</span> <span class="s">&quot;Results/Data/01_prep_gbif-coord-clean.csv&quot;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">quote</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+
+<span class="nf">rm</span><span class="p">(</span><span class="n">list</span> <span class="o">=</span> <span class="nf">ls</span><span class="p">())</span>
+<span class="nf">gc</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same code for citizen science only:</span>
+
+<span class="n">cc_fun</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
+  
+  <span class="n">filename</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_cclean/01_prep_gbif-cclean-chunk&quot;</span><span class="p">,</span> <span class="n">i</span> <span class="p">,</span><span class="s">&quot;.csv&quot;</span><span class="p">)</span>
+  
+  <span class="nf">if</span><span class="p">(</span><span class="o">!</span><span class="nf">file.exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)){</span>
+    <span class="n">gbif_chunk_dt</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;Results/Data/01_prep_gbif-import-init_cs.csv&quot;</span><span class="p">,</span> <span class="n">na.strings</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+                           <span class="n">nrow</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">chunks</span><span class="p">[[</span><span class="n">i</span><span class="p">]]),</span> <span class="n">skip</span> <span class="o">=</span> <span class="n">chunks</span><span class="p">[[</span><span class="n">i</span><span class="p">]][</span><span class="m">1</span><span class="p">]</span><span class="m">-1</span><span class="p">,</span>
+                           <span class="n">colClasses</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;integer&quot;</span><span class="p">,</span> <span class="s">&quot;integer&quot;</span><span class="p">,</span> <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;character&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+                                          <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;numeric&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="s">&quot;character&quot;</span><span class="p">))</span>
+    <span class="nf">colnames</span><span class="p">(</span><span class="n">gbif_chunk_dt</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;gbifID&quot;</span><span class="p">,</span> <span class="s">&quot;speciesKey&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;species&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;decimalLatitude&quot;</span><span class="p">,</span> <span class="s">&quot;decimalLongitude&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;establishmentMeans&quot;</span><span class="p">)</span>
+    
+    <span class="n">gbif_clean_dt</span> <span class="o">&lt;-</span> <span class="nf">cc_cap</span><span class="p">(</span><span class="n">gbif_chunk_dt</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="m">5000</span><span class="p">)</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_cen</span><span class="p">(</span><span class="n">buffer</span> <span class="o">=</span> <span class="m">1000</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">#when there is no centroid in the area, it throws an error https://github.com/ropensci/CoordinateCleaner/issues/89, should be corrected when 3.0 matures</span>
+      <span class="c1">#cc_aohi(taxa = &quot;Plantae&quot;, buffer = 5000) %&gt;%</span>
+      <span class="c1">#cc_inst(buffer = 1000) %&gt;%</span>
+      <span class="nf">cc_gbif</span><span class="p">(</span><span class="n">buffer</span> <span class="o">=</span> <span class="m">1000</span><span class="p">)</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_zero</span><span class="p">()</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_equ</span><span class="p">()</span> <span class="o">%&gt;%</span>
+      <span class="nf">cc_sea</span><span class="p">(</span><span class="n">ref</span> <span class="o">=</span> <span class="n">terra</span><span class="o">::</span><span class="nf">unwrap</span><span class="p">(</span><span class="n">buffland</span><span class="p">),</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+    
+    <span class="nf">fwrite</span><span class="p">(</span><span class="n">gbif_clean_dt</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">quote</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+    <span class="nf">rm</span><span class="p">(</span><span class="n">gbif_chunk_dt</span><span class="p">,</span> <span class="n">gbif_clean_dt</span><span class="p">)</span>
+    <span class="nf">gc</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+  <span class="p">}</span>
+  
+<span class="p">}</span>
+
+
+<span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">makeForkCluster</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+<span class="n">begin</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
+<span class="nf">parLapplyLB</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="nf">seq_along</span><span class="p">(</span><span class="n">chunks</span><span class="p">),</span> <span class="n">cc_fun</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">begin</span><span class="p">)</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge citizen science only files:</span>
+
+<span class="c1">#read and process rows across the index to merge them into a single data table</span>
+<span class="c1">#when reading make sure using column classes</span>
+<span class="n">chunk_files</span> <span class="o">&lt;-</span> <span class="nf">list.files</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_cclean/&quot;</span><span class="p">,</span> <span class="n">full.names</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+<span class="c1">#to check if any chunk was unprocessed (because of absent centorid)</span>
+<span class="n">nmbr</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">lapply</span><span class="p">(</span><span class="nf">str_extract_all</span><span class="p">(</span><span class="n">chunk_files</span><span class="p">,</span> <span class="s">&quot;\\d+&quot;</span><span class="p">),</span> <span class="s">&quot;[[&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">))</span>
+
+<span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">setdiff</span><span class="p">(</span><span class="nf">seq_along</span><span class="p">(</span><span class="n">chunks</span><span class="p">),</span> <span class="n">nmbr</span><span class="p">))</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">gbif_cclean_dt</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">chunk_files</span><span class="p">,</span> <span class="n">fread</span><span class="p">,</span> <span class="n">na.strings</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+                                          <span class="n">colClasses</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;integer&quot;</span><span class="p">,</span> <span class="s">&quot;integer&quot;</span><span class="p">,</span> <span class="nf">qrep</span><span class="p">(</span><span class="s">&quot;character&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+                                                         <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;numeric&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="s">&quot;character&quot;</span><span class="p">)))</span>
+<span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">&quot;There are&quot;</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="nf">setdiff</span><span class="p">(</span><span class="nf">seq_along</span><span class="p">(</span><span class="n">chunks</span><span class="p">),</span> <span class="n">nmbr</span><span class="p">)),</span> <span class="s">&quot;files missing&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">dim</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">)</span>
+<span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">[[</span><span class="s">&quot;speciesKey&quot;</span><span class="p">]]))</span>
+
+
+<span class="c1">#fwrite(gbif_cclean_dt, &quot;Results/Data/01_prep_gbif-coord-clean.csv&quot;, row.names = F, quote = T)</span>
+<span class="nf">fwrite</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">,</span> <span class="s">&quot;Results/Data/01_prep_gbif-coord-clean_sc.csv&quot;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">quote</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+
+<span class="nf">rm</span><span class="p">(</span><span class="n">list</span> <span class="o">=</span> <span class="nf">ls</span><span class="p">())</span>
+<span class="nf">gc</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gbif_cclean_dt</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;Results/Data/01_prep_gbif-coord-clean_sc.csv&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 7</caption>
+<thead>
+	<tr><th scope=col>gbifID</th><th scope=col>speciesKey</th><th scope=col>class</th><th scope=col>species</th><th scope=col>decimalLatitude</th><th scope=col>decimalLongitude</th><th scope=col>establishmentMeans</th></tr>
+	<tr><th scope=col>&lt;int64&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>3352641301</td><td>3103791</td><td>Magnoliopsida</td><td>Matricaria discoidea      </td><td>56.14011</td><td>-3.369429</td><td></td></tr>
+	<tr><td>4951294464</td><td>8059811</td><td>Liliopsida   </td><td>Deschampsia cespitosa     </td><td>54.97456</td><td>-1.634406</td><td></td></tr>
+	<tr><td>4866764380</td><td>2878688</td><td>Magnoliopsida</td><td>Quercus robur             </td><td>54.99222</td><td>-1.540470</td><td></td></tr>
+	<tr><td>3098399480</td><td>5361779</td><td>Magnoliopsida</td><td>Myriophyllum verticillatum</td><td>52.75213</td><td> 1.511204</td><td></td></tr>
+	<tr><td>5158856302</td><td>8377689</td><td>Magnoliopsida</td><td>Primula veris             </td><td>51.60241</td><td>-1.122803</td><td></td></tr>
+	<tr><td>3098399483</td><td>5371825</td><td>Magnoliopsida</td><td>Aethusa cynapium          </td><td>51.10395</td><td>-1.993522</td><td></td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">)</span>
+<span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">[[</span><span class="s">&quot;speciesKey&quot;</span><span class="p">]]))</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="o">/</span><span class="m">69703083</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="o">/</span><span class="m">75261671</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stats of all GBIF</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">)</span> <span class="c1"># 241975710</span>
+
+<span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">gbif_cclean_dt</span><span class="p">[[</span><span class="s">&quot;species&quot;</span><span class="p">]]))</span> <span class="c1"># 257299</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">241975710</span><span class="o">/</span><span class="m">261756861</span> <span class="c1">#92.4% of observations</span>
+
+<span class="m">257299</span><span class="o">/</span><span class="m">260398</span> <span class="c1">#98.8% species</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.924429293182882</div><div class="output text_html">0.988098986935384</div></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "rstudio_r"
+        },
+        kernelOptions: {
+            kernelName: "rstudio_r",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'rstudio_r'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="01.2_TRY_preprocessing.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Preprocessing and filtering TRY</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

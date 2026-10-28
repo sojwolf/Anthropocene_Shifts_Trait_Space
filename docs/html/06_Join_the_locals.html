@@ -1,0 +1,2391 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>“Join the locals” vs. “Try harder” &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Some stats on the data" href="06.2_PCA_global_angiosperms.html" />
+    <link rel="prev" title="CSR PC123 Symbolic Regression" href="14.3_CSR_symbolic_regression.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.3_CSR_symbolic_regression.html">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/06_Join_the_locals.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F06_Join_the_locals.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/06_Join_the_locals.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data">
+   Load Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-stats-per-hexagon">
+     Summary stats per hexagon
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-biome-stats">
+     Get biome stats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#per-biome-relationship-of-effect-size-and-percentage-naturalized">
+   Per Biome relationship of effect size and percentage naturalized
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-length-in-relation-to-percent-introduced-occurences">
+     Vector length in relation to percent introduced occurences
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pixel-based-shifts-in-relation-to-percent-introduced-species">
+   Pixel - based shifts in relation to percent introduced species
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculate-percentage-introduced-occurence-and-species-per-pixel">
+     Calculate percentage introduced occurence and species per pixel
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculate-differnce-in-pca-space-per-pixel">
+     Calculate differnce in PCA space per pixel
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>“Join the locals” vs. “Try harder”</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data">
+   Load Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-stats-per-hexagon">
+     Summary stats per hexagon
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-biome-stats">
+     Get biome stats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#per-biome-relationship-of-effect-size-and-percentage-naturalized">
+   Per Biome relationship of effect size and percentage naturalized
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-length-in-relation-to-percent-introduced-occurences">
+     Vector length in relation to percent introduced occurences
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pixel-based-shifts-in-relation-to-percent-introduced-species">
+   Pixel - based shifts in relation to percent introduced species
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculate-percentage-introduced-occurence-and-species-per-pixel">
+     Calculate percentage introduced occurence and species per pixel
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculate-differnce-in-pca-space-per-pixel">
+     Calculate differnce in PCA space per pixel
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="join-the-locals-vs-try-harder">
+<h1>“Join the locals” vs. “Try harder”<a class="headerlink" href="#join-the-locals-vs-try-harder" title="Permalink to this headline">#</a></h1>
+<section id="load-data">
+<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h2>
+<section id="summary-stats-per-hexagon">
+<h3>Summary stats per hexagon<a class="headerlink" href="#summary-stats-per-hexagon" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;/net/home/swolf/R/x86_64-pc-linux-gnu-library/4.4&quot;</span><span class="p">,</span> <span class="nf">.libPaths</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span> 
+<span class="n">dtn</span> <span class="o">=</span> <span class="m">10</span>
+<span class="nf">setDTthreads</span><span class="p">(</span><span class="n">threads</span> <span class="o">=</span> <span class="n">dtn</span><span class="p">)</span> <span class="c1">#defines how many threads data.table is allowed to use</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">combined_data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_group_region_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>  
+<span class="nf">head</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 47</caption>
+<thead>
+	<tr><th></th><th scope=col>h3_res3</th><th scope=col>group</th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>mean_perc_na</th><th scope=col>⋯</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>X.X47</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>83001afffffffff</td><td>all   </td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td><td>10</td><td>4</td><td> 5.68</td><td>⋯</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td></tr>
+	<tr><th scope=row>2</th><td>83001afffffffff</td><td>native</td><td>-10.334354</td><td> 1.3228614</td><td>-1.7255834</td><td> 1.0414618</td><td>2.1589100</td><td>10</td><td>4</td><td> 5.68</td><td>⋯</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>0.152</td></tr>
+	<tr><th scope=row>3</th><td>83001cfffffffff</td><td>all   </td><td>-10.005360</td><td>-0.2380058</td><td> 0.2491376</td><td> 2.9137390</td><td>0.9757523</td><td> 1</td><td>1</td><td>16.22</td><td>⋯</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3166111</td><td>0.175</td></tr>
+	<tr><th scope=row>4</th><td>83001cfffffffff</td><td>native</td><td> -9.988809</td><td>-0.3014320</td><td> 0.2822225</td><td> 2.9136399</td><td>0.9666302</td><td> 1</td><td>1</td><td>16.22</td><td>⋯</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3291221</td><td>0.175</td></tr>
+	<tr><th scope=row>5</th><td>83001efffffffff</td><td>all   </td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td><td> 4</td><td>3</td><td> 3.38</td><td>⋯</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td></tr>
+	<tr><th scope=row>6</th><td>83001efffffffff</td><td>native</td><td>-10.690103</td><td>-0.8713593</td><td>-0.9452468</td><td>-0.2685651</td><td>1.3119540</td><td> 4</td><td>3</td><td> 3.38</td><td>⋯</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>0.211</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+
+<span class="c1"># combined_data - new row with percent_naturalized based on column count fro group=all and group=native</span>
+<span class="n">combined_data</span> <span class="o">&lt;-</span> <span class="n">combined_data</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">h3_res3</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span>
+        <span class="n">perc_naturalized</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span>
+            <span class="nf">any</span><span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;all&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nf">any</span><span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;native&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="n">count</span><span class="p">[</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;all&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">count</span><span class="p">[</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;native&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">count</span><span class="p">[</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;all&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="m">100</span><span class="p">,</span>
+            <span class="kc">NA</span>
+        <span class="p">)</span>
+        <span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A grouped_df: 6 × 48</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>group</th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>X.X3117</th><th scope=col>⋯</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>region</th><th scope=col>perc_naturalized</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83001afffffffff</td><td>all   </td><td>-10.340785</td><td> 1.3463123</td><td>-1.7276493</td><td>-1.0482630</td><td>-2.1657556</td><td>10</td><td>4</td><td>21.336</td><td>⋯</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>11_PA</td><td>0</td></tr>
+	<tr><td>83001afffffffff</td><td>native</td><td>-10.340785</td><td> 1.3463123</td><td>-1.7276493</td><td>-1.0482630</td><td>-2.1657556</td><td>10</td><td>4</td><td>21.336</td><td>⋯</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>11_PA</td><td>0</td></tr>
+	<tr><td>83001cfffffffff</td><td>all   </td><td> -9.994814</td><td>-0.2430451</td><td> 0.2367820</td><td>-2.9060144</td><td>-1.0022472</td><td> 1</td><td>1</td><td>15.259</td><td>⋯</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3272027</td><td>     </td><td>0</td></tr>
+	<tr><td>83001cfffffffff</td><td>native</td><td>-10.002619</td><td>-0.3291607</td><td> 0.3134314</td><td>-2.9203937</td><td>-0.9736157</td><td> 1</td><td>1</td><td>15.259</td><td>⋯</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3360682</td><td>     </td><td>0</td></tr>
+	<tr><td>83001efffffffff</td><td>all   </td><td>-10.704678</td><td>-0.8306347</td><td>-0.9563224</td><td> 0.2603966</td><td>-1.3077282</td><td> 4</td><td>3</td><td>16.946</td><td>⋯</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>11_PA</td><td>0</td></tr>
+	<tr><td>83001efffffffff</td><td>native</td><td>-10.704678</td><td>-0.8306347</td><td>-0.9563224</td><td> 0.2603966</td><td>-1.3077282</td><td> 4</td><td>3</td><td>16.946</td><td>⋯</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>11_PA</td><td>0</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#filter combined_data for rows where group == &quot;all&quot;</span>
+<span class="n">gdf</span> <span class="o">&lt;-</span> <span class="n">combined_data</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s">&quot;all&quot;</span><span class="p">)</span> 
+<span class="nf">head</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A grouped_df: 6 × 48</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>group</th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>X.X3117</th><th scope=col>⋯</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>region</th><th scope=col>perc_naturalized</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>83001afffffffff</td><td>all</td><td>-10.340785</td><td> 1.3463123</td><td>-1.7276493</td><td>-1.04826303</td><td>-2.1657556</td><td>10</td><td> 4</td><td>21.336</td><td>⋯</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>11_PA</td><td>0</td></tr>
+	<tr><td>83001cfffffffff</td><td>all</td><td> -9.994814</td><td>-0.2430451</td><td> 0.2367820</td><td>-2.90601436</td><td>-1.0022472</td><td> 1</td><td> 1</td><td>15.259</td><td>⋯</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3272027</td><td>     </td><td>0</td></tr>
+	<tr><td>83001efffffffff</td><td>all</td><td>-10.704678</td><td>-0.8306347</td><td>-0.9563224</td><td> 0.26039659</td><td>-1.3077282</td><td> 4</td><td> 3</td><td>16.946</td><td>⋯</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>11_PA</td><td>0</td></tr>
+	<tr><td>830025fffffffff</td><td>all</td><td> -9.932428</td><td> 0.6468680</td><td>-1.3331355</td><td> 0.13212320</td><td>-2.0923569</td><td>16</td><td> 8</td><td>20.123</td><td>⋯</td><td>3.960</td><td> 0.002</td><td>-0.745</td><td>89.280</td><td>2.133</td><td>3.548</td><td>-0.810</td><td>0.3620000</td><td>11_PA</td><td>0</td></tr>
+	<tr><td>830028fffffffff</td><td>all</td><td>-10.158281</td><td>-1.7372160</td><td>-1.0907707</td><td>-0.08598429</td><td>-0.7938732</td><td>58</td><td>13</td><td>14.742</td><td>⋯</td><td>3.855</td><td> 0.008</td><td>-0.807</td><td>90.864</td><td>2.376</td><td>3.544</td><td>-1.873</td><td>0.4320000</td><td>11_PA</td><td>0</td></tr>
+	<tr><td>830029fffffffff</td><td>all</td><td> -9.776967</td><td>-0.7924605</td><td>-1.1169053</td><td>-1.02248828</td><td>-0.8994772</td><td>38</td><td>13</td><td>16.301</td><td>⋯</td><td>3.798</td><td>-0.009</td><td>-0.772</td><td>90.744</td><td>2.362</td><td>3.430</td><td>-1.351</td><td>0.4100000</td><td>11_PA</td><td>0</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate average perc_naturalized for each region</span>
+<span class="n">average_perc_naturalized_region</span> <span class="o">&lt;-</span> <span class="n">gdf</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">region</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">summarise</span><span class="p">(</span><span class="n">average_perc_naturalized</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">perc_naturalized</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">average_perc_naturalized_region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 2</caption>
+<thead>
+	<tr><th scope=col>region</th><th scope=col>average_perc_naturalized</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>     </td><td>25.544210</td></tr>
+	<tr><td>10_AA</td><td>26.657888</td></tr>
+	<tr><td>10_AT</td><td>26.190155</td></tr>
+	<tr><td>10_IM</td><td>26.457700</td></tr>
+	<tr><td>10_NT</td><td>13.375786</td></tr>
+	<tr><td>10_PA</td><td> 7.416842</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the aggregated shapefile</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+<span class="n">wwf_aggregated</span> <span class="o">&lt;-</span> <span class="nf">st_read</span><span class="p">(</span><span class="s">&quot;~/iNaturalist/Data/WWF/wwf_terr_ecos_aggregated.shp&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">wwf_aggregated</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading layer `wwf_terr_ecos_aggregated&#39; from data source 
+  `/net/home/swolf/iNaturalist/Data/WWF/wwf_terr_ecos_aggregated.shp&#39; 
+  using driver `ESRI Shapefile&#39;
+Simple feature collection with 64 features and 1 field
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -180 ymin: -87.26008 xmax: 180 ymax: 83.62313
+Geodetic CRS:  WGS 84
+Simple feature collection with 64 features and 1 field
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -180 ymin: -87.26008 xmax: 180 ymax: 83.62313
+Geodetic CRS:  WGS 84
+First 10 features:
+   bim_rlm                       geometry
+1    10_AA MULTIPOLYGON (((171.4289 -4...
+2    10_AT MULTIPOLYGON (((34.56465 1....
+3    10_IM MULTIPOLYGON (((116.6342 6....
+4    10_NT MULTIPOLYGON (((-76.14241 4...
+5    10_PA MULTIPOLYGON (((64.75403 34...
+6    11_AA MULTIPOLYGON (((179.1841 -4...
+7    11_AN MULTIPOLYGON (((-66.89195 -...
+8    11_NA MULTIPOLYGON (((-42.17305 6...
+9    11_PA MULTIPOLYGON (((149.4331 68...
+10   12_AA MULTIPOLYGON (((122.7533 -3...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="c1"># Average percentage naturalized per region</span>
+<span class="n">average_perc_naturalized_region</span> <span class="o">&lt;-</span> <span class="n">gdf</span> <span class="o">%&gt;%</span>
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">region</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">summarise</span><span class="p">(</span>
+    <span class="n">average_perc_naturalized</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">perc_naturalized</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),</span>
+    <span class="n">.groups</span> <span class="o">=</span> <span class="s">&quot;drop&quot;</span>
+  <span class="p">)</span>
+
+<span class="c1"># Join to WWF polygons</span>
+<span class="n">wwf_map</span> <span class="o">&lt;-</span> <span class="n">wwf_aggregated</span> <span class="o">%&gt;%</span>
+  <span class="nf">left_join</span><span class="p">(</span>
+    <span class="n">average_perc_naturalized_region</span><span class="p">,</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;bim_rlm&quot;</span> <span class="o">=</span> <span class="s">&quot;region&quot;</span><span class="p">)</span>
+  <span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">wwf_map_equalearth</span> <span class="o">&lt;-</span> <span class="nf">st_transform</span><span class="p">(</span>
+  <span class="n">wwf_map</span><span class="p">,</span>
+  <span class="s">&quot;+proj=eqearth +datum=WGS84 +units=m +no_defs&quot;</span>
+<span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">wwf_map_robinson</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_sf</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">average_perc_naturalized</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;white&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="m">0.01</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">scale_fill_distiller</span><span class="p">(</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="s">&quot;YlGnBu&quot;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Naturalized\noccurrences (%)&quot;</span><span class="p">,</span>
+    <span class="n">na.value</span> <span class="o">=</span> <span class="s">&quot;grey90&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme_void</span><span class="p">()</span>
+
+  <span class="c1"># Save as pdf</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/average_perc_naturalized_map.pdf&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06_Join_the_locals_9_0.png" src="_images/06_Join_the_locals_9_0.png" />
+</div>
+</div>
+</section>
+<section id="get-biome-stats">
+<h3>Get biome stats<a class="headerlink" href="#get-biome-stats" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read ~/Func_Neo_Phytes/Results/quantification_shifts_regions_Olsen_GBIF_wcvp_CS_log10_notrim_misstree.csv</span>
+<span class="n">biome_shifts_data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;~/Func_Neo_Phytes/Results/quantification_shifts_regions_Olsen_GBIF_wcvp_CS_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge combined_results_region with average_perc_naturalized_region</span>
+<span class="n">biome_shifts_data</span> <span class="o">&lt;-</span> <span class="n">biome_shifts_data</span> <span class="o">%&gt;%</span>
+    <span class="nf">left_join</span><span class="p">(</span><span class="n">average_perc_naturalized_region</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;region&quot;</span><span class="p">))</span>    
+<span class="nf">head</span><span class="p">(</span><span class="n">biome_shifts_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 21</caption>
+<thead>
+	<tr><th></th><th scope=col>region</th><th scope=col>biome_number</th><th scope=col>biome_name</th><th scope=col>realm_abbrev</th><th scope=col>realm_name</th><th scope=col>cliffs_delta_PC1</th><th scope=col>cliffs_delta_PC2</th><th scope=col>cliffs_delta_PC3</th><th scope=col>cliffs_delta_PC4</th><th scope=col>cliffs_delta_PC5</th><th scope=col>⋯</th><th scope=col>effect_size_PC2</th><th scope=col>effect_size_PC3</th><th scope=col>effect_size_PC4</th><th scope=col>effect_size_PC5</th><th scope=col>significance_PC1</th><th scope=col>significance_PC2</th><th scope=col>significance_PC3</th><th scope=col>significance_PC4</th><th scope=col>significance_PC5</th><th scope=col>average_perc_naturalized</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1_IM</td><td>1</td><td>Tropical &amp; Subtropical Moist Broadleaf Forests</td><td>IM</td><td>Indomalaya </td><td>-0.21712727</td><td>0.120380165</td><td>-0.2467339</td><td> 0.09298843</td><td>-0.02101488</td><td>⋯</td><td><span style=white-space:pre-wrap>small     </span></td><td>small </td><td>negligible</td><td>negligible</td><td>***</td><td>** </td><td>***</td><td><span style=white-space:pre-wrap>  </span></td><td></td><td>37.26276</td></tr>
+	<tr><th scope=row>2</th><td>1_NT</td><td>1</td><td>Tropical &amp; Subtropical Moist Broadleaf Forests</td><td>NT</td><td>Neotropical</td><td>-0.02023687</td><td>0.122340930</td><td>-0.1339892</td><td> 0.01804425</td><td> 0.04442939</td><td>⋯</td><td><span style=white-space:pre-wrap>small     </span></td><td>small </td><td>negligible</td><td>negligible</td><td><span style=white-space:pre-wrap>   </span></td><td>** </td><td>***</td><td><span style=white-space:pre-wrap>  </span></td><td></td><td>17.65715</td></tr>
+	<tr><th scope=row>3</th><td>2_AA</td><td>2</td><td><span style=white-space:pre-wrap>Tropical &amp; Subtropical Dry Broadleaf Forests  </span></td><td>AA</td><td>Australasia</td><td> 0.30578512</td><td>0.008264463</td><td>-0.5537190</td><td> 0.90082645</td><td>-0.09090909</td><td>⋯</td><td>negligible</td><td>large </td><td><span style=white-space:pre-wrap>large     </span></td><td>negligible</td><td><span style=white-space:pre-wrap>   </span></td><td><span style=white-space:pre-wrap>   </span></td><td><span style=white-space:pre-wrap>   </span></td><td>**</td><td></td><td>52.77438</td></tr>
+	<tr><th scope=row>4</th><td>2_IM</td><td>2</td><td><span style=white-space:pre-wrap>Tropical &amp; Subtropical Dry Broadleaf Forests  </span></td><td>IM</td><td>Indomalaya </td><td>-0.29799688</td><td>0.265478668</td><td>-0.2946150</td><td> 0.14997399</td><td>-0.12591051</td><td>⋯</td><td><span style=white-space:pre-wrap>small     </span></td><td>medium</td><td><span style=white-space:pre-wrap>small     </span></td><td><span style=white-space:pre-wrap>small     </span></td><td>** </td><td>** </td><td>***</td><td><span style=white-space:pre-wrap>  </span></td><td></td><td>46.01088</td></tr>
+	<tr><th scope=row>5</th><td>2_NT</td><td>2</td><td><span style=white-space:pre-wrap>Tropical &amp; Subtropical Dry Broadleaf Forests  </span></td><td>NT</td><td>Neotropical</td><td>-0.04068047</td><td>0.155140533</td><td>-0.2106139</td><td>-0.03679734</td><td> 0.02829142</td><td>⋯</td><td><span style=white-space:pre-wrap>small     </span></td><td>small </td><td>negligible</td><td>negligible</td><td><span style=white-space:pre-wrap>   </span></td><td><span style=white-space:pre-wrap>   </span></td><td><span style=white-space:pre-wrap>*  </span></td><td><span style=white-space:pre-wrap>  </span></td><td></td><td>20.27522</td></tr>
+	<tr><th scope=row>6</th><td>4_AA</td><td>4</td><td><span style=white-space:pre-wrap>Temperate Broadleaf &amp; Mixed Forests           </span></td><td>AA</td><td>Australasia</td><td>-0.11223330</td><td>0.379876278</td><td>-0.3076632</td><td>-0.04860497</td><td> 0.06249211</td><td>⋯</td><td><span style=white-space:pre-wrap>medium    </span></td><td>medium</td><td>negligible</td><td>negligible</td><td><span style=white-space:pre-wrap>   </span></td><td>***</td><td>** </td><td><span style=white-space:pre-wrap>  </span></td><td></td><td>22.58698</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+</section>
+<section id="per-biome-relationship-of-effect-size-and-percentage-naturalized">
+<h2>Per Biome relationship of effect size and percentage naturalized<a class="headerlink" href="#per-biome-relationship-of-effect-size-and-percentage-naturalized" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+
+<span class="n">plot_data</span> <span class="o">&lt;-</span> <span class="n">biome_shifts_data</span> <span class="o">%&gt;%</span>
+  <span class="c1"># remove effect_size_PC1	effect_size_PC2	effect_size_PC3	effect_size_PC4	effect_size_PC5</span>
+  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;effect_size_&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">pivot_longer</span><span class="p">(</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="nf">matches</span><span class="p">(</span><span class="s">&quot;^(cliffs_delta|significance)_PC[1-5]$&quot;</span><span class="p">),</span>
+    <span class="n">names_to</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;.value&quot;</span><span class="p">,</span> <span class="s">&quot;PC&quot;</span><span class="p">),</span>
+    <span class="n">names_pattern</span> <span class="o">=</span> <span class="s">&quot;(cliffs_delta|significance)_(PC[1-5])&quot;</span>
+  <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">plot_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 9</caption>
+<thead>
+	<tr><th scope=col>region</th><th scope=col>biome_number</th><th scope=col>biome_name</th><th scope=col>realm_abbrev</th><th scope=col>realm_name</th><th scope=col>average_perc_naturalized</th><th scope=col>PC</th><th scope=col>cliffs_delta</th><th scope=col>significance</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1_IM</td><td>1</td><td>Tropical &amp; Subtropical Moist Broadleaf Forests</td><td>IM</td><td>Indomalaya </td><td>37.26276</td><td>PC1</td><td>-0.21712727</td><td>***</td></tr>
+	<tr><td>1_IM</td><td>1</td><td>Tropical &amp; Subtropical Moist Broadleaf Forests</td><td>IM</td><td>Indomalaya </td><td>37.26276</td><td>PC2</td><td> 0.12038017</td><td>** </td></tr>
+	<tr><td>1_IM</td><td>1</td><td>Tropical &amp; Subtropical Moist Broadleaf Forests</td><td>IM</td><td>Indomalaya </td><td>37.26276</td><td>PC3</td><td>-0.24673388</td><td>***</td></tr>
+	<tr><td>1_IM</td><td>1</td><td>Tropical &amp; Subtropical Moist Broadleaf Forests</td><td>IM</td><td>Indomalaya </td><td>37.26276</td><td>PC4</td><td> 0.09298843</td><td><span style=white-space:pre-wrap>   </span></td></tr>
+	<tr><td>1_IM</td><td>1</td><td>Tropical &amp; Subtropical Moist Broadleaf Forests</td><td>IM</td><td>Indomalaya </td><td>37.26276</td><td>PC5</td><td>-0.02101488</td><td><span style=white-space:pre-wrap>   </span></td></tr>
+	<tr><td>1_NT</td><td>1</td><td>Tropical &amp; Subtropical Moist Broadleaf Forests</td><td>NT</td><td>Neotropical</td><td>17.65715</td><td>PC1</td><td>-0.02023687</td><td><span style=white-space:pre-wrap>   </span></td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cor_results</span> <span class="o">&lt;-</span> <span class="n">plot_data</span> <span class="o">%&gt;%</span>
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">PC</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">summarise</span><span class="p">(</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span>
+      <span class="n">average_perc_naturalized</span><span class="p">,</span>
+      <span class="n">cliffs_delta</span><span class="p">,</span>
+      <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;spearman&quot;</span><span class="p">,</span>
+      <span class="n">use</span> <span class="o">=</span> <span class="s">&quot;complete.obs&quot;</span>
+    <span class="p">),</span>
+    <span class="n">p_value</span> <span class="o">=</span> <span class="nf">cor.test</span><span class="p">(</span>
+      <span class="n">average_perc_naturalized</span><span class="p">,</span>
+      <span class="n">cliffs_delta</span><span class="p">,</span>
+      <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;spearman&quot;</span><span class="p">,</span>
+      <span class="n">exact</span> <span class="o">=</span> <span class="kc">FALSE</span>
+    <span class="p">)</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span>
+    <span class="n">.groups</span> <span class="o">=</span> <span class="s">&quot;drop&quot;</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">p_adjusted</span> <span class="o">=</span> <span class="nf">p.adjust</span><span class="p">(</span><span class="n">p_value</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;BH&quot;</span><span class="p">)</span>
+  <span class="p">)</span>
+
+<span class="n">cor_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 5 × 4</caption>
+<thead>
+	<tr><th scope=col>PC</th><th scope=col>rho</th><th scope=col>p_value</th><th scope=col>p_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>PC1</td><td>-0.16491228</td><td>0.49988059</td><td>0.6248507</td></tr>
+	<tr><td>PC2</td><td> 0.07017544</td><td>0.77528177</td><td>0.7752818</td></tr>
+	<tr><td>PC3</td><td>-0.49649123</td><td>0.03059620</td><td>0.1529810</td></tr>
+	<tr><td>PC4</td><td> 0.41754386</td><td>0.07527979</td><td>0.1881995</td></tr>
+	<tr><td>PC5</td><td>-0.30701754</td><td>0.20105403</td><td>0.3350901</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">average_perc_naturalized</span><span class="p">,</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">cliffs_delta</span>
+<span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">linetype</span> <span class="o">=</span> <span class="s">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+  <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">,</span> <span class="n">se</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;#045A7FFF&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span> <span class="n">PC</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Average percentage naturalized&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Cliff&#39;s δ&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme_classic</span><span class="p">()</span>
+
+<span class="nf">ggsave</span><span class="p">(</span>
+  <span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/cliffs_delta_average_percent_nat.pdf&quot;</span><span class="p">,</span>
+  <span class="n">width</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span>
+  <span class="n">height</span> <span class="o">=</span> <span class="m">7</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+`geom_smooth()` using formula = &#39;y ~ x&#39;
+Warning message in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+“conversion failure on &#39;Cliff&#39;s δ&#39; in &#39;mbcsToSbcs&#39;: for δ (U+03B4)”
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_17_1.png" src="_images/06_Join_the_locals_17_1.png" />
+</div>
+</div>
+<section id="vector-length-in-relation-to-percent-introduced-occurences">
+<h3>Vector length in relation to percent introduced occurences<a class="headerlink" href="#vector-length-in-relation-to-percent-introduced-occurences" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge vector_lengths_df with average_perc_naturalized_region</span>
+<span class="n">merged_analysis</span> <span class="o">&lt;-</span> <span class="n">vector_lengths_df</span> <span class="o">%&gt;%</span>
+  <span class="nf">inner_join</span><span class="p">(</span><span class="n">average_perc_naturalized_region</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;region&quot;</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># correlate vector lengths with average perc_naturalized per region</span>
+<span class="n">vector_lengths_df</span> <span class="o">&lt;-</span> <span class="n">vector_lengths_df</span> <span class="o">%&gt;%</span>
+  <span class="nf">left_join</span><span class="p">(</span><span class="n">average_perc_naturalized_region</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;region&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">vector_lengths_df</span><span class="p">)</span>
+
+<span class="n">cor_test</span> <span class="o">&lt;-</span> <span class="nf">cor.test</span><span class="p">(</span><span class="n">vector_lengths_df</span><span class="o">$</span><span class="n">vector_length</span><span class="p">,</span> <span class="n">vector_lengths_df</span><span class="o">$</span><span class="n">average_perc_naturalized</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;pearson&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">cor_test</span><span class="p">)</span>
+
+<span class="c1"># plot correlation</span>
+<span class="n">highlight_regions</span> <span class="o">&lt;-</span> <span class="nf">get_list_of_regions</span><span class="p">(</span><span class="n">combined_results_gbif</span><span class="p">)</span>
+
+<span class="c1"># Ensure the columns are numeric</span>
+<span class="n">vector_lengths_df</span> <span class="o">&lt;-</span> <span class="n">vector_lengths_df</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">vector_length</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">vector_length</span><span class="p">),</span>
+    <span class="n">average_perc_naturalized</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">average_perc_naturalized</span><span class="p">)</span>
+  <span class="p">)</span>
+  <span class="c1"># Perform the correlation test</span>
+  <span class="n">cor_test</span> <span class="o">&lt;-</span> <span class="nf">cor.test</span><span class="p">(</span><span class="n">vector_lengths_df</span><span class="o">$</span><span class="n">average_perc_naturalized</span><span class="p">,</span> <span class="n">vector_lengths_df</span><span class="o">$</span><span class="n">vector_length</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;pearson&quot;</span><span class="p">)</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">cor_test</span><span class="p">)</span>
+
+  <span class="c1"># Plot correlation</span>
+  <span class="n">p_cor</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">vector_lengths_df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">vector_length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">average_perc_naturalized</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">region</span> <span class="o">%in%</span> <span class="n">highlight_regions</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_text</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">vector_lengths_df</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">region</span> <span class="o">%in%</span> <span class="n">highlight_regions</span><span class="p">),</span>
+              <span class="nf">aes</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="n">region</span><span class="p">),</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">-0.2</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">-0.2</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;magenta&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">,</span> <span class="n">se</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;blue&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;TRUE&quot;</span> <span class="o">=</span> <span class="s">&quot;magenta&quot;</span><span class="p">,</span> <span class="s">&quot;FALSE&quot;</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">),</span> <span class="n">guide</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">theme</span><span class="p">(</span><span class="n">panel.grid</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span> <span class="n">panel.border</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Correlation between Average Percentage of Naturalized Species and Vector Lengths&quot;</span><span class="p">,</span>
+       <span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Vector Lengths&quot;</span><span class="p">,</span>     
+       <span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Average Percentage of Naturalized Species&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">annotate</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="kc">Inf</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="kc">Inf</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="nf">paste</span><span class="p">(</span><span class="s">&quot;r =&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">cor_test</span><span class="o">$</span><span class="n">estimate</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="s">&quot;\np =&quot;</span><span class="p">,</span> <span class="nf">signif</span><span class="p">(</span><span class="n">cor_test</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span> <span class="m">3</span><span class="p">)),</span>
+         <span class="n">hjust</span> <span class="o">=</span> <span class="m">1.1</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">1.1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+
+    <span class="nf">ggsave</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;../Results/Figures/correlation_vector_lengths_perc_naturalized_GBIF.png&quot;</span><span class="p">,</span>
+    <span class="n">plot</span> <span class="o">=</span> <span class="n">p_cor</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">p_cor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pixel-based-shifts-in-relation-to-percent-introduced-species">
+<h2>Pixel - based shifts in relation to percent introduced species<a class="headerlink" href="#pixel-based-shifts-in-relation-to-percent-introduced-species" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data from a CSV file</span>
+
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 262</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>PC1_all</th><th scope=col>PC1_native</th><th scope=col>PC2_all</th><th scope=col>PC2_native</th><th scope=col>PC3_all</th><th scope=col>PC3_native</th><th scope=col>PC4_all</th><th scope=col>PC4_native</th><th scope=col>PC5_all</th><th scope=col>⋯</th><th scope=col>X.X78..median_native</th><th scope=col>X.X78..percent_change_mean</th><th scope=col>X.X78..percent_change_median</th><th scope=col>X.X4..mean_all</th><th scope=col>X.X4..mean_native</th><th scope=col>X.X4..median_all</th><th scope=col>X.X4..median_native</th><th scope=col>X.X4..percent_change_mean</th><th scope=col>X.X4..percent_change_median</th><th scope=col>resolution</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>832830fffffffff</td><td>-1.7232637</td><td>-1.27813427</td><td> 0.9263347</td><td> 0.1675457</td><td> 0.1216236</td><td> 0.5990069</td><td>0.29216332</td><td>0.4658460</td><td> 0.08546972</td><td>⋯</td><td>-0.864</td><td> 55.81</td><td> 44.21</td><td>0.441</td><td>0.468</td><td>0.430</td><td>0.461</td><td>-5.77</td><td>-6.72</td><td>h3_res3</td></tr>
+	<tr><td>832834fffffffff</td><td>-1.6859293</td><td>-1.21423339</td><td> 0.4578784</td><td>-0.2735865</td><td> 0.1432890</td><td> 0.6384654</td><td>0.48021442</td><td>0.6358498</td><td> 0.19281510</td><td>⋯</td><td>-0.970</td><td> 46.03</td><td> 23.30</td><td>0.452</td><td>0.477</td><td>0.449</td><td>0.471</td><td>-5.24</td><td>-4.67</td><td>h3_res3</td></tr>
+	<tr><td>832831fffffffff</td><td>-1.8427677</td><td>-1.46762408</td><td> 0.7897748</td><td> 0.2858632</td><td> 0.6707373</td><td> 1.1363666</td><td>0.01756052</td><td>0.1472808</td><td>-0.01040755</td><td>⋯</td><td>-1.237</td><td> 39.08</td><td> 32.01</td><td>0.441</td><td>0.460</td><td>0.437</td><td>0.458</td><td>-4.13</td><td>-4.59</td><td>h3_res3</td></tr>
+	<tr><td>832655fffffffff</td><td>-0.2800225</td><td> 0.03134629</td><td> 2.3471014</td><td> 2.2086049</td><td> 0.5942497</td><td> 1.0449347</td><td>0.41408056</td><td>0.3146419</td><td> 0.29580870</td><td>⋯</td><td>-0.276</td><td>115.56</td><td>  9.42</td><td>0.441</td><td>0.446</td><td>0.435</td><td>0.438</td><td>-1.12</td><td>-0.68</td><td>h3_res3</td></tr>
+	<tr><td>832a16fffffffff</td><td>-0.8489522</td><td>-0.32125390</td><td> 2.6709352</td><td> 2.3161817</td><td> 0.8020473</td><td> 1.8158122</td><td>0.48402609</td><td>0.6516194</td><td> 0.01723522</td><td>⋯</td><td>-0.860</td><td> 54.81</td><td> 61.86</td><td>0.422</td><td>0.440</td><td>0.406</td><td>0.426</td><td>-4.09</td><td>-4.69</td><td>h3_res3</td></tr>
+	<tr><td>8329a5fffffffff</td><td>-1.7092541</td><td>-1.55298012</td><td>-0.2244413</td><td>-1.2233556</td><td>-1.0649597</td><td>-0.6430801</td><td>0.22944994</td><td>0.4727205</td><td> 0.58945743</td><td>⋯</td><td>-0.039</td><td>321.79</td><td>979.49</td><td>0.459</td><td>0.484</td><td>0.465</td><td>0.478</td><td>-5.17</td><td>-2.72</td><td>h3_res3</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<section id="calculate-percentage-introduced-occurence-and-species-per-pixel">
+<h3>Calculate percentage introduced occurence and species per pixel<a class="headerlink" href="#calculate-percentage-introduced-occurence-and-species-per-pixel" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># for each row, calculate percent introduced occurences and percent introduced species </span>
+<span class="c1"># based on the columns count_all and count_native and count_sp_all and count_sp_native respectively</span>
+<span class="n">summary_stats</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">perc_introduced_occurrences</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span>
+      <span class="n">count_all</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">,</span>
+      <span class="p">(</span><span class="n">count_all</span> <span class="o">-</span> <span class="n">count_native</span><span class="p">)</span> <span class="o">/</span> <span class="n">count_all</span> <span class="o">*</span> <span class="m">100</span><span class="p">,</span>
+      <span class="kc">NA</span>
+    <span class="p">),</span>
+    <span class="n">perc_introduced_species</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span>
+      <span class="n">count_sp_all</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">,</span>
+      <span class="p">(</span><span class="n">count_sp_all</span> <span class="o">-</span> <span class="n">count_sp_native</span><span class="p">)</span> <span class="o">/</span> <span class="n">count_sp_all</span> <span class="o">*</span> <span class="m">100</span><span class="p">,</span>
+      <span class="kc">NA</span>
+    <span class="p">)</span>
+  <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 264</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>PC1_all</th><th scope=col>PC1_native</th><th scope=col>PC2_all</th><th scope=col>PC2_native</th><th scope=col>PC3_all</th><th scope=col>PC3_native</th><th scope=col>PC4_all</th><th scope=col>PC4_native</th><th scope=col>PC5_all</th><th scope=col>⋯</th><th scope=col>X.X78..percent_change_median</th><th scope=col>X.X4..mean_all</th><th scope=col>X.X4..mean_native</th><th scope=col>X.X4..median_all</th><th scope=col>X.X4..median_native</th><th scope=col>X.X4..percent_change_mean</th><th scope=col>X.X4..percent_change_median</th><th scope=col>resolution</th><th scope=col>perc_introduced_occurrences</th><th scope=col>perc_introduced_species</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>832830fffffffff</td><td>-1.7232637</td><td>-1.27813427</td><td> 0.9263347</td><td> 0.1675457</td><td> 0.1216236</td><td> 0.5990069</td><td>0.29216332</td><td>0.4658460</td><td> 0.08546972</td><td>⋯</td><td> 44.21</td><td>0.441</td><td>0.468</td><td>0.430</td><td>0.461</td><td>-5.77</td><td>-6.72</td><td>h3_res3</td><td>29.16261</td><td>39.90315</td></tr>
+	<tr><td>832834fffffffff</td><td>-1.6859293</td><td>-1.21423339</td><td> 0.4578784</td><td>-0.2735865</td><td> 0.1432890</td><td> 0.6384654</td><td>0.48021442</td><td>0.6358498</td><td> 0.19281510</td><td>⋯</td><td> 23.30</td><td>0.452</td><td>0.477</td><td>0.449</td><td>0.471</td><td>-5.24</td><td>-4.67</td><td>h3_res3</td><td>25.50949</td><td>41.09436</td></tr>
+	<tr><td>832831fffffffff</td><td>-1.8427677</td><td>-1.46762408</td><td> 0.7897748</td><td> 0.2858632</td><td> 0.6707373</td><td> 1.1363666</td><td>0.01756052</td><td>0.1472808</td><td>-0.01040755</td><td>⋯</td><td> 32.01</td><td>0.441</td><td>0.460</td><td>0.437</td><td>0.458</td><td>-4.13</td><td>-4.59</td><td>h3_res3</td><td>19.83345</td><td>38.84494</td></tr>
+	<tr><td>832655fffffffff</td><td>-0.2800225</td><td> 0.03134629</td><td> 2.3471014</td><td> 2.2086049</td><td> 0.5942497</td><td> 1.0449347</td><td>0.41408056</td><td>0.3146419</td><td> 0.29580870</td><td>⋯</td><td>  9.42</td><td>0.441</td><td>0.446</td><td>0.435</td><td>0.438</td><td>-1.12</td><td>-0.68</td><td>h3_res3</td><td>21.46665</td><td>24.53608</td></tr>
+	<tr><td>832a16fffffffff</td><td>-0.8489522</td><td>-0.32125390</td><td> 2.6709352</td><td> 2.3161817</td><td> 0.8020473</td><td> 1.8158122</td><td>0.48402609</td><td>0.6516194</td><td> 0.01723522</td><td>⋯</td><td> 61.86</td><td>0.422</td><td>0.440</td><td>0.406</td><td>0.426</td><td>-4.09</td><td>-4.69</td><td>h3_res3</td><td>37.67995</td><td>39.68816</td></tr>
+	<tr><td>8329a5fffffffff</td><td>-1.7092541</td><td>-1.55298012</td><td>-0.2244413</td><td>-1.2233556</td><td>-1.0649597</td><td>-0.6430801</td><td>0.22944994</td><td>0.4727205</td><td> 0.58945743</td><td>⋯</td><td>979.49</td><td>0.459</td><td>0.484</td><td>0.465</td><td>0.478</td><td>-5.17</td><td>-2.72</td><td>h3_res3</td><td>35.20508</td><td>48.45361</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot perc_introduced_occurrences vs perc_introduced_species</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">perc_introduced_species</span>
+<span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="m">0.4</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">,</span> <span class="n">se</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;#045A7FFF&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Percentage of introduced occurrences&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Percentage of introduced species&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_minimal</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_26_1.png" src="_images/06_Join_the_locals_26_1.png" />
+</div>
+</div>
+</section>
+<section id="calculate-differnce-in-pca-space-per-pixel">
+<h3>Calculate differnce in PCA space per pixel<a class="headerlink" href="#calculate-differnce-in-pca-space-per-pixel" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcualte difference  PC1_all-PC1_native, PC2_all-PC2_native, PC3_all-PC3_native, PC4_all-PC4_native, PC5_all-PC5_native</span>
+<span class="n">summary_stats</span><span class="o">$</span><span class="n">PC1_diff</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC1_all</span> <span class="o">-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC1_native</span>
+<span class="n">summary_stats</span><span class="o">$</span><span class="n">PC2_diff</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC2_all</span> <span class="o">-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC2_native</span>
+<span class="n">summary_stats</span><span class="o">$</span><span class="n">PC3_diff</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC3_all</span> <span class="o">-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC3_native</span>
+<span class="n">summary_stats</span><span class="o">$</span><span class="n">PC4_diff</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC4_all</span> <span class="o">-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC4_native</span>
+<span class="n">summary_stats</span><span class="o">$</span><span class="n">PC5_diff</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC5_all</span> <span class="o">-</span> <span class="n">summary_stats</span><span class="o">$</span><span class="n">PC5_native</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 6 × 269</caption>
+<thead>
+	<tr><th scope=col>h3_res3</th><th scope=col>PC1_all</th><th scope=col>PC1_native</th><th scope=col>PC2_all</th><th scope=col>PC2_native</th><th scope=col>PC3_all</th><th scope=col>PC3_native</th><th scope=col>PC4_all</th><th scope=col>PC4_native</th><th scope=col>PC5_all</th><th scope=col>⋯</th><th scope=col>X.X4..percent_change_mean</th><th scope=col>X.X4..percent_change_median</th><th scope=col>resolution</th><th scope=col>perc_introduced_occurrences</th><th scope=col>perc_introduced_species</th><th scope=col>PC1_diff</th><th scope=col>PC2_diff</th><th scope=col>PC3_diff</th><th scope=col>PC4_diff</th><th scope=col>PC5_diff</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>832830fffffffff</td><td>-1.7232637</td><td>-1.27813427</td><td> 0.9263347</td><td> 0.1675457</td><td> 0.1216236</td><td> 0.5990069</td><td>0.29216332</td><td>0.4658460</td><td> 0.08546972</td><td>⋯</td><td>-5.77</td><td>-6.72</td><td>h3_res3</td><td>29.16261</td><td>39.90315</td><td>-0.4451294</td><td>0.7587890</td><td>-0.4773833</td><td>-0.17368270</td><td> 0.02620156</td></tr>
+	<tr><td>832834fffffffff</td><td>-1.6859293</td><td>-1.21423339</td><td> 0.4578784</td><td>-0.2735865</td><td> 0.1432890</td><td> 0.6384654</td><td>0.48021442</td><td>0.6358498</td><td> 0.19281510</td><td>⋯</td><td>-5.24</td><td>-4.67</td><td>h3_res3</td><td>25.50949</td><td>41.09436</td><td>-0.4716959</td><td>0.7314649</td><td>-0.4951764</td><td>-0.15563541</td><td> 0.04474717</td></tr>
+	<tr><td>832831fffffffff</td><td>-1.8427677</td><td>-1.46762408</td><td> 0.7897748</td><td> 0.2858632</td><td> 0.6707373</td><td> 1.1363666</td><td>0.01756052</td><td>0.1472808</td><td>-0.01040755</td><td>⋯</td><td>-4.13</td><td>-4.59</td><td>h3_res3</td><td>19.83345</td><td>38.84494</td><td>-0.3751436</td><td>0.5039116</td><td>-0.4656293</td><td>-0.12972026</td><td> 0.02988633</td></tr>
+	<tr><td>832655fffffffff</td><td>-0.2800225</td><td> 0.03134629</td><td> 2.3471014</td><td> 2.2086049</td><td> 0.5942497</td><td> 1.0449347</td><td>0.41408056</td><td>0.3146419</td><td> 0.29580870</td><td>⋯</td><td>-1.12</td><td>-0.68</td><td>h3_res3</td><td>21.46665</td><td>24.53608</td><td>-0.3113687</td><td>0.1384965</td><td>-0.4506850</td><td> 0.09943862</td><td>-0.03786375</td></tr>
+	<tr><td>832a16fffffffff</td><td>-0.8489522</td><td>-0.32125390</td><td> 2.6709352</td><td> 2.3161817</td><td> 0.8020473</td><td> 1.8158122</td><td>0.48402609</td><td>0.6516194</td><td> 0.01723522</td><td>⋯</td><td>-4.09</td><td>-4.69</td><td>h3_res3</td><td>37.67995</td><td>39.68816</td><td>-0.5276983</td><td>0.3547535</td><td>-1.0137649</td><td>-0.16759335</td><td> 0.37181438</td></tr>
+	<tr><td>8329a5fffffffff</td><td>-1.7092541</td><td>-1.55298012</td><td>-0.2244413</td><td>-1.2233556</td><td>-1.0649597</td><td>-0.6430801</td><td>0.22944994</td><td>0.4727205</td><td> 0.58945743</td><td>⋯</td><td>-5.17</td><td>-2.72</td><td>h3_res3</td><td>35.20508</td><td>48.45361</td><td>-0.1562740</td><td>0.9989143</td><td>-0.4218796</td><td>-0.24327055</td><td> 0.30597865</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+
+<span class="n">correlation_results</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="n">pc_diff_col</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;_diff&quot;</span><span class="p">)</span>
+
+  <span class="c1"># Introduced occurrences</span>
+  <span class="n">cor_occurrences</span> <span class="o">&lt;-</span> <span class="nf">cor.test</span><span class="p">(</span>
+    <span class="n">summary_stats</span><span class="p">[[</span><span class="n">pc_diff_col</span><span class="p">]],</span>
+    <span class="n">summary_stats</span><span class="o">$</span><span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;spearman&quot;</span><span class="p">,</span>
+    <span class="n">exact</span> <span class="o">=</span> <span class="kc">FALSE</span>
+  <span class="p">)</span>
+
+  <span class="c1"># Introduced species</span>
+  <span class="n">cor_species</span> <span class="o">&lt;-</span> <span class="nf">cor.test</span><span class="p">(</span>
+    <span class="n">summary_stats</span><span class="p">[[</span><span class="n">pc_diff_col</span><span class="p">]],</span>
+    <span class="n">summary_stats</span><span class="o">$</span><span class="n">perc_introduced_species</span><span class="p">,</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;spearman&quot;</span><span class="p">,</span>
+    <span class="n">exact</span> <span class="o">=</span> <span class="kc">FALSE</span>
+  <span class="p">)</span>
+
+  <span class="nf">data.frame</span><span class="p">(</span>
+    <span class="n">PC</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">predictor</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+      <span class="s">&quot;Introduced occurrences (%)&quot;</span><span class="p">,</span>
+      <span class="s">&quot;Introduced species (%)&quot;</span>
+    <span class="p">),</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+      <span class="nf">unname</span><span class="p">(</span><span class="n">cor_occurrences</span><span class="o">$</span><span class="n">estimate</span><span class="p">),</span>
+      <span class="nf">unname</span><span class="p">(</span><span class="n">cor_species</span><span class="o">$</span><span class="n">estimate</span><span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">p_value</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+      <span class="n">cor_occurrences</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span>
+      <span class="n">cor_species</span><span class="o">$</span><span class="n">p.value</span>
+    <span class="p">)</span>
+  <span class="p">)</span>
+<span class="p">})</span> <span class="o">%&gt;%</span>
+  <span class="nf">bind_rows</span><span class="p">()</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">p_adjusted</span> <span class="o">=</span> <span class="nf">p.adjust</span><span class="p">(</span><span class="n">p_value</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;BH&quot;</span><span class="p">),</span>
+    <span class="nf">across</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">p_adjusted</span><span class="p">),</span> <span class="o">~</span> <span class="nf">round</span><span class="p">(</span><span class="n">.x</span><span class="p">,</span> <span class="m">4</span><span class="p">))</span>
+  <span class="p">)</span>
+
+<span class="n">correlation_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 10 × 5</caption>
+<thead>
+	<tr><th scope=col>PC</th><th scope=col>predictor</th><th scope=col>rho</th><th scope=col>p_value</th><th scope=col>p_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>PC1</td><td>Introduced occurrences (%)</td><td>-0.1931</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>PC1</td><td>Introduced species (%)    </td><td>-0.2074</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>PC2</td><td>Introduced occurrences (%)</td><td> 0.4448</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>PC2</td><td>Introduced species (%)    </td><td> 0.4601</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>PC3</td><td>Introduced occurrences (%)</td><td>-0.4936</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>PC3</td><td>Introduced species (%)    </td><td>-0.4906</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>PC4</td><td>Introduced occurrences (%)</td><td> 0.1616</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>PC4</td><td>Introduced species (%)    </td><td> 0.1428</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>PC5</td><td>Introduced occurrences (%)</td><td> 0.0124</td><td>0.2205</td><td>0.2205</td></tr>
+	<tr><td>PC5</td><td>Introduced species (%)    </td><td> 0.0260</td><td>0.0103</td><td>0.0114</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="n">plot_data</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span>
+    <span class="n">PC1_diff</span><span class="o">:</span><span class="n">PC5_diff</span><span class="p">,</span>
+    <span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+    <span class="n">perc_introduced_species</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">pivot_longer</span><span class="p">(</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">perc_introduced_occurrences</span><span class="p">,</span> <span class="n">perc_introduced_species</span><span class="p">),</span>
+    <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;predictor&quot;</span><span class="p">,</span>
+    <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;introduced_percent&quot;</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">pivot_longer</span><span class="p">(</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="nf">ends_with</span><span class="p">(</span><span class="s">&quot;_diff&quot;</span><span class="p">),</span>
+    <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;PC&quot;</span><span class="p">,</span>
+    <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;PC_diff&quot;</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">PC</span> <span class="o">=</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&quot;_diff&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">PC</span><span class="p">),</span>
+    <span class="n">predictor</span> <span class="o">=</span> <span class="nf">recode</span><span class="p">(</span>
+      <span class="n">predictor</span><span class="p">,</span>
+      <span class="n">perc_introduced_occurrences</span> <span class="o">=</span> <span class="s">&quot;Introduced occurrences (%)&quot;</span><span class="p">,</span>
+      <span class="n">perc_introduced_species</span> <span class="o">=</span> <span class="s">&quot;Introduced species (%)&quot;</span>
+    <span class="p">)</span>
+  <span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span>
+  <span class="n">plot_data</span><span class="p">,</span>
+  <span class="nf">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">introduced_percent</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">PC_diff</span>
+  <span class="p">)</span>
+<span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_hline</span><span class="p">(</span>
+    <span class="n">yintercept</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+    <span class="n">linetype</span> <span class="o">=</span> <span class="s">&quot;dotted&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+  <span class="nf">geom_smooth</span><span class="p">(</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">,</span>
+    <span class="n">se</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;#045A7FFF&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">facet_grid</span><span class="p">(</span>
+    <span class="n">PC</span> <span class="o">~</span> <span class="n">predictor</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Introduced taxa (%)&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Functional change (PC difference)&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme_classic</span><span class="p">()</span>
+
+<span class="nf">ggsave</span><span class="p">(</span>
+  <span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/PC_diff_introduced_percentage.pdf&quot;</span><span class="p">,</span>
+  <span class="n">width</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+  <span class="n">height</span> <span class="o">=</span> <span class="m">12</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_31_1.png" src="_images/06_Join_the_locals_31_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">combined_data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_group_region_log10_notrim_misstree.csv&quot;</span><span class="p">)</span>  
+<span class="nf">head</span><span class="p">(</span><span class="n">combined_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 47</caption>
+<thead>
+	<tr><th></th><th scope=col>h3_res3</th><th scope=col>group</th><th scope=col>PC1</th><th scope=col>PC2</th><th scope=col>PC3</th><th scope=col>PC4</th><th scope=col>PC5</th><th scope=col>count</th><th scope=col>count_sp</th><th scope=col>X.X3117</th><th scope=col>⋯</th><th scope=col>X.X237</th><th scope=col>X.X614</th><th scope=col>X.X351</th><th scope=col>X.X6</th><th scope=col>X.X95</th><th scope=col>X.X138</th><th scope=col>X.X1080</th><th scope=col>X.X78</th><th scope=col>X.X4</th><th scope=col>region</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>83001afffffffff</td><td>all   </td><td>-10.340785</td><td> 1.3463123</td><td>-1.7276493</td><td>-1.0482630</td><td>-2.1657556</td><td>10</td><td>4</td><td>21.336</td><td>⋯</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>11_PA</td></tr>
+	<tr><th scope=row>2</th><td>83001afffffffff</td><td>native</td><td>-10.340785</td><td> 1.3463123</td><td>-1.7276493</td><td>-1.0482630</td><td>-2.1657556</td><td>10</td><td>4</td><td>21.336</td><td>⋯</td><td>-0.016</td><td>3.884</td><td>-0.020</td><td>-0.698</td><td>85.452</td><td>2.183</td><td>3.140</td><td>-0.547</td><td>0.3330000</td><td>11_PA</td></tr>
+	<tr><th scope=row>3</th><td>83001cfffffffff</td><td>all   </td><td> -9.994814</td><td>-0.2430451</td><td> 0.2367820</td><td>-2.9060144</td><td>-1.0022472</td><td> 1</td><td>1</td><td>15.259</td><td>⋯</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3272027</td><td>     </td></tr>
+	<tr><th scope=row>4</th><td>83001cfffffffff</td><td>native</td><td>-10.002619</td><td>-0.3291607</td><td> 0.3134314</td><td>-2.9203937</td><td>-0.9736157</td><td> 1</td><td>1</td><td>15.259</td><td>⋯</td><td>-0.119</td><td>3.810</td><td> 0.001</td><td>-0.744</td><td>92.099</td><td>2.545</td><td>3.121</td><td>-0.563</td><td>0.3360682</td><td>     </td></tr>
+	<tr><th scope=row>5</th><td>83001efffffffff</td><td>all   </td><td>-10.704678</td><td>-0.8306347</td><td>-0.9563224</td><td> 0.2603966</td><td>-1.3077282</td><td> 4</td><td>3</td><td>16.946</td><td>⋯</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>11_PA</td></tr>
+	<tr><th scope=row>6</th><td>83001efffffffff</td><td>native</td><td>-10.704678</td><td>-0.8306347</td><td>-0.9563224</td><td> 0.2603966</td><td>-1.3077282</td><td> 4</td><td>3</td><td>16.946</td><td>⋯</td><td> 0.122</td><td>4.005</td><td> 0.003</td><td>-0.699</td><td>88.269</td><td>2.311</td><td>3.671</td><td>-1.933</td><td>0.4090000</td><td>11_PA</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge summary_stats with combined_data(subset h3_res3 and region) by h3_res3 </span>
+<span class="n">regions</span> <span class="o">&lt;-</span> <span class="n">combined_data</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">h3_res3</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">distinct</span><span class="p">()</span>
+<span class="n">summary_stats</span> <span class="o">&lt;-</span> <span class="nf">left_join</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">,</span> <span class="n">regions</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;h3_res3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="n">plot_data</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span>
+    <span class="n">region</span><span class="p">,</span>
+    <span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+    <span class="n">PC1_diff</span><span class="o">:</span><span class="n">PC5_diff</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">pivot_longer</span><span class="p">(</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">PC1_diff</span><span class="o">:</span><span class="n">PC5_diff</span><span class="p">,</span>
+    <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;PC&quot;</span><span class="p">,</span>
+    <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;PC_diff&quot;</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">PC</span> <span class="o">=</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&quot;_diff&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">PC</span><span class="p">)</span>
+  <span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span>
+  <span class="n">plot_data</span><span class="p">,</span>
+  <span class="nf">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">PC_diff</span>
+  <span class="p">)</span>
+<span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_hline</span><span class="p">(</span>
+    <span class="n">yintercept</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+    <span class="n">linetype</span> <span class="o">=</span> <span class="s">&quot;dotted&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="m">0.4</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_smooth</span><span class="p">(</span>
+    <span class="nf">aes</span><span class="p">(</span><span class="n">group</span> <span class="o">=</span> <span class="n">region</span><span class="p">),</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">,</span>
+    <span class="n">se</span> <span class="o">=</span> <span class="kc">FALSE</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span> <span class="n">PC</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Introduced occurrences (%)&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Functional change (PC difference)&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme_classic</span><span class="p">()</span>
+
+<span class="nf">ggsave</span><span class="p">(</span>
+  <span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/PC_diff_introduced_occurrences_by_region.pdf&quot;</span><span class="p">,</span>
+  <span class="n">width</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+  <span class="n">height</span> <span class="o">=</span> <span class="m">10</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_34_2.png" src="_images/06_Join_the_locals_34_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+
+<span class="n">correlation_results</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="n">pc_diff_col</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;_diff&quot;</span><span class="p">)</span>
+
+  <span class="n">summary_stats</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">region</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">summarise</span><span class="p">(</span>
+      <span class="n">n_occurrences</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span>
+        <span class="nf">is.finite</span><span class="p">(</span><span class="n">.data</span><span class="p">[[</span><span class="n">pc_diff_col</span><span class="p">]])</span> <span class="o">&amp;</span>
+        <span class="nf">is.finite</span><span class="p">(</span><span class="n">perc_introduced_occurrences</span><span class="p">)</span>
+      <span class="p">),</span>
+      <span class="n">n_species</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span>
+        <span class="nf">is.finite</span><span class="p">(</span><span class="n">.data</span><span class="p">[[</span><span class="n">pc_diff_col</span><span class="p">]])</span> <span class="o">&amp;</span>
+        <span class="nf">is.finite</span><span class="p">(</span><span class="n">perc_introduced_species</span><span class="p">)</span>
+      <span class="p">),</span>
+
+      <span class="n">rho_occurrences</span> <span class="o">=</span> <span class="nf">if </span><span class="p">(</span><span class="n">n_occurrences</span> <span class="o">&gt;=</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">cor</span><span class="p">(</span>
+          <span class="n">.data</span><span class="p">[[</span><span class="n">pc_diff_col</span><span class="p">]],</span>
+          <span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+          <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;spearman&quot;</span><span class="p">,</span>
+          <span class="n">use</span> <span class="o">=</span> <span class="s">&quot;complete.obs&quot;</span>
+        <span class="p">)</span>
+      <span class="p">}</span> <span class="n">else</span> <span class="kc">NA_real_</span><span class="p">,</span>
+
+      <span class="n">p_occurrences</span> <span class="o">=</span> <span class="nf">if </span><span class="p">(</span><span class="n">n_occurrences</span> <span class="o">&gt;=</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">cor.test</span><span class="p">(</span>
+          <span class="n">.data</span><span class="p">[[</span><span class="n">pc_diff_col</span><span class="p">]],</span>
+          <span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+          <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;spearman&quot;</span><span class="p">,</span>
+          <span class="n">exact</span> <span class="o">=</span> <span class="kc">FALSE</span>
+        <span class="p">)</span><span class="o">$</span><span class="n">p.value</span>
+      <span class="p">}</span> <span class="n">else</span> <span class="kc">NA_real_</span><span class="p">,</span>
+
+      <span class="n">rho_species</span> <span class="o">=</span> <span class="nf">if </span><span class="p">(</span><span class="n">n_species</span> <span class="o">&gt;=</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">cor</span><span class="p">(</span>
+          <span class="n">.data</span><span class="p">[[</span><span class="n">pc_diff_col</span><span class="p">]],</span>
+          <span class="n">perc_introduced_species</span><span class="p">,</span>
+          <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;spearman&quot;</span><span class="p">,</span>
+          <span class="n">use</span> <span class="o">=</span> <span class="s">&quot;complete.obs&quot;</span>
+        <span class="p">)</span>
+      <span class="p">}</span> <span class="n">else</span> <span class="kc">NA_real_</span><span class="p">,</span>
+
+      <span class="n">p_species</span> <span class="o">=</span> <span class="nf">if </span><span class="p">(</span><span class="n">n_species</span> <span class="o">&gt;=</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">cor.test</span><span class="p">(</span>
+          <span class="n">.data</span><span class="p">[[</span><span class="n">pc_diff_col</span><span class="p">]],</span>
+          <span class="n">perc_introduced_species</span><span class="p">,</span>
+          <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;spearman&quot;</span><span class="p">,</span>
+          <span class="n">exact</span> <span class="o">=</span> <span class="kc">FALSE</span>
+        <span class="p">)</span><span class="o">$</span><span class="n">p.value</span>
+      <span class="p">}</span> <span class="n">else</span> <span class="kc">NA_real_</span><span class="p">,</span>
+
+      <span class="n">.groups</span> <span class="o">=</span> <span class="s">&quot;drop&quot;</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">PC</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;PC&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">pivot_longer</span><span class="p">(</span>
+      <span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+        <span class="n">rho_occurrences</span><span class="p">,</span> <span class="n">p_occurrences</span><span class="p">,</span>
+        <span class="n">rho_species</span><span class="p">,</span> <span class="n">p_species</span>
+      <span class="p">),</span>
+      <span class="n">names_to</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;.value&quot;</span><span class="p">,</span> <span class="s">&quot;predictor&quot;</span><span class="p">),</span>
+      <span class="n">names_pattern</span> <span class="o">=</span> <span class="s">&quot;(rho|p)_(occurrences|species)&quot;</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span>
+      <span class="n">predictor</span> <span class="o">=</span> <span class="nf">recode</span><span class="p">(</span>
+        <span class="n">predictor</span><span class="p">,</span>
+        <span class="n">occurrences</span> <span class="o">=</span> <span class="s">&quot;Introduced occurrences (%)&quot;</span><span class="p">,</span>
+        <span class="n">species</span> <span class="o">=</span> <span class="s">&quot;Introduced species (%)&quot;</span>
+      <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">})</span> <span class="o">%&gt;%</span>
+  <span class="nf">bind_rows</span><span class="p">()</span> <span class="o">%&gt;%</span>
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">predictor</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">p_adjusted</span> <span class="o">=</span> <span class="nf">p.adjust</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;BH&quot;</span><span class="p">)</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="nf">across</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_adjusted</span><span class="p">),</span> <span class="o">~</span> <span class="nf">round</span><span class="p">(</span><span class="n">.x</span><span class="p">,</span> <span class="m">4</span><span class="p">))</span>
+  <span class="p">)</span>
+
+<span class="n">correlation_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 630 × 8</caption>
+<thead>
+	<tr><th scope=col>region</th><th scope=col>n_occurrences</th><th scope=col>n_species</th><th scope=col>PC</th><th scope=col>predictor</th><th scope=col>rho</th><th scope=col>p</th><th scope=col>p_adjusted</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>     </td><td>249</td><td>249</td><td>PC1</td><td>Introduced occurrences (%)</td><td> 0.0928</td><td>0.1441</td><td>0.2286</td></tr>
+	<tr><td>     </td><td>249</td><td>249</td><td>PC1</td><td>Introduced species (%)    </td><td> 0.0147</td><td>0.8171</td><td>0.8765</td></tr>
+	<tr><td>10_AA</td><td> 16</td><td> 16</td><td>PC1</td><td>Introduced occurrences (%)</td><td>-0.5265</td><td>0.0362</td><td>0.0687</td></tr>
+	<tr><td>10_AA</td><td> 16</td><td> 16</td><td>PC1</td><td>Introduced species (%)    </td><td>-0.3382</td><td>0.2001</td><td>0.3050</td></tr>
+	<tr><td>10_AT</td><td> 71</td><td> 71</td><td>PC1</td><td>Introduced occurrences (%)</td><td>-0.0314</td><td>0.7951</td><td>0.8561</td></tr>
+	<tr><td>10_AT</td><td> 71</td><td> 71</td><td>PC1</td><td>Introduced species (%)    </td><td>-0.1118</td><td>0.3533</td><td>0.4870</td></tr>
+	<tr><td>10_IM</td><td>  3</td><td>  3</td><td>PC1</td><td>Introduced occurrences (%)</td><td>-1.0000</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>10_IM</td><td>  3</td><td>  3</td><td>PC1</td><td>Introduced species (%)    </td><td>-0.5000</td><td>0.6667</td><td>0.7623</td></tr>
+	<tr><td>10_NT</td><td> 68</td><td> 68</td><td>PC1</td><td>Introduced occurrences (%)</td><td>-0.6690</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>10_NT</td><td> 68</td><td> 68</td><td>PC1</td><td>Introduced species (%)    </td><td>-0.6448</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>10_PA</td><td>193</td><td>193</td><td>PC1</td><td>Introduced occurrences (%)</td><td> 0.3938</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>10_PA</td><td>193</td><td>193</td><td>PC1</td><td>Introduced species (%)    </td><td> 0.3748</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>11_AA</td><td>  1</td><td>  1</td><td>PC1</td><td>Introduced occurrences (%)</td><td>     NA</td><td>    NA</td><td>    NA</td></tr>
+	<tr><td>11_AA</td><td>  1</td><td>  1</td><td>PC1</td><td>Introduced species (%)    </td><td>     NA</td><td>    NA</td><td>    NA</td></tr>
+	<tr><td>11_NA</td><td>332</td><td>332</td><td>PC1</td><td>Introduced occurrences (%)</td><td> 0.2052</td><td>0.0002</td><td>0.0005</td></tr>
+	<tr><td>11_NA</td><td>332</td><td>332</td><td>PC1</td><td>Introduced species (%)    </td><td> 0.2111</td><td>0.0001</td><td>0.0003</td></tr>
+	<tr><td>11_PA</td><td>267</td><td>267</td><td>PC1</td><td>Introduced occurrences (%)</td><td> 0.2922</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>11_PA</td><td>267</td><td>267</td><td>PC1</td><td>Introduced species (%)    </td><td> 0.3529</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>12_AA</td><td> 97</td><td> 97</td><td>PC1</td><td>Introduced occurrences (%)</td><td>-0.4865</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>12_AA</td><td> 97</td><td> 97</td><td>PC1</td><td>Introduced species (%)    </td><td>-0.5131</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>12_AT</td><td> 16</td><td> 16</td><td>PC1</td><td>Introduced occurrences (%)</td><td> 0.5824</td><td>0.0179</td><td>0.0370</td></tr>
+	<tr><td>12_AT</td><td> 16</td><td> 16</td><td>PC1</td><td>Introduced species (%)    </td><td> 0.6382</td><td>0.0078</td><td>0.0190</td></tr>
+	<tr><td>12_NA</td><td> 18</td><td> 18</td><td>PC1</td><td>Introduced occurrences (%)</td><td>-0.3044</td><td>0.2193</td><td>0.3172</td></tr>
+	<tr><td>12_NA</td><td> 18</td><td> 18</td><td>PC1</td><td>Introduced species (%)    </td><td>-0.1331</td><td>0.5985</td><td>0.7314</td></tr>
+	<tr><td>12_NT</td><td> 23</td><td> 23</td><td>PC1</td><td>Introduced occurrences (%)</td><td>-0.4970</td><td>0.0158</td><td>0.0334</td></tr>
+	<tr><td>12_NT</td><td> 23</td><td> 23</td><td>PC1</td><td>Introduced species (%)    </td><td>-0.3804</td><td>0.0733</td><td>0.1339</td></tr>
+	<tr><td>12_PA</td><td>251</td><td>251</td><td>PC1</td><td>Introduced occurrences (%)</td><td> 0.8341</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>12_PA</td><td>251</td><td>251</td><td>PC1</td><td>Introduced species (%)    </td><td> 0.7954</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>13_AA</td><td>269</td><td>269</td><td>PC1</td><td>Introduced occurrences (%)</td><td>-0.5966</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>13_AA</td><td>269</td><td>269</td><td>PC1</td><td>Introduced species (%)    </td><td>-0.5904</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>6_PA</td><td>607</td><td>607</td><td>PC5</td><td>Introduced occurrences (%)</td><td> 0.5666</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>6_PA</td><td>607</td><td>607</td><td>PC5</td><td>Introduced species (%)    </td><td> 0.5483</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>7_AA</td><td>191</td><td>191</td><td>PC5</td><td>Introduced occurrences (%)</td><td>-0.1876</td><td>0.0094</td><td>0.0205</td></tr>
+	<tr><td>7_AA</td><td>191</td><td>191</td><td>PC5</td><td>Introduced species (%)    </td><td>-0.1835</td><td>0.0110</td><td>0.0265</td></tr>
+	<tr><td>7_AT</td><td>593</td><td>593</td><td>PC5</td><td>Introduced occurrences (%)</td><td>-0.1067</td><td>0.0093</td><td>0.0205</td></tr>
+	<tr><td>7_AT</td><td>593</td><td>593</td><td>PC5</td><td>Introduced species (%)    </td><td>-0.0966</td><td>0.0186</td><td>0.0415</td></tr>
+	<tr><td>7_IM</td><td>  1</td><td>  1</td><td>PC5</td><td>Introduced occurrences (%)</td><td>     NA</td><td>    NA</td><td>    NA</td></tr>
+	<tr><td>7_IM</td><td>  1</td><td>  1</td><td>PC5</td><td>Introduced species (%)    </td><td>     NA</td><td>    NA</td><td>    NA</td></tr>
+	<tr><td>7_NA</td><td>  9</td><td>  9</td><td>PC5</td><td>Introduced occurrences (%)</td><td>-0.4500</td><td>0.2242</td><td>0.3227</td></tr>
+	<tr><td>7_NA</td><td>  9</td><td>  9</td><td>PC5</td><td>Introduced species (%)    </td><td>-0.7667</td><td>0.0159</td><td>0.0362</td></tr>
+	<tr><td>7_NT</td><td>299</td><td>299</td><td>PC5</td><td>Introduced occurrences (%)</td><td>-0.0213</td><td>0.7135</td><td>0.8003</td></tr>
+	<tr><td>7_NT</td><td>299</td><td>299</td><td>PC5</td><td>Introduced species (%)    </td><td>-0.0281</td><td>0.6287</td><td>0.7389</td></tr>
+	<tr><td>8_AA</td><td> 47</td><td> 47</td><td>PC5</td><td>Introduced occurrences (%)</td><td> 0.3695</td><td>0.0106</td><td>0.0229</td></tr>
+	<tr><td>8_AA</td><td> 47</td><td> 47</td><td>PC5</td><td>Introduced species (%)    </td><td> 0.3454</td><td>0.0174</td><td>0.0392</td></tr>
+	<tr><td>8_AT</td><td>  2</td><td>  2</td><td>PC5</td><td>Introduced occurrences (%)</td><td>     NA</td><td>    NA</td><td>    NA</td></tr>
+	<tr><td>8_AT</td><td>  2</td><td>  2</td><td>PC5</td><td>Introduced species (%)    </td><td>     NA</td><td>    NA</td><td>    NA</td></tr>
+	<tr><td>8_NA</td><td>241</td><td>241</td><td>PC5</td><td>Introduced occurrences (%)</td><td>-0.1307</td><td>0.0427</td><td>0.0787</td></tr>
+	<tr><td>8_NA</td><td>241</td><td>241</td><td>PC5</td><td>Introduced species (%)    </td><td>-0.1217</td><td>0.0592</td><td>0.1126</td></tr>
+	<tr><td>8_NT</td><td>190</td><td>190</td><td>PC5</td><td>Introduced occurrences (%)</td><td>-0.1809</td><td>0.0125</td><td>0.0265</td></tr>
+	<tr><td>8_NT</td><td>190</td><td>190</td><td>PC5</td><td>Introduced species (%)    </td><td>-0.1602</td><td>0.0273</td><td>0.0583</td></tr>
+	<tr><td>8_PA</td><td>369</td><td>369</td><td>PC5</td><td>Introduced occurrences (%)</td><td> 0.3809</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>8_PA</td><td>369</td><td>369</td><td>PC5</td><td>Introduced species (%)    </td><td> 0.3606</td><td>0.0000</td><td>0.0000</td></tr>
+	<tr><td>9_AT</td><td> 18</td><td> 18</td><td>PC5</td><td>Introduced occurrences (%)</td><td> 0.4957</td><td>0.0364</td><td>0.0687</td></tr>
+	<tr><td>9_AT</td><td> 18</td><td> 18</td><td>PC5</td><td>Introduced species (%)    </td><td> 0.5006</td><td>0.0343</td><td>0.0704</td></tr>
+	<tr><td>9_IM</td><td>  4</td><td>  4</td><td>PC5</td><td>Introduced occurrences (%)</td><td> 0.4000</td><td>0.6000</td><td>0.7284</td></tr>
+	<tr><td>9_IM</td><td>  4</td><td>  4</td><td>PC5</td><td>Introduced species (%)    </td><td> 0.4000</td><td>0.6000</td><td>0.7314</td></tr>
+	<tr><td>9_NT</td><td> 24</td><td> 24</td><td>PC5</td><td>Introduced occurrences (%)</td><td>-0.2203</td><td>0.3009</td><td>0.4187</td></tr>
+	<tr><td>9_NT</td><td> 24</td><td> 24</td><td>PC5</td><td>Introduced species (%)    </td><td>-0.1832</td><td>0.3915</td><td>0.5346</td></tr>
+	<tr><td>9_PA</td><td> 31</td><td> 31</td><td>PC5</td><td>Introduced occurrences (%)</td><td> 0.0020</td><td>0.9913</td><td>0.9913</td></tr>
+	<tr><td>9_PA</td><td> 31</td><td> 31</td><td>PC5</td><td>Introduced species (%)    </td><td> 0.2260</td><td>0.2214</td><td>0.3238</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="c1"># Significant biome × PC combinations</span>
+<span class="n">significant_combinations</span> <span class="o">&lt;-</span> <span class="n">correlation_results</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span>
+    <span class="n">predictor</span> <span class="o">==</span> <span class="s">&quot;Introduced occurrences (%)&quot;</span><span class="p">,</span>
+    <span class="n">p_adjusted</span> <span class="o">&lt;</span> <span class="m">0.05</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">PC</span><span class="p">)</span>
+
+<span class="n">plot_data</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span> <span class="o">%&gt;%</span>
+  <span class="nf">inner_join</span><span class="p">(</span>
+    <span class="n">significant_combinations</span><span class="p">,</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;region&quot;</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span>
+    <span class="nf">paste0</span><span class="p">(</span><span class="n">PC</span><span class="p">,</span> <span class="s">&quot;_diff&quot;</span><span class="p">)</span> <span class="o">%in%</span> <span class="nf">names</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+  <span class="p">)</span>
+
+<span class="c1"># Plot each significant biome × PC separately</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">significant_combinations</span><span class="p">)))</span> <span class="p">{</span>
+
+  <span class="n">region_i</span> <span class="o">&lt;-</span> <span class="n">significant_combinations</span><span class="o">$</span><span class="n">region</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+  <span class="n">PC_i</span> <span class="o">&lt;-</span> <span class="n">significant_combinations</span><span class="o">$</span><span class="n">PC</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+  <span class="n">diff_col</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="n">PC_i</span><span class="p">,</span> <span class="s">&quot;_diff&quot;</span><span class="p">)</span>
+
+  <span class="n">p</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="n">region</span> <span class="o">==</span> <span class="n">region_i</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">ggplot</span><span class="p">(</span>
+      <span class="nf">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">.data</span><span class="p">[[</span><span class="n">diff_col</span><span class="p">]]</span>
+      <span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_hline</span><span class="p">(</span>
+      <span class="n">yintercept</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+      <span class="n">linetype</span> <span class="o">=</span> <span class="s">&quot;dotted&quot;</span><span class="p">,</span>
+      <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_smooth</span><span class="p">(</span>
+      <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">,</span>
+      <span class="n">se</span> <span class="o">=</span> <span class="kc">TRUE</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span>
+      <span class="n">title</span> <span class="o">=</span> <span class="nf">paste</span><span class="p">(</span><span class="n">region_i</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="n">PC_i</span><span class="p">),</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Introduced occurrences (%)&quot;</span><span class="p">,</span>
+      <span class="n">y</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="n">PC_i</span><span class="p">,</span> <span class="s">&quot; functional change (all − native)&quot;</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_classic</span><span class="p">()</span>
+
+  <span class="nf">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in inner_join(., significant_combinations, by = &quot;region&quot;):
+“Detected an unexpected many-to-many relationship between `x` and `y`.
+<span class=" -Color -Color-Cyan">ℹ</span> Row 1 of `x` matches multiple rows in `y`.
+<span class=" -Color -Color-Cyan">ℹ</span> Row 39 of `y` matches multiple rows in `x`.
+<span class=" -Color -Color-Cyan">ℹ</span> If a many-to-many relationship is expected, set `relationship =
+  &quot;many-to-many&quot;` to silence this warning.”
+`geom_smooth()` using formula = &#39;y ~ x&#39;
+`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_1.png" src="_images/06_Join_the_locals_36_1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_3.png" src="_images/06_Join_the_locals_36_3.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_5.png" src="_images/06_Join_the_locals_36_5.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_7.png" src="_images/06_Join_the_locals_36_7.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_9.png" src="_images/06_Join_the_locals_36_9.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_11.png" src="_images/06_Join_the_locals_36_11.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_13.png" src="_images/06_Join_the_locals_36_13.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_15.png" src="_images/06_Join_the_locals_36_15.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_17.png" src="_images/06_Join_the_locals_36_17.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_19.png" src="_images/06_Join_the_locals_36_19.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_21.png" src="_images/06_Join_the_locals_36_21.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_23.png" src="_images/06_Join_the_locals_36_23.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_25.png" src="_images/06_Join_the_locals_36_25.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_27.png" src="_images/06_Join_the_locals_36_27.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_29.png" src="_images/06_Join_the_locals_36_29.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_31.png" src="_images/06_Join_the_locals_36_31.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_33.png" src="_images/06_Join_the_locals_36_33.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_35.png" src="_images/06_Join_the_locals_36_35.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_37.png" src="_images/06_Join_the_locals_36_37.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_39.png" src="_images/06_Join_the_locals_36_39.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_41.png" src="_images/06_Join_the_locals_36_41.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_43.png" src="_images/06_Join_the_locals_36_43.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_45.png" src="_images/06_Join_the_locals_36_45.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_47.png" src="_images/06_Join_the_locals_36_47.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_49.png" src="_images/06_Join_the_locals_36_49.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_51.png" src="_images/06_Join_the_locals_36_51.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_53.png" src="_images/06_Join_the_locals_36_53.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_55.png" src="_images/06_Join_the_locals_36_55.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_57.png" src="_images/06_Join_the_locals_36_57.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_59.png" src="_images/06_Join_the_locals_36_59.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_61.png" src="_images/06_Join_the_locals_36_61.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_63.png" src="_images/06_Join_the_locals_36_63.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_65.png" src="_images/06_Join_the_locals_36_65.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_67.png" src="_images/06_Join_the_locals_36_67.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_69.png" src="_images/06_Join_the_locals_36_69.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_71.png" src="_images/06_Join_the_locals_36_71.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_73.png" src="_images/06_Join_the_locals_36_73.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_75.png" src="_images/06_Join_the_locals_36_75.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_77.png" src="_images/06_Join_the_locals_36_77.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_79.png" src="_images/06_Join_the_locals_36_79.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_81.png" src="_images/06_Join_the_locals_36_81.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_83.png" src="_images/06_Join_the_locals_36_83.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_85.png" src="_images/06_Join_the_locals_36_85.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_87.png" src="_images/06_Join_the_locals_36_87.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_89.png" src="_images/06_Join_the_locals_36_89.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_91.png" src="_images/06_Join_the_locals_36_91.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_93.png" src="_images/06_Join_the_locals_36_93.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_95.png" src="_images/06_Join_the_locals_36_95.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_97.png" src="_images/06_Join_the_locals_36_97.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_99.png" src="_images/06_Join_the_locals_36_99.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_101.png" src="_images/06_Join_the_locals_36_101.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_103.png" src="_images/06_Join_the_locals_36_103.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_105.png" src="_images/06_Join_the_locals_36_105.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_107.png" src="_images/06_Join_the_locals_36_107.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_109.png" src="_images/06_Join_the_locals_36_109.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_111.png" src="_images/06_Join_the_locals_36_111.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_113.png" src="_images/06_Join_the_locals_36_113.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_115.png" src="_images/06_Join_the_locals_36_115.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_117.png" src="_images/06_Join_the_locals_36_117.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_119.png" src="_images/06_Join_the_locals_36_119.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_121.png" src="_images/06_Join_the_locals_36_121.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_123.png" src="_images/06_Join_the_locals_36_123.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_125.png" src="_images/06_Join_the_locals_36_125.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_127.png" src="_images/06_Join_the_locals_36_127.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_129.png" src="_images/06_Join_the_locals_36_129.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_131.png" src="_images/06_Join_the_locals_36_131.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_133.png" src="_images/06_Join_the_locals_36_133.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_135.png" src="_images/06_Join_the_locals_36_135.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_137.png" src="_images/06_Join_the_locals_36_137.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_139.png" src="_images/06_Join_the_locals_36_139.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_141.png" src="_images/06_Join_the_locals_36_141.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_143.png" src="_images/06_Join_the_locals_36_143.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_145.png" src="_images/06_Join_the_locals_36_145.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_147.png" src="_images/06_Join_the_locals_36_147.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_149.png" src="_images/06_Join_the_locals_36_149.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_151.png" src="_images/06_Join_the_locals_36_151.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_153.png" src="_images/06_Join_the_locals_36_153.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_155.png" src="_images/06_Join_the_locals_36_155.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_157.png" src="_images/06_Join_the_locals_36_157.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_159.png" src="_images/06_Join_the_locals_36_159.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_161.png" src="_images/06_Join_the_locals_36_161.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_163.png" src="_images/06_Join_the_locals_36_163.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_165.png" src="_images/06_Join_the_locals_36_165.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_167.png" src="_images/06_Join_the_locals_36_167.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_169.png" src="_images/06_Join_the_locals_36_169.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_171.png" src="_images/06_Join_the_locals_36_171.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_173.png" src="_images/06_Join_the_locals_36_173.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_175.png" src="_images/06_Join_the_locals_36_175.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_177.png" src="_images/06_Join_the_locals_36_177.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_179.png" src="_images/06_Join_the_locals_36_179.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_181.png" src="_images/06_Join_the_locals_36_181.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_183.png" src="_images/06_Join_the_locals_36_183.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_185.png" src="_images/06_Join_the_locals_36_185.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_187.png" src="_images/06_Join_the_locals_36_187.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_189.png" src="_images/06_Join_the_locals_36_189.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_191.png" src="_images/06_Join_the_locals_36_191.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_193.png" src="_images/06_Join_the_locals_36_193.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_195.png" src="_images/06_Join_the_locals_36_195.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_197.png" src="_images/06_Join_the_locals_36_197.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_199.png" src="_images/06_Join_the_locals_36_199.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_201.png" src="_images/06_Join_the_locals_36_201.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_203.png" src="_images/06_Join_the_locals_36_203.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_205.png" src="_images/06_Join_the_locals_36_205.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_207.png" src="_images/06_Join_the_locals_36_207.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_209.png" src="_images/06_Join_the_locals_36_209.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_211.png" src="_images/06_Join_the_locals_36_211.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_213.png" src="_images/06_Join_the_locals_36_213.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_215.png" src="_images/06_Join_the_locals_36_215.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_217.png" src="_images/06_Join_the_locals_36_217.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_219.png" src="_images/06_Join_the_locals_36_219.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_221.png" src="_images/06_Join_the_locals_36_221.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_223.png" src="_images/06_Join_the_locals_36_223.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_225.png" src="_images/06_Join_the_locals_36_225.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_227.png" src="_images/06_Join_the_locals_36_227.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_229.png" src="_images/06_Join_the_locals_36_229.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_231.png" src="_images/06_Join_the_locals_36_231.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_233.png" src="_images/06_Join_the_locals_36_233.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_235.png" src="_images/06_Join_the_locals_36_235.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_237.png" src="_images/06_Join_the_locals_36_237.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_239.png" src="_images/06_Join_the_locals_36_239.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_241.png" src="_images/06_Join_the_locals_36_241.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_243.png" src="_images/06_Join_the_locals_36_243.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_245.png" src="_images/06_Join_the_locals_36_245.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_247.png" src="_images/06_Join_the_locals_36_247.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_249.png" src="_images/06_Join_the_locals_36_249.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_251.png" src="_images/06_Join_the_locals_36_251.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_253.png" src="_images/06_Join_the_locals_36_253.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_255.png" src="_images/06_Join_the_locals_36_255.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_257.png" src="_images/06_Join_the_locals_36_257.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_259.png" src="_images/06_Join_the_locals_36_259.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_261.png" src="_images/06_Join_the_locals_36_261.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_263.png" src="_images/06_Join_the_locals_36_263.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_265.png" src="_images/06_Join_the_locals_36_265.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_267.png" src="_images/06_Join_the_locals_36_267.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_269.png" src="_images/06_Join_the_locals_36_269.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_271.png" src="_images/06_Join_the_locals_36_271.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_273.png" src="_images/06_Join_the_locals_36_273.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_275.png" src="_images/06_Join_the_locals_36_275.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_277.png" src="_images/06_Join_the_locals_36_277.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_279.png" src="_images/06_Join_the_locals_36_279.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_281.png" src="_images/06_Join_the_locals_36_281.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_283.png" src="_images/06_Join_the_locals_36_283.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_285.png" src="_images/06_Join_the_locals_36_285.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_287.png" src="_images/06_Join_the_locals_36_287.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_289.png" src="_images/06_Join_the_locals_36_289.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_291.png" src="_images/06_Join_the_locals_36_291.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_36_293.png" src="_images/06_Join_the_locals_36_293.png" />
+<img alt="_images/06_Join_the_locals_36_294.png" src="_images/06_Join_the_locals_36_294.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="c1"># Biome × PC combinations significant for introduced occurrences</span>
+<span class="n">significant_combinations</span> <span class="o">&lt;-</span> <span class="n">correlation_results</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span>
+    <span class="n">predictor</span> <span class="o">==</span> <span class="s">&quot;Introduced occurrences (%)&quot;</span><span class="p">,</span>
+    <span class="n">p_adjusted</span> <span class="o">&lt;</span> <span class="m">0.05</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">PC</span><span class="p">)</span>
+
+<span class="c1"># Long-format data</span>
+<span class="n">plot_data</span> <span class="o">&lt;-</span> <span class="n">summary_stats</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span>
+    <span class="n">region</span><span class="p">,</span>
+    <span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+    <span class="n">PC1_diff</span><span class="o">:</span><span class="n">PC5_diff</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">pivot_longer</span><span class="p">(</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">PC1_diff</span><span class="o">:</span><span class="n">PC5_diff</span><span class="p">,</span>
+    <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;PC&quot;</span><span class="p">,</span>
+    <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;PC_diff&quot;</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">PC</span> <span class="o">=</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&quot;_diff&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">PC</span><span class="p">)</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">inner_join</span><span class="p">(</span>
+    <span class="n">significant_combinations</span><span class="p">,</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;region&quot;</span><span class="p">,</span> <span class="s">&quot;PC&quot;</span><span class="p">)</span>
+  <span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span>
+  <span class="n">plot_data</span><span class="p">,</span>
+  <span class="nf">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">perc_introduced_occurrences</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">PC_diff</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">region</span>
+  <span class="p">)</span>
+<span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_hline</span><span class="p">(</span>
+    <span class="n">yintercept</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+    <span class="n">linetype</span> <span class="o">=</span> <span class="s">&quot;dotted&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_smooth</span><span class="p">(</span>
+    <span class="nf">aes</span><span class="p">(</span><span class="n">group</span> <span class="o">=</span> <span class="n">region</span><span class="p">),</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">,</span>
+    <span class="n">se</span> <span class="o">=</span> <span class="kc">TRUE</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span> <span class="n">PC</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Introduced occurrences (%)&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Functional change (PC difference)&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;Biome&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme_classic</span><span class="p">()</span>
+
+<span class="nf">ggsave</span><span class="p">(</span>
+  <span class="s">&quot;~/Func_Neo_Phytes/Results/Figures/PC_diff_introduced_occurrences_significant_biomes.pdf&quot;</span><span class="p">,</span>
+  <span class="n">width</span> <span class="o">=</span> <span class="m">11</span><span class="p">,</span>
+  <span class="n">height</span> <span class="o">=</span> <span class="m">9</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
+`geom_smooth()` using formula = &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="_images/06_Join_the_locals_37_1.png" src="_images/06_Join_the_locals_37_1.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "rstudio_r"
+        },
+        kernelOptions: {
+            kernelName: "rstudio_r",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'rstudio_r'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="14.3_CSR_symbolic_regression.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">CSR PC123 Symbolic Regression</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="06.2_PCA_global_angiosperms.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Some stats on the data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

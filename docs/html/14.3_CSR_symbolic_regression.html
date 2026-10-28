@@ -1,0 +1,1460 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>CSR PC123 Symbolic Regression &#8212; Anthropocene Shifts in Trait Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="“Join the locals” vs. “Try harder”" href="06_Join_the_locals.html" />
+    <link rel="prev" title="Plot global gradients of main principal components" href="14.2_Plot_global_maps_CSR.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Anthropocene Shifts in Trait Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preprocessing the data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.1_GBIF_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.2_TRY_preprocessing.html">
+   Preprocessing and filtering TRY
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.3_H3_grid_preprocessing.html">
+   Add hexagonal grid coordinates to GBIF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Native_introduced_status_match.html">
+   GloNAF Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dimension reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_Grid_cell_trait_means.html">
+   Aggregate into hexbins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_PCA_global.html">
+   Imputation of missing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.1_Plot_global_maps_PCA.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.2_Uncertanty_missing_trait.html">
+   Plot uncertaitny from missing trait info
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Trait shifts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.1_Biome_shifts.html">
+   Biome shifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.2_Plot_biome_shifts.html">
+   Plot regional shifts in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.3_Plot_maps_with_biomes.html">
+   Plot hexagons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05.4_Biome_trait_shifts.html">
+   Individual trait shifts in each biome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Environmental Drivers
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_prepare_env_predictors.html">
+   01 · Environmental predictors per H3 cell (local rasters)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_trait_env_xgboost_shap.html">
+   02 · What drives global trait space? XGBoost + SHAP with environmentally and spatially separated cross-validation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Link to CSR theory
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.1_CSR.html">
+   CSR global
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14.2_Plot_global_maps_CSR.html">
+   Plot global gradients of main principal components
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   CSR PC123 Symbolic Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Additional checks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Join_the_locals.html">
+   “Join the locals” vs. “Try harder”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.2_PCA_global_angiosperms.html">
+   Some stats on the data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_urban_nonurban.html">
+   Urban Landcover Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.1_conifers_longevity_preprocessing.html">
+   Preprocessing and filtering data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11.2_longevity.html">
+   Longevity Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_human_pop.html">
+   Human Population density
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/Anthropocene_Shifts_Trait_Space/master?urlpath=tree/docs/14.3_CSR_symbolic_regression.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/Anthropocene_Shifts_Trait_Space/issues/new?title=Issue%20on%20page%20%2F14.3_CSR_symbolic_regression.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/14.3_CSR_symbolic_regression.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>CSR PC123 Symbolic Regression</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="csr-pc123-symbolic-regression">
+<h1>CSR PC123 Symbolic Regression<a class="headerlink" href="#csr-pc123-symbolic-regression" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Adjust paths to wherever your CSVs live</span>
+<span class="n">trait_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree_group_with_CSR.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trait_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>h3_res3</th>
+      <th>group</th>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>PC3</th>
+      <th>PC4</th>
+      <th>PC5</th>
+      <th>count</th>
+      <th>count_sp</th>
+      <th>mean_perc_na</th>
+      <th>...</th>
+      <th>X.X95</th>
+      <th>X.X138</th>
+      <th>X.X1080</th>
+      <th>X.X78</th>
+      <th>X.X4</th>
+      <th>X.X47</th>
+      <th>LA_resolved</th>
+      <th>C</th>
+      <th>S</th>
+      <th>R</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>83001afffffffff</td>
+      <td>all</td>
+      <td>-10.334354</td>
+      <td>1.322861</td>
+      <td>-1.725583</td>
+      <td>1.041462</td>
+      <td>2.158910</td>
+      <td>10</td>
+      <td>4</td>
+      <td>5.68</td>
+      <td>...</td>
+      <td>85.452</td>
+      <td>2.183</td>
+      <td>3.140</td>
+      <td>-0.547</td>
+      <td>0.333000</td>
+      <td>0.152</td>
+      <td>1.449</td>
+      <td>0.911566</td>
+      <td>0.000000</td>
+      <td>99.088434</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>83001afffffffff</td>
+      <td>native</td>
+      <td>-10.334354</td>
+      <td>1.322861</td>
+      <td>-1.725583</td>
+      <td>1.041462</td>
+      <td>2.158910</td>
+      <td>10</td>
+      <td>4</td>
+      <td>5.68</td>
+      <td>...</td>
+      <td>85.452</td>
+      <td>2.183</td>
+      <td>3.140</td>
+      <td>-0.547</td>
+      <td>0.333000</td>
+      <td>0.152</td>
+      <td>1.449</td>
+      <td>0.911566</td>
+      <td>0.000000</td>
+      <td>99.088434</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>83001cfffffffff</td>
+      <td>all</td>
+      <td>-10.005360</td>
+      <td>-0.238006</td>
+      <td>0.249138</td>
+      <td>2.913739</td>
+      <td>0.975752</td>
+      <td>1</td>
+      <td>1</td>
+      <td>16.22</td>
+      <td>...</td>
+      <td>92.099</td>
+      <td>2.545</td>
+      <td>3.121</td>
+      <td>-0.563</td>
+      <td>0.316611</td>
+      <td>0.175</td>
+      <td>1.518</td>
+      <td>2.943733</td>
+      <td>19.720529</td>
+      <td>77.335738</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>83001cfffffffff</td>
+      <td>native</td>
+      <td>-9.988809</td>
+      <td>-0.301432</td>
+      <td>0.282222</td>
+      <td>2.913640</td>
+      <td>0.966630</td>
+      <td>1</td>
+      <td>1</td>
+      <td>16.22</td>
+      <td>...</td>
+      <td>92.099</td>
+      <td>2.545</td>
+      <td>3.121</td>
+      <td>-0.563</td>
+      <td>0.329122</td>
+      <td>0.175</td>
+      <td>1.518</td>
+      <td>2.943733</td>
+      <td>19.720529</td>
+      <td>77.335738</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>83001efffffffff</td>
+      <td>all</td>
+      <td>-10.690103</td>
+      <td>-0.871359</td>
+      <td>-0.945247</td>
+      <td>-0.268565</td>
+      <td>1.311954</td>
+      <td>4</td>
+      <td>3</td>
+      <td>3.38</td>
+      <td>...</td>
+      <td>88.269</td>
+      <td>2.311</td>
+      <td>3.671</td>
+      <td>-1.933</td>
+      <td>0.409000</td>
+      <td>0.211</td>
+      <td>1.391</td>
+      <td>0.000000</td>
+      <td>47.807063</td>
+      <td>52.192937</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 51 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">spearmanr</span>
+
+<span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="s2">&quot;PC2&quot;</span><span class="p">,</span> <span class="s2">&quot;PC3&quot;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">trait_df</span><span class="p">[</span><span class="n">targets</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>   <span class="c1"># your per-cell trait dataframe</span>
+
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pearson&quot;</span><span class="p">)</span>  <span class="c1"># or &quot;spearman&quot; for Spearman correlation</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corr_matrix</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        C     S     R   PC1   PC2   PC3
+C    1.00 -0.59 -0.05  0.73  0.46  0.08
+S   -0.59  1.00 -0.78 -0.08 -0.91 -0.06
+R   -0.05 -0.78  1.00 -0.46  0.77  0.01
+PC1  0.73 -0.08 -0.46  1.00 -0.00  0.00
+PC2  0.46 -0.91  0.77 -0.00  1.00  0.00
+PC3  0.08 -0.06  0.01  0.00  0.00  1.00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">CSR_COLS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">]</span>  
+<span class="n">PC_COLS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="s2">&quot;PC2&quot;</span><span class="p">,</span> <span class="s2">&quot;PC3&quot;</span><span class="p">]</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">corr_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">CSR_COLS</span><span class="p">,</span> <span class="n">PC_COLS</span><span class="p">]</span>   <span class="c1"># rows C, S, R; columns PC1–3</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+            <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Pearson r&quot;</span><span class="p">,</span> <span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">},</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../../Results/Figures/CSR_PCA_maps_correlation.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/14.3_CSR_symbolic_regression_5_0.png" src="_images/14.3_CSR_symbolic_regression_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span>
+            <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="c1">#ax.set_title(&quot;Pearson r between spatial maps&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1">#save as pdf</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../../Results/Figures/CSR_PCA_maps_correlation.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/14.3_CSR_symbolic_regression_6_0.png" src="_images/14.3_CSR_symbolic_regression_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearson</span>  <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">targets</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pearson&quot;</span><span class="p">)</span>
+<span class="n">spearman</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">targets</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">)</span>
+
+<span class="c1"># difference matrix — large values flag non-linearity</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">spearman</span> <span class="o">-</span> <span class="n">pearson</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        C     S     R   PC1   PC2   PC3
+C    0.00  0.00  0.03  0.01  0.02  0.03
+S    0.00  0.00  0.05  0.00  0.02  0.03
+R    0.03  0.05  0.00  0.02  0.01  0.05
+PC1  0.01  0.00  0.02  0.00  0.02  0.05
+PC2  0.02  0.02  0.01  0.02  0.00  0.06
+PC3  0.03  0.03  0.05  0.05  0.06  0.00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pysr</span> <span class="kn">import</span> <span class="n">PySRRegressor</span>
+
+<span class="c1"># ── 1. Load your data ──────────────────────────────────────────────────────────</span>
+<span class="c1"># Adjust paths to wherever your CSVs live</span>
+<span class="n">trait_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/net/scratch/swolf/GBIF/gbif_res3_try6_CS_wcvp_summary_stats_inkl_pca_mean_log10_notrim_misstree_group_with_CSR.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Columns needed: PC1, PC2, PC3, and your CSR score columns</span>
+<span class="c1"># Adjust column names to match yours</span>
+<span class="n">PC_COLS</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="s2">&quot;PC2&quot;</span><span class="p">,</span> <span class="s2">&quot;PC3&quot;</span><span class="p">]</span>
+<span class="n">CSR_COLS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">]</span>          <span class="c1"># or whatever your column names are</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">trait_df</span><span class="p">[</span><span class="n">PC_COLS</span> <span class="o">+</span> <span class="n">CSR_COLS</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">PC_COLS</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>          <span class="c1"># shape (n_cells, 3)</span>
+
+<span class="c1"># ── 2. Optional: CLR-transform CSR scores so they behave like real numbers ─────</span>
+<span class="c1"># CSR scores are compositional (C+S+R = 100 or 1), so raw regression can</span>
+<span class="c1"># violate the constraint. Isometric log-ratio (ILR) or centred log-ratio (CLR)</span>
+<span class="c1"># gives unconstrained targets. Simplest option: just fit C and S, derive R = 1 - C - S.</span>
+<span class="c1"># Here we fit all three independently for explorability, then you can enforce the constraint.</span>
+
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">logit</span>
+
+<span class="k">def</span> <span class="nf">clr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Centred log-ratio transform. x rows should sum to 1.&quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">log_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">log_x</span> <span class="o">-</span> <span class="n">log_x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Normalise to proportions (0–1) if your CSR scores are percentages</span>
+<span class="n">csr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">CSR_COLS</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">csr</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">1.5</span><span class="p">:</span>
+    <span class="n">csr</span> <span class="o">=</span> <span class="n">csr</span> <span class="o">/</span> <span class="mf">100.0</span>
+<span class="n">csr_clr</span> <span class="o">=</span> <span class="n">clr</span><span class="p">(</span><span class="n">csr</span><span class="p">)</span>   <span class="c1"># shape (n_cells, 3), zero-sum per row</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ── 3. Fit one symbolic regression per CSR component ───────────────────────────</span>
+<span class="c1"># (or use the CLR-transformed targets for unconstrained regression)</span>
+<span class="k">def</span> <span class="nf">fit_sr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">complexity</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">reproducible</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">PySRRegressor</span><span class="p">(</span>
+        <span class="n">niterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">,</span>
+        <span class="n">maxsize</span><span class="o">=</span><span class="n">complexity</span><span class="p">,</span>
+        <span class="n">binary_operators</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">],</span>
+        <span class="n">unary_operators</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;square&quot;</span><span class="p">,</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="s2">&quot;sqrt&quot;</span><span class="p">,</span> <span class="s2">&quot;abs&quot;</span><span class="p">,</span> <span class="s2">&quot;log&quot;</span><span class="p">],</span>
+        <span class="n">populations</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+        <span class="n">population_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">tournament_selection_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">parsimony</span><span class="o">=</span><span class="mf">0.002</span><span class="p">,</span>
+        <span class="n">batching</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                    <span class="c1"># evaluates on mini-batches; much faster with many cells</span>
+        <span class="c1">#batch_size=1000,</span>
+        <span class="n">output_directory</span><span class="o">=</span><span class="s2">&quot;sr_outputs&quot;</span><span class="p">,</span>    <span class="c1"># equations saved to sr_outputs/&lt;run_id&gt;/</span>
+        <span class="n">run_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;csr_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+        <span class="c1"># identical results between runs need a serial search (slower)</span>
+        <span class="n">deterministic</span><span class="o">=</span><span class="n">reproducible</span><span class="p">,</span>
+        <span class="n">parallelism</span><span class="o">=</span><span class="s2">&quot;serial&quot;</span> <span class="k">if</span> <span class="n">reproducible</span> <span class="k">else</span> <span class="s2">&quot;multithreading&quot;</span><span class="p">,</span>
+        <span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">variable_names</span><span class="o">=</span><span class="n">PC_COLS</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> — Pareto front ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">equations_</span><span class="p">[[</span><span class="s2">&quot;complexity&quot;</span><span class="p">,</span> <span class="s2">&quot;loss&quot;</span><span class="p">,</span> <span class="s2">&quot;equation&quot;</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit on the raw scores (simple approach: just C and S, recover R later)</span>
+<span class="n">model_C</span> <span class="o">=</span> <span class="n">fit_sr</span><span class="p">(</span><span class="n">csr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">model_S</span> <span class="o">=</span> <span class="n">fit_sr</span><span class="p">(</span><span class="n">csr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="c1"># Optionally fit R too for comparison, or derive: R = 1 - C_pred - S_pred</span>
+
+<span class="c1"># ── 4. Pick your formula and evaluate ─────────────────────────────────────────</span>
+<span class="c1"># PySR returns a Pareto front. Inspect it:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_C</span><span class="o">.</span><span class="n">equations_</span><span class="p">)</span>     <span class="c1"># DataFrame: complexity, loss, equation string, sympy_format</span>
+
+<span class="c1"># Get predictions from the best (lowest-loss) equation:</span>
+<span class="n">C_pred</span> <span class="o">=</span> <span class="n">model_C</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">S_pred</span> <span class="o">=</span> <span class="n">model_S</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">R_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">C_pred</span> <span class="o">-</span> <span class="n">S_pred</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># enforce constraint</span>
+
+<span class="c1"># Quick evaluation</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">csr</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">C_pred</span><span class="p">),</span>
+                               <span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">csr</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">S_pred</span><span class="p">),</span>
+                               <span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">csr</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">R_pred</span><span class="p">)]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R²(</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ── 5. Extract the symbolic formula ───────────────────────────────────────────</span>
+<span class="kn">import</span> <span class="nn">sympy</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C formula:&quot;</span><span class="p">,</span> <span class="n">model_C</span><span class="o">.</span><span class="n">sympy</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;S formula:&quot;</span><span class="p">,</span> <span class="n">model_S</span><span class="o">.</span><span class="n">sympy</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/pysr/sr.py:2811: UserWarning: Note: it looks like you are running in Jupyter. The progress bar will be turned off.
+  warnings.warn(
+Compiling Julia backend...
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/pysr/sr.py:1873: UserWarning: Note: Setting `random_state` without also setting `deterministic=True` and `parallelism=&#39;serial&#39;` will result in non-deterministic searches.
+  warnings.warn(
+[ Info: Started!
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expressions evaluated per second: 1.200e+04
+Progress: 419 / 1200 total iterations (34.917%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           1.114e-02  0.000e+00  y = 0.23622
+5           5.261e-03  1.875e-01  y = (PC1 + 11.34) * 0.020815
+6           5.260e-03  7.189e-05  y = abs(PC1 + 11.34) * 0.020815
+7           2.925e-03  5.870e-01  y = ((PC1 + PC2) - -11.703) * 0.020185
+8           2.903e-03  7.342e-03  y = abs((PC1 + (PC2 - -11.351)) * 0.020758)
+10          2.764e-03  2.462e-02  y = square((((PC1 + PC2) * 0.01089) - -0.23882) * 1.9947)
+13          2.756e-03  9.855e-04  y = sqrt(abs(abs(cube((-0.42304 - ((PC2 + PC1) * 0.02625))...
+                                       * 0.88448))))
+15          2.755e-03  1.585e-04  y = sqrt(sqrt(abs(cube(square(abs((((PC1 + PC2) * 0.020514...
+                                      ) - -0.33572) * 1.118))))))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press &#39;q&#39; and then &lt;enter&gt; to stop execution early.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ Info: Final population:
+[ Info: Results saved to:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           1.114e-02  0.000e+00  y = 0.23622
+5           5.261e-03  1.875e-01  y = (PC1 + 11.34) * 0.020815
+6           5.260e-03  7.189e-05  y = abs(PC1 + 11.34) * 0.020815
+7           2.925e-03  5.870e-01  y = ((PC1 + PC2) - -11.703) * 0.020185
+8           2.764e-03  5.639e-02  y = square(PC2 + (PC1 - -21.896)) * 0.00047443
+10          2.755e-03  1.750e-03  y = cube(sqrt(abs(-0.37444 - ((PC2 + PC1) * 0.022932))))
+12          2.753e-03  3.306e-04  y = sqrt(abs(cube(-0.3752 - ((PC2 + (PC1 * 1.0164)) * 0.02...
+                                      2756))))
+14          2.713e-03  7.218e-03  y = sqrt(cube(abs((((PC3 * 0.24107) + (PC1 + PC2)) * 0.022...
+                                      932) - -0.37444)))
+16          2.711e-03  4.018e-04  y = sqrt(cube(abs((-0.33572 - ((PC2 + (PC1 + (PC3 * 0.1902...
+                                      6))) * 0.020514)) * 1.118)))
+18          2.711e-03  8.941e-08  y = square(sqrt(sqrt(cube(abs(((((PC1 + PC2) + (PC3 * 0.19...
+                                      026)) * 0.020514) - -0.33572) * 1.118)))))
+19          2.711e-03  9.293e-05  y = cube(sqrt(abs(abs((-0.33572 - (((((PC3 + -0.15693) * 0...
+                                      .19026) + PC2) + PC1) * 0.020514)) * 1.118))))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+
+=== C — Pareto front ===
+    complexity      loss                                           equation
+0            1  0.011136                                         0.23622291
+1            5  0.005261                    (PC1 + 11.3404665) * 0.02081504
+2            6  0.005260                 abs(PC1 + 11.3404665) * 0.02081504
+3            7  0.002925           ((PC1 + PC2) - -11.703075) * 0.020184694
+4            8  0.002764    square(PC2 + (PC1 - -21.89615)) * 0.00047442853
+5           10  0.002755  cube(sqrt(abs(-0.3744438 - ((PC2 + PC1) * 0.02...
+6           12  0.002753  sqrt(abs(cube(-0.37520224 - ((PC2 + (PC1 * 1.0...
+7           14  0.002713  sqrt(cube(abs((((PC3 * 0.24106945) + (PC1 + PC...
+8           16  0.002711  sqrt(cube(abs((-0.3357236 - ((PC2 + (PC1 + (PC...
+9           18  0.002711  square(sqrt(sqrt(cube(abs(((((PC1 + PC2) + (PC...
+10          19  0.002711  cube(sqrt(abs(abs((-0.3357236 - (((((PC3 + -0....
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/pysr/sr.py:2811: UserWarning: Note: it looks like you are running in Jupyter. The progress bar will be turned off.
+  warnings.warn(
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/pysr/sr.py:1873: UserWarning: Note: Setting `random_state` without also setting `deterministic=True` and `parallelism=&#39;serial&#39;` will result in non-deterministic searches.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  - sr_outputs/csr_C/hall_of_fame.csv
+
+Expressions evaluated per second: 2.390e+04
+Progress: 694 / 1200 total iterations (57.833%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           2.825e-02  0.000e+00  y = 0.51443
+5           4.846e-03  4.407e-01  y = (PC2 * -0.059997) + 0.51483
+6           4.817e-03  6.101e-03  y = abs((PC2 * -0.060241) + 0.51425)
+9           4.673e-03  1.011e-02  y = ((PC2 - (-0.058744 * PC1)) * -0.058744) + 0.51371
+10          4.648e-03  5.479e-03  y = abs(0.51256 + ((PC2 - (-0.05889 * PC1)) * -0.05889))
+11          4.403e-03  5.396e-02  y = ((-0.058254 - (PC1 * -0.0017248)) * (PC2 - 1.1864)) + ...
+                                      0.44511
+12          4.376e-03  6.299e-03  y = abs(((PC2 - 1.1864) * (-0.058254 - (PC1 * -0.0017248))...
+                                      ) + 0.44511)
+13          4.143e-03  5.469e-02  y = ((PC2 * -0.060611) + 0.52885) - ((PC1 - PC2) * (PC1 * ...
+                                      0.0010781))
+14          4.009e-03  3.296e-02  y = ((PC2 * -0.062256) + 0.53514) + (square((PC2 - PC1) / ...
+                                      -0.62026) * -0.00038266)
+15          3.924e-03  2.138e-02  y = abs(((PC2 * -0.062256) + 0.53514) + (square((PC2 - PC1...
+                                      ) / -0.62026) * -0.00038266))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press &#39;q&#39; and then &lt;enter&gt; to stop execution early.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ Info: Started!
+[ Info: Final population:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           2.825e-02  0.000e+00  y = 0.51443
+5           4.846e-03  4.407e-01  y = (PC2 * -0.059997) + 0.51483
+6           4.817e-03  6.102e-03  y = abs((PC2 * -0.060263) + 0.51443)
+8           4.669e-03  1.556e-02  y = 0.98427 - abs((PC2 * 0.062758) + 0.4704)
+9           4.610e-03  1.281e-02  y = ((-0.058254 - (PC1 * -0.0012989)) * PC2) + 0.50581
+10          4.469e-03  3.106e-02  y = ((PC2 * -0.061191) + 0.52853) - square(PC1 * 0.031767)
+11          4.403e-03  1.478e-02  y = ((-0.058254 - (PC1 * -0.0017248)) * (PC2 - 1.1864)) + ...
+                                      0.44511
+12          4.011e-03  9.323e-02  y = ((PC2 * -0.06123) - (square(PC2 - PC1) * 0.00086473)) ...
+                                      + 0.53025
+13          3.931e-03  2.033e-02  y = abs((square(PC2 - PC1) * 0.0010185) - ((PC2 * -0.06207...
+                                      7) + 0.53142))
+15          3.924e-03  8.919e-04  y = abs(((PC2 * -0.062256) + 0.53514) + (square((PC2 - PC1...
+                                      ) / -0.62026) * -0.00038266))
+16          3.881e-03  1.097e-02  y = (square((PC2 - PC1) - 1.1116) * -0.0010063) + abs(abs(...
+                                      (PC2 * -0.066517) + 0.53398))
+18          3.868e-03  1.731e-03  y = abs((square((0.53514 - (PC2 - PC1)) / 0.61637) * -0.00...
+                                      038266) + abs((PC2 * -0.062256) + 0.53514))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+
+=== S — Pareto front ===
+    complexity      loss                                           equation
+0            1  0.028250                                           0.514426
+1            5  0.004846                   (PC2 * -0.059997164) + 0.5148275
+2            6  0.004817             abs((PC2 * -0.060262576) + 0.51443326)
+3            8  0.004669  0.9842709 - abs((PC2 * 0.062757604) + 0.47040325)
+4            9  0.004610  ((-0.05825376 - (PC1 * -0.001298862)) * PC2) +...
+5           10  0.004469  ((PC2 * -0.06119058) + 0.52852744) - square(PC...
+6           11  0.004403  ((-0.05825376 - (PC1 * -0.0017248424)) * (PC2 ...
+7           12  0.004011  ((PC2 * -0.061229803) - (square(PC2 - PC1) * 0...
+8           13  0.003931  abs((square(PC2 - PC1) * 0.00101852) - ((PC2 *...
+9           15  0.003924  abs(((PC2 * -0.062255908) + 0.5351401) + (squa...
+10          16  0.003881  (square((PC2 - PC1) - 1.1116331) * -0.00100633...
+11          18  0.003868  abs((square((0.5351401 - (PC2 - PC1)) / 0.6163...
+    complexity      loss                                           equation  \
+0            1  0.011136                                         0.23622291   
+1            5  0.005261                    (PC1 + 11.3404665) * 0.02081504   
+2            6  0.005260                 abs(PC1 + 11.3404665) * 0.02081504   
+3            7  0.002925           ((PC1 + PC2) - -11.703075) * 0.020184694   
+4            8  0.002764    square(PC2 + (PC1 - -21.89615)) * 0.00047442853   
+5           10  0.002755  cube(sqrt(abs(-0.3744438 - ((PC2 + PC1) * 0.02...   
+6           12  0.002753  sqrt(abs(cube(-0.37520224 - ((PC2 + (PC1 * 1.0...   
+7           14  0.002713  sqrt(cube(abs((((PC3 * 0.24106945) + (PC1 + PC...   
+8           16  0.002711  sqrt(cube(abs((-0.3357236 - ((PC2 + (PC1 + (PC...   
+9           18  0.002711  square(sqrt(sqrt(cube(abs(((((PC1 + PC2) + (PC...   
+10          19  0.002711  cube(sqrt(abs(abs((-0.3357236 - (((((PC3 + -0....   
+
+           score                                       sympy_format  \
+0   0.000000e+00                                  0.236222910000000   
+1   1.874685e-01                      (PC1 + 11.3404665)*0.02081504   
+2   7.185451e-05                   Abs(PC1 + 11.3404665)*0.02081504   
+3   5.870431e-01           (PC1 + PC2 - 1*(-11.703075))*0.020184694   
+4   5.639273e-02       (PC1 + PC2 - 1*(-21.89615))**2*0.00047442853   
+5   1.750117e-03  Abs(0.02293236*PC1 + 0.02293236*PC2 + 0.374443...   
+6   3.306452e-04  0.229825457732421*sqrt(Abs((0.0616424507565179...   
+7   7.217832e-03  Abs(0.02293236*PC1 + 0.02293236*PC2 + 0.005528...   
+8   4.018245e-04  Abs(0.0229355572214628*PC1 + 0.022935557221462...   
+9   9.221131e-08  Abs(0.0229355572214628*PC1 + 0.022935557221462...   
+10  9.287956e-05  Abs(0.0229355572214628*PC1 + 0.022935557221462...   
+
+                                        lambda_format  
+0                  PySRFunction(X=&gt;0.236222910000000)  
+1      PySRFunction(X=&gt;(PC1 + 11.3404665)*0.02081504)  
+2   PySRFunction(X=&gt;Abs(PC1 + 11.3404665)*0.02081504)  
+3   PySRFunction(X=&gt;(PC1 + PC2 - 1*(-11.703075))*0...  
+4   PySRFunction(X=&gt;(PC1 + PC2 - 1*(-21.89615))**2...  
+5   PySRFunction(X=&gt;Abs(0.02293236*PC1 + 0.0229323...  
+6   PySRFunction(X=&gt;0.229825457732421*sqrt(Abs((0....  
+7   PySRFunction(X=&gt;Abs(0.02293236*PC1 + 0.0229323...  
+8   PySRFunction(X=&gt;Abs(0.0229355572214628*PC1 + 0...  
+9   PySRFunction(X=&gt;Abs(0.0229355572214628*PC1 + 0...  
+10  PySRFunction(X=&gt;Abs(0.0229355572214628*PC1 + 0...  
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ Info: Results saved to:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R²(C) = 0.737
+R²(S) = 0.828
+R²(R) = 0.814
+C formula: (PC1 + PC2 - 1*(-11.703075))*0.020184694
+S formula: 0.5148275 + PC2*(-0.059997164)
+  - sr_outputs/csr_S/hall_of_fame.csv
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_sr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">complexity</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">reproducible</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">PySRRegressor</span><span class="p">(</span>
+        <span class="n">niterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">,</span>
+        <span class="n">maxsize</span><span class="o">=</span><span class="n">complexity</span><span class="p">,</span>
+        <span class="n">binary_operators</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">],</span>
+        <span class="n">unary_operators</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;square&quot;</span><span class="p">,</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="s2">&quot;sqrt&quot;</span><span class="p">,</span> <span class="s2">&quot;abs&quot;</span><span class="p">,</span> <span class="s2">&quot;log&quot;</span><span class="p">],</span>
+        <span class="n">populations</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+        <span class="n">population_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">tournament_selection_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">parsimony</span><span class="o">=</span><span class="mf">0.002</span><span class="p">,</span>
+        <span class="n">batching</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                   <span class="c1"># ~10k cells: score on all training cells</span>
+        <span class="n">output_directory</span><span class="o">=</span><span class="s2">&quot;sr_outputs&quot;</span><span class="p">,</span>    <span class="c1"># equations saved to sr_outputs/&lt;run_id&gt;/</span>
+        <span class="n">run_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;csr_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+        <span class="c1"># identical results between runs need a serial search (slower)</span>
+        <span class="n">deterministic</span><span class="o">=</span><span class="n">reproducible</span><span class="p">,</span>
+        <span class="n">parallelism</span><span class="o">=</span><span class="s2">&quot;serial&quot;</span> <span class="k">if</span> <span class="n">reproducible</span> <span class="k">else</span> <span class="s2">&quot;multithreading&quot;</span><span class="p">,</span>
+        <span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">variable_names</span><span class="o">=</span><span class="n">PC_COLS</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+
+<span class="c1"># --- spatial hold-out using the folds from notebook 02 ------------------------</span>
+<span class="n">folds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;~/Func_Neo_Phytes/Results/trait_env/spatial_folds.csv&quot;</span><span class="p">)</span>  <span class="c1"># from xgboot SHAP analysis</span>
+<span class="c1"># keep the H3 id when building df; &quot;h3_index&quot; is my guess at your column name, so adjust it</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">trait_df</span><span class="p">[</span><span class="n">trait_df</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">]</span>
+      <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;h3_res3&quot;</span><span class="p">:</span> <span class="s2">&quot;h3_index&quot;</span><span class="p">})</span>
+      <span class="p">[[</span><span class="s2">&quot;h3_index&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">PC_COLS</span> <span class="o">+</span> <span class="n">CSR_COLS</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">folds</span><span class="p">[[</span><span class="s2">&quot;h3_index&quot;</span><span class="p">,</span> <span class="s2">&quot;fold&quot;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;h3_index&quot;</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;h3_index&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">is_unique</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">fold_ids</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;fold&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">test_folds</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">fold_ids</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="mf">0.2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">fold_ids</span><span class="p">)),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">is_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;fold&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">test_folds</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;train </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">~</span><span class="n">is_test</span><span class="p">)</span><span class="si">}</span><span class="s2"> cells, test </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">is_test</span><span class="p">)</span><span class="si">}</span><span class="s2"> cells (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_folds</span><span class="p">)</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fold_ids</span><span class="p">)</span><span class="si">}</span><span class="s2"> folds)&quot;</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">PC_COLS</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">csr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">CSR_COLS</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">csr</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">1.5</span><span class="p">:</span>
+    <span class="n">csr</span> <span class="o">=</span> <span class="n">csr</span> <span class="o">/</span> <span class="mf">100.0</span>
+
+<span class="k">def</span> <span class="nf">fit_and_score</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">fit_sr</span><span class="p">(</span><span class="n">csr</span><span class="p">[</span><span class="o">~</span><span class="n">is_test</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">name</span><span class="p">,</span> <span class="n">X_train</span><span class="o">=</span><span class="n">X</span><span class="p">[</span><span class="o">~</span><span class="n">is_test</span><span class="p">])</span>
+    <span class="c1"># score every equation on the Pareto front on the held-out folds</span>
+    <span class="n">eq</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">equations_</span><span class="p">[[</span><span class="s2">&quot;complexity&quot;</span><span class="p">,</span> <span class="s2">&quot;equation&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">eq</span><span class="p">[</span><span class="s2">&quot;R2_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">r2_score</span><span class="p">(</span><span class="n">csr</span><span class="p">[</span><span class="o">~</span><span class="n">is_test</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">~</span><span class="n">is_test</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">eq</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">eq</span><span class="p">[</span><span class="s2">&quot;R2_test&quot;</span><span class="p">]</span>  <span class="o">=</span> <span class="p">[</span><span class="n">r2_score</span><span class="p">(</span><span class="n">csr</span><span class="p">[</span><span class="n">is_test</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span>  <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">is_test</span><span class="p">],</span>  <span class="n">index</span><span class="o">=</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">eq</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eq</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">model</span><span class="p">,</span> <span class="n">eq</span>
+
+<span class="n">model_C</span><span class="p">,</span> <span class="n">eq_C</span> <span class="o">=</span> <span class="n">fit_and_score</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">model_S</span><span class="p">,</span> <span class="n">eq_S</span> <span class="o">=</span> <span class="n">fit_and_score</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>train 8002 cells, test 1609 cells (8 of 41 folds)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/pysr/sr.py:2811: UserWarning: Note: it looks like you are running in Jupyter. The progress bar will be turned off.
+  warnings.warn(
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/pysr/sr.py:1873: UserWarning: Note: Setting `random_state` without also setting `deterministic=True` and `parallelism=&#39;serial&#39;` will result in non-deterministic searches.
+  warnings.warn(
+[ Info: Started!
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expressions evaluated per second: 8.780e+04
+Progress: 246 / 1200 total iterations (20.500%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.492e-03  0.000e+00  y = 0.23103
+5           4.598e-03  1.812e-01  y = (PC1 * 0.020308) - -0.23879
+6           4.598e-03  3.958e-05  y = abs((PC1 * -0.020325) - 0.23878)
+7           2.652e-03  5.501e-01  y = ((PC2 + PC1) * 0.01951) - -0.23264
+8           2.522e-03  5.051e-02  y = square(((PC2 + PC1) * -0.021389) - 0.474)
+9           2.522e-03  7.153e-07  y = abs(square(((PC2 + PC1) * -0.021394) - 0.47401))
+11          2.522e-03  1.073e-06  y = square(abs((((PC1 + PC2) * -0.083579) - 1.8501) * 0.25...
+                                      618))
+14          2.520e-03  1.798e-04  y = square((0.4893 - ((0.88491 - PC1) * 0.021582)) + ((PC2...
+                                       + 0.19065) * 0.020936))
+18          2.520e-03  3.404e-05  y = abs(square(((((PC2 / -1.0239) + (abs(PC2 * -0.036564) ...
+                                      + 0.48604)) - PC1) * 0.021543) - 0.48634))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press &#39;q&#39; and then &lt;enter&gt; to stop execution early.
+
+Expressions evaluated per second: 1.300e+05
+Progress: 625 / 1200 total iterations (52.083%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.492e-03  0.000e+00  y = 0.23103
+5           4.598e-03  1.812e-01  y = (PC1 * 0.020308) - -0.23879
+6           4.598e-03  3.958e-05  y = abs((PC1 * -0.020325) - 0.23878)
+7           2.652e-03  5.501e-01  y = ((PC2 + PC1) * 0.01951) - -0.23264
+8           2.522e-03  5.051e-02  y = square(((PC2 + PC1) * -0.021394) - 0.47401)
+10          2.520e-03  2.709e-04  y = square((PC2 * 0.020967) + ((PC1 * 0.021568) - -0.47417...
+                                      ))
+12          2.493e-03  5.564e-03  y = square(-0.47433 - (((PC2 + PC1) + (PC3 * 0.175)) * 0.0...
+                                      21528))
+14          2.491e-03  2.394e-04  y = square((((PC2 + (PC3 * 0.17494)) * -0.021037) + (PC1 *...
+                                       -0.021527)) - 0.47438)
+16          2.491e-03  3.278e-07  y = square((((PC2 + 0.022214) + (PC3 * 0.17533)) * 0.02103...
+                                      4) + ((PC1 * 0.021526) - -0.47394))
+18          2.491e-03  7.153e-07  y = square((((PC2 - ((PC3 * -0.041968) / 0.24076)) * 0.021...
+                                      03) - ((0.88479 - PC1) * 0.021568)) + 0.49349)
+19          2.466e-03  1.040e-02  y = square((((PC1 + (PC3 * 0.17678)) * 0.021476) - -0.4722...
+                                      5) + ((square(PC3 * 0.21156) + PC2) * 0.021365))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press &#39;q&#39; and then &lt;enter&gt; to stop execution early.
+
+Expressions evaluated per second: 1.390e+05
+Progress: 964 / 1200 total iterations (80.333%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.492e-03  0.000e+00  y = 0.23103
+5           4.598e-03  1.812e-01  y = (PC1 * 0.020308) - -0.23879
+6           4.598e-03  3.958e-05  y = abs((PC1 * -0.020325) - 0.23878)
+7           2.652e-03  5.501e-01  y = ((PC2 + PC1) * 0.01951) - -0.23264
+8           2.522e-03  5.052e-02  y = square(-0.47395 - ((PC1 + PC2) * 0.021407))
+10          2.520e-03  2.698e-04  y = square(((PC2 * 0.020967) + (PC1 * 0.021568)) - -0.4741...
+                                      7)
+12          2.493e-03  5.564e-03  y = square(-0.47433 - (((PC2 + PC1) + (PC3 * 0.175)) * 0.0...
+                                      21528))
+14          2.491e-03  2.394e-04  y = square((((PC2 + (PC3 * 0.17494)) * -0.021037) + (PC1 *...
+                                       -0.021527)) - 0.47438)
+16          2.491e-03  3.278e-07  y = square((((PC2 + 0.022214) + (PC3 * 0.17533)) * 0.02103...
+                                      4) + ((PC1 * 0.021526) - -0.47394))
+17          2.491e-03  9.609e-05  y = abs(square((PC1 * 0.021485) + abs((PC2 * 0.020993) + s...
+                                      quare((PC3 * 0.0027109) - -0.68901))))
+18          2.491e-03  1.878e-05  y = square(((PC1 + -0.014289) * 0.021485) + abs((PC2 * 0.0...
+                                      20993) + square((PC3 * 0.0027109) - -0.68901)))
+19          2.465e-03  1.066e-02  y = square((((PC1 * 0.021574) + (PC3 * 0.0041042)) - -0.47...
+                                      143) + ((PC2 + square(PC3 * -0.22277)) * 0.021514))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press &#39;q&#39; and then &lt;enter&gt; to stop execution early.
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.492e-03  0.000e+00  y = 0.23103
+5           4.598e-03  1.812e-01  y = (PC1 * 0.020308) - -0.23879
+6           4.598e-03  3.958e-05  y = abs((PC1 * -0.020325) - 0.23878)
+7           2.652e-03  5.501e-01  y = ((PC2 + PC1) * 0.01951) - -0.23264
+8           2.522e-03  5.052e-02  y = square(-0.47395 - ((PC1 + PC2) * 0.021407))
+10          2.520e-03  2.698e-04  y = square(((PC2 * 0.020967) + (PC1 * 0.021568)) - -0.4741...
+                                      7)
+12          2.492e-03  5.613e-03  y = square((((PC3 * 0.17375) + (PC2 + PC1)) * -0.021382) -...
+                                       0.47427)
+13          2.492e-03  1.788e-07  y = abs(square((((PC1 + (PC3 * 0.175)) + PC2) * 0.021391) ...
+                                      - -0.47431))
+14          2.491e-03  3.811e-04  y = square((PC1 * -0.021527) + (((PC2 + (PC3 * 0.17494)) *...
+                                       -0.021037) - 0.47438))
+16          2.491e-03  1.252e-06  y = square((((PC3 * 0.0036889) - -0.47447) + ((PC2 - -0.00...
+                                      099787) * 0.021017)) + (PC1 * 0.021538))
+17          2.469e-03  8.936e-03  y = square(((PC1 * 0.021514) - -0.47143) + ((PC2 + ((PC3 +...
+                                       abs(PC3)) * 0.19048)) * 0.021514))
+19          2.465e-03  9.313e-04  y = square((PC1 * 0.021567) + (((PC3 * 0.0040616) - -0.471...
+                                      35) + ((PC2 + (square(PC3) * 0.052273)) * 0.021504)))
+20          2.465e-03  1.216e-05  y = square(abs((PC1 * 0.021609) + (((((square(PC3) * 0.052...
+                                      271) + PC2) * 0.021535) + (PC3 * 0.0040669)) - -0.47132)))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+
+=== C ===
+ complexity                                                                                                                      equation      R2_train   R2_test
+          1                                                                                                                    0.23103152 -5.346743e-10 -0.046029
+          5                                                                                              (PC1 * 0.020307623) - -0.2387881  5.155622e-01  0.575995
+          6                                                                                        abs((PC1 * -0.020325286) - 0.23878393)  5.155814e-01  0.576084
+          7                                                                                     ((PC2 + PC1) * 0.019510185) - -0.23263955  7.205496e-01  0.815075
+          8                                                                              square(-0.4739529 - ((PC1 + PC2) * 0.021407258))  7.343157e-01  0.839845
+         10                                                             square(((PC2 * 0.020966899) + (PC1 * 0.021567665)) - -0.47416818)  7.344590e-01  0.839823
+         12                                                       square((((PC3 * 0.17375487) + (PC2 + PC1)) * -0.021382196) - 0.4742652)  7.374233e-01  0.845551
+         13                                                  abs(square((((PC1 + (PC3 * 0.1749975)) + PC2) * 0.021391127) - -0.47431114))  7.374233e-01  0.845598
+         14                                      square((PC1 * -0.021526858) + (((PC2 + (PC3 * 0.17494415)) * -0.02103715) - 0.47437856))  7.375233e-01  0.845613
+         16                   square((((PC3 * 0.0036888856) - -0.47446913) + ((PC2 - -0.000997868) * 0.021017166)) + (PC1 * 0.021538084))  7.375240e-01  0.845646
+         17                          square(((PC1 * 0.021514213) - -0.47142738) + ((PC2 + ((PC3 + abs(PC3)) * 0.1904821)) * 0.021514213))  7.398590e-01  0.846195
+         19     square((PC1 * 0.021567455) + (((PC3 * 0.0040615695) - -0.47134656) + ((PC2 + (square(PC3) * 0.05227348)) * 0.021504007)))  7.403431e-01  0.843639
+         20 square(abs((PC1 * 0.021609208) + (((((square(PC3) * 0.052271154) + PC2) * 0.021534616) + (PC3 * 0.004066898)) - -0.4713207)))  7.403462e-01  0.843652
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ Info: Final population:
+[ Info: Results saved to:
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/pysr/sr.py:2811: UserWarning: Note: it looks like you are running in Jupyter. The progress bar will be turned off.
+  warnings.warn(
+/net/home/swolf/.conda/envs/traitmaps/lib/python3.8/site-packages/pysr/sr.py:1873: UserWarning: Note: Setting `random_state` without also setting `deterministic=True` and `parallelism=&#39;serial&#39;` will result in non-deterministic searches.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  - sr_outputs/csr_C/hall_of_fame.csv
+
+Expressions evaluated per second: 1.640e+05
+Progress: 367 / 1200 total iterations (30.583%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           2.615e-02  0.000e+00  y = 0.49818
+5           4.419e-03  4.445e-01  y = (PC2 * -0.060625) - -0.51634
+6           4.386e-03  7.455e-03  y = abs((PC2 * -0.060871) - -0.51627)
+8           4.384e-03  1.705e-04  y = abs((PC2 * -0.060918) - -0.53381) + -0.017561
+9           4.309e-03  1.748e-02  y = (-0.060573 * (PC2 - (-0.052843 * PC1))) - -0.51174
+10          4.160e-03  3.516e-02  y = ((PC2 * -0.062067) - -0.52704) - square(PC1 * 0.02921)
+14          4.050e-03  6.697e-03  y = ((PC2 * -0.061808) - -0.52743) - square(((PC1 * 0.0106...
+                                      04) + 0.020688) * 2.5928)
+15          4.003e-03  1.154e-02  y = ((PC2 * -0.061751) - -0.52423) - ((PC1 + PC3) * ((PC1 ...
+                                      + 4.2123) * 0.00075928))
+16          3.973e-03  7.559e-03  y = abs(((PC2 * (0.66486 - ((PC3 * 0.026843) + (PC1 * 0.02...
+                                      1542)))) * 0.090315) - 0.51604)
+18          3.947e-03  3.285e-03  y = ((PC2 * -0.061754) - -0.52409) - square(PC1 * (((PC2 *...
+                                       -0.0093512) * (PC1 * -0.044147)) + -0.027689))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press &#39;q&#39; and then &lt;enter&gt; to stop execution early.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ Info: Started!
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expressions evaluated per second: 1.570e+05
+Progress: 754 / 1200 total iterations (62.833%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           2.615e-02  0.000e+00  y = 0.49818
+5           4.419e-03  4.445e-01  y = (PC2 * -0.060625) - -0.51634
+6           4.386e-03  7.455e-03  y = abs((PC2 * -0.060871) - -0.51627)
+8           4.384e-03  1.705e-04  y = abs((PC2 * -0.060918) - -0.53381) + -0.017561
+9           4.297e-03  2.010e-02  y = (PC2 * -0.060573) - ((PC1 * 0.003201) - 0.5151)
+10          4.160e-03  3.254e-02  y = ((PC2 * -0.061928) - -0.52704) - square(PC1 * 0.029128...
+                                      )
+11          4.123e-03  8.875e-03  y = abs(((PC2 * -0.062217) - -0.52698) - square(PC1 * 0.02...
+                                      9491))
+12          3.827e-03  7.435e-02  y = ((PC2 * -0.061459) - -0.53254) - (square(PC1 - PC2) * ...
+                                      0.0008834)
+13          3.753e-03  1.967e-02  y = abs(((PC2 * -0.062551) - -0.53359) - square((PC2 - PC1...
+                                      ) * 0.031185))
+14          3.748e-03  1.234e-03  y = abs(square((PC2 - PC1) * 0.028582) - abs((PC2 * -0.063...
+                                      878) - -0.53226))
+15          3.690e-03  1.577e-02  y = abs(((PC2 * -0.064291) - -0.53298) - square(((PC1 - PC...
+                                      2) + 1.3183) * 0.029771))
+17          3.687e-03  4.150e-04  y = abs(((PC2 * -0.064194) - -0.53303) - square(((PC2 * -0...
+                                      .028087) + 0.039538) + (PC1 * 0.03051)))
+18          3.648e-03  1.044e-02  y = abs(square((PC1 * 0.030353) + ((PC2 * -0.032781) + 0.0...
+                                      367)) - abs(-0.53394 - (PC2 * -0.065412)))
+19          3.648e-03  1.073e-05  y = abs(abs((PC2 * -0.065302) - -0.53385) - square(abs(((P...
+                                      C2 * -0.032542) + 0.036701) + (PC1 * 0.030448))))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press &#39;q&#39; and then &lt;enter&gt; to stop execution early.
+
+Expressions evaluated per second: 1.580e+05
+Progress: 1108 / 1200 total iterations (92.333%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           2.615e-02  0.000e+00  y = 0.49818
+5           4.419e-03  4.445e-01  y = (PC2 * -0.060625) - -0.51634
+6           4.386e-03  7.455e-03  y = abs((PC2 * -0.060871) - -0.51627)
+8           4.384e-03  1.705e-04  y = abs((PC2 * -0.060918) - -0.53381) + -0.017561
+9           4.297e-03  2.010e-02  y = (PC2 * -0.060573) - ((PC1 * 0.003201) - 0.5151)
+10          4.160e-03  3.257e-02  y = ((PC2 * -0.061966) - -0.52713) - (square(PC1) * 0.0008...
+                                      6472)
+11          4.123e-03  8.852e-03  y = abs(square(PC1 * 0.029439) - ((PC2 * -0.06222) - -0.52...
+                                      699))
+12          3.827e-03  7.435e-02  y = ((PC2 * -0.061459) - -0.53254) - (square(PC1 - PC2) * ...
+                                      0.0008834)
+13          3.753e-03  1.967e-02  y = abs(((PC2 * -0.062551) - -0.53359) - square((PC2 - PC1...
+                                      ) * 0.031185))
+14          3.735e-03  4.824e-03  y = abs(square((PC1 - PC2) * 0.029771) - abs(-0.53298 - (-...
+                                      0.064291 * PC2)))
+15          3.690e-03  1.218e-02  y = abs(((PC2 * -0.064291) - -0.53298) - square(((PC1 - PC...
+                                      2) + 1.3183) * 0.029771))
+16          3.650e-03  1.067e-02  y = abs(square(((PC1 - PC2) + 1.0302) * -0.031055) - abs((...
+                                      PC2 * 0.064914) - 0.5334))
+17          3.639e-03  3.262e-03  y = abs(((PC2 * -0.06492) - -0.5312) - square((PC1 + ((1.6...
+                                      304 - PC2) + PC3)) * -0.026143))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press &#39;q&#39; and then &lt;enter&gt; to stop execution early.
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           2.615e-02  0.000e+00  y = 0.49818
+5           4.419e-03  4.445e-01  y = (PC2 * -0.060625) - -0.51634
+6           4.386e-03  7.455e-03  y = abs((PC2 * -0.060871) - -0.51627)
+8           4.384e-03  1.705e-04  y = abs((PC2 * -0.060918) - -0.53381) + -0.017561
+9           4.265e-03  2.768e-02  y = abs(0.98064 - abs((PC2 * 0.062799) - -0.46242))
+10          4.160e-03  2.499e-02  y = ((PC2 * -0.061966) - -0.52713) - (square(PC1) * 0.0008...
+                                      6472)
+11          4.123e-03  8.852e-03  y = abs(square(PC1 * 0.029439) - ((PC2 * -0.06222) - -0.52...
+                                      699))
+12          3.827e-03  7.435e-02  y = ((PC2 * -0.061459) - -0.53254) - (square(PC1 - PC2) * ...
+                                      0.0008834)
+13          3.753e-03  1.967e-02  y = abs(((PC2 * -0.062551) - -0.53359) - square((PC2 - PC1...
+                                      ) * 0.031185))
+14          3.716e-03  9.950e-03  y = abs(square((PC2 - PC1) * 0.030897) - abs((PC2 * -0.062...
+                                      362) - -0.53264))
+15          3.665e-03  1.368e-02  y = abs(-0.53298 - (PC2 * -0.064291)) - square((1.3183 + (...
+                                      PC1 - PC2)) * 0.029771)
+16          3.650e-03  4.080e-03  y = abs(abs(-0.53347 - (PC2 * -0.064946)) - square(((PC2 -...
+                                       0.99576) - PC1) * -0.031641))
+17          3.639e-03  3.225e-03  y = abs(((PC2 * -0.06492) - -0.5312) - square((PC1 + ((1.6...
+                                      304 - PC2) + PC3)) * -0.026143))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ Info: Final population:
+[ Info: Results saved to:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== S ===
+ complexity                                                                                           equation      R2_train   R2_test
+          1                                                                                         0.49817857 -3.738740e-10 -0.125229
+          5                                                                 (PC2 * -0.060624514) - -0.51634043  8.309953e-01  0.819747
+          6                                                              abs((PC2 * -0.06087133) - -0.5162662)  8.322505e-01  0.820910
+          8                                             abs((PC2 * -0.060918096) - -0.53381264) + -0.017561218  8.323077e-01  0.820756
+          9                                            abs(0.9806374 - abs((PC2 * 0.062798545) - -0.46241564))  8.368859e-01  0.839595
+         10                                ((PC2 * -0.061965577) - -0.52713346) - (square(PC1) * 0.0008647204)  8.409113e-01  0.842045
+         11                                abs(square(PC1 * 0.029438835) - ((PC2 * -0.06221954) - -0.5269861))  8.423132e-01  0.843177
+         12                          ((PC2 * -0.061459046) - -0.5325388) - (square(PC1 - PC2) * 0.00088339613)  8.536124e-01  0.873347
+         13                       abs(((PC2 * -0.06255088) - -0.53358525) - square((PC2 - PC1) * 0.031184882))  8.564631e-01  0.878513
+         14                   abs(square((PC2 - PC1) * 0.030897247) - abs((PC2 * -0.062361963) - -0.53263533))  8.578842e-01  0.878823
+         15            abs(-0.5329781 - (PC2 * -0.06429117)) - square((1.3182502 + (PC1 - PC2)) * 0.029770628)  8.598147e-01  0.876438
+         16        abs(abs(-0.5334671 - (PC2 * -0.06494627)) - square(((PC2 - 0.995763) - PC1) * -0.03164067))  8.603855e-01  0.877988
+         17 abs(((PC2 * -0.06492034) - -0.5312044) - square((PC1 + ((1.6304426 - PC2) + PC3)) * -0.026142813))  8.608351e-01  0.878454
+  - sr_outputs/csr_S/hall_of_fame.csv
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="14.2_Plot_global_maps_CSR.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Plot global gradients of main principal components</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="06_Join_the_locals.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">“Join the locals” vs. “Try harder”</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sophie Wolf<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
